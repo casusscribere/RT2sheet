@@ -1,0 +1,435 @@
+@font-face{ font-family: trajan_reg; src: url("../fonts/TrajanPro-Regular.otf"); }
+/*header radio pill stylings */
+
+.sheet-sheetsel {
+    width: 70px;
+    height: 20px !important;
+    opacity: 0;
+    padding: 1px;
+    position: absolute;
+}
+
+.sheet-pilltext{
+    text-align: center;
+    display: inline-block;
+    width: 70px;
+    height: 20px;
+    
+    border: 1px solid #d4d4d4;
+    margin: 0;
+    text-decoration: none;
+    text-align: center;
+    text-shadow: 1px 1px 0 #fff;
+    /*font:11px/normal sans-serif;*/
+    color: #333;  
+    white-space: nowrap;
+    cursor: pointer;
+    outline: none;
+    background-color: #ececec;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#f4f4f4), to(#ececec));
+    background-image: -moz-linear-gradient(#f4f4f4, #ececec);
+    background-image: -ms-linear-gradient(#f4f4f4, #ececec);
+    background-image: -o-linear-gradient(#f4f4f4, #ececec);
+    background-image: linear-gradient(#f4f4f4, #ececec);
+    -moz-background-clip: padding; /* for Firefox 3.6 */
+    background-clip: padding-box;
+    border-radius: 0.2em;
+    /* IE hacks */
+    zoom: 1;
+    *display: inline;
+}
+
+.sheet-sheetsel:checked + .sheet-pilltext{   
+    border-color: #3072b3;
+    border-bottom-color: #2a65a0;
+    text-decoration: none;
+    text-shadow: -1px -1px 0 rgba(0,0,0,0.3);
+    color: #fff;
+    background-color: #3c8dde;
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#599bdc), to(#3072b3));
+    background-image: -moz-linear-gradient(#599bdc, #3072b3);
+    background-image: -o-linear-gradient(#599bdc, #3072b3);
+    background-image: linear-gradient(#599bdc, #3072b3);
+}
+
+.sheet-viewsel:checked ~ .sheet-viewwrapper{
+    display: block;
+}
+
+.sheet-viewsel:not(:checked) ~ .sheet-viewwrapper{
+    display: none;
+}
+
+.sheet-inputsel:checked ~ .sheet-inputwrapper{
+    display: block;
+}
+
+.sheet-inputsel:not(:checked) ~ .sheet-inputwrapper{
+    display: none;
+}
+
+
+.sheet-shiptsel:checked ~ .sheet-shipwrapper{
+    display: block;
+}
+
+.sheet-shipsel:not(:checked) ~ .sheet-shipwrapper{
+    display: none;
+}
+
+.charsheet {
+    background-image: url("http://wallpapercave.com/wp/wQub3px.jpg");
+}
+
+
+/* View Stylings */
+
+.sheet-viewwrapper {
+   /* background-color: #DDDDDD;*/
+    color: #330000;
+}
+
+
+.sheet-viewwrapper div.repcontrol{
+    display: none;
+}
+
+
+
+.sheet-viewwrapper .sheet-item {
+    display: inline-block;
+}
+
+.sheet-viewwrapper input {
+    background-color: inherit;
+    box-shadow: none;
+    border-style: solid;
+    border-width: 0px 0px 0px 0px;
+    height: inherit;
+}
+
+.sheet-viewwrapper h4 {
+    text-align: center;
+    padding: 5px;
+    background-color: #660000;
+    color: #FFFFFF;
+}
+
+.sheet-viewwrapper button {
+    width: 15px;
+    height: 15px;
+}
+
+.sheet-viewwrapper span {
+    font-weight: bold;
+    font-family: trajan_reg;
+}
+
+.sheet-viewwrapper .sheet-playerfill input {
+    border-width: 0px 0px 2px 0px;
+    border-color: #660000;
+}
+
+.sheet-viewwrapper .sheet-charnum {
+    font-size: 200%;
+    background-color: #ffd9b3;
+    border-color: #ffa64d;
+    /*border: 4px solid #ffa64d;*/
+}
+
+.sheet-viewwrapper .sheet-characteristics{
+    background-color: #ffb84d;
+    margin: 5px;
+    border: 1px solid #990000;
+    border-radius: 0.5em;
+}
+
+.sheet-viewwrapper .sheet-characteristics .sheet-adj {
+    padding-top: 0px;
+}
+
+.sheet-viewwrapper .sheet-characteristics .sheet-cell {
+    width: 40px !important;
+}
+
+.sheet-viewwrapper .sheet-bg {
+/*background: rgba(102,102,102,.3);*/
+background-color: #ffb84d;
+border: 1px solid #990000;
+border-radius: 0.5em;
+margin: 5px 0 5px 0;
+}
+
+.sheet-viewwrapper .sheet-skills {
+    font-size: 9px;
+}
+
+.sheet-viewwrapper .sheet-skills input {
+    color: #330000;
+    font-family: trajan_reg;
+}
+
+.sheet-viewwrapper .sheet-skills .sheet-row {
+    height: 20px;
+}
+
+.sheet-viewwrapper .sheet-skills .sheet-row:nth-child(even) {
+    background: rgba(102,102,102,.3);
+}
+
+.sheet-viewwrapper .sheet-skills .sheet-cell {
+}
+
+.sheet-viewwrapper .sheet-wpnpwrsel1:checked ~ .sheet-wpnsel1{
+    display: block;
+}
+
+.sheet-viewwrapper .sheet-wpnpwrsel1:checked ~ .sheet-pwrsel1{
+    display: none;
+}
+
+
+.sheet-viewwrapper .sheet-wpnpwrsel1:not(:checked) ~ .sheet-wpnsel1{
+    display: none;
+}
+
+.sheet-viewwrapper .sheet-wpnpwrsel1:not(:checked) ~ .sheet-pwrsel1{
+    display: block;
+}
+
+.sheet-viewwrapper .sheet-wpnpwrsel2:checked ~ .sheet-wpnsel2{
+    display: block;
+}
+
+.sheet-viewwrapper .sheet-wpnpwrsel2:checked ~ .sheet-pwrsel2{
+    display: none;
+}
+
+.sheet-viewwrapper .sheet-wpnpwrsel2:not(:checked) ~ .sheet-wpnsel2{
+    display: none;
+}
+
+.sheet-viewwrapper .sheet-wpnpwrsel2:not(:checked) ~ .sheet-pwrsel2{
+    display: block;
+}
+
+/* Data entry stylings */
+
+.sheet-inputwrapper .sheet-spindisable::-webkit-inner-spin-button,
+.sheet-inputwrapper .sheet-spindisable::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.sheet-inputwrapper select {
+
+    height: inherit;
+    width: inherit;
+    padding: 0px;
+}
+
+.sheet-inputwrapper .sheet-skills input {
+    width: 40px !important;
+}
+
+.sheet-inputwrapper .sheet-item{
+    display: inline-block;
+    font:9px/normal sans-serif;
+}
+
+.sheet-inputwrapper .sheet-row {
+    padding-top: 2px;
+}
+
+.sheet-inputwrapper .sheet-box {
+    margin: 10px -15px 10px -15px;
+    padding: 8px;
+    border-radius: 25px;
+    background-color: #9999ff;
+}
+
+
+.sheet-inputwrapper .sheet-bg {
+/*background: rgba(102,102,102,.3);*/
+background-color: #ffb84d;
+border: 1px solid #990000;
+border-radius: 0.5em;
+margin: 5px -2px 5px -2px;
+}
+
+
+
+
+
+.sheet-shipwrapper div {
+    display: inline-block;
+}
+
+.sheet-shipwrapper .sheet-playerfill input {
+    background-color: inherit;
+    box-shadow: none;
+    border-style: solid;
+    height: inherit;
+    display: inline-block;
+    border-width: 0px 0px 2px 0px;
+    border-color: #660000;
+}
+
+.sheet-shipwrapper .sheet-bg {
+/*background: rgba(102,102,102,.3);*/
+background-color: #ffb84d;
+border: 1px solid #990000;
+border-radius: 0.5em;
+margin: 5px -2px 5px -2px;
+}
+
+
+div.userscript-showtip.userscript-tipsy {
+    text-shadow: none !important;
+}
+
+
+
+
+
+
+/* Roll template styling */
+
+
+
+.sheet-rolltemplate-check table {
+    width: 100%;
+	/*border: 1px solid; */
+	border-radius: 25px;
+	color: black;
+	font-size: 1em;
+	font-family: "Helvetica Neue", Helvetica, sans-serif;
+}
+
+.sheet-rolltemplate-check tbody {
+    /*border-radius: 25px;*/
+}
+
+.sheet-rolltemplate-check tr {
+    /*border-radius: 25px;*/
+}
+
+.sheet-rolltemplate-check th {
+	background-color: #660000;
+	color: #ffffff;
+	padding: 2px;
+	/*border-bottom: 1px solid black;*/
+	line-height: 1.6em;
+	font-size: 1.2em;
+}
+
+.sheet-rolltemplate-check .sheet-bold {
+	font-weight: bold;
+}
+
+.sheet-rolltemplate-check .sheet-green {
+	color:#228b22;
+}
+
+.sheet-rolltemplate-check .sheet-red {
+	color:#B31515;
+}
+
+.sheet-rolltemplate-check .sheet-header {
+	line-height: 0.8em;
+	font-size: 0.6em;
+}
+
+.sheet-rolltemplate-check td {
+	padding: 5px;
+	/*border-bottom: 1px solid black;*/
+}
+
+.sheet-rolltemplate-check tr:nth-child(odd) {
+	background-color: #ffb84d;
+	color: black;
+}
+
+.sheet-rolltemplate-check tr:nth-child(even) {
+	background-color: #ffd9b3;
+	color: black;
+}
+
+.sheet-rolltemplate-check div {
+    border: 1px solid black;
+    border-radius: 10px;
+    -moz-border-radius: 10px
+    -webkit-border-radius: 10px;
+    overflow: hidden; /*notice*/
+    background-color: #660000;
+}
+
+/*
+.sheet-rolltemplate-check table {
+    border-spacing: 0;
+}
+.sheet-rolltemplate-check th, .sheet-rolltemplate-check td {
+    border: 1px solid #000;
+    padding: 0.5em 1em;
+}
+.sheet-rolltemplate-check thead tr:first-child th:first-child,
+.sheet-rolltemplate-check tbody:first-child tr:first-child td:first-child {
+    border-top-left-radius: 0.6em;
+}
+.sheet-rolltemplate-check thead tr:first-child th:last-child,
+.sheet-rolltemplate-check tbody:first-child tr:first-child td:last-child {
+    border-top-right-radius: 0.6em;
+}
+
+.sheet-rolltemplate-check thead + tbody tr:last-child td:first-child,
+.sheet-rolltemplate-check tfoot tr:last-child td:first-child {
+    border-bottom-left-radius: 0.6em;
+}
+.sheet-rolltemplate-check thead + tbody tr:last-child td:last-child,
+.sheet-rolltemplate-check tfoot tr:last-child td:last-child {
+    border-bottom-right-radius: 0.6em;
+}
+
+.sheet-rolltemplate-check thead + tbody tr td,
+.sheet-rolltemplate-check tfoot + tbody tr td,
+.sheet-rolltemplate-check tfoot tr td,
+.sheet-rolltemplate-check tbody + tbody tr td,
+.sheet-rolltemplate-check tr + tr td {
+    border-top: 0;
+}
+
+.sheet-rolltemplate-check tr th + th,
+.sheet-rolltemplate-check tr td + td {
+    border-left: 0;
+}*/
+
+
+
+
+
+
+/*
+.sheet-rolltemplate-check table tr:first-child th:first-child,
+.sheet-rolltemplate-check table.Info tr:first-child td:first-child {
+    border-top-left-radius: 15px;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-right:1px solid black;
+}
+
+.sheet-rolltemplate-check table tr:first-child th:last-child,
+.sheet-rolltemplate-check table.Info tr:first-child td:last-child {
+    border-top-right-radius: 15px;
+}
+
+.sheet-rolltemplate-check table tr:last-child td:first-child,
+.sheet-rolltemplate-check table.Info tr:last-child td:last-child{
+    border-bottom-left-radius: 15px;
+    border-bottom: 1px solid black;
+}
+
+.sheet-rolltemplate-check table tr:last-child td:last-child,
+.sheet-rolltemplate-check table.Info tr:last-child td:last-child{
+    border-bottom-right-radius: 15px;
+    border-bottom: 1px solid black;
+}*/
