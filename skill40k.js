@@ -3,17 +3,46 @@
  * on Dark Heresy Second Edition RPG criteria. Outputs are modified using PowerCards.
  * 
  * The following commands is used:
- * !skill40k [tokenName], [attributeValue], [ModifierValue], [AttributeName] 
+ * !skill40k [tokenName], [attributeValue], [ModifierValue], [AttributeName], [optional:format] 
 **/
 
 //Rolls a d100 and calculates the success or fail results to the chat window.
 var skill40kNamespace = skill40kNamespace || {};
 
-skill40kNamespace.rollResult = function(token, attribute, modifier, attributename) {
+skill40kNamespace.rollResult = function(token, attribute, modifier, attributename, format) {
+    var format = format || "skill";
     var roll = randomInteger(100);
     var modTarget = parseInt(attribute) + parseInt(modifier);
     var degOfSuc =0;
     var output2 = 'Error';
+    var diff='';
+    
+    //Determine difficulty of the check
+    if(modifier==0)
+    {
+        diff="Challenging"
+    } else if (modifier == 30){
+        diff="Easy"
+    } else if (modifier == 20){
+        diff="Routine"
+    } else if (modifier == 10){
+        diff="Ordinary"
+    } else if (modifier == -10){
+        diff="Difficult"
+    } else if (modifier == -20){
+        diff="Hard"
+    } else if (modifier == -30){
+        diff="Very Hard"
+    } else if (modifier == -40){
+        diff="Arduous"
+    } else if (modifier == -50){
+        diff="Punishing"
+    } else if (modifier == -60){
+        diff="Hellish"
+    }
+    else{
+        diff='X';
+    }
     
     //Form output message based on result
     if(roll <= modTarget) {
@@ -26,8 +55,9 @@ skill40kNamespace.rollResult = function(token, attribute, modifier, attributenam
     }
     
     //Return output
-    var output ="!power {{--format|skill --titlefontshadow|none --name|"+token+" --leftsub|"+attributename+" Check "+modTarget+" --rightsub| Roll "+roll+" --Effect|"+output2+"  }}"
-    //var output ="!power {{--format|skill --titlefontshadow|none --Attack#?{Number of attacks|1}|[[1d20+4]]--charid|@{character_id} --emote| @{character_id} stabs them all --name|"+token+" --leftsub|"+attributename+" Check "+modTarget+" --rightsub| Roll "+roll+" --Effect|"+output2+"  }}"
+    //var output ="!power {{--format|skill --titlefontshadow|none --name|"+token+" --leftsub|"+diff+" "+attributename+" Check "+modTarget+" --rightsub| Roll "+roll+" --Effect:|"+output2+"  }}"
+    var output ="!power {{--format|"+format+" --titlefontshadow|none --name|"+token+" --leftsub|"+attributename+" Check --rightsub| "+diff+" Diff. --Roll:|[! "+roll+" !] vs [! "+modTarget+" !]  --Result:|"+output2+"  }}"
+    
     
     return output;
  }
