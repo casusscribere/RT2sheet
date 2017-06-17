@@ -89,6 +89,41 @@
     color: #330000;
 }
 
+.sheet-viewwrapper button[type="roll"].sheet-lefthiddenroll{
+    opacity: 0;
+    width: 40px;
+    height: 40px;
+    /*position: relative;
+    top: 5px;
+    left: 6px;
+    margin: -20px;*/
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: -44px;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.sheet-viewwrapper button[type="roll"].sheet-righthiddenroll{
+    opacity: 0;
+    width: 40px;
+    height: 40px;
+    /*position: relative;
+    top: 5px;
+    left: 6px;
+    margin: -20px;*/
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: -44px;
+    margin-right: 0px;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+    z-index: 1;
+}
 
 .sheet-viewwrapper div.repcontrol{
     display: none;
