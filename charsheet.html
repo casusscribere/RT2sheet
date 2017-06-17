@@ -77,37 +77,47 @@
             </div>
             <div class="sheet-row sheet-characteristics">
                 <div class="sheet-item sheet-adj" style="width:35%"><span style="float:right">Weapon Skill (WS)</span></div>
+                <button type='roll' value='!skill40k @{charname},@{dispWeaponSkill},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60}, Weapon Skill, stat' name='roll_WeaponSkill' class="lefthiddenroll"></button>
                 <div class="sheet-item" style="width:10%"><input name="attr_dispWeaponSkill" type="text" value="@{WeaponSkill}+@{WeaponSkillAdj}" class='sheet-cell sheet-charnum sheet-spindisable' disabled="true"></div>
                 <div class="sheet-item" style="width:5%"><span></span></div>
                 <div class="sheet-item" style="width:10%"><input name="attr_dispIntelligence" type="text" value="@{Intelligence}+@{IntelligenceAdj}" class='sheet-cell sheet-charnum sheet-spindisable' disabled="true"></div>
+                <button type='roll' value='!skill40k @{charname},@{dispIntelligence},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60}, Intelligence, stat' name='roll_Intelligence' class="righthiddenroll"></button>
                 <div class="sheet-item sheet-adj" style="width:35%"><span style="float:left">Intelligence (INT)</span></div>
             </div>
             <div class="sheet-row sheet-characteristics">
                 <div class="sheet-item" style="width:35%"><span style="float:right">Ballistic Skill (BS)</span></div>
+                <button type='roll' value='!skill40k @{charname},@{dispBallisticSkill},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60}, Ballistic Skill, stat' name='roll_BallisticSkill' class="lefthiddenroll"></button>
                 <div class="sheet-item" style="width:10%"><input name="attr_dispBallisticSkill" type="text" value="@{BallisticSkill}+@{BallisticSkillAdj}" class='sheet-cell sheet-charnum sheet-spindisable' disabled="true"></div>
                 <div class="sheet-item" style="width:5%"><span></span></div>
                 <div class="sheet-item" style="width:10%"><input name="attr_dispPerception" type="text" value="@{Perception}+@{PerceptionAdj}" class='sheet-cell sheet-charnum sheet-spindisable' disabled="true"></div>
+                <button type='roll' value='!skill40k @{charname},@{dispPerception},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60}, Perception, stat' name='roll_Perception' class="righthiddenroll"></button>
                 <div class="sheet-item" style="width:35%"><span style="float:left">Perception (PER)</span></div>
             </div>
             <div class="sheet-row sheet-characteristics">
                 <div class="sheet-item" style="width:35%"><span style="float:right">Strength (S)</span></div>
+                <button type='roll' value='!skill40k @{charname},@{dispStrength},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60}, Strength, stat' name='roll_Strength' class="lefthiddenroll"></button>
                 <div class="sheet-item" style="width:10%"><input name="attr_dispStrength" type="text" value="@{Strength}+@{StrengthAdj}" class='sheet-cell sheet-charnum sheet-spindisable' disabled="true"></div>
                 <div class="sheet-item" style="width:5%"><span></span></div>
                 <div class="sheet-item" style="width:10%"><input name="attr_dispWillpower" type="text" value="@{Willpower}+@{WillpowerAdj}" class='sheet-cell sheet-charnum sheet-spindisable' disabled="true"></div>
+                <button type='roll' value='!skill40k @{charname},@{dispWillpower},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60}, Willpower, stat' name='roll_Willpower' class="righthiddenroll"></button>
                 <div class="sheet-item" style="width:35%"><span style="float:left">Willpower (WP)</span></div>
             </div>
             <div class="sheet-row sheet-characteristics">
                 <div class="sheet-item" style="width:35%"><span style="float:right">Toughness (T)</span></div>
+                <button type='roll' value='!skill40k @{charname},@{dispToughness},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60}, Toughness, stat' name='roll_Toughness' class="lefthiddenroll"></button>
                 <div class="sheet-item" style="width:10%"><input name="attr_dispToughness" type="text" value="@{Toughness}+@{ToughnessAdj}" class='sheet-cell sheet-charnum sheet-spindisable' disabled="true"></div>
                 <div class="sheet-item" style="width:5%"><span></span></div>
                 <div class="sheet-item" style="width:10%"><input name="attr_dispFellowship" type="text" value="@{Fellowship}+@{FellowshipAdj}" class='sheet-cell sheet-charnum sheet-spindisable' disabled="true"></div>
+                <button type='roll' value='!skill40k @{charname},@{dispFellowship},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60}, Fellowship, stat' name='roll_Fellowship' class="righthiddenroll"></button>
                 <div class="sheet-item" style="width:35%"><span style="float:left">Fellowship (FEL)</span></div>
             </div>
             <div class="sheet-row sheet-characteristics">
                 <div class="sheet-item" style="width:35%"><span style="float:right">Agility (AG)</span></div>
+                <button type='roll' value='!skill40k @{charname},@{dispAgility},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60}, Agility, stat' name='roll_Agility' class="lefthiddenroll"></button>
                 <div class="sheet-item" style="width:10%"><input name="attr_dispAgility" type="text" value="@{Agility}+@{AgilityAdj}" class='sheet-cell sheet-charnum sheet-spindisable' disabled="true"></div>
                 <div class="sheet-item" style="width:5%"><span></span></div>
                 <div class="sheet-item" style="width:10%"><input name="attr_dispInfluence" type="text" value="@{Influence}+@{InfluenceAdj}" class='sheet-cell sheet-charnum sheet-spindisable' disabled="true"></div>
+                <button type='roll' value='!skill40k @{charname},@{dispInfluence},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60}, Influence, stat' name='roll_Influence' class="righthiddenroll"></button>
                 <div class="sheet-item" style="width:35%"><span style="float:left">Influence (IFL)</span></div>
             </div>
         </div>
@@ -120,32 +130,32 @@
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Acrobatics (Ag)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_AcrobaticsScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{AcrobaticsScore},?{Modifer|0},Acrobatics' name='roll_AcrobaticsCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{AcrobaticsScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Acrobatics' name='roll_AcrobaticsCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Athletics (S)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_AthleticsScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{AthleticsScore},?{Modifer|0},Athletics' name='roll_AthleticsCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{AthleticsScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Athletics' name='roll_AthleticsCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Awareness (Per)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_AwarenessScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{AwarenessScore},?{Modifer|0},Awareness' name='roll_AwarenessCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{AwarenessScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Awareness' name='roll_AwarenessCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Charm (Fel)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_CharmScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{CharmScore},?{Modifer|0},Charm' name='roll_CharmCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{CharmScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Charm' name='roll_CharmCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Command (Fel)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_CommandScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{CommandScore},?{Modifer|0},Command' name='roll_CommandCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{CommandScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Command' name='roll_CommandCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Commerce (Int)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_CommerceScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{CommerceScore},?{Modifer|0},Commerce' name='roll_CommerceCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{CommerceScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Commerce' name='roll_CommerceCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Common Lore (Int)</span></div>
@@ -156,18 +166,18 @@
                         <div class="sheet-item" style="width:60%"><input name="attr_vdispcommonlorenames" type="text" value="@{dispcommonlorenames}" disabled="true" class='sheet-cell'></div>
                         <div class="sheet-item" style="width:14%"><input name="attr_vdispcommonlorescores" type="number" value="@{dispcommonlorescores}" disabled="true" class='sheet-cell'></div>
                         <div class="sheet-item" style="width:0%"><input name="attr_dispcommonlorescores" type="number" value="" class='sheet-cell' style="display: none;"></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{dispcommonlorescores},?{Modifer|0},Common Lore: @{dispcommonlorenames}' name='roll_CommonLoreCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{dispcommonlorescores},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Common Lore: @{dispcommonlorenames}' name='roll_CommonLoreCheck'></button></div>
                     </div>
                     </fieldset>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Deceive (Fel)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_DeceiveScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{DeceiveScore},?{Modifer|0},Deceive' name='roll_DeceiveCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{DeceiveScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Deceive' name='roll_DeceiveCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Dodge (Ag)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_DodgeScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{DodgeScore},?{Modifer|0},Dodge' name='roll_DodgeCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{DodgeScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Dodge' name='roll_DodgeCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Forbidden Lore (Int)</span></div>
@@ -178,23 +188,23 @@
                         <div class="sheet-item" style="width:60%"><input name="attr_vdispforbiddenlorenames" type="text" value="@{dispforbiddenlorenames}" disabled="true" class='sheet-cell'></div>
                         <div class="sheet-item" style="width:14%"><input name="attr_vdispforbiddenlorescores" type="number" value="@{dispforbiddenlorescores}" disabled="true" class='sheet-cell'></div>
                         <div class="sheet-item" style="width:0%"><input name="attr_dispforbiddenlorescores" type="number" value="" class='sheet-cell' style="display: none;"></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{dispforbiddenlorescores},?{Modifer|0},Forbidden Lore: @{dispforbiddenlorenames}' name='roll_ForbiddenLoreCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{dispforbiddenlorescores},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Forbidden Lore: @{dispforbiddenlorenames}' name='roll_ForbiddenLoreCheck'></button></div>
                     </div>
                     </fieldset>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Inquiry (Fel)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_InquiryScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{InquiryScore},?{Modifer|0},Inquiry' name='roll_InquiryCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{InquiryScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Inquiry' name='roll_InquiryCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Interrogation (WP)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_InterrogationScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{InterrogationScore},?{Modifer|0},Interrogation' name='roll_InterrogationCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{InterrogationScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Interrogation' name='roll_InterrogationCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Intimidate (S)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_IntimidateScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{IntimidateScore},?{Modifer|0},Intimidate' name='roll_IntimidateCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{IntimidateScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Intimidate' name='roll_IntimidateCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Linguistics (Int)</span></div>
@@ -205,7 +215,7 @@
                         <div class="sheet-item" style="width:60%"><input name="attr_vdisplinguisticsnames" type="text" value="@{displinguisticsnames}" disabled="true" class='sheet-cell'></div>
                         <div class="sheet-item" style="width:14%"><input name="attr_vdisplinguisticsscores" type="number" value="@{displinguisticsscores}" disabled="true" class='sheet-cell'></div>
                         <div class="sheet-item" style="width:0%"><input name="attr_displinguisticsscores" type="number" value="" class='sheet-cell' style="display: none;"></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{displinguisticsscores},?{Modifer|0},Linguistics: @{displinguisticsnames}' name='roll_LinguisticsCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{displinguisticsscores},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Linguistics: @{displinguisticsnames}' name='roll_LinguisticsCheck'></button></div>
                     </div>
                     </fieldset>
                 </div>
@@ -213,52 +223,52 @@
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Logic (Int)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_LogicScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{LogicScore},?{Modifer|0},Logic' name='roll_LogicCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{LogicScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Logic' name='roll_LogicCheck'></button></div>
                     </div>  
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Medicae (Int)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_MedicaeScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{MedicaeScore},?{Modifer|0},Medicae' name='roll_MedicaeCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{MedicaeScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Medicae' name='roll_MedicaeCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Navigate(Surface) (Int)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_NvSurfaceScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{NvSurfaceScore},?{Modifer|0},Navigate(Surface)' name='roll_NvSurfaceCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{NvSurfaceScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Navigate(Surface)' name='roll_NvSurfaceCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Navigate(Stellar) (Int)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_NvStellarScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{NvStellarScore},?{Modifer|0},Navigate(Stellar)' name='roll_NvStellarCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{NvStellarScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Navigate(Stellar)' name='roll_NvStellarCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Navigate(Warp) (Int)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_NvWarpScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{NvWarpScore},?{Modifer|0},Navigate(Warp)' name='roll_NvWarpCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{NvWarpScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Navigate(Warp)' name='roll_NvWarpCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Operate(Aeronautica) (Int)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_OpAeronauticaScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{OpAeronauticaScore},?{Modifer|0},Operate(Aeronautica)' name='roll_OpAeronauticaCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{OpAeronauticaScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Operate(Aeronautica)' name='roll_OpAeronauticaCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Operate(Surface) (Int)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_OpSurfaceScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{OpSurfaceScore},?{Modifer|0},Operate(Surface)' name='roll_OpSurfaceCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{OpSurfaceScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Operate(Surface)' name='roll_OpSurfaceCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Operate(Voidship) (Int)</span></div>
                        <div class="sheet-item" style="width:15%"><span name="attr_OpVoidshipScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{OpVoidshipScore},?{Modifer|0},Operate(Voidship)' name='roll_OpVoidshipCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{OpVoidshipScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Operate(Voidship)' name='roll_OpVoidshipCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Parry (WS)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_ParryScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{ParryScore},?{Modifer|0},Parry' name='roll_ParryCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{ParryScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Parry' name='roll_ParryCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Psyniscience (Per)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_PsyniscienceScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{PsyniscienceScore},?{Modifer|0},Psyniscience' name='roll_PsyniscienceCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{PsyniscienceScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Psyniscience' name='roll_PsyniscienceCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Scholastic Lore (Int)</span></div>
@@ -269,43 +279,43 @@
                         <div class="sheet-item" style="width:60%"><input name="attr_vdispscholasticlorenames" type="text" value="@{dispscholasticlorenames}" disabled="true" class='sheet-cell'></div>
                         <div class="sheet-item" style="width:14%"><input name="attr_vdispscholasticlorescores" type="number" value="@{dispscholasticlorescores}" disabled="true" class='sheet-cell'></div>
                         <div class="sheet-item" style="width:0%"><input name="attr_dispscholasticlorescores" type="number" value="" class='sheet-cell' style="display: none;"></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{dispscholasticlorescores},?{Modifer|0},Scholastic Lore: @{dispscholasticlorenames}' name='roll_ScholasticLoreCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{dispscholasticlorescores},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Scholastic Lore: @{dispscholasticlorenames}' name='roll_ScholasticLoreCheck'></button></div>
                     </div>
                     </fieldset>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Scrutiny (Per)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_ScrutinyScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{ScrutinyScore},?{Modifer|0},Scrutiny' name='roll_ScrutinyCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{ScrutinyScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Scrutiny' name='roll_ScrutinyCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Security (Int)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_SecurityScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{SecurityScore},?{Modifer|0},Security' name='roll_SecurityCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{SecurityScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Security' name='roll_SecurityCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Sleight of Hand (Ag)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_SleightOfHandScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{SleightOfHandScore},?{Modifer|0},Sleight Of Hand' name='roll_SleightOfHandCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{SleightOfHandScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Sleight Of Hand' name='roll_SleightOfHandCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Stealth (ag)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_StealthScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{StealthScore},?{Modifer|0},Stealth' name='roll_StealthCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{StealthScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Stealth' name='roll_StealthCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Survival (Per)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_SurvivalScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{SurvivalScore},?{Modifer|0},Survival' name='roll_SurvivalCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{SurvivalScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Survival' name='roll_SurvivalCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Tech-Use (Int)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_TechUseScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{TechUseScore},?{Modifer|0},Tech-Use' name='roll_TechUseCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{TechUseScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Tech-Use' name='roll_TechUseCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Trade (Int)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_TradeScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{TradeScore},?{Modifer|0},Trade' name='roll_TradeCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{TradeScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Trade' name='roll_TradeCheck'></button></div>
                     </div>
                 </div>
             </div>
