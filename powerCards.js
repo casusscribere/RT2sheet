@@ -1,7 +1,7 @@
 // VERSION INFO
 var PowerCards_Author = "SkyCaptainXIII";
-var PowerCards_Version = "3.4.4";
-var PowerCards_LastUpdated = 1491916735;
+var PowerCards_Version = "3.5.0";
+var PowerCards_LastUpdated = 1497663376;
 
 // FUNCTION DECLARATIONS
 var PowerCard = PowerCard || {};
@@ -168,6 +168,7 @@ PowerCard.Process = function(msg, player_obj) {
         var RollResults = "";
         var RollBase = 0;
         var RollOnes = 0;
+        var RollTens = 0;
         var RollTotal = 0;
         var RollSuccesses = 0;
         var Rolls = {};
@@ -189,6 +190,7 @@ PowerCard.Process = function(msg, player_obj) {
                         t = 0;
                         RollBase = 0;
                         RollOnes = 0;
+                        RollTens = 0;
                         while (RollResults[t] !== undefined) {
                             if ("table" in x[0].inlinerolls[Roll].results.rolls[RollCount + 1]) {
                                 if (RollResults[t].tableidx) RollBase = RollBase + RollResults[t].tableidx;
@@ -196,6 +198,7 @@ PowerCard.Process = function(msg, player_obj) {
                                 if (!RollResults[t].d) RollBase = RollBase + RollResults[t].v;
                             }
                             RollOnes = (RollResults[t].v === 1) ? RollOnes += 1 : RollOnes;
+                            RollTens = (RollResults[t].v === 10) ? RollTens += 1 : RollTens;
                             t++;
                         }
                     }
@@ -228,7 +231,8 @@ PowerCard.Process = function(msg, player_obj) {
                         "base": RollBase,
                         "total": RollTotal,
                         "successes": RollSuccesses,
-                        "ones": RollOnes
+                        "ones": RollOnes,
+                        "tens": RollTens
                     };
                 }
                 RollCount++;
@@ -827,6 +831,9 @@ function doInlineFormatting(content, ALLOW_URLS, ALLOW_HIDDEN_URLS, Rolls) {
                         break;
                     case "ones":
                         content = content.replace(r, Rolls["$" + rID].ones);
+                        break;
+                    case "tens":
+                        content = content.replace(r, Rolls["$" + rID].tens);
                         break;
                 }
             } else {
