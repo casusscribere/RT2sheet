@@ -24,7 +24,8 @@ on("chat:message", function(msg) {
             var attribute = skill40kNamespace.trimString(paramArray[1]);
             var modifier = skill40kNamespace.trimString(paramArray[2]);
             var attributename = skill40kNamespace.trimString(paramArray[3]);
-            var result = skill40kNamespace.rollResult(curToken, attribute, modifier, attributename);
+            var format = skill40kNamespace.trimString(paramArray[4]);
+            var result = skill40kNamespace.rollResult(curToken, attribute, modifier, attributename, format);
             sendChat(msg.who, result);
         }
     }
@@ -47,13 +48,13 @@ on("chat:message", function(msg) {
         cmdName = '!ranged40k ';
         var paramList = msgTxt.slice(cmdName.length);
         if(paramList.indexOf(',') == -1) {
-            sendChat(msg.who, '/w ' + msg.who + ' must specify 11 comma-separated parameters for !roll40k command.');
+            sendChat(msg.who, '/w ' + msg.who + ' must specify 13 comma-separated parameters for !ranged40k command.');
         }
         else {
             var paramArray = paramList.split(',');
             var curToken  = ranged40kNamespace.trimString(paramArray[0]);
             var attribute = ranged40kNamespace.trimString(paramArray[1]);
-            var modifier  = ranged40kNamespace.trimString(paramArray[2]);
+            var wpnname   = ranged40kNamespace.trimString(paramArray[2]);
             var range     = ranged40kNamespace.trimString(paramArray[3]);
             var shotsel   = ranged40kNamespace.trimString(paramArray[4]);
             var single    = ranged40kNamespace.trimString(paramArray[5]);
@@ -63,7 +64,9 @@ on("chat:message", function(msg) {
             var dice      = ranged40kNamespace.trimString(paramArray[9]);
             var dmg       = ranged40kNamespace.trimString(paramArray[10]);
             var pen       = ranged40kNamespace.trimString(paramArray[11]);
-            var result = ranged40kNamespace.rollResult(curToken, attribute, modifier, range, shotsel, single, semi, full, numdice, dice, dmg, pen);
+            var modifier  = ranged40kNamespace.trimString(paramArray[12]);
+            var special   = ranged40kNamespace.trimString(paramArray[13]);
+            var result = ranged40kNamespace.rollResult(curToken, attribute, wpnname, range, shotsel, single, semi, full, numdice, dice, dmg, pen, modifier, special);
             sendChat(msg.who, result);
             }
     }
