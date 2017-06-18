@@ -10,6 +10,7 @@
 var ranged40kNamespace = ranged40kNamespace || {};
 
 ranged40kNamespace.rollResult = function(token, attribute, wpnname, range, shotsel, single, semi, full, numdice, dice, dmg, pen, modifier, special) {
+    var special2 = "Accurate, Blast(5), Concussive(3), Crippling(4)";  //test string
     var roll = randomInteger(100);
     var modTarget = 0;
     var degOfSuc =0;
@@ -25,35 +26,36 @@ ranged40kNamespace.rollResult = function(token, attribute, wpnname, range, shots
     var dmgstring='';
     var temp=0;
     var temp2=0;
-    var substring='';
-    var specialArray = special.split(',');
+    var sub, sub2;
+    var specialArray = special2.split(',');
     var attributeArray = {
         "Accurate": false,
         "Balanced": false,
-        "Blast": false,
-        "Concussive": false,
+        "Blast": -1,
+        "Concussive": -1,
         "Corrosive": false,
         "Crippling": false,
         "Defensive": false,
-        "Felling": 0,
+        "Felling": -1,
         "Flame": false,
         "Force": false,
         "Graviton": false,
         "Hallucinogenic": 0
     };
-    
-    //trim the 'special' input string down
-    _.each(specialArray, function(currentAttr, i) {
-        ranged40kNamespace.trimString(currentAttr);    
-    });
-    
+
 
     // Flags values in the special array to values in the attribute array
     for (i = 0, j = specialArray.length; i < j; i++) {
-        cur = specialArray[i];
-        attributeArray[cur] = true;
+        specialArray[i] = specialArray[i].replace(/^\s+|\s+$/g, '');    //remove whitespace
+        sub = specialArray[i].match(/\d/);                              //find any numbers in parentheses
+        specialArray[i] = specialArray[i].replace(/\(([^)]+)\)/g, '');  //remove parentheses and anything inside
+        cur = specialArray[i];                                          
+        if(sub != null){                                                //if there was a number in parentheses, set the array location equal to that number, otherwise set it as true
+            attributeArray[cur] = sub;
+        } else {
+            attributeArray[cur] = true;  
+        }
     }
-    
 
     //Add firing mode modifier & check for Jams
     if(shotsel == 0){
@@ -244,11 +246,13 @@ ranged40kNamespace.rollResult = function(token, attribute, wpnname, range, shots
                 dmgstring = dmgstring + " --Accurate: *"+i+"| If benefitting from the Aim action on single shot, add [[ [$Acc"+i+"] [NH] 2d10 ]] damage"; 
             }
         }
-
+        if(attributeArray['Corrosive'] != -1 && hit==true){
+                dmgstring = dmgstring + " --Corrosive: *"+i+"| "+hitloc[i]+" Armor reduced by [[ [$Cor"+i+"] [NH] 1d10 ]]. Target takes excess dmg ignoring T.";
+        }
     }
     
     //Check for Scatter on a miss with a Blast or Thrown[NOT YET IMPLEMENTED] weapon
-    if(hit==false && attributeArray['Blast']==true){
+    if(hit==false && jam==false && attributeArray['Blast']  != -1 ){
         dmgstring = dmgstring + " --hroll|[[ [$Sct] 1d8 ]] "; 
         dmgstring = dmgstring + " --?? $Sct.base == 1 ?? Scatter: | [[ [NH] 1d5]] meters to the NW of the target";
         dmgstring = dmgstring + " --?? $Sct.base == 2 ?? Scatter: | [[ [NH] 1d5]] meters to the N of the target";
@@ -264,10 +268,16 @@ ranged40kNamespace.rollResult = function(token, attribute, wpnname, range, shots
     
     //Add additional Weapon Modifiers to the string
     //Check for 'Blast' quality
-    if(attributeArray['Blast']==true){
-        dmgstring = dmgstring + " --Blast: *"+i+"| Does damage to all targets within X meters of the point hit";  
+    if(attributeArray['Blast'] != -1 && jam==false){
+        dmgstring = dmgstring + " --Blast: | Does damage to all targets within "+attributeArray['Blast']+" meters of the point hit";  
     }
-    
+    if(attributeArray['Concussive'] != -1 && hit==true){
+        dmgstring = dmgstring + " --Concussive: | Target must take "+numhits+" Toughness test(s) at  -"+(10*attributeArray['Concussive'])+". If failed, the target is Stunned for 1 round per DoF";  
+    }
+    if(attributeArray['Crippling'] != -1 && hit==true){
+        dmgstring = dmgstring + " --Crippled: |[+Crippled] If Target takes at least 1 wound from this wpn he is considered Crippled until end of the encounter or healed fully. If a Crippled character takes more than a half action on his turn, he suffers "+attributeArray['Crippling']+" Rending damage, not reduced by A or T.";  
+    }
+
     
     
     //Return output
@@ -278,15 +288,7 @@ ranged40kNamespace.rollResult = function(token, attribute, wpnname, range, shots
         //output ="!power {{--format|skill --titlefontshadow|none --name|"+token+" --leftsub| Check "+modTarget+" --rightsub| Roll "+roll+" --Effect:|"+output2+" --Damage:#"+numhits+"|[[ [$Dmg] "+parseInt(numdice)+"d"+parseInt(dice)+"+"+parseInt(dmg)+"]] --?? $Dmg.base == "+parseInt(dice)+" ?? Critical Hit:| Add [[1d8]] slashing damage }}";
         //output ="!power {{--format|skill --titlefontshadow|none --name|"+token+" --leftsub|Check "+modTarget+" --rightsub| Roll "+roll+" --Roll:| [! "+roll+" !] vs [! "+modTarget+" !] --Result:|"+output2+dmgstring+"}}"
         //output ="!power {{--format|ranged --titlefontshadow|none --name|"+token+" --leftsub| Ranged Attack  --rightsub| "+wpnname+" --Roll:| [! "+roll+" !] vs [! "+modTarget+" !] --Result:|"+output2+dmgstring+" }}"
-        output ="!power {{--format|ranged --titlefontshadow|none --name|"+token+" --leftsub| "+attributeArray['Blast']+"  --rightsub| "+hit+" --Roll:| [! "+roll+" !] vs [! "+modTarget+" !] --Result:|"+output2+dmgstring+" }}"
+        output ="!power {{--format|ranged --titlefontshadow|none --name|"+token+" --leftsub| "+attributeArray['Blast']+"  --rightsub| "+wpnname+" --Roll:| [! "+roll+" !] vs [! "+modTarget+" !] --Result:|"+output2+dmgstring+" }}"
     }
     return output;
-}
-
-
-
-
-/** Trims a string **/
-ranged40kNamespace.trimString = function(src) {
-    return src.replace(/^\s+|\s+$/g, '');
 }
