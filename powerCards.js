@@ -168,6 +168,14 @@ PowerCard.Process = function(msg, player_obj) {
         var RollResults = "";
         var RollBase = 0;
         var RollOnes = 0;
+        var RollTwos = 0;
+        var RollThrees = 0;
+        var RollFours = 0;
+        var RollFives = 0;
+        var RollSixes = 0;
+        var RollSevens = 0;
+        var RollEights = 0;
+        var RollNines = 0;
         var RollTens = 0;
         var RollTotal = 0;
         var RollSuccesses = 0;
@@ -190,6 +198,14 @@ PowerCard.Process = function(msg, player_obj) {
                         t = 0;
                         RollBase = 0;
                         RollOnes = 0;
+                        RollTwos = 0;
+                        RollThrees = 0;
+                        RollFours = 0;
+                        RollFives = 0;
+                        RollSixes = 0;
+                        RollSevens = 0;
+                        RollEights = 0;
+                        RollNines = 0;
                         RollTens = 0;
                         while (RollResults[t] !== undefined) {
                             if ("table" in x[0].inlinerolls[Roll].results.rolls[RollCount + 1]) {
@@ -198,6 +214,14 @@ PowerCard.Process = function(msg, player_obj) {
                                 if (!RollResults[t].d) RollBase = RollBase + RollResults[t].v;
                             }
                             RollOnes = (RollResults[t].v === 1) ? RollOnes += 1 : RollOnes;
+                            RollTwos = (RollResults[t].v === 2) ? RollTwos += 1 : RollTwos;
+                            RollThrees = (RollResults[t].v === 3) ? RollThrees += 1 : RollThrees;
+                            RollFours = (RollResults[t].v === 4) ? RollFours += 1 : RollFours;
+                            RollFives = (RollResults[t].v === 5) ? RollFives += 1 : RollFives;
+                            RollSixes = (RollResults[t].v === 6) ? RollSixes += 1 : RollSixes;
+                            RollSevens = (RollResults[t].v === 7) ? RollSevens += 1 : RollSevens;
+                            RollEights = (RollResults[t].v === 8) ? RollEights += 1 : RollEights;
+                            RollNines = (RollResults[t].v === 9) ? RollNines += 1 : RollNines;
                             RollTens = (RollResults[t].v === 10) ? RollTens += 1 : RollTens;
                             t++;
                         }
@@ -232,6 +256,14 @@ PowerCard.Process = function(msg, player_obj) {
                         "total": RollTotal,
                         "successes": RollSuccesses,
                         "ones": RollOnes,
+                        "twos": RollTwos,
+                        "threes": RollThrees,
+                        "fours": RollFours,
+                        "fives": RollFives,
+                        "sixes": RollSixes,
+                        "sevens": RollSevens,
+                        "eights": RollEights,
+                        "nines": RollNines,
                         "tens": RollTens
                     };
                 }
@@ -831,6 +863,30 @@ function doInlineFormatting(content, ALLOW_URLS, ALLOW_HIDDEN_URLS, Rolls) {
                         break;
                     case "ones":
                         content = content.replace(r, Rolls["$" + rID].ones);
+                        break;
+                    case "twos":
+                        content = content.replace(r, Rolls["$" + rID].twos);
+                        break;
+                    case "threes":
+                        content = content.replace(r, Rolls["$" + rID].threes);
+                        break;
+                    case "fours":
+                        content = content.replace(r, Rolls["$" + rID].fours);
+                        break;
+                    case "fives":
+                        content = content.replace(r, Rolls["$" + rID].fives);
+                        break;
+                    case "sixes":
+                        content = content.replace(r, Rolls["$" + rID].sixes);
+                        break;
+                    case "sevens":
+                        content = content.replace(r, Rolls["$" + rID].sevens);
+                        break;
+                    case "eights":
+                        content = content.replace(r, Rolls["$" + rID].eights);
+                        break;
+                    case "nines":
+                        content = content.replace(r, Rolls["$" + rID].nines);
                         break;
                     case "tens":
                         content = content.replace(r, Rolls["$" + rID].tens);
