@@ -9,8 +9,15 @@
 //Rolls a d100 and calculates the success or fail results to the chat window.
 var skill40kNamespace = skill40kNamespace || {};
 
-skill40kNamespace.rollResult = function(token, attribute, modifier, attributename, format) {
-    var format = format || "skill";
+skill40kNamespace.rollResult = function(token, attribute, modifier, attributename, format, mode, msgwho) {
+    if (typeof token            === undefined)    token           = 'generic';
+    if (typeof attribute        === undefined)    attribute       = 'WeaponSkill';
+    if (typeof modifier         === undefined)    modifier        = 0;
+    if (typeof attributename    === undefined) attributename      = 'generic';
+    if (typeof format           === undefined)    format          = 'gen';
+    if (typeof mode             === undefined)    mode            = 'normal';
+    if (typeof mode             === undefined)    mode            = '';
+
     var roll = randomInteger(100);
     var modTarget = parseInt(attribute) + parseInt(modifier);
     var degOfSuc =0;
@@ -41,7 +48,7 @@ skill40kNamespace.rollResult = function(token, attribute, modifier, attributenam
         diff="Hellish"
     }
     else{
-        diff='X';
+        diff='Other';
     }
     
     //Form output message based on result
@@ -54,15 +61,22 @@ skill40kNamespace.rollResult = function(token, attribute, modifier, attributenam
         output2 = '<span style="color:red">' + token + ' fails by <B>' + degOfSuc + ' degree(s)</B></span>. ';
     }
     
+    
+    if(mode=='normal'){
+        mode='';
+    } else if(mode=='secret'){
+        mode='--whisper|self,gm';
+    } else if(mode=='hidden'){
+        mode='--whisper|gm';
+        if(msgwho!=''){
+            sendChat(msgwho, '/w ' + msgwho + ' sent a secret '+attributename+' roll to the GM.');  
+        }
+    } else{
+        mode='';
+    }
+    
     //Return output
-    //var output ="!power {{--format|skill --titlefontshadow|none --name|"+token+" --leftsub|"+diff+" "+attributename+" Check "+modTarget+" --rightsub| Roll "+roll+" --Effect:|"+output2+"  }}"
-    var output ="!power {{--format|"+format+" --titlefontshadow|none --name|"+token+" --leftsub|"+attributename+" Check --rightsub| "+diff+" Diff. --Roll:|[! "+roll+" !] vs [! "+modTarget+" !]  --Result:|"+output2+"  }}"
-    
-    
+   
+    var output ="!power {{ "+mode+" --format|"+format+" --titlefontshadow|none --name|"+token+" --leftsub|"+attributename+" Check --rightsub| "+diff+" Diff. --Roll:|[! "+roll+" !] vs [! "+modTarget+" !]  --Result:|"+output2+"  }}"
     return output;
- }
- 
-/** Trims a string **/
-skill40kNamespace.trimString = function(src) {
-    return src.replace(/^\s+|\s+$/g, '');
 }
