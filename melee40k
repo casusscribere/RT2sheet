@@ -1,0 +1,474 @@
+/**
+ * This script rolls a d100 and computes and outputs the success results based
+ * on Dark Heresy Second Edition RPG criteria.
+ * 
+ * The following commands is used:
+ * !ranged40k   
+**/
+
+//Rolls a d100 and calculates the success or fail results to the chat window.
+var melee40kNamespace = melee40kNamespace || {};
+
+melee40kNamespace.rollResult = function(token, attribute, wpnname, shotsel, numdice, dice, dmg, type, pen, psy, str, modifier, quality, special) {
+    if (typeof token === 'undefined')       token       = 'generic';
+    if (typeof attribute === 'undefined')   attribute   = 'BallisticSkill';
+    if (typeof wpnname === 'undefined')     wpnname     = 'generic';
+    if (typeof shotsel === 'undefined')     shotsel     = 0;
+    if (typeof numdice === 'undefined')     numdice     = 1;
+    if (typeof dice === 'undefined')        dice        = 10;
+    if (typeof dmg === 'undefined')         dmg         = 0;
+    if (typeof type === 'undefined')        type        = '';
+    if (typeof pen === 'undefined')         pen         = 0;
+    if (typeof modifier === 'undefined')    modifier    = 0;
+    if (typeof quality === 'undefined')     quality     = '';
+    if (typeof special === 'undefined')     special     = '';
+    
+    //var special2 = "Flame, Indirect(4), Sanctified, Twin-Linked";  //test string
+    var roll = randomInteger(100);
+    var i, j, k, cur, temp, temp2; //loop control and temporary variables
+    var error=false;
+    var errortext="ERROR: GENERIC";
+    var hit=false;
+    var damage=false;
+    var parry=false;
+    var boundmod=0;
+    var modTarget = 0;
+    var degOfSuc =0;
+    var numhits = 0;
+    var swiftcalc=0;
+    var dmgroll=null;
+    var prvdmg=0;
+    var lowest=0;
+    var prvrf=false;
+    var output='';
+    var dmgstring='';
+    var dmgsubstring='';
+    var dmgendstring='';
+    var qualstring='';
+    var rfstring='';
+    var specialArray = special.split(',');
+    var superUnreliable=false;
+    var attributeArray = {
+        "Accurate": false,
+        "Balanced": false,
+        "Blast": -1,
+        "Concussive": -1,
+        "Corrosive": false,
+        "Crippling": -1,
+        "Defensive": false,
+        "Felling": -1,
+        "Flame": false,
+        "Flexible": false,
+        "Force": false,
+        "Graviton": false,
+        "Hallucinogenic": -1,
+        "Haywire": -1,
+        "HaywireMod": 0,
+        "Inaccurate": false,
+        "Indirect": -1,
+        "Lance": false,
+        "Maximal": false,
+        "Melta": false,
+        "Overheats": false,
+        "PowerField": false,
+        "Primitive": -1,
+        "Proven": -1,
+        "RazorSharp": false,
+        "Recharge": false,
+        "Reliable": false,
+        "Sanctified": false,
+        "Scatter": false,
+        "Shocking": false,
+        "Smoke": -1,
+        "Snare": -1,
+        "Spray": false,
+        "Storm": false,
+        "Tearing": false,
+        "Toxic": -1,
+        "Twin-Linked": false,
+        "Unbalanced": false,
+        "Unreliable": false,
+        "Unwieldy": false,
+        "Vengeful": 10
+    };
+
+
+    // Flags values in the special array to values in the attribute array
+    for (i = 0, j = specialArray.length; i < j; i++) {
+        specialArray[i] = specialArray[i].replace(/^\s+|\s+$/g, '');    //remove whitespace
+        sub = specialArray[i].match(/\d/);                              //find any numbers in parentheses
+        specialArray[i] = specialArray[i].replace(/\(([^)]+)\)/g, '');  //remove parentheses and anything inside
+        cur = specialArray[i];                                          
+        if(sub != null){                                                //if there was a number in parentheses, set the array location equal to that number, otherwise set it as true
+            attributeArray[cur] = sub;
+        } else {
+            attributeArray[cur] = true;  
+        }
+    }
+
+
+    if(shotsel == 0){
+        //If the user selected Standard Attack
+        boundmod = 10;
+    } else if (shotsel == 1){
+        //If the user selected Swift Attack
+        boundmod = 0;
+    } else if (shotsel == 2 && attributeArray['Unwieldy'] == false && attributeArray['Unbalanced'] == false){
+        //If the user selected Lightning Attack
+        boundmod = -10;
+    } else if (shotsel == 3){
+        //If the user selected All-Out Attack
+        boundmod = 30;
+    } else if (shotsel == 4){
+        //If the user selected Called Strike
+        boundmod = -20;
+    } else if (shotsel == 5){
+        //If the user selected Charge
+        boundmod = 20;
+    } else if (shotsel == 6){
+        //If the user selected Feint
+        boundmod = 0;
+    } else if (shotsel == 7){
+        //If the user selected Stun
+        boundmod = -20;
+    } else if (shotsel == 8 && attributeArray['Unwieldy'] == false){
+        //If the user selected Parry
+        boundmod = 0;
+    }  else{
+        error=true;
+        errortext="ERROR: Invalid Combat Action Selection"
+    }
+    
+    if(attributeArray['Balanced']==true &&shotsel==8){boundmod = boundmod+10;}
+    if(attributeArray['Defensive']==true&&shotsel==8){boundmod = boundmod+15;}
+    if(attributeArray['Defensive']==true&&shotsel!=8){boundmod = boundmod-10;}
+    if(attributeArray['Unbalanced']==true&&shotsel==8){boundmod = boundmod-10;}
+    
+    
+    //Add the modifier to the fire selection and range bonuses
+    boundmod = parseInt(boundmod) + parseInt(modifier);
+    
+    //Adjust +hit based on quality
+    if(quality=='poor'){boundmod=parseInt(boundmod)-10;}
+    if(quality=='good' ){boundmod=parseInt(boundmod)+5;}
+    if(quality=="best"){boundmod=parseInt(boundmod)+10;}
+    
+    //insert upper and lower bounds for modifiers
+    if(boundmod>=60){boundmod=60;}
+    else if (boundmod <=-60){boundmod=-60;}
+    
+    //Sum the Check + bound modifier
+    modTarget = parseInt(attribute) + parseInt(boundmod);
+
+
+
+    //Calculate Hit/Miss & DoS/DoF
+    if(roll <= modTarget) {
+        degOfSuc = (Math.floor(modTarget/10) - Math.floor(roll/10)) + 1;
+        if(shotsel==8){
+            parry=true;
+            output = '<span style="color:green">' + token + ' successfully Parries with <B>' + degOfSuc + ' degree(s)</B>.</span> ';
+        }
+        else if(shotsel==6){output = '<span style="color:green">' + token + ' feints with <B>' + degOfSuc + ' degree(s)</B>.</span> ';} 
+        else if(shotsel==7){
+            hit=true;
+            damage=false;
+            output = '<span style="color:green">' + token + ' hits with <B>' + degOfSuc + ' degree(s)</B>.</span> ';
+        }
+        else{
+            hit=true;
+            damage=true;
+            output = '<span style="color:green">' + token + ' hits with <B>' + degOfSuc + ' degree(s)</B>.</span> ';
+        }
+    } else if(roll > modTarget){
+        degOfSuc = (Math.floor(roll/10) - Math.floor(modTarget/10)) + 1;
+        output = '<span style="color:red">' + token + ' fails by <B>' + degOfSuc + ' degree(s)</B></span>. ';
+        hit=false;
+    }else{
+        error=true;
+        errortext="ERROR: Failed DoS Calculation"
+    }
+
+
+    //Determine # of damage rolls required
+    swiftcalc = Math.floor((degOfSuc -1)/2)+1;
+    if( (shotsel == 0 || shotsel==3 || shotsel==4 || shotsel==5)&& hit==true && error==false) {
+        //If the user selected Standard Attack (or others) and hits
+        numhits = 1;     
+    } else if ( shotsel==1  && hit==true && error==false){
+        //If the user selected Swift Attack and hit
+        numhits = swiftcalc;     
+    } else if ( shotsel==2 && hit==true && error==false){
+        //If the user selected Lightning Attack and hit
+        numhits=degOfSuc;     
+    } else if ( (shotsel==6||shotsel==7||shotsel==8) && error==false){
+        //If the user selected Stun, Parry, of Feint
+        numhits=0;     
+    } else if (error==false){
+        //If the user missed
+        numhits=0;     
+    }else{
+            error=true;
+            errortext="ERROR: INVALID COMBAT MODE (M)";
+            numhits=0;
+    }
+
+
+    //Determine Initial Hit Location
+    temp = Math.floor(roll/10); //Store 10s place
+    temp2 = roll - temp*10;     //Store 1s place
+    temp = temp2*10+temp;       //swap 10s and 1s place
+    if(temp <= 10) {
+        var hitloc = ["Head","Head","Left Arm","Body","Right Arm","Body","Body","Body","Body","Body"];
+    } else if(10 < temp && temp <= 20){
+        var hitloc = ["Right Arm","Right Arm","Body","Head","Body","Left Arm","Left Arm","Left Arm","Left Arm","Left Arm"];
+    } else if(20 < temp && temp <= 30){
+        var hitloc = ["Left Arm","Left Arm","Body","Head","Body","Right Arm","Right Arm","Right Arm","Right Arm","Right Arm"];
+    } else if(30 < temp && temp <= 70){
+        var hitloc = ["Body","Body","Right Arm","Head","Left Arm","Body","Body","Body","Body","Body"];
+    } else if(70 < temp && temp <= 85){
+        var hitloc = ["Right Leg","Right Leg","Body","Right Arm","Head","Body","Body","Body","Body","Body"];
+    } else if(85 < temp && temp <= 100){
+        var hitloc = ["Left Leg","Left Leg","Body","Left Arm","Head","Body","Body","Body","Body","Body"];
+    } else{
+        error=true;
+        errortext="ERROR: BAD HIT LOCATION";
+    }
+
+
+    //If Lance or RazorSharp (only one applies):
+    if(attributeArray['Lance'] == true) { pen=parseInt(pen)*degOfSuc;}
+    else if(attributeArray['RazorSharp'] == true && degOfSuc>=3)    {pen =parseInt(pen)*2;}
+    //Increase damage for weapons with the Force quality and a Psy rating
+    if(attributeArray['Force']==true&&psy>0){
+        dmg=parseInt(dmg)+parseInt(psy);
+        pen=parseInt(pen)+parseInt(psy);
+    }
+    //Increase dmg for best-quality weapons
+    if(quality=="best"){dmg=parseInt(dmg)+1;}
+    //Add strength to melee damage
+    dmg=parseInt(dmg)+parseInt(str);
+    
+    
+    dmgsubstring=parseInt(numdice)+"d"+parseInt(dice)+"cs>"+(parseInt(attributeArray['Vengeful']))+"cf0+"+parseInt(dmg)+" ]] <B> Pen "+parseInt(pen)+" </B>";
+ 
+    for(i=1; i <=numhits; i++){
+        //do separate calculations for proven/primitive, if necessary
+        if(attributeArray['Proven']!=-1 || attributeArray['Primitive']!=-1){
+            lowest=100;
+            prvdmg='';
+            prvrf=false;
+            for(j=1; j <= numdice; j++){
+                temp = randomInteger(parseInt(dice));
+                if(temp>=attributeArray['Vengeful']){prvrf=true;}
+                if(temp==9 && attributeArray['Spray']==true){prvjam=true;}
+                if(attributeArray['Proven']!=-1 && temp<attributeArray['Proven']){temp=attributeArray['Proven'];}
+                if(attributeArray['Primitive']!=-1 && temp>attributeArray['Primitive']){temp=attributeArray['Primitive'];}
+                if(temp<lowest){lowest=temp;}
+                prvdmg=prvdmg+temp+"+";
+            }
+            prvdmg=prvdmg+dmg;
+            if(attributeArray['Tearing']==true){prvdmg=prvdmg+"-"+lowest;}
+            dmgsubstring="[NH] 1d0+"+prvdmg+" ]] <B> Pen "+parseInt(pen)+" </B>";
+        }
+        
+        //add hitloc string
+        dmgendstring="to the "+hitloc[i];
+        
+        dmgstring = dmgstring+ " --Damage: *"+i+"|[[ [$Dmg"+i+"] "+dmgsubstring+dmgendstring;
+        
+        //Compute and add RF
+        rfstring = " $Dmg"+i+".tens > 0";
+        if(attributeArray['Vengeful']<=9){rfstring =  rfstring + " OR $Dmg"+i+".nines > 0";}
+        if(attributeArray['Vengeful']<=8){rfstring =  rfstring + " OR $Dmg"+i+".eights > 0";}
+        if(attributeArray['Vengeful']<=7){rfstring =  rfstring + " OR $Dmg"+i+".sevens > 0";}
+        if(attributeArray['Vengeful']<=6){rfstring =  rfstring + " OR $Dmg"+i+".sixes > 0";}
+        if(attributeArray['Vengeful']<=5){rfstring =  rfstring + " OR $Dmg"+i+".fives > 0";}
+        if(attributeArray['Vengeful']<=4){rfstring =  rfstring + " OR $Dmg"+i+".fours > 0";}
+        if(attributeArray['Vengeful']<=3){rfstring =  rfstring + " OR $Dmg"+i+".threes > 0";}
+        if(attributeArray['Vengeful']<=2){rfstring =  rfstring + " OR $Dmg"+i+".twos > 0";}
+        if(attributeArray['Vengeful']<=1){rfstring =  rfstring + " OR $Dmg"+i+".ones > 0";}
+        if(prvrf==true){dmgstring = dmgstring + " --!^1Righteous Fury: *"+i+"| [[ [NH] 1d5 ]] critical damage to the "+hitloc[i]+" ";}
+        else{dmgstring = dmgstring + " --?? "+rfstring+" ?? !^1Righteous Fury: *"+i+"| [[ [NH] 1d5 ]] critical damage to the "+hitloc[i]+" ";}
+
+        //check for 'Corrosive' Quality
+        if(attributeArray['Corrosive']==true){
+                dmgstring = dmgstring  + " --!^1Corrosive: *"+i+"| [[ [$Cor"+i+"] [NH] 1d10 ]] dmg to "+hitloc[i]+" Armor ";
+        }
+    }
+    
+    //Apply descriptions for the special combat modes
+    if(shotsel==3){
+        qualstring = qualstring  + " --All-Out: | This is a standard attack at +20, after which the user cannot use Evasion reactions until the start of his next turn";
+    } else if(shotsel==4){
+        qualstring = qualstring  + " --CalledStrike: | Hard (-20) WS test that allows the attacker to select a hit location";
+    } else if(shotsel==5){
+        qualstring = qualstring  + " --Charge: | The target must be at least four metres away, but still within the attacker’s Charge Move. The last four metres of the Charge must be in a straight line. Grants +20WS. If the Charging character has no weapons or other items currently readied, he can attemptto Grapple his opponent (or knock him down) instead of inflicting damage.";
+    } else if(shotsel==6){
+        qualstring = qualstring  + " --Feint: | The character and his target make an Opposed Weapon Skill test. If the character wins, his next melee Standard Attack action against that same target during this turncannot be Evaded. If the character’s next action is any other action, the advantage of Feinting is lost.";
+    } else if(shotsel==7){
+        qualstring = qualstring  + " --Stun: | Hard (–20) Weapon Skill test. If successful, [[ [$Stn] 1d10+"+str+"]] is compared to the target’s total of his Toughness bonus +1 per Armour point protecting his head. If the attacker’s roll is equal to or higher than this value, the target is Stunned for a number of rounds equal to the difference between the two values and gains one level of Fatigue.";
+    }
+    
+ 
+    //Check for Balanced quality
+    if(attributeArray['Balanced'] ==true && shotsel!=8){
+        qualstring = qualstring  + " --Balanced: | This weapon grants an additional +10 to WS when Parrying";
+    }
+    if(attributeArray['Balanced'] ==true && shotsel==8){
+        qualstring = qualstring  + " --Balanced: | This weapon is granting an additional +10 to WS while Parrying";
+    }
+    //Check for Concussive quality
+    if(attributeArray['Concussive'] != -1 && hit==true){
+        qualstring = qualstring  + " --Concussive: | Target(s) must make "+parseInt(numhits+scathits)+" Toughness test(s) at  -"+(10*attributeArray['Concussive'])+". If failed, the target is Stunned for 1 round per DoF";  
+    }
+    //Check for 'Corrosive' quality
+    if(attributeArray['Corrosive']== true && hit==true){
+        qualstring = qualstring  + " --Corrosive: *0| Armor damage is cumulative and permanent. Any damage done to Armor that reduces it below 0 AP (or if the target has no armor at that location) is dealt to the target directly, bypassing Toughness";  
+    }
+    //Check for Crippling quality
+    if(attributeArray['Crippling'] != -1 && damage==true){
+        qualstring = qualstring  + " --Crippled: |[+Crippled] If Target takes at least 1 wound from this wpn he is considered Crippled until end of the encounter or healed fully. If a Crippled character takes more than a half action on his turn, he suffers "+attributeArray['Crippling']+" Rending damage, not reduced by A or T.";  
+    } 
+    //Check for Defensive quality
+    if(attributeArray['Defensive'] ==true && hit==true && shotsel!=8){
+        qualstring = qualstring  + " --Defensive: | This weapon grants an additional +15 to WS when Parrying, but is reducing WS by 10 while attacking";
+    }
+    if(attributeArray['Defensive'] ==true && hit==true && shotsel==8){
+        qualstring = qualstring  + " --Balanced: | This weapon is granting an additional +15 to WS while Parrying, but reduces WS by 10 when attacking";
+    }
+    //Check for Felling quality
+    if(attributeArray['Felling'] != -1 && damage==true ){
+        qualstring = qualstring  + " --Felling: | Target reduces their Unnatural Toughness by "+attributeArray['Felling']+" ";
+    }
+    //Check for Flame quality
+    if(attributeArray['Flame'] == true && hit==true){
+        qualstring = qualstring  + " --Flame: | [+Fire] Target(s) hit must make an Agility test or be set on Fire ";
+    }
+    //Check for Flexible quality
+    if(attributeArray['Flexible']==true){
+        qualstring = qualstring  + " --Flexible: | This weapon cannot be Parried; it can be used to Parry, however";
+    } 
+    //Check for Force quality
+    if(attributeArray['Force']==true && psy>0 && damage==true){
+        qualstring = qualstring  + " --Force: | In the hands of a psyker, this weapon deals additional damage based on Psy Rating and the damage type changes to E. In addition, whenever a psyker damages an opponent, he may take a Focus Power action (Opposed with Willpower) as a HA. Winning deals 1d10 E dmg per DoS, ignoring A/T. Force weapons cannot be destroyed with the Power Field quality.";
+    }
+    //Check for Graviton quality
+    if(attributeArray['Graviton'] == true && damage==true){
+        qualstring = qualstring  + " --Graviton: | Target takes additional damage on every hit equal to his Armor Bonus ";
+    }
+    //check for 'Hallucinogenic' Quality
+    if(attributeArray['Hallucinogenic'] !=-1 && hit==true){
+        qualstring = qualstring  + " --Hallucinogenic: | [+Hallucinating] Target(s) hit must make Toughness tests at "+parseInt(-10*attributeArray['Hallucinogenic'])+" or else suffer this temporary delusion: ^^[[ [TXT] [$Tbl] 1t[hallucinogenic] ]] The effects last for 1 round, +1 per DoF.";
+    }
+    //check for 'Haywire' Quality
+    if(attributeArray['Haywire']!=-1 && hit==true){
+        temp2=randomInteger(10);
+        temp2=parseInt(temp2)+parseInt(attributeArray['HaywireMod']);
+        if(temp2==1||temp2==2){temp="<b>Insignificant:</b> No noticible effect";}
+        else if(temp2==3||temp2==4){temp="<b>Minor Disruption:</b> All actions using tech take -10, PwrArm Mov-1";}
+        else if(temp2==5||temp2==6){temp="<b>Major Disruption:</b> All actions using tech take -20, PwrArm Mov-3, Melee wpns function as Primitive";}
+        else if(temp2==7||temp2==8){temp="<b>Dead Zone:</b> Tech ceases to function, PwrArm Mov=1, cybernetics inflict 1 fatigue/round, Melee wpn function as Primitive";}
+        else if(temp2>=9){temp="<b>Prolonged Dead Zone:</b> Tech ceases to function, PwrArm Mov=1, cybernetics inflict 1 fatigue/round, Melee wpn function as Primitive. Lasts for [[ [NH] 1d5 ]] rounds before lessening to Major Disruption";}
+        qualstring = qualstring  + " --Haywire: | [+Haywire] Everything within "+attributeArray['Haywire']+"m of the point(s) hit is affected with the following effect: ^^"+temp+"^^ The field lessens 1 step in severity each round and does not stack (highest effect persists).";
+    }
+    //Check for Inaccurate quality
+    if(attributeArray['Inaccurate'] == true){
+        qualstring = qualstring  + " --Inaccurate: | Cannot benefit from the Aim action using this weapon";
+    }
+    //Check for Lance quality
+    if(attributeArray['Lance'] == true && damage==true){
+        qualstring = qualstring  + " --Lance: | Penetration is increased for every DoS";
+    }
+    //Check for Power Field quality
+    if(attributeArray['PowerField'] == true && shotsel==8 && parry==true){
+        dmgstring = dmgstring  + " --PowerField: | When successfully parrying, you have a chance of breaking the opponent's weapon (as long as it lacks the Power Field, Natural Weapon, or Warp Weapon qualities): [[ [$pwf] 1d100cs>26 ]]";
+        dmgstring = dmgstring  + " --??  $pwf > 25 ??  !^pfs: | You Parry the opponent's weapon and shatter it!";
+        dmgstring = dmgstring  + " --??  $pwf < 26 ?? !^pfm: | You Parry the opponent's weapon but fail to shatter it!";
+    }
+    if(attributeArray['PowerField'] == true && shotsel==8 && parry==false){
+        dmgstring = dmgstring  + " --PowerField: | If you successfully Parry, you have a chance of breaking the opponent's weapon (as long as it lacks the Power Field, Natural Weapon, or Warp Weapon qualities)";
+    }
+    //Check for 'Primitive' quality
+    if(attributeArray['Primitive'] != -1 && damage==true){
+        qualstring = qualstring  + " --Primitive: | Any die result greater than"+attributeArray['Primitive']+" is counted as "+attributeArray['Primitive']+". Righteous Fury may still trigger as usual.";
+    }
+    //Check for 'Proven' quality
+    if(attributeArray['Proven'] != -1 && damage==true){
+        qualstring = qualstring  + " --Proven: | Any die result less than"+attributeArray['Proven']+" is counted as "+attributeArray['Proven'];
+    }
+    //Check for 'RazorSharp' quality
+    if(attributeArray['RazorSharp'] == true && damage==true ){
+        qualstring = qualstring  + " --Razor Sharp: | Penetration is doubled for 3+ DoS";
+    }
+    //Check for 'Recharge' quality
+    if(attributeArray['Recharge'] == true){
+        qualstring = qualstring  + " --Recharge: | When used to attack, this weapon cannot attack again until the end of the next round";
+    }
+    //Check for 'Sanctified' quality
+    if(attributeArray['Sanctified'] == true){
+        qualstring = qualstring  + " --Sanctified: | Any damage inflicted by this weapon counts as Holy, which can have unique effects against Daemons";
+    }
+    //Check for Shocking quality
+    if(attributeArray['Shocking']==true && damage==true ){
+        qualstring = qualstring  + " --Shocking: | A target that takes at least 1 point of damage from this weapon (after A/T) must make a Challenging Toughness Test. If failed, the target gains 1 Fatigue and is Stunned for 1 round per 2 DoF (rounding up)";  
+    }
+    //Check for Snare quality
+    if(attributeArray['Snare'] != -1 && hit==true){
+        qualstring = qualstring  + " --Snare: | [+Helpless] Target(s) hit must make an Agility test at "+parseInt(-10*attributeArray['Snare'])+" or be Immobilized. An Immobilized target can attempt no actions other than escape; as a FuA he can make a Challenging Str test at "+parseInt(-10*attributeArray['Snare'])+". If he succeeds, he bursts free. The target is considered Helpless until he escapes.";  
+    }
+    //Check for Tearing quality
+    if(attributeArray['Tearing']==true && hit==true){
+        qualstring = qualstring  + " --Tearing: | This weapon rolls one extra die for damage, and the lowest roll is discarded"; 
+    }
+    //Check for Toxic quality
+    if(attributeArray['Toxic'] != -1 && damage==true){
+        qualstring = qualstring  + " --Toxic: | Target(s) who take damage (after A/T) must make a Toughness test at "+parseInt(-10*attributeArray['Toxic'])+" or suffer [[ [$Tox] 1d10 ]] additional damage, ignoring A/T. Some Toxins have additional effects.";  
+    }
+    //Check for 'Unbalanced' quality
+    if(attributeArray['Unbalanced'] == true){
+        qualstring = qualstring  + " --Unbalanced: | This weapon cannot be used to Lightning Attack and suffers a -10 to Parry";
+    }
+    //Check for 'Unwieldy' quality
+    if(attributeArray['Unwieldy'] == true){
+        qualstring = qualstring  + " --Unwieldy: | This weapon cannot be used to Lightning Attack or Parry";
+    }
+    //Check for 'Vengeful' quality
+    if(attributeArray['Vengeful'] != 10 && damage==true){
+        qualstring = qualstring  + " --Vengeful: | Any die result greater than"+attributeArray['Vengeful']+" triggers Righteous Fury";
+    }
+
+
+    //Set the text output sub-headings
+    if(shotsel==0){temp="Standard Attack";}
+    else if(shotsel==1){temp="Swift Attack";}
+    else if(shotsel==2){temp="Lightning Attack";}
+    else if(shotsel==3){temp="All-Out Attack";}
+    else if(shotsel==4){temp="Called Strike";}
+    else if(shotsel==5){temp="Charge";}
+    else if(shotsel==6){temp="Feint";}
+    else if(shotsel==7){temp="Stun";}
+    else if(shotsel==8){temp="Parry";}
+    else if(shotsel==9){temp="Counterattack";}
+    /*
+    if(range==0){temp2="Melee Range";}
+    else if(range==1){temp2="Point Blank Range";}
+    else if(range==2){temp2="Short Range";}
+    else if(range==3){temp2="Normal Range";}
+    else if(range==4){temp2="Long Range";}
+    else if(range==5){temp2="Extreme Range";}
+    */
+    temp2=wpnname;
+    cur=" --Roll:| [! "+roll+" !] vs [! "+modTarget+" !] --Result:|"+output;
+    
+    //Return output
+    if(error==true){
+      output = errortext; 
+    }
+    else {
+        output ="!power {{--format|melee --titlefontshadow|none --name|"+token+" --leftsub| "+temp+"  --rightsub| "+temp2+cur+dmgstring+qualstring+" }}"
+        //output="suck it";
+        
+    }
+    return output;
+}
