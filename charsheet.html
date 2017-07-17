@@ -3,6 +3,13 @@
 <input type="radio" name="sheet" value="Ship" class="sheetsel sheet-shipsel"><div class="pilltext">Ship</div>
 <input type="radio" name="sheet" value="Conditions" class="sheetsel"><div class="pilltext">Conditions</div>
 
+
+<input name="attr_talentstring" type="text" value="" style="display: none;">
+
+
+
+
+
 <div class="sheet-viewwrapper">
     <!--First Row -->
     <div class="sheet-3colrow">
@@ -128,34 +135,34 @@
             <div class="sheet-2colrow" style="padding-top: 5px">
 				<div class='sheet-col'>
                     <div class="sheet-row">
-                        <div class="sheet-item" style="width:70%"><span>Acrobatics (Ag)</span></div>
+                        <div class="sheet-item" style="width:40%"><span>Acrobatics (Ag)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_AcrobaticsScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{AcrobaticsScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Acrobatics' name='roll_AcrobaticsCheck'></button></div>
+                        <div class="sheet-item" style="width:15%; position:relative"><button class='skillchal' type='roll' value='!skill40k @{charname},@{AcrobaticsScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Acrobatics, skill' name='roll_AcrobaticsCheck'></button><span class="skillchal"></span></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Athletics (S)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_AthleticsScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{AthleticsScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Athletics' name='roll_AthleticsCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{AthleticsScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Athletics, skill' name='roll_AthleticsCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Awareness (Per)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_AwarenessScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{AwarenessScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Awareness' name='roll_AwarenessCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{AwarenessScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Awareness, skill' name='roll_AwarenessCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Charm (Fel)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_CharmScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{CharmScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Charm' name='roll_CharmCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{CharmScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Charm, skill' name='roll_CharmCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Command (Fel)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_CommandScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{CommandScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Command' name='roll_CommandCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{CommandScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Command, skill' name='roll_CommandCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Commerce (Int)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_CommerceScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{CommerceScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Commerce' name='roll_CommerceCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{CommerceScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Commerce, skill' name='roll_CommerceCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Common Lore (Int)</span></div>
@@ -166,18 +173,18 @@
                         <div class="sheet-item" style="width:60%"><input name="attr_vdispcommonlorenames" type="text" value="@{dispcommonlorenames}" disabled="true" class='sheet-cell'></div>
                         <div class="sheet-item" style="width:14%"><input name="attr_vdispcommonlorescores" type="number" value="@{dispcommonlorescores}" disabled="true" class='sheet-cell'></div>
                         <div class="sheet-item" style="width:0%"><input name="attr_dispcommonlorescores" type="number" value="" class='sheet-cell' style="display: none;"></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{dispcommonlorescores},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Common Lore: @{dispcommonlorenames}' name='roll_CommonLoreCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{dispcommonlorescores},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Common Lore: @{dispcommonlorenames}, skill' name='roll_CommonLoreCheck'></button></div>
                     </div>
                     </fieldset>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Deceive (Fel)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_DeceiveScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{DeceiveScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Deceive' name='roll_DeceiveCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{DeceiveScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Deceive, skill' name='roll_DeceiveCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Dodge (Ag)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_DodgeScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{DodgeScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Dodge' name='roll_DodgeCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{DodgeScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Dodge, skill' name='roll_DodgeCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Forbidden Lore (Int)</span></div>
@@ -188,23 +195,23 @@
                         <div class="sheet-item" style="width:60%"><input name="attr_vdispforbiddenlorenames" type="text" value="@{dispforbiddenlorenames}" disabled="true" class='sheet-cell'></div>
                         <div class="sheet-item" style="width:14%"><input name="attr_vdispforbiddenlorescores" type="number" value="@{dispforbiddenlorescores}" disabled="true" class='sheet-cell'></div>
                         <div class="sheet-item" style="width:0%"><input name="attr_dispforbiddenlorescores" type="number" value="" class='sheet-cell' style="display: none;"></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{dispforbiddenlorescores},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Forbidden Lore: @{dispforbiddenlorenames}' name='roll_ForbiddenLoreCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{dispforbiddenlorescores},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Forbidden Lore: @{dispforbiddenlorenames}, skill' name='roll_ForbiddenLoreCheck'></button></div>
                     </div>
                     </fieldset>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Inquiry (Fel)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_InquiryScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{InquiryScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Inquiry' name='roll_InquiryCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{InquiryScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Inquiry, skill' name='roll_InquiryCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Interrogation (WP)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_InterrogationScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{InterrogationScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Interrogation' name='roll_InterrogationCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{InterrogationScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Interrogation, skill' name='roll_InterrogationCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Intimidate (S)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_IntimidateScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{IntimidateScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Intimidate' name='roll_IntimidateCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{IntimidateScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Intimidate, skill' name='roll_IntimidateCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Linguistics (Int)</span></div>
@@ -215,7 +222,7 @@
                         <div class="sheet-item" style="width:60%"><input name="attr_vdisplinguisticsnames" type="text" value="@{displinguisticsnames}" disabled="true" class='sheet-cell'></div>
                         <div class="sheet-item" style="width:14%"><input name="attr_vdisplinguisticsscores" type="number" value="@{displinguisticsscores}" disabled="true" class='sheet-cell'></div>
                         <div class="sheet-item" style="width:0%"><input name="attr_displinguisticsscores" type="number" value="" class='sheet-cell' style="display: none;"></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{displinguisticsscores},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Linguistics: @{displinguisticsnames}' name='roll_LinguisticsCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{displinguisticsscores},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Linguistics: @{displinguisticsnames}, skill' name='roll_LinguisticsCheck'></button></div>
                     </div>
                     </fieldset>
                 </div>
@@ -223,52 +230,52 @@
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Logic (Int)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_LogicScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{LogicScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Logic' name='roll_LogicCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{LogicScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Logic, skill' name='roll_LogicCheck'></button></div>
                     </div>  
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Medicae (Int)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_MedicaeScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{MedicaeScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Medicae' name='roll_MedicaeCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{MedicaeScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Medicae, skill' name='roll_MedicaeCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Navigate(Surface) (Int)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_NvSurfaceScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{NvSurfaceScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Navigate(Surface)' name='roll_NvSurfaceCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{NvSurfaceScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Navigate(Surface), skill' name='roll_NvSurfaceCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Navigate(Stellar) (Int)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_NvStellarScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{NvStellarScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Navigate(Stellar)' name='roll_NvStellarCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{NvStellarScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Navigate(Stellar), skill' name='roll_NvStellarCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Navigate(Warp) (Int)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_NvWarpScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{NvWarpScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Navigate(Warp)' name='roll_NvWarpCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{NvWarpScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Navigate(Warp), skill' name='roll_NvWarpCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Operate(Aeronautica) (Int)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_OpAeronauticaScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{OpAeronauticaScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Operate(Aeronautica)' name='roll_OpAeronauticaCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{OpAeronauticaScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Operate(Aeronautica), skill' name='roll_OpAeronauticaCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Operate(Surface) (Int)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_OpSurfaceScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{OpSurfaceScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Operate(Surface)' name='roll_OpSurfaceCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{OpSurfaceScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Operate(Surface), skill' name='roll_OpSurfaceCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Operate(Voidship) (Int)</span></div>
                        <div class="sheet-item" style="width:15%"><span name="attr_OpVoidshipScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{OpVoidshipScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Operate(Voidship)' name='roll_OpVoidshipCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{OpVoidshipScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Operate(Voidship), skill' name='roll_OpVoidshipCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Parry (WS)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_ParryScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{ParryScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Parry' name='roll_ParryCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{ParryScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Parry, skill' name='roll_ParryCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Psyniscience (Per)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_PsyniscienceScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{PsyniscienceScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Psyniscience' name='roll_PsyniscienceCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{PsyniscienceScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Psyniscience, skill' name='roll_PsyniscienceCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Scholastic Lore (Int)</span></div>
@@ -279,43 +286,43 @@
                         <div class="sheet-item" style="width:60%"><input name="attr_vdispscholasticlorenames" type="text" value="@{dispscholasticlorenames}" disabled="true" class='sheet-cell'></div>
                         <div class="sheet-item" style="width:14%"><input name="attr_vdispscholasticlorescores" type="number" value="@{dispscholasticlorescores}" disabled="true" class='sheet-cell'></div>
                         <div class="sheet-item" style="width:0%"><input name="attr_dispscholasticlorescores" type="number" value="" class='sheet-cell' style="display: none;"></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{dispscholasticlorescores},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Scholastic Lore: @{dispscholasticlorenames}' name='roll_ScholasticLoreCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{dispscholasticlorescores},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Scholastic Lore: @{dispscholasticlorenames}, skill' name='roll_ScholasticLoreCheck'></button></div>
                     </div>
                     </fieldset>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Scrutiny (Per)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_ScrutinyScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{ScrutinyScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Scrutiny' name='roll_ScrutinyCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{ScrutinyScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Scrutiny, skill' name='roll_ScrutinyCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Security (Int)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_SecurityScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{SecurityScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Security' name='roll_SecurityCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{SecurityScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Security, skill' name='roll_SecurityCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Sleight of Hand (Ag)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_SleightOfHandScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{SleightOfHandScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Sleight Of Hand' name='roll_SleightOfHandCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{SleightOfHandScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Sleight Of Hand, skill' name='roll_SleightOfHandCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Stealth (ag)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_StealthScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{StealthScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Stealth' name='roll_StealthCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{StealthScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Stealth, skill' name='roll_StealthCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Survival (Per)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_SurvivalScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{SurvivalScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Survival' name='roll_SurvivalCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{SurvivalScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Survival, skill' name='roll_SurvivalCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Tech-Use (Int)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_TechUseScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{TechUseScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Tech-Use' name='roll_TechUseCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{TechUseScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Tech-Use, skill' name='roll_TechUseCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Trade (Int)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_TradeScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{TradeScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Trade' name='roll_TradeCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{TradeScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Trade, skill' name='roll_TradeCheck'></button></div>
                     </div>
                 </div>
             </div>
@@ -333,48 +340,122 @@
             <input type="checkbox" name="attr_wpnpwrsel2" class="sheet-wpnpwrsel2" checked style="width: 100%">
             <span class="sheet-wpnsel1 sheet-bg">
                 <div class="sheet-row">
-                    <div class="sheet-item" style="width:28%"><span>Name</span></div>
+                    <input type="checkbox" name="attr_wpnselsf1" value="1" style="display:none;" class="wpnselsf">
+                    <input type="checkbox" name="attr_wpnselsa1" value="1" style="display:none;" class="wpnselsa">
+                    <input type="checkbox" name="attr_wpnselfa1" value="1" style="display:none;" class="wpnselfa">
+                    <input type="checkbox" name="attr_wpnselmx1" value="1" style="display:none;" class="wpnselmx">
+                    <input type="checkbox" name="attr_wpnselid1" value="1" style="display:none;" class="wpnselid">
+                    <input type="checkbox" name="attr_wpnselme1" value="1" style="display:none;" class="wpnselme">
+                    <input type="checkbox" name="attr_wpnselsw1" value="1" class="wpnselsw">
+                    <input type="checkbox" name="attr_wpnsella1" value="1" class="wpnsella">
+                    <input type="checkbox" name="attr_wpnselrg1" value="1" style="display:none;" class="wpnselrg">
+                    <div class="sheet-item sheet-rangedrop1" style="width:20%">
+                        <select name="attr_dispwpncurrng1" style="width:100%;">
+                            <option value="0">Melee </option>
+                            <option value="1">Point-Blank </option>
+                            <option value="2">Short </option>
+                            <option value="3">Normal </option>
+                            <option value="4">Long </option>
+                            <option value="5">Extreme </option>
+                        </select>
+                    </div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpnmxstr1" type="text" value="?{Fire Selection(Maximal)|Standard, 6|Semi-Auto, 7|Full-Auto, 8}" style="display: none;"></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpnidstr1" type="text" value="?{Fire Selection(Indirect)|Standard, 3|Semi-Auto, 4|Full-Auto, 5}" style="display: none;"></div>
+                    <div class="sheet-item sheet-sfroll1" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill},@{dispwpnname1}, @{dispwpncurrng1}, 0, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1}, @{dispwpndmgtype1}, @{dispwpnpen1}, ?{Modifers (except Range & RoF)|0}, @{dispwpnquality1}, @{dispwpnspecial1}' name='roll_StdAttack'></button></div>
+                    <div class="sheet-item sheet-saroll1" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill},@{dispwpnname1}, @{dispwpncurrng1}, 1, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1}, @{dispwpndmgtype1}, @{dispwpnpen1}, ?{Modifers (except Range & RoF)|0}, @{dispwpnquality1}, @{dispwpnspecial1}' name='roll_SemiAttack'></button></div>
+                    <div class="sheet-item sheet-faroll1" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill},@{dispwpnname1}, @{dispwpncurrng1}, 2, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1}, @{dispwpndmgtype1}, @{dispwpnpen1}, ?{Modifers (except Range & RoF)|0}, @{dispwpnquality1}, @{dispwpnspecial1}' name='roll_FullAttack'></button></div>
+                    <div class="sheet-item sheet-idroll1" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill},@{dispwpnname1}, @{dispwpncurrng1}, @{dispwpnidstr1}, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1}, @{dispwpndmgtype1}, @{dispwpnpen1}, ?{Modifers (except Range & RoF)|0}, @{dispwpnquality1}, @{dispwpnspecial1}' name='roll_IndirectAttack'></button></div>
+                    <div class="sheet-item sheet-mxroll1" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill},@{dispwpnname1}, @{dispwpncurrng1}, @{dispwpnmxstr1}, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1}, @{dispwpndmgtype1}, @{dispwpnpen1}, ?{Modifers (except Range & RoF)|0}, @{dispwpnquality1}, @{dispwpnspecial1}' name='roll_MaximalAttack'></button></div>
+                    <div class="sheet-item sheet-stroll1" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname1}, 0, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1}, @{dispwpndmgtype1}, @{dispwpnpen1}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality1}, @{dispwpnspecial1}' name='roll_StdMelee'></button></div>
+                    <div class="sheet-item sheet-swroll1" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname1}, 1, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1}, @{dispwpndmgtype1}, @{dispwpnpen1}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality1}, @{dispwpnspecial1}' name='roll_SwaMelee'></button></div>
+                    <div class="sheet-item sheet-laroll1" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname1}, 2, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1}, @{dispwpndmgtype1}, @{dispwpnpen1}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality1}, @{dispwpnspecial1}' name='roll_LitMelee'></button></div>
+                    <div class="sheet-item sheet-stroll1" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname1}, 3, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1}, @{dispwpndmgtype1}, @{dispwpnpen1}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality1}, @{dispwpnspecial1}' name='roll_AllMelee'></button></div>
+                    <div class="sheet-item sheet-stroll1" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname1}, 4, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1}, @{dispwpndmgtype1}, @{dispwpnpen1}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality1}, @{dispwpnspecial1}' name='roll_CalMelee'></button></div>
+                    <div class="sheet-item sheet-stroll1" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname1}, 5, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1}, @{dispwpndmgtype1}, @{dispwpnpen1}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality1}, @{dispwpnspecial1}' name='roll_ChaMelee'></button></div>
+                    <div class="sheet-item sheet-stroll1" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname1}, 6, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1}, @{dispwpndmgtype1}, @{dispwpnpen1}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality1}, @{dispwpnspecial1}' name='roll_FeiMelee'></button></div>
+                    <div class="sheet-item sheet-stroll1" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname1}, 7, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1}, @{dispwpndmgtype1}, @{dispwpnpen1}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality1}, @{dispwpnspecial1}' name='roll_StuMelee'></button></div>
+                    <div class="sheet-item sheet-stroll1" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname1}, 8, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1}, @{dispwpndmgtype1}, @{dispwpnpen1}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality1}, @{dispwpnspecial1}' name='roll_ParMelee'></button></div>
+                             
+                </div>
+                <div class="sheet-row">
+                    <div class="sheet-item" style="width:34%"><span>Name</span></div>
                     <div class="sheet-item" style="width:23%"><span>Rate of Fire</span></div>
                     <div class="sheet-item" style="width:20%"><span>Range</span></div>
                     <div class="sheet-item" style="width:20%"><span>Reload</span></div>
-                    <div class="sheet-item" style="width:5%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill},?{Modifer|0}, ?{Range Bracket|Melee Range, 0|Point-Blank Range(<3m), 1|Short Range(<@{dispwpnshortrange1}m), 2|Normal Range, 3|Long Range(>@{dispwpnlongrange1}m), 4|Extreme Range(>@{dispwpnextrange1}m), 5}, ?{Firing Mode|Standard Shot(@{dispwpnsingleshot1}), 0|Semi-Auto(@{dispwpnsemishot1}), 1|Full-Auto(@{dispwpnautoshot1}), 2}, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1}, @{dispwpnpen1}' name='roll_Attack1'></button></div>
                 </div>
                 <div class="sheet-row sheet-wpnsel1">
-                    <div class="sheet-item" style="width:28%"><span name="attr_dispwpnname1"></span></div>
-                    <div class="sheet-item" style="width:3%"><span name="attr_dispwpnsingleshot1"></span></div>
+                    <div class="sheet-item" style="width:34%"><span name="attr_dispwpnname1"></span></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpnname1" type="text" value="" style="display: none;"></div>
+                    <div class="sheet-item" style="width:3%"><span  name="attr_dispwpnsingleshot1"></span></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpnsingleshot1" type="text" value="" style="display: none;"></div>
                     <div class="sheet-item sheet-spindisable" style="width:2%"><span>/</span></div>
-                    <div class="sheet-item" style="width:3%"><span name="attr_dispwpnsemishot1"></span></div>
+                    <div class="sheet-item" style="width:3%"><span  name="attr_dispwpnsemishot1"></span></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpnsemishot1" type="number" value="" style="display: none;"></div>
                     <div class="sheet-item sheet-spindisable" style="width:2%"><span>/</span></div>
-                    <div class="sheet-item" style="width:10%"><span name="attr_dispwpnautoshot1"></span></div>
+                    <div class="sheet-item" style="width:7%"><span name="attr_dispwpnautoshot1"></span></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpnautoshot1" type="number" value="" style="display: none;"></div>
                     <div class="sheet-item" style="width:20%"><span name="attr_dispwpnrange1"></span></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpnrange1" type="number" value="" style="display: none;"></div>
                     <div class="sheet-item" style="width:15%"><span name="attr_dispwpnrld1"></span></div>
+                    <div class="sheet-item" style="width:0%">
+                        <select name="attr_dispwpnrld1" style="display: none;">
+                            <option value="half">Half</option>
+                            <option value="full">Full</option>
+                            <option value="2full">2 Full</option>
+                            <option value="3full">3 Full</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="sheet-row sheet-wpnsel1">
-                    <div class="sheet-item" style="width:28%"><span>Damage</span></div>
+                    <div class="sheet-item" style="width:34%"><span>Damage</span></div>
                     <div class="sheet-item" style="width:23%"><span>Pen</span></div>
                     <div class="sheet-item" style="width:20%"><span>Clip</span></div>
                     <div class="sheet-item" style="width:20%"><span>Weight</span></div>
                 </div>
                 <div class="sheet-row sheet-wpnsel1">
-                    <div class="sheet-item" style="width:3%"><span name="attr_dispwpndmgnumdice1"></span></div>
+                    <div class="sheet-item" style="width:3%"><span  name="attr_dispwpndmgnumdice1"></span></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpndmgnumdice1" type="number" value="" style="display: none;"></div>
                     <div class="sheet-item sheet-spindisable" style="width:2%"><span>d</span></div>
-                    <div class="sheet-item" style="width:3%"><span name="attr_dispwpndmgdice1"></span></div>
+                    <div class="sheet-item" style="width:3%"><span  name="attr_dispwpndmgdice1"></span></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpndmgdice1" type="number" value="" style="display: none;"></div>
                     <div class="sheet-item sheet-spindisable" style="width:2%"><span>+</span></div>
-                    <div class="sheet-item" style="width:3%"><span name="attr_dispwpndmgstatic1"></span></div>
-                    <div class="sheet-item" style="width:11%"><span name="attr_dispwpndmgtype1"></span></div>
+                    <div class="sheet-item" style="width:3%"><span  name="attr_dispwpndmgstatic1"></span></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpndmgstatic1" type="number" value="" style="display: none;"></div>
+                    <div class="sheet-item" style="width:14%"><span name="attr_dispwpndmgtype1"></span></div>
+                    <div class="sheet-item" style="width:0%">
+                        <select style="display: none;" name="attr_dispwpndmgtype1">
+                            <option value="impact">I</option>
+                            <option value="rending">R</option>
+                            <option value="energy">E</option>
+                            <option value="explosive">X</option>
+                        </select>
+                    </div>
                     <div class="sheet-item" style="width:23%"><span name="attr_dispwpnpen1"></span></div>
-                    <div class="sheet-item" style="width:3%"><span name="attr_dispwpnclipcur1"></span></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpnpen1" type="number" value="" style="display: none;"></div>
+                    <div class="sheet-item" style="width:3%"><span  name="attr_dispwpnclipcur1"></span></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpnclipcur1" type="number" value="" style="display: none;"></div>
                     <div class="sheet-item sheet-spindisable" style="width:2%"><span>/</span></div>
-                    <div class="sheet-item" style="width:14%"><span name="attr_dispwpnclipmax1"></span></div>
+                    <div class="sheet-item" style="width:12%"><span name="attr_dispwpnclipmax1"></span></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpnclipmax1" type="number" value="" style="display: none;"></div>
                     <div class="sheet-item" style="width:10%"><span name="attr_dispwpnweight1"></span></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpnweight1" type="number" value="" style="display: none;"></div>
                 </div>
                 <div class="sheet-row sheet-wpnsel1">
-                    <div class="sheet-item" style="width:73%"><span>Special</span></div>
+                    <div class="sheet-item" style="width:79%"><span>Special</span></div>
                     <div class="sheet-item" style="width:10%"><span>Quality</span></div>
                 </div>
                 <div class="sheet-row sheet-wpnsel1">                
                     <div class="sheet-item" style="width:79%"><span name="attr_dispwpnspecial1"></span></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpnspecial1" type="text" value="" style="display: none;"></div>
                     <div class="sheet-item" style="width:10%"><span name="attr_dispwpnquality1"></span></div>
+                    <div class="sheet-item" style="width:0%">
+                        <select style="display:none;" name="attr_dispwpnquality1">
+                            <option value="poor">Poor</option>
+                            <option value="common">Common</option>
+                            <option value="good">Good</option>
+                            <option value="best">Best</option>
+                        </select>
+                    </div>
                 </div>
             </span>
             <span class="sheet-pwrsel1 sheet-bg">
@@ -412,20 +493,70 @@
             </span>
             <span class="sheet-wpnsel2 sheet-bg">
                 <div class="sheet-row">
+                    <input type="checkbox" name="attr_wpnselsf2" value="1" style="display:none;" class="wpnselsf">
+                    <input type="checkbox" name="attr_wpnselsa2" value="1" style="display:none;" class="wpnselsa">
+                    <input type="checkbox" name="attr_wpnselfa2" value="1" style="display:none;" class="wpnselfa">
+                    <input type="checkbox" name="attr_wpnselmx2" value="1" style="display:none;" class="wpnselmx">
+                    <input type="checkbox" name="attr_wpnselid2" value="1" style="display:none;" class="wpnselid">
+                    <input type="checkbox" name="attr_wpnselme2" value="1" style="display:none;" class="wpnselme">
+                    <input type="checkbox" name="attr_wpnselsw2" value="1" style="display:none;" class="wpnselsw">
+                    <input type="checkbox" name="attr_wpnsella2" value="1" style="display:none;" class="wpnsella">
+                    <input type="checkbox" name="attr_wpnselrg2" value="1" style="display:none;" class="wpnselrg">
+                    <div class="sheet-item sheet-rangedrop2" style="width:20%">
+                        <select name="attr_dispwpncurrng2" style="width:100%;">
+                            <option value="0">Melee </option>
+                            <option value="1">Point-Blank </option>
+                            <option value="2">Short </option>
+                            <option value="3">Normal </option>
+                            <option value="4">Long </option>
+                            <option value="5">Extreme </option>
+                        </select>
+                    </div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpnmxstr2" type="text" value="?{Fire Selection(Maximal)|Standard, 6|Semi-Auto, 7|Full-Auto, 8}" style="display: none;"></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpnidstr2" type="text" value="?{Fire Selection(Indirect)|Standard, 3|Semi-Auto, 4|Full-Auto, 5}" style="display: none;"></div>
+                    <div class="sheet-item sheet-sfroll2" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill},@{dispwpnname2},  @{dispwpncurrng2}, 0, @{dispwpnsingleshot2}, @{dispwpnsemishot2}, @{dispwpnautoshot2}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2}, @{dispwpndmgtype2}, @{dispwpnpen2}, ?{Modifers (except Range & RoF)|0}, @{dispwpnquality2}, @{dispwpnspecial2}' name='roll_StdAttack2'></button></div>
+                    <div class="sheet-item sheet-saroll2" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill},@{dispwpnname2},  @{dispwpncurrng2}, 1, @{dispwpnsingleshot2}, @{dispwpnsemishot2}, @{dispwpnautoshot2}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2}, @{dispwpndmgtype2}, @{dispwpnpen2}, ?{Modifers (except Range & RoF)|0}, @{dispwpnquality2}, @{dispwpnspecial2}' name='roll_SemiAttack2'></button></div>
+                    <div class="sheet-item sheet-faroll2" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill},@{dispwpnname2},  @{dispwpncurrng2}, 2, @{dispwpnsingleshot2}, @{dispwpnsemishot2}, @{dispwpnautoshot2}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2}, @{dispwpndmgtype2}, @{dispwpnpen2}, ?{Modifers (except Range & RoF)|0}, @{dispwpnquality2}, @{dispwpnspecial2}' name='roll_FullAttack2'></button></div>
+                    <div class="sheet-item sheet-mxroll2" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill},@{dispwpnname2},  @{dispwpncurrng2}, @{dispwpnmxstr2}, @{dispwpnsingleshot2}, @{dispwpnsemishot2}, @{dispwpnautoshot2}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2}, @{dispwpndmgtype2}, @{dispwpnpen2}, ?{Modifers (except Range & RoF)|0},@{dispwpnquality2}, @{dispwpnspecial2}' name='roll_MaximalAttack2'></button></div>
+                    <div class="sheet-item sheet-idroll2" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill},@{dispwpnname2},  @{dispwpncurrng2}, @{dispwpnidstr2}, @{dispwpnsingleshot2}, @{dispwpnsemishot2}, @{dispwpnautoshot2}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2}, @{dispwpndmgtype2}, @{dispwpnpen2}, ?{Modifers (except Range & RoF)|0},@{dispwpnquality2}, @{dispwpnspecial2}' name='roll_IndirectAttack2'></button></div>
+                    <div class="sheet-item sheet-stroll2" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname2}, 0, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2}, @{dispwpndmgtype2}, @{dispwpnpen2}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality2}, @{dispwpnspecial2}' name='roll_StdMelee'></button></div>
+                    <div class="sheet-item sheet-stroll2" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname2}, 1, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2}, @{dispwpndmgtype2}, @{dispwpnpen2}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality2}, @{dispwpnspecial2}' name='roll_StdMelee'></button></div>
+                    <div class="sheet-item sheet-swroll2" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname2}, 2, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2}, @{dispwpndmgtype2}, @{dispwpnpen2}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality2}, @{dispwpnspecial2}' name='roll_StdMelee'></button></div>
+                    <div class="sheet-item sheet-laroll2" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname2}, 3, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2}, @{dispwpndmgtype2}, @{dispwpnpen2}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality2}, @{dispwpnspecial2}' name='roll_AllMelee'></button></div>
+                    <div class="sheet-item sheet-stroll2" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname2}, 4, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2}, @{dispwpndmgtype2}, @{dispwpnpen2}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality2}, @{dispwpnspecial2}' name='roll_CalMelee'></button></div>
+                    <div class="sheet-item sheet-stroll2" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname2}, 5, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2}, @{dispwpndmgtype2}, @{dispwpnpen2}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality2}, @{dispwpnspecial2}' name='roll_ChaMelee'></button></div>
+                    <div class="sheet-item sheet-stroll2" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname2}, 6, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2}, @{dispwpndmgtype2}, @{dispwpnpen2}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality2}, @{dispwpnspecial2}' name='roll_FeiMelee'></button></div>
+                    <div class="sheet-item sheet-stroll2" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname2}, 7, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2}, @{dispwpndmgtype2}, @{dispwpnpen2}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality2}, @{dispwpnspecial2}' name='roll_StuMelee'></button></div>
+                    <div class="sheet-item sheet-stroll2" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname2}, 8, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2}, @{dispwpndmgtype2}, @{dispwpnpen2}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality2}, @{dispwpnspecial2}' name='roll_ParMelee'></button></div>
+                </div>
+                <div class="sheet-row">
                     <div class="sheet-item" style="width:34%"><span>Name</span></div>
                     <div class="sheet-item" style="width:23%"><span>Rate of Fire</span></div>
                     <div class="sheet-item" style="width:20%"><span>Range</span></div>
                     <div class="sheet-item" style="width:20%"><span>Reload</span></div>
                 </div>
-                <div class="sheet-row sheet-wpnsel2">
+                <div class="sheet-row sheet-wpnsel1">
                     <div class="sheet-item" style="width:34%"><span name="attr_dispwpnname2"></span></div>
-                    <div class="sheet-item" style="width:3%"><span name="attr_dispwpnsingleshot2"></span></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpnname2" type="text" value="" style="display: none;"></div>
+                    <div class="sheet-item" style="width:3%"><span  name="attr_dispwpnsingleshot2"></span></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpnsingleshot2" type="number" value="" style="display: none;"></div>
                     <div class="sheet-item sheet-spindisable" style="width:2%"><span>/</span></div>
-                    <div class="sheet-item" style="width:3%"><span name="attr_dispwpnsemishot2"></span></div>
+                    <div class="sheet-item" style="width:3%"><span  name="attr_dispwpnsemishot2"></span></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpnsemishot2" type="number" value="" style="display: none;"></div>
                     <div class="sheet-item sheet-spindisable" style="width:2%"><span>/</span></div>
-                    <div class="sheet-item" style="width:10%"><span name="attr_dispwpnautoshot2"></span></div>
+                    <div class="sheet-item" style="width:7%"><span name="attr_dispwpnautoshot2"></span></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpnautoshot2" type="number" value="" style="display: none;"></div>
                     <div class="sheet-item" style="width:20%"><span name="attr_dispwpnrange2"></span></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpnrange2" type="number" value="" style="display: none;"></div>
                     <div class="sheet-item" style="width:15%"><span name="attr_dispwpnrld2"></span></div>
+                    <div class="sheet-item" style="width:0%">
+                        <select name="attr_dispwpnrld2" style="display: none;">
+                            <option value="half">Half</option>
+                            <option value="full">Full</option>
+                            <option value="2full">2 Full</option>
+                            <option value="3full">3 Full</option>
+                        </select>
+                    </div>
                 </div>
                 <div class="sheet-row sheet-wpnsel2">
                     <div class="sheet-item" style="width:34%"><span>Damage</span></div>
@@ -433,26 +564,50 @@
                     <div class="sheet-item" style="width:20%"><span>Clip</span></div>
                     <div class="sheet-item" style="width:20%"><span>Weight</span></div>
                 </div>
-                <div class="sheet-row sheet-wpnsel2">
-                    <div class="sheet-item" style="width:3%"><span name="attr_dispwpndmgnumdice2"></span></div>
+                <div class="sheet-row sheet-wpnsel1">
+                    <div class="sheet-item" style="width:3%"><span  name="attr_dispwpndmgnumdice2"></span></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpndmgnumdice2" type="number" value="" style="display: none;"></div>
                     <div class="sheet-item sheet-spindisable" style="width:2%"><span>d</span></div>
-                    <div class="sheet-item" style="width:3%"><span name="attr_dispwpndmgdice2"></span></div>
+                    <div class="sheet-item" style="width:3%"><span  name="attr_dispwpndmgdice2"></span></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpndmgdice2" type="number" value="" style="display: none;"></div>
                     <div class="sheet-item sheet-spindisable" style="width:2%"><span>+</span></div>
-                    <div class="sheet-item" style="width:3%"><span name="attr_dispwpndmgstatic2"></span></div>
-                    <div class="sheet-item" style="width:17%"><span name="attr_dispwpndmgtype2"></span></div>
+                    <div class="sheet-item" style="width:3%"><span  name="attr_dispwpndmgstatic2"></span></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpndmgstatic2" type="number" value="" style="display: none;"></div>
+                    <div class="sheet-item" style="width:14%"><span name="attr_dispwpndmgtype2"></span></div>
+                    <div class="sheet-item" style="width:0%">
+                        <select style="display: none;" name="attr_dispwpndmgtype2">
+                            <option value="impact">I</option>
+                            <option value="rending">R</option>
+                            <option value="energy">E</option>
+                            <option value="explosive">X</option>
+                        </select>
+                    </div>
                     <div class="sheet-item" style="width:23%"><span name="attr_dispwpnpen2"></span></div>
-                    <div class="sheet-item" style="width:3%"><span name="attr_dispwpnclipcur2"></span></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpnpen2" type="number" value="" style="display: none;"></div>
+                    <div class="sheet-item" style="width:3%"><span  name="attr_dispwpnclipcur2"></span></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpnclipcur2" type="number" value="" style="display: none;"></div>
                     <div class="sheet-item sheet-spindisable" style="width:2%"><span>/</span></div>
-                    <div class="sheet-item" style="width:14%"><span name="attr_dispwpnclipmax2"></span></div>
+                    <div class="sheet-item" style="width:12%"><span name="attr_dispwpnclipmax2"></span></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpnclipmax2" type="number" value="" style="display: none;"></div>
                     <div class="sheet-item" style="width:10%"><span name="attr_dispwpnweight2"></span></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpnweight2" type="number" value="" style="display: none;"></div>
                 </div>
-                <div class="sheet-row sheet-wpnsel2">
+                <div class="sheet-row sheet-wpnsel1">
                     <div class="sheet-item" style="width:79%"><span>Special</span></div>
                     <div class="sheet-item" style="width:10%"><span>Quality</span></div>
                 </div>
-                <div class="sheet-row sheet-wpnsel2">                
+                <div class="sheet-row sheet-wpnsel1">                
                     <div class="sheet-item" style="width:79%"><span name="attr_dispwpnspecial2"></span></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpnspecial2" type="text" value="" style="display: none;"></div>
                     <div class="sheet-item" style="width:10%"><span name="attr_dispwpnquality2"></span></div>
+                    <div class="sheet-item" style="width:0%">
+                        <select style="display:none;" name="attr_dispwpnquality2">
+                            <option value="poor">Poor</option>
+                            <option value="common">Common</option>
+                            <option value="good">Good</option>
+                            <option value="best">Best</option>
+                        </select>
+                    </div>
                 </div>
             </span>
             <span class="sheet-pwrsel2 sheet-bg">
@@ -1403,9 +1558,6 @@ on('sheet:opened',function(){
 //
 //////////////////////////////////////////
 
-
-
-
 //Latches any changed int values for lore calculations and update repeating skill calculations (all Int-based)
 on("change:intelligence change:intelligenceadj", function() {
     getAttrs(["Intelligence", "Intelligenceadj"], function(values) {
@@ -1896,7 +2048,253 @@ on("change:repeating_lns remove:repeating_lns",function(eventInfo){
 });
 
 
+//////////////////////////
+//
+//WEAPON ROLL ICON VISIBILITY
+//
+//////////////////////////
+//Single Shot
+on("change:dispwpnsingleshot1", function() {
+    getAttrs(["dispwpnsingleshot1"], function(values) {
+        var wpnid1 =  values.dispwpnsingleshot1;
+        if(wpnid1 == 'S') {
+            setAttrs({wpnselsf1: 1});
+        } else{
+            setAttrs({wpnselsf1: 0});
+        }
+    });
+});
+on("change:dispwpnsingleshot2", function() {
+    getAttrs(["dispwpnsingleshot2"], function(values) {
+        var wpnid1 =  values.dispwpnsingleshot2;
+        if(wpnid1 == 'S') {
+            setAttrs({wpnselsf2: 1});
+        } else{
+            setAttrs({wpnselsf2: 0});
+        }
+    });
+});
+//Semi-Auto Shot
+on("change:dispwpnsemishot1", function() {
+    getAttrs(["dispwpnsemishot1"], function(values) {
+        var wpnid1 =  parseInt(values.dispwpnsemishot1);
+        if(wpnid1==0||wpnid1==1||wpnid1==2||wpnid1==3||wpnid1==4||wpnid1==5||wpnid1==6||wpnid1==7||wpnid1==8||wpnid1==9||wpnid1==10) {
+            setAttrs({wpnselsa1: 1});
+        } else{
+            setAttrs({wpnselsa1: 0});
+        }
+    });
+});
+on("change:dispwpnsemishot2", function() {
+    getAttrs(["dispwpnsemishot2"], function(values) {
+        var wpnid1 =  parseInt(values.dispwpnsemishot2);
+        if(wpnid1==0||wpnid1==1||wpnid1==2||wpnid1==3||wpnid1==4||wpnid1==5||wpnid1==6||wpnid1==7||wpnid1==8||wpnid1==9||wpnid1==10) {
+            setAttrs({wpnselsa2: 1});
+        } else{
+            setAttrs({wpnselsa2: 0});
+        }
+    });
+});
+//Full-Auto Shot
+on("change:dispwpnautoshot1", function() {
+    getAttrs(["dispwpnautoshot1"], function(values) {
+        var wpnid1 =  parseInt(values.dispwpnautoshot1);
+        if(wpnid1==0||wpnid1==1||wpnid1==2||wpnid1==3||wpnid1==4||wpnid1==5||wpnid1==6||wpnid1==7||wpnid1==8||wpnid1==9||wpnid1==10) {
+            setAttrs({wpnselfa1: 1});
+        } else{
+            setAttrs({wpnselfa1: 0});
+        }
+    });
+});
+on("change:dispwpnautoshot2", function() {
+    getAttrs(["dispwpnautoshot2"], function(values) {
+        var wpnid1 =  parseInt(values.dispwpnautoshot2);
+        if(wpnid1==0||wpnid1==1||wpnid1==2||wpnid1==3||wpnid1==4||wpnid1==5||wpnid1==6||wpnid1==7||wpnid1==8||wpnid1==9||wpnid1==10) {
+            setAttrs({wpnselfa2: 1});
+        } else{
+            setAttrs({wpnselfa2: 0});
+        }
+    });
+});
+//Maximal/Indirect
+on("change:dispwpnspecial1 ", function() {
+    getAttrs(["dispwpnspecial1"], function(values) {
+        var specialArray = values.dispwpnspecial1.split(',');
+        var maximal = 0;
+        var indirect = 0;
+        var semi=false;
+        var auto=false;
+        var i;
+        var qstring='';
+        _.each(specialArray, function(current, i) {
+            specialArray[i] = specialArray[i].replace(/^\s+|\s+$/g, '');    //remove whitespace
+            specialArray[i] = specialArray[i].replace(/\(([^)]+)\)/g, '');  //remove parentheses and anything inside
+            if(specialArray[i]=="Maximal"){maximal=1;}
+            if(specialArray[i]=="Indirect"){indirect=1;}
+        });
+        
+        if(maximal==1){
+            setAttrs({wpnselmx1: 1});
+            getAttrs(["dispwpnsingleshot1","dispwpnsemishot1","dispwpnautoshot1"], function(a) {
+                if( (!isNaN(a.dispwpnautoshot1)) && a.dispwpnautoshot1>0 && a.dispwpnautoshot1<11){auto=true;}
+                if( (!isNaN(a.dispwpnsemishot1)) && a.dispwpnsemishot1>0 && a.dispwpnsemishot1<11){semi=true;}
+
+                if(a.dispwpnsingleshot1=='S' && semi==false && auto==false){qstring=6;}
+                else if(a.dispwpnsingleshot1!='S' && semi==true && auto==false){qstring=7;}
+                else if(a.dispwpnsingleshot1!='S' && semi==false && auto==true){qstring=8;}
+                else {
+                    qstring='?{Fire Selection(Maximal)';
+                    if(a.dispwpnsingleshot1=='S'){qstring=qstring+'|Standard, 6';}
+                    if(semi==true){qstring=qstring+'|Semi-Auto, 7';}
+                    if(auto==true){qstring=qstring+'|Full-Auto, 8';}
+                    qstring=qstring+'}';
+                }
+                setAttrs({dispwpnmxstr1: qstring});
+            });
+        }
+        else{setAttrs({wpnselmx1: 0});}
+        
+        if(indirect==1){
+            setAttrs({wpnselid1: 1});
+            getAttrs(["dispwpnsingleshot1","dispwpnsemishot1","dispwpnautoshot1"], function(a) {
+                if( (!isNaN(a.dispwpnautoshot1)) && a.dispwpnautoshot1>0 && a.dispwpnautoshot1<11){auto=true;}
+                if( (!isNaN(a.dispwpnsemishot1)) && a.dispwpnsemishot1>0 && a.dispwpnsemishot1<11){semi=true;}
+
+                if(a.dispwpnsingleshot1=='S' && semi==false && auto==false){qstring=3;}
+                else if(a.dispwpnsingleshot1!='S' && semi==true && auto==false){qstring=4;}
+                else if(a.dispwpnsingleshot1!='S' && semi==false && auto==true){qstring=5;}
+                else {
+                    qstring='?{Fire Selection(Indirect)';
+                    if(a.dispwpnsingleshot1=='S'){qstring=qstring+'|Standard, 3';}
+                    if(semi==true){qstring=qstring+'|Semi-Auto, 4';}
+                    if(auto==true){qstring=qstring+'|Full-Auto, 5';}
+                    qstring=qstring+'}';
+                }
+                setAttrs({dispwpnidstr1: qstring});
+            });
+        }
+        else{setAttrs({wpnselid1: 0});}
+    });
+});
+on("change:dispwpnspecial2 ", function() {
+    getAttrs(["dispwpnspecial2"], function(values) {
+        var specialArray = values.dispwpnspecial2.split(',');
+        var maximal = 0;
+        var indirect = 0;
+        var semi=false;
+        var auto=false;
+        var i;
+        var qstring='';
+        _.each(specialArray, function(current, i) {
+            specialArray[i] = specialArray[i].replace(/^\s+|\s+$/g, '');    //remove whitespace
+            specialArray[i] = specialArray[i].replace(/\(([^)]+)\)/g, '');  //remove parentheses and anything inside
+            if(specialArray[i]=="Maximal"){maximal=1;}
+            if(specialArray[i]=="Indirect"){indirect=1;}
+        });
+        
+        if(maximal==1){
+            setAttrs({wpnselmx2: 1});
+            getAttrs(["dispwpnsingleshot2","dispwpnsemishot2","dispwpnautoshot2"], function(a) {
+                if( (!isNaN(a.dispwpnautoshot2)) && a.dispwpnautoshot2>0 && a.dispwpnautoshot2<11){auto=true;}
+                if( (!isNaN(a.dispwpnsemishot2)) && a.dispwpnsemishot2>0 && a.dispwpnsemishot2<11){semi=true;}
+
+                if(a.dispwpnsingleshot2=='S' && semi==false && auto==false){qstring=6;}
+                else if(a.dispwpnsingleshot2!='S' && semi==true && auto==false){qstring=7;}
+                else if(a.dispwpnsingleshot2!='S' && semi==false && auto==true){qstring=8;}
+                else {
+                    qstring='?{Fire Selection(Maximal)';
+                    if(a.dispwpnsingleshot2=='S'){qstring=qstring+'|Standard, 6';}
+                    if(semi==true){qstring=qstring+'|Semi-Auto, 7';}
+                    if(auto==true){qstring=qstring+'|Full-Auto, 8';}
+                    qstring=qstring+'}';
+                }
+                setAttrs({dispwpnmxstr2: qstring});
+            });
+        }
+        else{setAttrs({wpnselmx2: 0});}
+        
+        if(indirect==1){
+            setAttrs({wpnselid2: 1});
+            getAttrs(["dispwpnsingleshot2","dispwpnsemishot2","dispwpnautoshot2"], function(a) {
+                if( (!isNaN(a.dispwpnautoshot2)) && a.dispwpnautoshot2>0 && a.dispwpnautoshot2<11){auto=true;}
+                if( (!isNaN(a.dispwpnsemishot2)) && a.dispwpnsemishot2>0 && a.dispwpnsemishot2<11){semi=true;}
+
+                if(a.dispwpnsingleshot2=='S' && semi==false && auto==false){qstring=3;}
+                else if(a.dispwpnsingleshot2!='S' && semi==true && auto==false){qstring=4;}
+                else if(a.dispwpnsingleshot2!='S' && semi==false && auto==true){qstring=5;}
+                else {
+                    qstring='?{Fire Selection(Indirect)';
+                    if(a.dispwpnsingleshot2=='S'){qstring=qstring+'|Standard, 3';}
+                    if(semi==true){qstring=qstring+'|Semi-Auto, 4';}
+                    if(auto==true){qstring=qstring+'|Full-Auto, 5';}
+                    qstring=qstring+'}';
+                }
+                setAttrs({dispwpnidstr2: qstring});
+            });
+        }
+        else{setAttrs({wpnselid2: 0});}
+    });
+});
+//Melee basics
+on("change:dispwpnsingleshot1", function() {
+    getAttrs(["dispwpnsingleshot1"], function(values) {
+        var wpnid1 =  values.dispwpnsingleshot1;
+        if(wpnid1 == 'M') {
+            setAttrs({wpnselme1: 1, wpnselrg1: 0});
+        } else{
+            setAttrs({wpnselme1: 0, wpnselrg1: 1});
+        }
+    });
+});
+on("change:dispwpnsingleshot2", function() {
+    getAttrs(["dispwpnsingleshot2"], function(values) {
+        var wpnid1 =  values.dispwpnsingleshot2;
+        if(wpnid1 == 'M') {
+            setAttrs({wpnselme2: 1, wpnselrg2: 0});
+        } else{
+            setAttrs({wpnselme2: 0, wpnselrg2: 1});
+        }
+    });
+});
+
+
+
+///////////////////
+//
+//TALENT RETENTION
+//
+///////////////////
+
+
+
+on("change:repeating_talents", function() {
+    getSectionIDs("repeating_talents", function(idarray) {
+        if(idarray.length > 0) {
+            var talstr='';
+            var temp;
+            _.each(idarray, function(currentID, i) {
+                getAttrs(["repeating_talents_"+currentID+"_talentnames"], function(x) {
+                    temp =x["repeating_talents_"+currentID+"_talentnames"];
+                    talstr = talstr + temp +", ";
+                    setAttrs({background: talstr});
+                    setAttrs({talentstring: talstr});
+                });
+            });
+            //setAttrs({homeworld: "lol"});
+        }
+    });
+});
+
+
+
+///////////////////////////////////
+//
 //View Wpn and Pwr selection workers
+//
+/////////////////////////////////////
+
+
+
 on("change:repeating_weapons:wpnselects", function() {
     getAttrs(["repeating_weapons_wpnselects"], function(v) {
         getSectionIDs("repeating_weapons", function(idarray) {
@@ -1995,8 +2393,6 @@ on("change:repeating_weapons:wpnselects", function() {
         });
     });
 });
-
-
 //Psy Power Selector
 on("change:repeating_powers:psyselects", function() {
     getAttrs(["repeating_powers_psyselects"], function(v) {
@@ -2070,6 +2466,7 @@ on("change:repeating_powers:psyselects", function() {
 });
 
 
+
 //Weight calculation worker
 on("change:repeating_equipment:equipweights change:repeating_weapons:wpnweights", function() {
     getAttrs(["repeating_equipment_equipweights", "repeating_weapons_wpnweights"], function(v) {
@@ -2096,8 +2493,6 @@ on("change:repeating_equipment:equipweights change:repeating_weapons:wpnweights"
         });
     });
 });
-
-
 //Equipment Display worker
 on("change:repeating_equipment:equipselects", function() {
     getAttrs(["repeating_equipment_equipselects"], function(v) {
@@ -2207,8 +2602,6 @@ on("change:repeating_equipment:equipselects", function() {
         });
     });
 });
-
-
 //Carrying Capacity Worker
 on("change:strengthmod change:toughnessmod", function() {
     getAttrs(["StrengthMod", "ToughnessMod"], function(values) {
@@ -2243,8 +2636,6 @@ on("change:strengthmod change:toughnessmod", function() {
         });
     });
 });
-
-
 //Display weapon Range calculations
 on("change:dispwpnrange1 change:dispwpnrange2", function() {
     getAttrs(["dispwpnrange1", "dispwpnrange2"], function(values) {
@@ -2260,6 +2651,7 @@ on("change:dispwpnrange1 change:dispwpnrange2", function() {
 });
 
 
+
 //Characteristic Modifier Workers
 on("change:weaponskill change:weaponskilladj change:weaponskillunnat", function() {
     getAttrs(["WeaponSkill", "WeaponSkilladj", "WeaponSkillUnnat"], function(values) {
@@ -2268,7 +2660,6 @@ on("change:weaponskill change:weaponskilladj change:weaponskillunnat", function(
         });
     });
 });
-
 on("change:ballisticskill change:ballisticskilladj change:ballisticskillunnat", function() {
     getAttrs(["BallisticSkill", "BallisticSkilladj", "BallisticSkillUnnat"], function(values) {
         setAttrs({
@@ -2276,7 +2667,6 @@ on("change:ballisticskill change:ballisticskilladj change:ballisticskillunnat", 
         });
     });
 });
-
 on("change:strength change:strengthadj change:strengthunnat", function() {
     getAttrs(["Strength", "Strengthadj", "StrengthUnnat"], function(values) {
         setAttrs({
@@ -2284,7 +2674,6 @@ on("change:strength change:strengthadj change:strengthunnat", function() {
         });
     });
 });
-
 on("change:toughness change:toughnessadj change:toughnessunnat", function() {
     getAttrs(["Toughness", "Toughnessadj", "ToughnessUnnat"], function(values) {
         setAttrs({
@@ -2292,7 +2681,6 @@ on("change:toughness change:toughnessadj change:toughnessunnat", function() {
         });
     });
 });
-
 on("change:agility change:agilityadj change:agilityunnat", function() {
     getAttrs(["Agility", "Agilityadj", "AgilityUnnat"], function(values) {
         setAttrs({
@@ -2300,7 +2688,6 @@ on("change:agility change:agilityadj change:agilityunnat", function() {
         });
     });
 });
-
 on("change:intelligence change:intelligenceadj change:intelligenceunnat", function() {
     getAttrs(["Intelligence", "Intelligenceadj", "IntelligenceUnnat"], function(values) {
         setAttrs({
@@ -2308,7 +2695,6 @@ on("change:intelligence change:intelligenceadj change:intelligenceunnat", functi
         });
     });
 });
-
 on("change:perception change:perceptionadj change:perceptionunnat", function() {
     getAttrs(["Perception", "Perceptionadj", "PerceptionUnnat"], function(values) {
         setAttrs({
@@ -2316,7 +2702,6 @@ on("change:perception change:perceptionadj change:perceptionunnat", function() {
         });
     });
 });
-
 on("change:willpower change:willpoweradj change:willpowerunnat", function() {
     getAttrs(["Willpower", "Willpoweradj", "WillpowerUnnat"], function(values) {
         setAttrs({
@@ -2324,7 +2709,6 @@ on("change:willpower change:willpoweradj change:willpowerunnat", function() {
         });
     });
 });
-
 on("change:fellowship change:fellowshipadj change:fellowshipunnat", function() {
     getAttrs(["Fellowship", "Fellowshipadj", "FellowshipUnnat"], function(values) {
         setAttrs({
@@ -2332,7 +2716,6 @@ on("change:fellowship change:fellowshipadj change:fellowshipunnat", function() {
         });
     });
 });
-
 on("change:influence change:influenceadj change:influenceunnat", function() {
     getAttrs(["Influence", "Influenceadj", "InfluenceUnnat"], function(values) {
         setAttrs({
@@ -2341,8 +2724,9 @@ on("change:influence change:influenceadj change:influenceunnat", function() {
     });
 });
 
-//Skill Score Workers
 
+
+//Skill Score Workers
 on("change:agility change:agilityadj change:acrobaticsranks change:acrobaticsmisc", function() {
     getAttrs(["Agility", "Agilityadj", "AcrobaticsRanks", "AcrobaticsMisc"], function(values) {
         var tempmod=10;
@@ -2355,7 +2739,6 @@ on("change:agility change:agilityadj change:acrobaticsranks change:acrobaticsmis
         });
     });
 });
-
 on("change:strength change:strengthadj change:athleticsranks change:athleticsmisc", function() {
     getAttrs(["Strength", "Strengthadj", "AthleticsRanks", "AthleticsMisc"], function(values) {
         var tempmod=10;
@@ -2368,7 +2751,6 @@ on("change:strength change:strengthadj change:athleticsranks change:athleticsmis
         });
     });
 });
-
 on("change:perception change:perceptionadj change:awarenessranks change:awarenessmisc", function() {
     getAttrs(["Perception", "Perceptionadj", "AwarenessRanks", "AwarenessMisc"], function(values) {
         var tempmod=10;
@@ -2381,7 +2763,6 @@ on("change:perception change:perceptionadj change:awarenessranks change:awarenes
         });
     });
 });
-
 on("change:fellowship change:fellowshipadj change:charmranks change:charmmisc", function() {
     getAttrs(["Fellowship", "Fellowshipadj", "CharmRanks", "CharmMisc"], function(values) {
         var tempmod=10;
@@ -2394,7 +2775,6 @@ on("change:fellowship change:fellowshipadj change:charmranks change:charmmisc", 
         });
     });
 });
-
 on("change:fellowship change:fellowshipadj change:commandranks change:commandmisc", function() {
     getAttrs(["Fellowship", "Fellowshipadj", "CommandRanks", "CommandMisc"], function(values) {
         var tempmod=10;
@@ -2407,7 +2787,6 @@ on("change:fellowship change:fellowshipadj change:commandranks change:commandmis
         });
     });
 });
-
 on("change:fellowship change:fellowshipadj change:commerceranks change:commercemisc", function() {
     getAttrs(["Fellowship", "Fellowshipadj", "CommerceRanks", "CommerceMisc"], function(values) {
         var tempmod=10;
@@ -2420,7 +2799,6 @@ on("change:fellowship change:fellowshipadj change:commerceranks change:commercem
         });
     });
 });
-
 on("change:fellowship change:fellowshipadj change:deceiveranks change:deceivemisc", function() {
     getAttrs(["Fellowship", "Fellowshipadj", "DeceiveRanks", "DeceiveMisc"], function(values) {
         var tempmod=10;
@@ -2433,7 +2811,6 @@ on("change:fellowship change:fellowshipadj change:deceiveranks change:deceivemis
         });
     });
 });
-
 on("change:agility change:agilityadj change:dodgeranks change:dodgemisc", function() {
     getAttrs(["Agility", "Agilityadj", "DodgeRanks", "DodgeMisc"], function(values) {
         var tempmod=10;
@@ -2446,7 +2823,6 @@ on("change:agility change:agilityadj change:dodgeranks change:dodgemisc", functi
         });
     });
 });
-
 on("change:fellowship change:fellowshipadj change:inquiryranks change:inquirymisc", function() {
     getAttrs(["Fellowship", "Fellowshipadj", "InquiryRanks", "InquiryMisc"], function(values) {
         var tempmod=10;
@@ -2459,7 +2835,6 @@ on("change:fellowship change:fellowshipadj change:inquiryranks change:inquirymis
         });
     });
 });
-
 on("change:willpower change:willpoweradj change:interrogationranks change:interrogationmisc", function() {
     getAttrs(["Willpower", "Willpoweradj", "InterrogationRanks", "InterrogationMisc"], function(values) {
         var tempmod=10;
@@ -2472,7 +2847,6 @@ on("change:willpower change:willpoweradj change:interrogationranks change:interr
         });
     });
 });
-
 on("change:strength change:strengthadj change:intimidateranks change:intimidatemisc", function() {
     getAttrs(["Strength", "Strengthadj", "IntimidateRanks", "IntimidateMisc"], function(values) {
         var tempmod=10;
@@ -2485,7 +2859,6 @@ on("change:strength change:strengthadj change:intimidateranks change:intimidatem
         });
     });
 });
-
 on("change:intelligence change:intelligenceadj change:logicranks change:logicmisc", function() {
     getAttrs(["Intelligence", "Intelligenceadj", "LogicRanks", "LogicMisc"], function(values) {
         var tempmod=10;
@@ -2498,7 +2871,6 @@ on("change:intelligence change:intelligenceadj change:logicranks change:logicmis
         });
     });
 });
-
 on("change:intelligence change:intelligenceadj change:medicaeranks change:medicaemisc", function() {
     getAttrs(["Intelligence", "Intelligenceadj", "MedicaeRanks", "MedicaeMisc"], function(values) {
         var tempmod=10;
@@ -2511,7 +2883,6 @@ on("change:intelligence change:intelligenceadj change:medicaeranks change:medica
         });
     });
 });
-
 on("change:intelligence change:intelligenceadj change:nvsurfaceranks change:nvsurfacemisc", function() {
     getAttrs(["Intelligence", "Intelligenceadj", "NvSurfaceRanks", "NvSurfaceMisc"], function(values) {
         var tempmod=10;
@@ -2524,7 +2895,6 @@ on("change:intelligence change:intelligenceadj change:nvsurfaceranks change:nvsu
         });
     });
 });
-
 on("change:intelligence change:intelligenceadj change:nvstellarranks change:nvstellarmisc", function() {
     getAttrs(["Intelligence", "Intelligenceadj", "NvStellarRanks", "NvStellarMisc"], function(values) {
         var tempmod=10;
@@ -2537,7 +2907,6 @@ on("change:intelligence change:intelligenceadj change:nvstellarranks change:nvst
         });
     });
 });
-
 on("change:intelligence change:intelligenceadj change:nvwarpranks change:nvwarpmisc", function() {
     getAttrs(["Intelligence", "Intelligenceadj", "NvWarpRanks", "NvWarpMisc"], function(values) {
         var tempmod=10;
@@ -2550,7 +2919,6 @@ on("change:intelligence change:intelligenceadj change:nvwarpranks change:nvwarpm
         });
     });
 });
-
 on("change:agility change:agilityadj change:opaeronauticaranks change:opaeronauticamisc", function() {
     getAttrs(["Agility", "Agilityadj", "OpAeronauticaRanks", "OpAeronauticaMisc"], function(values) {
         var tempmod=10;
@@ -2563,7 +2931,6 @@ on("change:agility change:agilityadj change:opaeronauticaranks change:opaeronaut
         });
     });
 });
-
 on("change:agility change:agilityadj change:opsurfaceranks change:opsurfacemisc", function() {
     getAttrs(["Agility", "Agilityadj", "OpSurfaceRanks", "OpSurfaceMisc"], function(values) {
         var tempmod=10;
@@ -2576,7 +2943,6 @@ on("change:agility change:agilityadj change:opsurfaceranks change:opsurfacemisc"
         });
     });
 });
-
 on("change:agility change:agilityadj change:opvoidshipranks change:opvoidshipdmisc", function() {
     getAttrs(["Agility", "Agilityadj", "OpVoidshipRanks", "OpVoidshipMisc"], function(values) {
         var tempmod=10;
@@ -2589,7 +2955,6 @@ on("change:agility change:agilityadj change:opvoidshipranks change:opvoidshipdmi
         });
     });
 });
-
 on("change:weaponskill change:weaponskilladj change:parryranks change:parrymisc", function() {
     getAttrs(["WeaponSkill", "WeaponSkilladj", "ParryRanks", "ParryMisc"], function(values) {
         var tempmod=10;
@@ -2602,7 +2967,6 @@ on("change:weaponskill change:weaponskilladj change:parryranks change:parrymisc"
         });
     });
 });
-
 on("change:willpower change:willpoweradj change:psyniscienceranks change:psynisciencemisc", function() {
     getAttrs(["Willpower", "Willpoweradj", "PsyniscienceRanks", "PsyniscienceMisc"], function(values) {
         var tempmod=10;
@@ -2615,7 +2979,6 @@ on("change:willpower change:willpoweradj change:psyniscienceranks change:psynisc
         });
     });
 });
-
 on("change:perception change:perceptionadj change:scrutinyranks change:scrutinymisc", function() {
     getAttrs(["Perception", "Perceptionadj", "ScrutinyRanks", "ScrutinyMisc"], function(values) {
         var tempmod=10;
@@ -2628,7 +2991,6 @@ on("change:perception change:perceptionadj change:scrutinyranks change:scrutinym
         });
     });
 });
-
 on("change:intelligence change:intelligenceadj change:securityranks change:securitymisc", function() {
     getAttrs(["Intelligence", "Intelligenceadj", "SecurityRanks", "SecurityMisc"], function(values) {
         var tempmod=10;
@@ -2641,7 +3003,6 @@ on("change:intelligence change:intelligenceadj change:securityranks change:secur
         });
     });
 });
-
 on("change:agility change:agilityadj change:sleightofhandranks change:sleightofhandmisc", function() {
     getAttrs(["Agility", "Agilityadj", "SleightOfHandRanks", "SleightOfHandMisc"], function(values) {
         var tempmod=10;
@@ -2654,7 +3015,6 @@ on("change:agility change:agilityadj change:sleightofhandranks change:sleightofh
         });
     });
 });
-
 on("change:agility change:agilityadj change:stealthranks change:stealthmisc", function() {
     getAttrs(["Agility", "Agilityadj", "StealthRanks", "StealthMisc"], function(values) {
         var tempmod=10;
@@ -2667,7 +3027,6 @@ on("change:agility change:agilityadj change:stealthranks change:stealthmisc", fu
         });
     });
 });
-
 on("change:perception change:perceptionadj change:survivalranks change:survivalmisc", function() {
     getAttrs(["Perception", "Perceptionadj", "SurvivalRanks", "SurvivalMisc"], function(values) {
         var tempmod=10;
@@ -2680,7 +3039,6 @@ on("change:perception change:perceptionadj change:survivalranks change:survivalm
         });
     });
 });
-
 on("change:intelligence change:intelligenceadj change:techuseranks change:techusemisc", function() {
     getAttrs(["Intelligence", "Intelligenceadj", "TechUseRanks", "TechUseMisc"], function(values) {
         var tempmod=10;
@@ -2693,7 +3051,6 @@ on("change:intelligence change:intelligenceadj change:techuseranks change:techus
         });
     });
 });
-
 on("change:intelligence change:intelligenceadj change:traderanks change:trademisc", function() {
     getAttrs(["Intelligence", "Intelligenceadj", "TradeRanks", "TradeMisc"], function(values) {
         var tempmod=10;
@@ -2706,5 +3063,4 @@ on("change:intelligence change:intelligenceadj change:traderanks change:trademis
         });
     });
 });
-
 </script>
