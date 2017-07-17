@@ -111,10 +111,6 @@
     opacity: 0;
     width: 40px;
     height: 40px;
-    /*position: relative;
-    top: 5px;
-    left: 6px;
-    margin: -20px;*/
     margin-top: 0px;
     margin-bottom: 0px;
     margin-left: -44px;
@@ -204,17 +200,198 @@ margin: 5px 0 5px 0;
     font-family: trajan_reg;
 }
 
-.sheet-viewwrapper .sheet-skills .sheet-row {
+
+.sheet-viewwrapper .sheet-wpnselsf:checked ~ .sheet-sfroll1{
+    display: inline-block;
+}
+
+.sheet-viewwrapper .sheet-wpnselsf:not(:checked) ~ .sheet-sfroll1{
+    display: none;
+}
+
+.sheet-viewwrapper .sheet-wpnselsa:checked ~ .sheet-saroll1{
+    display: inline-block;
+}
+
+.sheet-viewwrapper .sheet-wpnselsa:not(:checked) ~ .sheet-saroll1{
+    display: none;
+}
+
+.sheet-viewwrapper .sheet-wpnselfa:checked ~ .sheet-faroll1{
+    display: inline-block;
+}
+
+.sheet-viewwrapper .sheet-wpnselfa:not(:checked) ~ .sheet-faroll1{
+    display: none;
+}
+
+.sheet-viewwrapper .sheet-wpnselmx:checked ~ .sheet-mxroll1{
+    display: inline-block;
+}
+
+.sheet-viewwrapper .sheet-wpnselmx:not(:checked) ~ .sheet-mxroll1{
+    display: none;
+}
+
+.sheet-viewwrapper .sheet-wpnselid:checked ~ .sheet-idroll1{
+    display: inline-block;
+}
+
+.sheet-viewwrapper .sheet-wpnselid:not(:checked) ~ .sheet-idroll1{
+    display: none;
+}
+
+.sheet-viewwrapper .sheet-wpnselme:checked ~ .sheet-stroll1{
+    display: inline-block;
+}
+
+.sheet-viewwrapper .sheet-wpnselsw:not(:checked) ~ .sheet-swroll1{
+    display: none;
+}
+
+.sheet-viewwrapper .sheet-wpnselsw:checked ~ .sheet-swroll1{
+    display: inline-block;
+}
+
+.sheet-viewwrapper .sheet-wpnsella:not(:checked) ~ .sheet-laroll1{
+    display: none;
+}
+
+.sheet-viewwrapper .sheet-wpnsella:checked ~ .sheet-laroll1{
+    display: inline-block;
+}
+
+.sheet-viewwrapper .sheet-wpnselme:not(:checked) ~ .sheet-stroll1{
+    display: none;
+}
+.sheet-viewwrapper .sheet-wpnselrg:checked ~ .sheet-rangedrop1{
+    display: inline-block;
+}
+
+.sheet-viewwrapper .sheet-wpnselrg:not(:checked) ~ .sheet-rangedrop1{
+    display: none;
+}
+
+
+
+
+.sheet-viewwrapper .sheet-wpnselsf:checked ~ .sheet-sfroll2{
+    display: inline-block;
+}
+
+.sheet-viewwrapper .sheet-wpnselsf:not(:checked) ~ .sheet-sfroll2{
+    display: none;
+}
+
+.sheet-viewwrapper .sheet-wpnselsa:checked ~ .sheet-saroll2{
+    display: inline-block;
+}
+
+.sheet-viewwrapper .sheet-wpnselsa:not(:checked) ~ .sheet-saroll2{
+    display: none;
+}
+
+.sheet-viewwrapper .sheet-wpnselfa:checked ~ .sheet-faroll2{
+    display: inline-block;
+}
+
+.sheet-viewwrapper .sheet-wpnselfa:not(:checked) ~ .sheet-faroll2{
+    display: none;
+}
+.sheet-viewwrapper .sheet-wpnselmx:checked ~ .sheet-mxroll2{
+    display: inline-block;
+}
+
+.sheet-viewwrapper .sheet-wpnselmx:not(:checked) ~ .sheet-mxroll2{
+    display: none;
+}
+
+.sheet-viewwrapper .sheet-wpnselid:checked ~ .sheet-idroll2{
+    display: inline-block;
+}
+
+.sheet-viewwrapper .sheet-wpnselid:not(:checked) ~ .sheet-idroll2{
+    display: none;
+}
+
+.sheet-viewwrapper .sheet-wpnselme:checked ~ .sheet-stroll2{
+    display: inline-block;
+}
+
+.sheet-viewwrapper .sheet-wpnselme:not(:checked) ~ .sheet-stroll2{
+    display: none;
+}
+
+.sheet-viewwrapper .sheet-wpnselsw:not(:checked) ~ .sheet-swroll2{
+    display: none;
+}
+
+.sheet-viewwrapper .sheet-wpnselsw:checked ~ .sheet-swroll2{
+    display: inline-block;
+}
+
+.sheet-viewwrapper .sheet-wpnsella:not(:checked) ~ .sheet-laroll2{
+    display: none;
+}
+
+.sheet-viewwrapper .sheet-wpnsella:checked ~ .sheet-laroll2{
+    display: inline-block;
+}
+
+.sheet-viewwrapper .sheet-wpnselrg:checked ~ .sheet-rangedrop2{
+    display: inline-block;
+}
+
+.sheet-viewwrapper .sheet-wpnselrg:not(:checked) ~ .sheet-rangedrop2{
+    display: none;
+}
+
+
+
+/*replaces skill roll buttons with custom icons */
+.sheet-viewwrapper button[type="roll"].sheet-skillchal {
+    opacity: 0;
+    width: 20px;
     height: 20px;
+    padding:0px;
+    border:0px;
+    margin-right: -16px;
+    margin-left:0px;
+    margin-top:0px;
+    margin-bottom:0px;
+    position: absolute;
+    top:0px;
+    left:0px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.sheet-viewwrapper span.sheet-skillchal
+{
+    margin:0px;
+    border: 0px;
+    padding: 0px;
+    width:20px;
+    height:20px;
+    display: inline-block;
+    position: absolute
+    top:1px;
+    left:1px;
+    z-index:0;
+    background-image: url("http://kirklundblade.com/RogueTrader/skillchal.png");
+
+}
+
+/* adjust skill rows */
+.sheet-viewwrapper .sheet-skills .sheet-row {
+    height: 22px;
 }
 
 .sheet-viewwrapper .sheet-skills .sheet-row:nth-child(even) {
     background: rgba(102,102,102,.3);
 }
 
-.sheet-viewwrapper .sheet-skills .sheet-cell {
-}
-
+/*Block Controlls WPN/PWR display */
 .sheet-viewwrapper .sheet-wpnpwrsel1:checked ~ .sheet-wpnsel1{
     display: block;
 }
@@ -222,7 +399,6 @@ margin: 5px 0 5px 0;
 .sheet-viewwrapper .sheet-wpnpwrsel1:checked ~ .sheet-pwrsel1{
     display: none;
 }
-
 
 .sheet-viewwrapper .sheet-wpnpwrsel1:not(:checked) ~ .sheet-wpnsel1{
     display: none;
@@ -248,7 +424,12 @@ margin: 5px 0 5px 0;
     display: block;
 }
 
-/* Data entry stylings */
+
+
+
+/*Data entry stylings */
+
+
 
 .sheet-inputwrapper .sheet-spindisable::-webkit-inner-spin-button,
 .sheet-inputwrapper .sheet-spindisable::-webkit-outer-spin-button {
