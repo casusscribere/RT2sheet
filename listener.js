@@ -10,13 +10,12 @@ var listener40kNamespace = listener40kNamespace || {};
 on("chat:message", function(msg) {
     var cmdName;
     var msgTxt;
-
-    cmdName = '!skill40k ';
+    var paramList;
     msgTxt = msg.content;
-    
     if (msg.type !== "api") return;
-    if (msgTxt.split(" ", 1)[0] === "!skill40k") {
-        var paramList = msgTxt.slice(cmdName.length);
+    else if (msgTxt.split(" ", 1)[0] === "!skill40k") {
+        cmdName = '!skill40k ';
+        paramList = msgTxt.slice(cmdName.length);
         if(paramList.indexOf(',') == -1) {
             sendChat(msg.who, '/w ' + msg.who + ' must specify four comma-separated parameters for !skill40k command.');
         }
@@ -43,7 +42,7 @@ on("chat:message", function(msg) {
             sendChat(msg.who, result); 
         }
     }
-    if (msgTxt.split(" ", 1)[0] === "!ranged40k") {
+    else if (msgTxt.split(" ", 1)[0] === "!ranged40k") {
         cmdName = '!ranged40k ';
         var paramList = msgTxt.slice(cmdName.length);
         if(paramList.indexOf(',') == -1) {
@@ -51,51 +50,50 @@ on("chat:message", function(msg) {
         }
         else {
             var paramArray = paramList.split(',');
-            var special = '';
-            var talents = '';
-            var curToken, attribute, wpnname, range, shotsel, single, semi, full, numdice, dice, dmg, type, pen, modifier, quality;
+            var curToken, attribute, range, shotsel, single, semi, full, numdice, dice, dmg, pen, modifier, special, quality, talents, wpnname, type;
+            special = '';
             _.each(paramArray, function(current, i) {
                 if(i==0){
                     curToken  = listener40kNamespace.trimString(current);
                 } else if(i==1){
                     attribute = listener40kNamespace.trimString(current);
                 } else if(i==2){
-                    wpnname = listener40kNamespace.trimString(current);
-                } else if(i==3){
                     range = listener40kNamespace.trimString(current);
-                } else if(i==4){
+                } else if(i==3){
                     shotsel = listener40kNamespace.trimString(current);
-                } else if(i==5){
+                } else if(i==4){
                     single = listener40kNamespace.trimString(current);
-                } else if(i==6){
+                } else if(i==5){
                     semi = listener40kNamespace.trimString(current);
-                } else if(i==7){
+                } else if(i==6){
                     full = listener40kNamespace.trimString(current);
-                } else if(i==8){
+                } else if(i==7){
                     numdice = listener40kNamespace.trimString(current);
-                } else if(i==9){
+                } else if(i==8){
                     dice = listener40kNamespace.trimString(current);
-                } else if(i==10){
+                } else if(i==9){
                     dmg = listener40kNamespace.trimString(current);
-                } else if(i==11){
-                    type = listener40kNamespace.trimString(current);
-                } else if(i==12){
+                } else if(i==10){
                     pen = listener40kNamespace.trimString(current);
-                } else if(i==13){
+                } else if(i==11){
                     modifier = listener40kNamespace.trimString(current);
-                } else if(i==14){
+                } else if(i==12){
+                    special = current;
+                } else if(i==13){
                     quality = listener40kNamespace.trimString(current);
-                } //else if(i==15){
-                    //talents = listener40kNamespace.trimString(current);
-                /*}*/  else {
-                    special += listener40kNamespace.trimString(current)+", ";
+                } else if(i==14){
+                    talents = listener40kNamespace.trimString(current);
+                } else if(i==15){
+                    wpnname = listener40kNamespace.trimString(current);
+                } else if(i==16){
+                    type = listener40kNamespace.trimString(current);
                 }
             });
-            var result = ranged40kNamespace.rollResult(curToken, attribute, wpnname, range, shotsel, single, semi, full, numdice, dice, dmg, type, pen, modifier, quality, special);
+            var result = ranged40kNamespace.rollResult(curToken, attribute, range, shotsel, single, semi, full, numdice, dice, dmg, pen, modifier, special, quality, talents, wpnname, type );
             sendChat(msg.who, result);
         }
     }
-    if (msgTxt.split(" ", 1)[0] === "!melee40k") {
+    else if (msgTxt.split(" ", 1)[0] === "!melee40k") {
         cmdName = '!melee40k ';
         var paramList = msgTxt.slice(cmdName.length);
         if(paramList.indexOf(',') == -1) {
@@ -103,40 +101,42 @@ on("chat:message", function(msg) {
         }
         else {
             var paramArray = paramList.split(',');
-            var special = '';
-            var curToken, attribute, wpnname, shotsel, numdice, dice, dmg, type, pen, psy, str, modifier, quality;
+            var curToken, attribute, shotsel, numdice, dice, dmg, pen, str, modifier, special, quality, talents, wpnname, type, psy ;
+            special = '';
             _.each(paramArray, function(current, i) {
                 if(i==0){
                     curToken  = listener40kNamespace.trimString(current);
                 } else if(i==1){
                     attribute = listener40kNamespace.trimString(current);
                 } else if(i==2){
-                    wpnname = listener40kNamespace.trimString(current);
-                } else if(i==3){
                     shotsel = listener40kNamespace.trimString(current);
-                } else if(i==4){
+                } else if(i==3){
                     numdice = listener40kNamespace.trimString(current);
-                } else if(i==5){
+                } else if(i==4){
                     dice = listener40kNamespace.trimString(current);
-                } else if(i==6){
+                } else if(i==5){
                     dmg = listener40kNamespace.trimString(current);
-                } else if(i==7){
-                    type = listener40kNamespace.trimString(current);
-                } else if(i==8){
+                } else if(i==6){
                     pen = listener40kNamespace.trimString(current);
-                } else if(i==9){
-                    psy = listener40kNamespace.trimString(current);
-                }  else if(i==10){
+                } else if(i==7){
                     str = listener40kNamespace.trimString(current);
-                }  else if(i==11){
+                } else if(i==8){
                     modifier = listener40kNamespace.trimString(current);
-                } else if(i==12){
+                } else if(i==9){
+                    special = current;
+                }  else if(i==10){
                     quality = listener40kNamespace.trimString(current);
-                } else {
-                    special += listener40kNamespace.trimString(current)+", ";
+                }  else if(i==11){
+                    talents = listener40kNamespace.trimString(current);
+                }  else if(i==12){
+                    wpnname = listener40kNamespace.trimString(current);
+                }  else if(i==13){
+                    type = listener40kNamespace.trimString(current);
+                } else if(i==14){
+                    psy = listener40kNamespace.trimString(current);
                 }
             });
-            var result = melee40kNamespace.rollResult(curToken, attribute, wpnname, shotsel, numdice, dice, dmg, type, pen, psy, str, modifier, quality, special);
+            var result = melee40kNamespace.rollResult(curToken, attribute, shotsel, numdice, dice, dmg, pen, str, modifier, special, quality, talents, wpnname, type, psy);
             sendChat(msg.who, result);
         }
     }
