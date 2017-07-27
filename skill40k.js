@@ -7,16 +7,17 @@
 **/
 
 //Rolls a d100 and calculates the success or fail results to the chat window.
+
 var skill40kNamespace = skill40kNamespace || {};
 
 skill40kNamespace.rollResult = function(token, attribute, modifier, attributename, format, mode, msgwho) {
-    if (typeof token            === undefined)    token           = 'generic';
-    if (typeof attribute        === undefined)    attribute       = 'WeaponSkill';
-    if (typeof modifier         === undefined)    modifier        = 0;
-    if (typeof attributename    === undefined) attributename      = 'generic';
-    if (typeof format           === undefined)    format          = 'gen';
-    if (typeof mode             === undefined)    mode            = 'normal';
-    if (typeof mode             === undefined)    mode            = '';
+    if (typeof token            === undefined || typeof token != 'string' )                     token           = 'generic';
+    if (typeof attribute        === undefined || Number.isInteger(parseInt(attribute))==false)  attribute       = 0;
+    if (typeof modifier         === undefined || Number.isInteger(parseInt(modifier))==false )  modifier        = 0;
+    if (typeof attributename    === undefined || typeof attributename != 'string' )             attributename   = 'generic';
+    if (typeof format           === undefined || typeof format != 'string' )                    format          = 'gen';
+    if (typeof mode             === undefined || typeof mode != 'string' )                      mode            = 'normal';
+    if (typeof msgwho           === undefined || typeof msgwho != 'string' )                    msgwho            = 'GM';
 
     var roll = randomInteger(100);
     var modTarget = parseInt(attribute) + parseInt(modifier);
@@ -76,7 +77,6 @@ skill40kNamespace.rollResult = function(token, attribute, modifier, attributenam
     }
     
     //Return output
-   
     var output ="!power {{ "+mode+" --format|"+format+" --titlefontshadow|none --name|"+token+" --leftsub|"+attributename+" Check --rightsub| "+diff+" Diff. --Roll:|[! "+roll+" !] vs [! "+modTarget+" !]  --Result:|"+output2+"  }}"
     return output;
 }
