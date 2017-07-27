@@ -6,28 +6,27 @@
  * !ranged40k   
 **/
 
-//Rolls a d100 and calculates the success or fail results to the chat window.
 var ranged40kNamespace = ranged40kNamespace || {};
 
-ranged40kNamespace.rollResult = function(token, attribute, wpnname, range, shotsel, single, semi, full, numdice, dice, dmg, type, pen, modifier, quality, special) {
+ranged40kNamespace.rollResult = function(token, attribute, range, shotsel, single, semi, full, numdice, dice, dmg, pen, modifier, special, quality, talents, wpnname, type) {
     if (typeof token === 'undefined')       token       = 'generic';
-    if (typeof attribute === 'undefined')   attribute   = 'BallisticSkill';
-    if (typeof wpnname === 'undefined')     wpnname     = 'generic';
-    if (typeof range === 'undefined')       range       = 0;
-    if (typeof shotsel === 'undefined')     shotsel     = 0;
-    if (typeof single === 'undefined')      single      = '-';
-    if (typeof semi === 'undefined')        semi        = '-';
-    if (typeof full === 'undefined')        full        = '-';
-    if (typeof numdice === 'undefined')     numdice     = 1;
-    if (typeof dice === 'undefined')        dice        = 10;
-    if (typeof dmg === 'undefined')         dmg         = 0;
-    if (typeof type === 'undefined')        type        = '';
-    if (typeof pen === 'undefined')         pen         = 0;
-    if (typeof modifier === 'undefined')    modifier    = 0;
-    if (typeof quality === 'undefined')     quality     = '';
-    if (typeof special === 'undefined')     special     = '';
+    if (typeof attribute === 'undefined' || Number.isInteger(parseInt(attribute))==false)   attribute   = 0;
+    if (typeof range === 'undefined' || Number.isInteger(parseInt(range))==false)           range       = 0;
+    if (typeof shotsel === 'undefined' || Number.isInteger(parseInt(shotsel))==false)       shotsel     = 0;
+    if (typeof single === 'undefined' || typeof single != 'string' )                        single      = '-';
+    if (typeof semi === 'undefined' || typeof semi != 'string' )                            semi        = '-';
+    if (typeof full === 'undefined' || typeof full != 'string' )                            full        = '-';
+    if (typeof numdice === 'undefined' || Number.isInteger(parseInt(numdice))==false)       numdice     = 1;
+    if (typeof dice === 'undefined' || Number.isInteger(parseInt(dice))==false)             dice        = 10;
+    if (typeof dmg === 'undefined' || Number.isInteger(parseInt(dmg))==false)               dmg         = 0;
+    if (typeof pen === 'undefined' || Number.isInteger(parseInt(pen))==false)               pen         = 0;
+    if (typeof modifier === 'undefined' || Number.isInteger(parseInt(modifier))==false)     modifier    = 0;
+    if (typeof special === 'undefined' || typeof special != 'string' )                      special     = '';
+    if (typeof quality === 'undefined' || typeof quality != 'string' )                      quality     = 'common';
+    if (typeof talents === 'undefined' || typeof talents != 'string' )                      talents     = '';
+    if (typeof wpnname === 'undefined' || typeof wpnname != 'string' )                      wpnname     = 'generic';
+    if (typeof type === 'undefined' || typeof type != 'string' )                            type        = 'unk';
     
-    //var special2 = "Flame, Indirect(4), Sanctified, Twin-Linked";  //test string
     var roll = randomInteger(100);
     var i, j, k, cur, sub, temp, temp2; //loop control and temporary variables
     var error=false;
@@ -57,7 +56,9 @@ ranged40kNamespace.rollResult = function(token, attribute, wpnname, range, shots
     var scatstring='';
     var qualstring='';
     var rfstring='';
-    var specialArray = special.split(',');
+    var talstring='';
+    var specialArray = special.split('.');
+    var talentArray = talents.split('.');
     var superUnreliable=false;
     var attributeArray = {
         "Accurate": false,
@@ -104,7 +105,41 @@ ranged40kNamespace.rollResult = function(token, attribute, wpnname, range, shots
         "Unwieldy": false,
         "Vengeful": 10
     };
-
+    var ttArray = {
+        "assassinstrike": false,
+        "blademaster": false,
+        "brutalcharge": false,
+        "deathdealer": false,
+        "battlerage": false,
+        "combatmaster": false,
+        "counterattack": false,
+        "crushingblow": false,
+        "deathdealer": false,
+        "devastatingassault": false,
+        "disarm": false,
+        "doudbleteam": false,
+        "eyeofvengeance": false,
+        "frenzy": false,
+        "hammerblow": false,
+        "hatred": false,
+        "hipshooting": false,
+        "independenttargeting": false,
+        "inescapableattack": false,
+        "killingstrike": false,
+        "lightningattack": false,
+        "marksman": false,
+        "mightyshot": false,
+        "nowheretohide": false,
+        "precisionkiller": false,
+        "preturnaturalspeed": false,
+        "swiftattack": false,
+        "takedown": false,
+        "targetselection": false,
+        "thundercharge": false,
+        "weapontech": false,
+        "whirlwindofdeath": false
+    };   
+    
 
     // Flags values in the special array to values in the attribute array
     for (i = 0, j = specialArray.length; i < j; i++) {
@@ -119,7 +154,18 @@ ranged40kNamespace.rollResult = function(token, attribute, wpnname, range, shots
         }
     }
 
-
+    // Flags values in the talent array to values in the tt array
+    for (i = 0, j = talentArray.length; i < j; i++) {
+        talentArray[i] = talentArray[i].replace(/^\s+|\s+$/g, '');    //remove whitespace
+        sub = talentArray[i].match(/\d/);                              //find any numbers in parentheses
+        talentArray[i] = talentArray[i].replace(/\(([^)]+)\)/g, '');  //remove parentheses and anything inside
+        cur = talentArray[i];                                          
+        if(sub != null){                                                //if there was a number in parentheses, set the array location equal to that number, otherwise set it as true
+            ttArray[cur] = sub;
+        } else {
+            ttArray[cur] = true;  
+        }
+    }
 
     //Add firing mode modifier & set jam threshold
     if(shotsel == 0){
@@ -158,7 +204,18 @@ ranged40kNamespace.rollResult = function(token, attribute, wpnname, range, shots
         //If the user selected Maximal Full-Auto
         boundmod = -10;
         jamthreshold = 94;
-    }  else{
+    } else if (shotsel == 9 && ttArray['precisionkiller']==false){
+        //If the user selected Called Shot w/o Precision Killer
+        boundmod = -20;
+        jamthreshold = 96;
+    } else if (shotsel == 9 && ttArray['precisionkiller']==true){
+        //If the user selected Called Shot w/ Precision Killer
+        jamthreshold = 96;
+    } else if (shotsel == 10 || shotsel==11){
+        //If the user selected Semi or Full Supressive Fire
+        boundmod = -20;
+        jamthreshold= 94;
+    } else{
         error=true;
         errortext="ERROR: Invalid Firing Mode Selection"
     }
@@ -166,24 +223,15 @@ ranged40kNamespace.rollResult = function(token, attribute, wpnname, range, shots
 
     
     //Add Range calculation modifier
-    if(range==0){
-        //Melee range
-    } else if (range==1){
-        //Point-Blank range
-        boundmod = parseInt(boundmod)+parseInt(30);
-    } else if (range==2){
-        //Short Range
-        boundmod = parseInt(boundmod)+parseInt(10);
-    } else if (range==3){
-        //Normal Range
-        boundmod = parseInt(boundmod)+parseInt(0);
-    } else if (range==4){
-        //Long Range
-        boundmod = parseInt(boundmod)+parseInt(-10);
-    } else if (range==5){
-        //Extreme Range
-        boundmod = parseInt(boundmod)+parseInt(-30);
-    } else{
+    if(range==0){boundmod = parseInt(boundmod)+0;}
+    else if (range==1){boundmod = parseInt(boundmod)+parseInt(30);}
+    else if (range==2){boundmod = parseInt(boundmod)+parseInt(10);}
+    else if (range==3){boundmod = parseInt(boundmod)+parseInt(0);}
+    else if (range==4 && ttArray['marksman']==false){boundmod = parseInt(boundmod)+parseInt(-10);}
+    else if (range==4 && ttArray['marksman']==true){boundmod = parseInt(boundmod)+0;} 
+    else if (range==5 && ttArray['marksman']==false){boundmod = parseInt(boundmod)+parseInt(-30);}
+    else if (range==5 && ttArray['marksman']==true){boundmod = parseInt(boundmod)+0;} 
+    else{
         error=true;
         errortext="ERROR: Invalid Range Selection"
     }
@@ -217,9 +265,8 @@ ranged40kNamespace.rollResult = function(token, attribute, wpnname, range, shots
     
     if(superUnreliable==true && attributeArray['Overheats']==false){jamthreshold=modTarget;}
     else if(attributeArray['Overheats']==true||quality=="best"){jamthreshold=999;}
-    else if(attributeArray['Reliable']==true){jamthreshold==100;}
-    else if(attributeArray['Unreliable']==true && quality!='poor'){jamthreshold==91;}
-    
+    else if(attributeArray['Reliable']==true){jamthreshold=100;}
+    else if(attributeArray['Unreliable']==true && quality!='poor'){jamthreshold=91;}
     
     //Calculate Hit/Miss/Jam & DoS/DoF
     if(attributeArray['Spray']==true){
@@ -264,6 +311,12 @@ ranged40kNamespace.rollResult = function(token, attribute, wpnname, range, shots
     else if(attributeArray['Scatter']==true && range>=3 )    {dmg=parseInt(dmg)-3;}
     //If 'Tearing':
     if(attributeArray['Tearing']==true){numdice=parseInt(numdice)+1;}
+    //If 'Mighty Shot'
+    if(ttArray['mightyshot']==true){
+        sub=Math.floor(attribute/10);
+        sub=Math.ceil(sub/2);
+        dmg=parseInt(dmg)+parseInt(sub);
+    }
 
 
     
@@ -298,7 +351,7 @@ ranged40kNamespace.rollResult = function(token, attribute, wpnname, range, shots
             numhits=0;
         }
     }
-    else if( (shotsel == 0 || shotsel==3 || shotsel==6)&& hit==true && error==false ) {
+    else if( (shotsel == 0 || shotsel==3 || shotsel==6 || shotsel==9)&& hit==true && error==false ) {
         //If the user selected Standard Attack and hit
         if(single ==='S'){
             numhits = 1;     
@@ -307,7 +360,7 @@ ranged40kNamespace.rollResult = function(token, attribute, wpnname, range, shots
             errortext="ERROR: INVALID FIRING MODE (S)";
             numhits=0;
         }
-    } else if ( (shotsel == 1 || shotsel==4 || shotsel==7 ) && hit==true && error==false ) {
+    } else if ( (shotsel == 1 || shotsel==4 || shotsel==7 || shotsel==10) && hit==true && error==false ) {
         //If the user selected Semi-Auto and hit
         if(semi!=1 && semi!=2 && semi!=3 && semi!=4 && semi!=5 && semi!=6 && semi!=7 && semi!=8 && semi!=9&& semi!=10){
             numhits = 0;
@@ -321,7 +374,7 @@ ranged40kNamespace.rollResult = function(token, attribute, wpnname, range, shots
         else {
             numhits = parseInt(semi);
         }
-    } else if ( (shotsel == 2 || shotsel==5 || shotsel==8 ) && hit==true && error==false ){
+    } else if ( (shotsel == 2 || shotsel==5 || shotsel==8) && hit==true && error==false ){
         //If the user selected Full-Auto and hit
         if(full!=1 && full!=2 && full!=3 && full!=4 && full!=5 && full!=6 && full!=7 && full!=8 && full!=9&& full!=10){
             numhits = 0;
@@ -335,13 +388,27 @@ ranged40kNamespace.rollResult = function(token, attribute, wpnname, range, shots
         else {
             numhits = parseInt(full);
         }
+    } else if ( shotsel==11 && hit==true && error==false ){
+        //If the user selected Full-Auto Suppressive Fire and hit
+        if(full!=1 && full!=2 && full!=3 && full!=4 && full!=5 && full!=6 && full!=7 && full!=8 && full!=9&& full!=10){
+            numhits = 0;
+            error=true;
+            errortext="ERROR: INVALID FIRING MODE (full)";
+        }
+        else if(semicalc < full)
+        {
+            numhits = semicalc;
+        }
+        else {
+            numhits = parseInt(full);
+        }
     }
     
     
     
     //Calculate # of Scatter Damage rolls required
     if(spray==true){scathits=0;}
-    else if( (shotsel == 0 || shotsel==3 || shotsel==6 ) && scatter==true && jam==false && error==false){
+    else if( (shotsel == 0 || shotsel==3 || shotsel==6 || shotsel==9) && scatter==true && jam==false && error==false){
         //if the user selected Single-shot and missed with a scattering weapon
         if(single ==='S'){
             scathits = 1-numhits;     
@@ -350,7 +417,7 @@ ranged40kNamespace.rollResult = function(token, attribute, wpnname, range, shots
             errortext="ERROR: INVALID FIRING MODE";
             numhits=0;
         }
-    } else if( (shotsel == 1 || shotsel==4 || shotsel==7 ) && scatter==true && jam==false && error==false){
+    } else if( (shotsel==1||shotsel==4||shotsel==7||shotsel==10||shotsel==11) && scatter==true && jam==false && error==false){
         //If the user selected Semi-Auto and missed with a scattering weapon
         if(parseInt(semi)==0){
             numhits = 0;
@@ -384,28 +451,19 @@ ranged40kNamespace.rollResult = function(token, attribute, wpnname, range, shots
     temp = Math.floor(roll/10); //Store 10s place
     temp2 = roll - temp*10;     //Store 1s place
     temp = temp2*10+temp;       //swap 10s and 1s place
-    if( (attributeArray['Blast']!=-1 && scathits!=0)||(scatter==true && attributeArray['Blast']==-1)||spray==true||attributeArray['Smoke']!=-1 ){ //scattering/Blast weapons always hit the body
-        var hitloc = ["Body","Body","Body","Body","Body","Body","Body","Body","Body","Body"];
-    } else if(temp <= 10) {
-        var hitloc = ["Head","Head","Left Arm","Body","Right Arm","Body","Body","Body","Body","Body"];
-    } else if(10 < temp && temp <= 20){
-        var hitloc = ["Right Arm","Right Arm","Body","Head","Body","Left Arm","Left Arm","Left Arm","Left Arm","Left Arm"];
-    } else if(20 < temp && temp <= 30){
-        var hitloc = ["Left Arm","Left Arm","Body","Head","Body","Right Arm","Right Arm","Right Arm","Right Arm","Right Arm"];
-    } else if(30 < temp && temp <= 70){
-        var hitloc = ["Body","Body","Right Arm","Head","Left Arm","Body","Body","Body","Body","Body"];
-    } else if(70 < temp && temp <= 85){
-        var hitloc = ["Right Leg","Right Leg","Body","Right Arm","Head","Body","Body","Body","Body","Body"];
-    } else if(85 < temp && temp <= 100){
-        var hitloc = ["Left Leg","Left Leg","Body","Left Arm","Head","Body","Body","Body","Body","Body"];
-    } else{
+    if(shotsel==9){var hitloc = ["chosen location", "chosen location", "chosen location"];}
+    else if( (attributeArray['Blast']!=-1 && scathits!=0)||(scatter==true && attributeArray['Blast']==-1)||spray==true||attributeArray['Smoke']!=-1 ){var hitloc = ["Body","Body","Body","Body","Body","Body","Body","Body","Body","Body"];} 
+    else if(temp <= 10) {var hitloc = ["Head","Head","Left Arm","Body","Right Arm","Body","Body","Body","Body","Body"];} 
+    else if(10 < temp && temp <= 20){var hitloc = ["Right Arm","Right Arm","Body","Head","Body","Left Arm","Left Arm","Left Arm","Left Arm","Left Arm"];} 
+    else if(20 < temp && temp <= 30){var hitloc = ["Left Arm","Left Arm","Body","Head","Body","Right Arm","Right Arm","Right Arm","Right Arm","Right Arm"];}
+    else if(30 < temp && temp <= 70){var hitloc = ["Body","Body","Right Arm","Head","Left Arm","Body","Body","Body","Body","Body"];} 
+    else if(70 < temp && temp <= 85){var hitloc = ["Right Leg","Right Leg","Body","Right Arm","Head","Body","Body","Body","Body","Body"];} 
+    else if(85 < temp && temp <= 100){var hitloc = ["Left Leg","Left Leg","Body","Left Arm","Head","Body","Body","Body","Body","Body"];} 
+    else{
         error=true;
         errortext="ERROR: BAD HIT LOCATION";
     }
     
-    
-    //Store BS Mod
-    sub=Math.floor(attribute/10);
     
     //format damage rolls
     cur=parseInt(numhits)+parseInt(scathits);
@@ -495,7 +553,14 @@ ranged40kNamespace.rollResult = function(token, attribute, wpnname, range, shots
         }
     }
   
-    //Add additional Weapon Modifiers to the string
+    //Add additional Weapon Modifiers/Firing Modes/Talents to the string
+    //Check Suppressive Fire
+    if(shotsel==10 && jam==false){
+        qualstring = qualstring  + " --Suppressing: | User establishes a 30-degree kill zone. All targets in the area must make a Pinning test at -10. This attack deals damage to random targets in the kill zone.";  
+    }
+    if(shotsel==11 && jam==false){
+        qualstring = qualstring  + " --Suppressing: | User establishes a 45-degree kill zone. All targets in the area must make a Pinning test at -20. This attack deals damage to random targets in the kill zone.";  
+    }
     //Check for 'Blast' quality
     if(attributeArray['Blast'] != -1 && jam==false){
         qualstring = qualstring  + " --Blast: | Does damage to all targets within "+attributeArray['Blast']+" meters of the point hit; Scatters on miss";  
@@ -654,38 +719,92 @@ ranged40kNamespace.rollResult = function(token, attribute, wpnname, range, shots
     }
     
     
+    //Add talent descriptions
+    talstring = " --Applicable Talents: |";
+    //Deathdealer
+    if(ttArray['deathdealer']==true && (hit==true||scatter==true) && jam==false){
+        talstring = talstring  + "Deathdealer(+PB to crit), ";  
+    }
+    //Doubletap
+    if(ttArray['doubletap']==true && hit==true && jam==false){
+        talstring = talstring  + "DoubleTap(+20hit 2nd atk), ";  
+    }
+    //Eye of Vengeance
+    if(ttArray['eyeofvengeance']==true && (shotsel==0||shotsel==3||shotsel==6||shotsel==9) ){
+        talstring = talstring  + "EyeofVengeance(spend FP to +dmg/pen), ";  
+    }
+    //Hip Shooting
+    if(ttArray['hipshooting']==true && (shotsel==0||shotsel==3||shotsel==6||shotsel==9) ){
+        talstring = talstring  + "HipShooting(FuMv+Std Atk), ";  
+    }
+    //Hip Shooting
+    if(ttArray['independenttargeting']==true){
+        talstring = talstring  + "IndepTargeting(>10m targets), ";  
+    }
+    //Inescapable attack
+    if(ttArray['inescapableattack']==true && (shotsel==0||shotsel==3||shotsel==6||shotsel==9) && (hit==true||scatter==true) && jam==false){
+        talstring = talstring  + "InescapableAtk("+(-10*parseInt(degOfSuc))+" evasion penalty), ";  
+    }
+    //Marksman
+    if(ttArray['marksman']==true && range>3){
+        talstring = talstring  + "Marksman(no penalty lng/ext range), ";  
+    }
+    //Mighty Shot
+    if(ttArray['mightyshot']==true && (hit==true||scatter==true) && jam==false){
+        talstring = talstring  + "MightyShot(+BS/2 dmg), ";  
+    }
+    //Nowhere to Hide
+    if(ttArray['nowheretohide']==true && (hit==true||scatter==true) && jam==false){
+        talstring = talstring  + "NowhereToHide(damages cover), ";  
+    }
+    //Precision Killer
+    if(ttArray['precisionkiller']==true && shotsel==9){
+        talstring = talstring  + "PrecisionKiller(no penalty Called Shot), ";  
+    }
+    //Target Selection
+    if(ttArray['targetselection']==true ){
+        talstring = talstring  + "TargetSelection(no penalty fire into melee), ";  
+    }
+    //Weapon Tech
+    if(ttArray['weapontech']==true && (hit==true||scatter==true) && jam==false){
+        talstring = talstring  + "WpnTech(enhance certain wpns 1/combat), ";  
+    }
     
     //Set the text output sub-headings
-    if(shotsel==0){temp="Std Shot";}
-    else if(shotsel==1){temp="Semi-Auto";}
-    else if(shotsel==2){temp="Full-Auto";}
-    else if(shotsel==3){temp="Indirect Std";}
-    else if(shotsel==4){temp="Indirect Semi-Auto";}
-    else if(shotsel==5){temp="Indirect Full-Auto";}
-    else if(shotsel==6){temp="Maximal Std";}
-    else if(shotsel==7){temp="Maximal Semi-Auto";}
-    else if(shotsel==8){temp="Maximal Full-Auto";}
-    else if(shotsel==9){temp="Aimed Accurate Shot";}
+    if(shotsel==0){temp="Std";}
+    else if(shotsel==1){temp="SA";}
+    else if(shotsel==2){temp="FA";}
+    else if(shotsel==3){temp="Ind Std";}
+    else if(shotsel==4){temp="Ind SA";}
+    else if(shotsel==5){temp="Ind FA";}
+    else if(shotsel==6){temp="Max Std";}
+    else if(shotsel==7){temp="Max SA";}
+    else if(shotsel==8){temp="Max FA";}
+    else if(shotsel==9){temp="Called";}
+    else if(shotsel==10){temp="SA Sup";}
+    else if(shotsel==11){temp="FA Sup";}
     
-    if(range==0){temp2="Melee Range";}
-    else if(range==1){temp2="Point Blank Range";}
-    else if(range==2){temp2="Short Range";}
-    else if(range==3){temp2="Normal Range";}
-    else if(range==4){temp2="Long Range";}
-    else if(range==5){temp2="Extreme Range";}
+    if(range==0){temp2="Melee Rng";}
+    else if(range==1){temp2="PB Rng";}
+    else if(range==2){temp2="Short Rng";}
+    else if(range==3){temp2="Normal Rng";}
+    else if(range==4){temp2="Long Rng";}
+    else if(range==5){temp2="Extreme Rng";}
+    
+    temp = temp + " @ " +temp2;
 
     if(spray==true){
         sub=''
     } else{
         sub=" --Roll:| [! "+roll+" !] vs [! "+modTarget+" !] --Result:|"+output;
     }
-    
+
     //Return output
     if(error==true){
       output = errortext; 
     }
     else {
-        output ="!power {{--format|ranged --titlefontshadow|none --name|"+token+" --leftsub| "+temp+"  --rightsub| "+temp2+sub+dmgstring+scatstring+qualstring+" }}";
+        output ="!power {{--format|ranged --titlefontshadow|none --name|"+token+" --leftsub| "+wpnname+"  --rightsub| "+temp+sub+dmgstring+scatstring+qualstring+talstring+" }}";
         //output="suck it";
         
     }
