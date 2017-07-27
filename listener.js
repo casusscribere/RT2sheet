@@ -11,13 +11,14 @@ on("chat:message", function(msg) {
     var cmdName;
     var msgTxt;
     var paramList;
+    var result='';
     msgTxt = msg.content;
     if (msg.type !== "api") return;
-    else if (msgTxt.split(" ", 1)[0] === "!skill40k") {
+    if (msgTxt.split(" ", 1)[0] === "!skill40k") {
         cmdName = '!skill40k ';
         paramList = msgTxt.slice(cmdName.length);
         if(paramList.indexOf(',') == -1) {
-            sendChat(msg.who, '/w ' + msg.who + ' must specify four comma-separated parameters for !skill40k command.');
+            result=' must specify 13 comma-separated parameters for !melee40k command.';
         }
         else {
             var paramArray    = paramList.split(',');
@@ -36,17 +37,16 @@ on("chat:message", function(msg) {
                     format = listener40kNamespace.trimString(current);
                 } else if(i==5){
                     mode = listener40kNamespace.trimString(current);
-                }  else {}
+                }
             });
-            var result = skill40kNamespace.rollResult(curToken, attribute, modifier, attributename, format, mode, msgwho);
-            sendChat(msg.who, result); 
+            result = skill40kNamespace.rollResult(curToken, attribute, modifier, attributename, format, mode, msgwho);
         }
     }
     else if (msgTxt.split(" ", 1)[0] === "!ranged40k") {
         cmdName = '!ranged40k ';
         var paramList = msgTxt.slice(cmdName.length);
         if(paramList.indexOf(',') == -1) {
-            sendChat(msg.who, '/w ' + msg.who + ' must specify 13 comma-separated parameters for !ranged40k command.');
+            result=' must specify 13 comma-separated parameters for !melee40k command.';
         }
         else {
             var paramArray = paramList.split(',');
@@ -89,15 +89,14 @@ on("chat:message", function(msg) {
                     type = listener40kNamespace.trimString(current);
                 }
             });
-            var result = ranged40kNamespace.rollResult(curToken, attribute, range, shotsel, single, semi, full, numdice, dice, dmg, pen, modifier, special, quality, talents, wpnname, type );
-            sendChat(msg.who, result);
+            result = ranged40kNamespace.rollResult(curToken, attribute, range, shotsel, single, semi, full, numdice, dice, dmg, pen, modifier, special, quality, talents, wpnname, type );
         }
     }
     else if (msgTxt.split(" ", 1)[0] === "!melee40k") {
         cmdName = '!melee40k ';
         var paramList = msgTxt.slice(cmdName.length);
         if(paramList.indexOf(',') == -1) {
-            sendChat(msg.who, '/w ' + msg.who + ' must specify 13 comma-separated parameters for !melee40k command.');
+            result=' must specify 13 comma-separated parameters for !melee40k command.';
         }
         else {
             var paramArray = paramList.split(',');
@@ -136,10 +135,10 @@ on("chat:message", function(msg) {
                     psy = listener40kNamespace.trimString(current);
                 }
             });
-            var result = melee40kNamespace.rollResult(curToken, attribute, shotsel, numdice, dice, dmg, pen, str, modifier, special, quality, talents, wpnname, type, psy);
-            sendChat(msg.who, result);
+            result = melee40kNamespace.rollResult(curToken, attribute, shotsel, numdice, dice, dmg, pen, str, modifier, special, quality, talents, wpnname, type, psy);
         }
     }
+    sendChat(msg.who, result);
 });
 
 /** Trims a string **/
