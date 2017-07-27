@@ -1,6 +1,14 @@
 @font-face{ font-family: trajan_reg; src: url("../fonts/TrajanPro-Regular.otf"); }
 /*header radio pill stylings */
 
+/*.ui-dialog .charsheet button[type=roll]:before { content: ""; }*/
+.sheet-sfroll1 button[type=roll]::before { 
+    content: ""!important; 
+    background-image: url("http://kirklundblade.com/RogueTrader/singleshot.png");
+}
+
+.sheet-sfroll1 button[type=roll]{background-image: url("http://kirklundblade.com/RogueTrader/singleshot.png");}
+
 .sheet-sheetsel {
     width: 70px;
     height: 20px !important;
@@ -40,16 +48,16 @@
 }
 
 .sheet-sheetsel:checked + .sheet-pilltext{   
-    border-color: #3072b3;
+    border-color: #394b5f;
     border-bottom-color: #2a65a0;
     text-decoration: none;
     text-shadow: -1px -1px 0 rgba(0,0,0,0.3);
     color: #fff;
     background-color: #3c8dde;
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#599bdc), to(#3072b3));
-    background-image: -moz-linear-gradient(#599bdc, #3072b3);
-    background-image: -o-linear-gradient(#599bdc, #3072b3);
-    background-image: linear-gradient(#599bdc, #3072b3);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#90a9c6), to(#394b5f));
+    background-image: -moz-linear-gradient(#90a9c6, #394b5f);
+    background-image: -o-linear-gradient(#90a9c6, #394b5f);
+    background-image: linear-gradient(#90a9c6, #394b5f);
 }
 
 .sheet-viewsel:checked ~ .sheet-viewwrapper{
@@ -78,7 +86,7 @@
 }
 
 .charsheet {
-    background-image: url("http://wallpapercave.com/wp/wQub3px.jpg");
+    background-color:#fdfdf8;
 }
 
 
@@ -86,7 +94,7 @@
 
 .sheet-viewwrapper {
    /* background-color: #DDDDDD;*/
-    color: #330000;
+    color: #394b5f;
 }
 
 .sheet-viewwrapper button[type="roll"].sheet-lefthiddenroll{
@@ -142,7 +150,7 @@
 .sheet-viewwrapper h4 {
     text-align: center;
     padding: 5px;
-    background-color: #660000;
+    background-color: #394b5f;
     color: #FFFFFF;
 }
 
@@ -158,20 +166,20 @@
 
 .sheet-viewwrapper .sheet-playerfill input {
     border-width: 0px 0px 2px 0px;
-    border-color: #660000;
+    border-color: #394b5f;
 }
 
 .sheet-viewwrapper .sheet-charnum {
     font-size: 200%;
-    background-color: #ffd9b3;
-    border-color: #ffa64d;
-    /*border: 4px solid #ffa64d;*/
+    background-color: #90a9c6;
+    /*border-color: #ffa64d;
+    border: 4px solid #ffa64d;*/
 }
 
 .sheet-viewwrapper .sheet-characteristics{
-    background-color: #ffb84d;
+    background-color: rgba(102,102,102,.3);
     margin: 5px;
-    border: 1px solid #990000;
+    border: 1px solid #394b5f;
     border-radius: 0.5em;
 }
 
@@ -185,8 +193,8 @@
 
 .sheet-viewwrapper .sheet-bg {
 /*background: rgba(102,102,102,.3);*/
-background-color: #ffb84d;
-border: 1px solid #990000;
+background-color: rgba(102,102,102,.3);
+border: 1px solid #394b5f;
 border-radius: 0.5em;
 margin: 5px 0 5px 0;
 }
@@ -196,10 +204,16 @@ margin: 5px 0 5px 0;
 }
 
 .sheet-viewwrapper .sheet-skills input {
-    color: #330000;
+    color: #394b5f;
     font-family: trajan_reg;
 }
-
+/*
+.sheet-viewwrapper .sheet-row.sheet-header {
+    background-color: #434343;
+    color: #FFFFFF;
+}
+*/
+/* Display certain roll buttons for attacks */
 
 .sheet-viewwrapper .sheet-wpnselsf:checked ~ .sheet-sfroll1{
     display: inline-block;
@@ -429,7 +443,12 @@ margin: 5px 0 5px 0;
 
 /*Data entry stylings */
 
-
+.sheet-inputwrapper {
+    color: #394b5f;
+    font-size: 9px;
+    /*font-weight: bold;*/
+    font-family: trajan_reg;
+}
 
 .sheet-inputwrapper .sheet-spindisable::-webkit-inner-spin-button,
 .sheet-inputwrapper .sheet-spindisable::-webkit-outer-spin-button {
@@ -450,7 +469,7 @@ margin: 5px 0 5px 0;
 
 .sheet-inputwrapper .sheet-item{
     display: inline-block;
-    font:9px/normal sans-serif;
+    /*font:9px/normal sans-serif;*/
 }
 
 .sheet-inputwrapper .sheet-row {
@@ -467,8 +486,8 @@ margin: 5px 0 5px 0;
 
 .sheet-inputwrapper .sheet-bg {
 /*background: rgba(102,102,102,.3);*/
-background-color: #ffb84d;
-border: 1px solid #990000;
+background-color: rgba(102,102,102,.3);
+border: 1px solid #394b5f;
 border-radius: 0.5em;
 margin: 5px -2px 5px -2px;
 }
@@ -488,13 +507,13 @@ margin: 5px -2px 5px -2px;
     height: inherit;
     display: inline-block;
     border-width: 0px 0px 2px 0px;
-    border-color: #660000;
+    border-color: #394b5f;
 }
 
 .sheet-shipwrapper .sheet-bg {
 /*background: rgba(102,102,102,.3);*/
-background-color: #ffb84d;
-border: 1px solid #990000;
+background-color: rgba(102,102,102,.3);
+border: 1px solid #394b5f;
 border-radius: 0.5em;
 margin: 5px -2px 5px -2px;
 }
@@ -531,7 +550,7 @@ div.userscript-showtip.userscript-tipsy {
 }
 
 .sheet-rolltemplate-check th {
-	background-color: #660000;
+	background-color: #394b5f;
 	color: #ffffff;
 	padding: 2px;
 	/*border-bottom: 1px solid black;*/
@@ -577,7 +596,7 @@ div.userscript-showtip.userscript-tipsy {
     -moz-border-radius: 10px
     -webkit-border-radius: 10px;
     overflow: hidden; /*notice*/
-    background-color: #660000;
+    background-color: #394b5f;
 }
 
 /*
