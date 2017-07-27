@@ -137,7 +137,9 @@
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:40%"><span>Acrobatics (Ag)</span></div>
                         <div class="sheet-item" style="width:15%"><span name="attr_AcrobaticsScore"></span></div>
-                        <div class="sheet-item" style="width:15%; position:relative"><button class='skillchal' type='roll' value='!skill40k @{charname},@{AcrobaticsScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Acrobatics, skill' name='roll_AcrobaticsCheck'></button><span class="skillchal"></span></div>
+                        <!--<div class="sheet-item" style="width:15%; position:relative"><button class='skillchal' type='roll' value='!skill40k @{charname},@{AcrobaticsScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Acrobatics, skill' name='roll_AcrobaticsCheck'></button><span class="skillchal"></span></div>
+                        --><div class="sheet-item" style="width:10%;"><button type='roll' value='!skill40k @{charname},@{AcrobaticsScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Acrobatics, skill' name='roll_AcrobaticsCheck'></button></div>
+                   
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Athletics (S)</span></div>
@@ -339,15 +341,15 @@
             <input type="checkbox" name="attr_wpnpwrsel1" class="sheet-wpnpwrsel1" checked style="width: 100%">
             <input type="checkbox" name="attr_wpnpwrsel2" class="sheet-wpnpwrsel2" checked style="width: 100%">
             <span class="sheet-wpnsel1 sheet-bg">
-                <div class="sheet-row">
+                <div class="sheet-row sheet-header">
                     <input type="checkbox" name="attr_wpnselsf1" value="1" style="display:none;" class="wpnselsf">
                     <input type="checkbox" name="attr_wpnselsa1" value="1" style="display:none;" class="wpnselsa">
                     <input type="checkbox" name="attr_wpnselfa1" value="1" style="display:none;" class="wpnselfa">
                     <input type="checkbox" name="attr_wpnselmx1" value="1" style="display:none;" class="wpnselmx">
                     <input type="checkbox" name="attr_wpnselid1" value="1" style="display:none;" class="wpnselid">
                     <input type="checkbox" name="attr_wpnselme1" value="1" style="display:none;" class="wpnselme">
-                    <input type="checkbox" name="attr_wpnselsw1" value="1" class="wpnselsw">
-                    <input type="checkbox" name="attr_wpnsella1" value="1" class="wpnsella">
+                    <input type="checkbox" name="attr_wpnselsw1" value="1" style="display:none;" class="wpnselsw">
+                    <input type="checkbox" name="attr_wpnsella1" value="1" style="display:none;" class="wpnsella">
                     <input type="checkbox" name="attr_wpnselrg1" value="1" style="display:none;" class="wpnselrg">
                     <div class="sheet-item sheet-rangedrop1" style="width:20%">
                         <select name="attr_dispwpncurrng1" style="width:100%;">
@@ -361,21 +363,23 @@
                     </div>
                     <div class="sheet-item" style="width:0%"><input name="attr_dispwpnmxstr1" type="text" value="?{Fire Selection(Maximal)|Standard, 6|Semi-Auto, 7|Full-Auto, 8}" style="display: none;"></div>
                     <div class="sheet-item" style="width:0%"><input name="attr_dispwpnidstr1" type="text" value="?{Fire Selection(Indirect)|Standard, 3|Semi-Auto, 4|Full-Auto, 5}" style="display: none;"></div>
-                    <div class="sheet-item sheet-sfroll1" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill},@{dispwpnname1}, @{dispwpncurrng1}, 0, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1}, @{dispwpndmgtype1}, @{dispwpnpen1}, ?{Modifers (except Range & RoF)|0}, @{dispwpnquality1}, @{dispwpnspecial1}' name='roll_StdAttack'></button></div>
-                    <div class="sheet-item sheet-saroll1" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill},@{dispwpnname1}, @{dispwpncurrng1}, 1, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1}, @{dispwpndmgtype1}, @{dispwpnpen1}, ?{Modifers (except Range & RoF)|0}, @{dispwpnquality1}, @{dispwpnspecial1}' name='roll_SemiAttack'></button></div>
-                    <div class="sheet-item sheet-faroll1" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill},@{dispwpnname1}, @{dispwpncurrng1}, 2, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1}, @{dispwpndmgtype1}, @{dispwpnpen1}, ?{Modifers (except Range & RoF)|0}, @{dispwpnquality1}, @{dispwpnspecial1}' name='roll_FullAttack'></button></div>
-                    <div class="sheet-item sheet-idroll1" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill},@{dispwpnname1}, @{dispwpncurrng1}, @{dispwpnidstr1}, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1}, @{dispwpndmgtype1}, @{dispwpnpen1}, ?{Modifers (except Range & RoF)|0}, @{dispwpnquality1}, @{dispwpnspecial1}' name='roll_IndirectAttack'></button></div>
-                    <div class="sheet-item sheet-mxroll1" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill},@{dispwpnname1}, @{dispwpncurrng1}, @{dispwpnmxstr1}, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1}, @{dispwpndmgtype1}, @{dispwpnpen1}, ?{Modifers (except Range & RoF)|0}, @{dispwpnquality1}, @{dispwpnspecial1}' name='roll_MaximalAttack'></button></div>
-                    <div class="sheet-item sheet-stroll1" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname1}, 0, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1}, @{dispwpndmgtype1}, @{dispwpnpen1}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality1}, @{dispwpnspecial1}' name='roll_StdMelee'></button></div>
-                    <div class="sheet-item sheet-swroll1" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname1}, 1, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1}, @{dispwpndmgtype1}, @{dispwpnpen1}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality1}, @{dispwpnspecial1}' name='roll_SwaMelee'></button></div>
-                    <div class="sheet-item sheet-laroll1" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname1}, 2, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1}, @{dispwpndmgtype1}, @{dispwpnpen1}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality1}, @{dispwpnspecial1}' name='roll_LitMelee'></button></div>
-                    <div class="sheet-item sheet-stroll1" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname1}, 3, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1}, @{dispwpndmgtype1}, @{dispwpnpen1}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality1}, @{dispwpnspecial1}' name='roll_AllMelee'></button></div>
-                    <div class="sheet-item sheet-stroll1" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname1}, 4, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1}, @{dispwpndmgtype1}, @{dispwpnpen1}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality1}, @{dispwpnspecial1}' name='roll_CalMelee'></button></div>
-                    <div class="sheet-item sheet-stroll1" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname1}, 5, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1}, @{dispwpndmgtype1}, @{dispwpnpen1}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality1}, @{dispwpnspecial1}' name='roll_ChaMelee'></button></div>
-                    <div class="sheet-item sheet-stroll1" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname1}, 6, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1}, @{dispwpndmgtype1}, @{dispwpnpen1}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality1}, @{dispwpnspecial1}' name='roll_FeiMelee'></button></div>
-                    <div class="sheet-item sheet-stroll1" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname1}, 7, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1}, @{dispwpndmgtype1}, @{dispwpnpen1}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality1}, @{dispwpnspecial1}' name='roll_StuMelee'></button></div>
-                    <div class="sheet-item sheet-stroll1" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname1}, 8, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1}, @{dispwpndmgtype1}, @{dispwpnpen1}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality1}, @{dispwpnspecial1}' name='roll_ParMelee'></button></div>
-                             
+                    <div class="sheet-item sheet-sfroll1" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng1}, 0, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}' name='roll_StdRanged'></button></div>
+                    <div class="sheet-item sheet-saroll1" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng1}, 1, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}' name='roll_SemiRanged'></button></div>
+                    <div class="sheet-item sheet-faroll1" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng1}, 2, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}' name='roll_FullRanged'></button></div>
+                    <div class="sheet-item sheet-idroll1" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng1}, @{dispwpnidstr1}, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}' name='roll_IndirectRanged'></button></div>
+                    <div class="sheet-item sheet-mxroll1" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng1}, @{dispwpnmxstr1}, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}' name='roll_MaximalRanged'></button></div>
+                    <div class="sheet-item sheet-sfroll1" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng1}, 9, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}' name='roll_CalledRanged'></button></div>
+                    <div class="sheet-item sheet-saroll1" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng1}, 10, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}' name='roll_SemiSupRanged'></button></div>
+                    <div class="sheet-item sheet-faroll1" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng1}, 11, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}' name='roll_FullSupRanged'></button></div>
+                    <div class="sheet-item sheet-stroll1" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 0, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}, @{Psy}' name='roll_StdMelee'></button></div>
+                    <div class="sheet-item sheet-swroll1" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 1, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}, @{Psy}' name='roll_StdMelee'></button></div>
+                    <div class="sheet-item sheet-laroll1" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 2, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}, @{Psy}' name='roll_StdMelee'></button></div>
+                    <div class="sheet-item sheet-stroll1" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 3, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}, @{Psy}' name='roll_AllMelee'></button></div>
+                    <div class="sheet-item sheet-stroll1" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, ?{Select an Action|Charge, 5|Called Strike, 4|Feint, 6|Stun, 7|Disarm, 9}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}, @{Psy}' name='roll_CalMelee'></button></div>
+                    <!--<div class="sheet-item sheet-stroll1" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 5, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}, @{Psy}' name='roll_ChaMelee'></button></div>
+                    <div class="sheet-item sheet-stroll1" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 6, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}, @{Psy}' name='roll_FeiMelee'></button></div>
+                    <div class="sheet-item sheet-stroll1" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 7, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}, @{Psy}' name='roll_StuMelee'></button></div>
+                   --> <div class="sheet-item sheet-stroll1" style="width:10%"><button type='roll' value='!melee40k @{charname},@{ParryScore}, 8, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}, @{Psy}' name='roll_ParMelee'></button></div>
                 </div>
                 <div class="sheet-row">
                     <div class="sheet-item" style="width:34%"><span>Name</span></div>
@@ -438,7 +442,7 @@
                     <div class="sheet-item" style="width:12%"><span name="attr_dispwpnclipmax1"></span></div>
                     <div class="sheet-item" style="width:0%"><input name="attr_dispwpnclipmax1" type="number" value="" style="display: none;"></div>
                     <div class="sheet-item" style="width:10%"><span name="attr_dispwpnweight1"></span></div>
-                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpnweight1" type="number" value="" style="display: none;"></div>
+                    <div class="sheet-item" style="width:0%; display:none;"><input name="attr_dispwpnweight1" type="number" value="" ></div>
                 </div>
                 <div class="sheet-row sheet-wpnsel1">
                     <div class="sheet-item" style="width:79%"><span>Special</span></div>
@@ -446,7 +450,8 @@
                 </div>
                 <div class="sheet-row sheet-wpnsel1">                
                     <div class="sheet-item" style="width:79%"><span name="attr_dispwpnspecial1"></span></div>
-                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpnspecial1" type="text" value="" style="display: none;"></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpnspecial1"     type="text" value="" style="display: none;"></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpnspecialalt1"  type="text" value="" style="display: none;" ></div>
                     <div class="sheet-item" style="width:10%"><span name="attr_dispwpnquality1"></span></div>
                     <div class="sheet-item" style="width:0%">
                         <select style="display:none;" name="attr_dispwpnquality1">
@@ -492,7 +497,7 @@
             </div>
             </span>
             <span class="sheet-wpnsel2 sheet-bg">
-                <div class="sheet-row">
+                <div class="sheet-row sheet-header">
                     <input type="checkbox" name="attr_wpnselsf2" value="1" style="display:none;" class="wpnselsf">
                     <input type="checkbox" name="attr_wpnselsa2" value="1" style="display:none;" class="wpnselsa">
                     <input type="checkbox" name="attr_wpnselfa2" value="1" style="display:none;" class="wpnselfa">
@@ -514,20 +519,24 @@
                     </div>
                     <div class="sheet-item" style="width:0%"><input name="attr_dispwpnmxstr2" type="text" value="?{Fire Selection(Maximal)|Standard, 6|Semi-Auto, 7|Full-Auto, 8}" style="display: none;"></div>
                     <div class="sheet-item" style="width:0%"><input name="attr_dispwpnidstr2" type="text" value="?{Fire Selection(Indirect)|Standard, 3|Semi-Auto, 4|Full-Auto, 5}" style="display: none;"></div>
-                    <div class="sheet-item sheet-sfroll2" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill},@{dispwpnname2},  @{dispwpncurrng2}, 0, @{dispwpnsingleshot2}, @{dispwpnsemishot2}, @{dispwpnautoshot2}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2}, @{dispwpndmgtype2}, @{dispwpnpen2}, ?{Modifers (except Range & RoF)|0}, @{dispwpnquality2}, @{dispwpnspecial2}' name='roll_StdAttack2'></button></div>
-                    <div class="sheet-item sheet-saroll2" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill},@{dispwpnname2},  @{dispwpncurrng2}, 1, @{dispwpnsingleshot2}, @{dispwpnsemishot2}, @{dispwpnautoshot2}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2}, @{dispwpndmgtype2}, @{dispwpnpen2}, ?{Modifers (except Range & RoF)|0}, @{dispwpnquality2}, @{dispwpnspecial2}' name='roll_SemiAttack2'></button></div>
-                    <div class="sheet-item sheet-faroll2" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill},@{dispwpnname2},  @{dispwpncurrng2}, 2, @{dispwpnsingleshot2}, @{dispwpnsemishot2}, @{dispwpnautoshot2}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2}, @{dispwpndmgtype2}, @{dispwpnpen2}, ?{Modifers (except Range & RoF)|0}, @{dispwpnquality2}, @{dispwpnspecial2}' name='roll_FullAttack2'></button></div>
-                    <div class="sheet-item sheet-mxroll2" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill},@{dispwpnname2},  @{dispwpncurrng2}, @{dispwpnmxstr2}, @{dispwpnsingleshot2}, @{dispwpnsemishot2}, @{dispwpnautoshot2}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2}, @{dispwpndmgtype2}, @{dispwpnpen2}, ?{Modifers (except Range & RoF)|0},@{dispwpnquality2}, @{dispwpnspecial2}' name='roll_MaximalAttack2'></button></div>
-                    <div class="sheet-item sheet-idroll2" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill},@{dispwpnname2},  @{dispwpncurrng2}, @{dispwpnidstr2}, @{dispwpnsingleshot2}, @{dispwpnsemishot2}, @{dispwpnautoshot2}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2}, @{dispwpndmgtype2}, @{dispwpnpen2}, ?{Modifers (except Range & RoF)|0},@{dispwpnquality2}, @{dispwpnspecial2}' name='roll_IndirectAttack2'></button></div>
-                    <div class="sheet-item sheet-stroll2" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname2}, 0, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2}, @{dispwpndmgtype2}, @{dispwpnpen2}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality2}, @{dispwpnspecial2}' name='roll_StdMelee'></button></div>
-                    <div class="sheet-item sheet-stroll2" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname2}, 1, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2}, @{dispwpndmgtype2}, @{dispwpnpen2}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality2}, @{dispwpnspecial2}' name='roll_StdMelee'></button></div>
-                    <div class="sheet-item sheet-swroll2" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname2}, 2, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2}, @{dispwpndmgtype2}, @{dispwpnpen2}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality2}, @{dispwpnspecial2}' name='roll_StdMelee'></button></div>
-                    <div class="sheet-item sheet-laroll2" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname2}, 3, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2}, @{dispwpndmgtype2}, @{dispwpnpen2}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality2}, @{dispwpnspecial2}' name='roll_AllMelee'></button></div>
-                    <div class="sheet-item sheet-stroll2" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname2}, 4, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2}, @{dispwpndmgtype2}, @{dispwpnpen2}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality2}, @{dispwpnspecial2}' name='roll_CalMelee'></button></div>
-                    <div class="sheet-item sheet-stroll2" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname2}, 5, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2}, @{dispwpndmgtype2}, @{dispwpnpen2}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality2}, @{dispwpnspecial2}' name='roll_ChaMelee'></button></div>
-                    <div class="sheet-item sheet-stroll2" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname2}, 6, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2}, @{dispwpndmgtype2}, @{dispwpnpen2}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality2}, @{dispwpnspecial2}' name='roll_FeiMelee'></button></div>
-                    <div class="sheet-item sheet-stroll2" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname2}, 7, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2}, @{dispwpndmgtype2}, @{dispwpnpen2}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality2}, @{dispwpnspecial2}' name='roll_StuMelee'></button></div>
-                    <div class="sheet-item sheet-stroll2" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill},@{dispwpnname2}, 8, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2}, @{dispwpndmgtype2}, @{dispwpnpen2}, @{Psy}, @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0}, @{dispwpnquality2}, @{dispwpnspecial2}' name='roll_ParMelee'></button></div>
+                    <div class="sheet-item sheet-sfroll2" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng2}, 0, @{dispwpnsingleshot2}, @{dispwpnsemishot2}, @{dispwpnautoshot2}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}' name='roll_StdAttack'></button></div>
+                    <div class="sheet-item sheet-saroll2" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng2}, 1, @{dispwpnsingleshot2}, @{dispwpnsemishot2}, @{dispwpnautoshot2}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}' name='roll_SemiAttack'></button></div>
+                    <div class="sheet-item sheet-faroll2" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng2}, 2, @{dispwpnsingleshot2}, @{dispwpnsemishot2}, @{dispwpnautoshot2}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}' name='roll_FullAttack'></button></div>
+                    <div class="sheet-item sheet-idroll2" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng2}, @{dispwpnidstr2}, @{dispwpnsingleshot2}, @{dispwpnsemishot2}, @{dispwpnautoshot2}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}' name='roll_IndirectAttack'></button></div>
+                    <div class="sheet-item sheet-mxroll2" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng2}, @{dispwpnmxstr2}, @{dispwpnsingleshot2}, @{dispwpnsemishot2}, @{dispwpnautoshot2}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}' name='roll_MaximalAttack'></button></div>
+                    <div class="sheet-item sheet-sfroll2" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng2}, 9, @{dispwpnsingleshot2}, @{dispwpnsemishot2}, @{dispwpnautoshot2}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}' name='roll_StdAttack'></button></div>
+                    <div class="sheet-item sheet-saroll2" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng2}, 10, @{dispwpnsingleshot2}, @{dispwpnsemishot2}, @{dispwpnautoshot2}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}' name='roll_StdAttack'></button></div>
+                    <div class="sheet-item sheet-faroll2" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng2}, 11, @{dispwpnsingleshot2}, @{dispwpnsemishot2}, @{dispwpnautoshot2}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}' name='roll_StdAttack'></button></div>
+                    
+                    <div class="sheet-item sheet-stroll2" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 0, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}, @{Psy}' name='roll_StdMelee'></button></div>
+                    <div class="sheet-item sheet-swroll2" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 1, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}, @{Psy}' name='roll_StdMelee'></button></div>
+                    <div class="sheet-item sheet-laroll2" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 2, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}, @{Psy}' name='roll_StdMelee'></button></div>
+                    <div class="sheet-item sheet-stroll2" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 3, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}, @{Psy}' name='roll_AllMelee'></button></div>
+                    <div class="sheet-item sheet-stroll2" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, ?{Select an Action|Charge, 5|Called Strike, 4|Feint, 6|Stun, 7|Disarm, 9}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}, @{Psy}' name='roll_CalMelee'></button></div>
+                    <!--<div class="sheet-item sheet-stroll2" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 5, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}, @{Psy}' name='roll_ChaMelee'></button></div>
+                    <div class="sheet-item sheet-stroll2" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 6, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}, @{Psy}' name='roll_FeiMelee'></button></div>
+                    <div class="sheet-item sheet-stroll2" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 7, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}, @{Psy}' name='roll_StuMelee'></button></div>
+                    --><div class="sheet-item sheet-stroll2" style="width:10%"><button type='roll' value='!melee40k @{charname},@{ParryScore}, 8, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}, @{Psy}' name='roll_ParMelee'></button></div>
                 </div>
                 <div class="sheet-row">
                     <div class="sheet-item" style="width:34%"><span>Name</span></div>
@@ -598,7 +607,8 @@
                 </div>
                 <div class="sheet-row sheet-wpnsel1">                
                     <div class="sheet-item" style="width:79%"><span name="attr_dispwpnspecial2"></span></div>
-                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpnspecial2" type="text" value="" style="display: none;"></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpnspecial2" type="text"     value="" style="display: none;"></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpnspecialalt2" type="text"  value="" style="display: none;"></div>
                     <div class="sheet-item" style="width:10%"><span name="attr_dispwpnquality2"></span></div>
                     <div class="sheet-item" style="width:0%">
                         <select style="display:none;" name="attr_dispwpnquality2">
@@ -2118,8 +2128,14 @@ on("change:dispwpnautoshot2", function() {
 });
 //Maximal/Indirect
 on("change:dispwpnspecial1 ", function() {
-    getAttrs(["dispwpnspecial1"], function(values) {
+    getAttrs(["dispwpnspecial1","talentstring"], function(values) {
         var specialArray = values.dispwpnspecial1.split(',');
+        var ttArray=values.talentstring.split('.');
+        var maximal=0;
+        var indirect=0;
+        var swift=0;
+        var lightning=0;
+        var unwieldy=0;
         var maximal = 0;
         var indirect = 0;
         var semi=false;
@@ -2131,6 +2147,15 @@ on("change:dispwpnspecial1 ", function() {
             specialArray[i] = specialArray[i].replace(/\(([^)]+)\)/g, '');  //remove parentheses and anything inside
             if(specialArray[i]=="Maximal"){maximal=1;}
             if(specialArray[i]=="Indirect"){indirect=1;}
+        });
+        
+        _.each(ttArray, function(current, i) {
+            ttArray[i] = ttArray[i].replace(/^\s+|\s+$/g, '');    //remove whitespace
+            ttArray[i] = ttArray[i].replace(/\(([^)]+)\)/g, '');  //remove parentheses and anything inside
+            if(ttArray[i]=="swiftattack"){swift=1;}
+            if(ttArray[i]=="lightningattack"){lightning=1;}
+            if(specialArray[i]=="Unwieldy"){unwieldy=1;}
+            if(specialArray[i]=="Unbalanced"){unwieldy=1;}
         });
         
         if(maximal==1){
@@ -2174,13 +2199,30 @@ on("change:dispwpnspecial1 ", function() {
             });
         }
         else{setAttrs({wpnselid1: 0});}
+        
+        
+        if(swift==1){setAttrs({wpnselsw1: 1});}
+        else{setAttrs({wpnselsw1: 0});}
+        
+        if(lightning==1 && unwieldy==0){setAttrs({wpnsella1: 1});}
+        else{setAttrs({wpnsella1: 0});}
+        
+        var tempch = values.dispwpnspecial1.replace(/,/g , ".");
+        tempch = tempch.replace(/^\s+|\s+$/g, '');
+        setAttrs({dispwpnspecialalt1: tempch});
+        
+        
     });
 });
 on("change:dispwpnspecial2 ", function() {
-    getAttrs(["dispwpnspecial2"], function(values) {
+    getAttrs(["dispwpnspecial2", "talentstring"], function(values) {
         var specialArray = values.dispwpnspecial2.split(',');
-        var maximal = 0;
-        var indirect = 0;
+        var ttArray=values.talentstring.split('.');
+        var maximal=0;
+        var indirect=0;
+        var swift=0;
+        var lightning=0;
+        var unwieldy=0;
         var semi=false;
         var auto=false;
         var i;
@@ -2190,6 +2232,15 @@ on("change:dispwpnspecial2 ", function() {
             specialArray[i] = specialArray[i].replace(/\(([^)]+)\)/g, '');  //remove parentheses and anything inside
             if(specialArray[i]=="Maximal"){maximal=1;}
             if(specialArray[i]=="Indirect"){indirect=1;}
+            if(specialArray[i]=="Unwieldy"){unwieldy=1;}
+            if(specialArray[i]=="Unbalanced"){unwieldy=1;}
+        });
+        
+        _.each(ttArray, function(current, i) {
+            ttArray[i] = ttArray[i].replace(/^\s+|\s+$/g, '');    //remove whitespace
+            ttArray[i] = ttArray[i].replace(/\(([^)]+)\)/g, '');  //remove parentheses and anything inside
+            if(ttArray[i]=="swiftattack"){swift=1;}
+            if(ttArray[i]=="lightningattack"){lightning=1;}
         });
         
         if(maximal==1){
@@ -2233,6 +2284,17 @@ on("change:dispwpnspecial2 ", function() {
             });
         }
         else{setAttrs({wpnselid2: 0});}
+        
+        if(swift==1){setAttrs({wpnselsw2: 1});}
+        else{setAttrs({wpnselsw2: 0});}
+        
+        if(lightning==1 && unwieldy==0){setAttrs({wpnsella2: 1});}
+        else{setAttrs({wpnsella2: 0});}
+        
+        
+        var tempch = values.dispwpnspecial2.replace(/,/g , ".");
+        tempch = tempch.replace(/^\s+|\s+$/g, '');
+        setAttrs({dispwpnspecialalt2: tempch});
     });
 });
 //Melee basics
@@ -2275,8 +2337,8 @@ on("change:repeating_talents", function() {
             _.each(idarray, function(currentID, i) {
                 getAttrs(["repeating_talents_"+currentID+"_talentnames"], function(x) {
                     temp =x["repeating_talents_"+currentID+"_talentnames"];
-                    talstr = talstr + temp +", ";
-                    setAttrs({background: talstr});
+                    talstr = talstr + temp +".";
+                    //setAttrs({background: talstr});
                     setAttrs({talentstring: talstr});
                 });
             });
