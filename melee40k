@@ -9,7 +9,7 @@
 //Rolls a d100 and calculates the success or fail results to the chat window.
 var melee40kNamespace = melee40kNamespace || {};
 
-melee40kNamespace.rollResult = function(token, attribute, wpnname, shotsel, numdice, dice, dmg, type, pen, psy, str, modifier, quality, special) {
+melee40kNamespace.rollResult = function(token, attribute, shotsel, numdice, dice, dmg, pen, str, modifier, special, quality, talents, wpnname, type, psy) {
     if (typeof token === 'undefined')       token       = 'generic';
     if (typeof attribute === 'undefined')   attribute   = 'BallisticSkill';
     if (typeof wpnname === 'undefined')     wpnname     = 'generic';
@@ -46,7 +46,9 @@ melee40kNamespace.rollResult = function(token, attribute, wpnname, shotsel, numd
     var dmgendstring='';
     var qualstring='';
     var rfstring='';
-    var specialArray = special.split(',');
+    var talstring='';
+    var specialArray = special.split('.');
+    var talentArray = talents.split('.');
     var superUnreliable=false;
     var attributeArray = {
         "Accurate": false,
@@ -91,8 +93,41 @@ melee40kNamespace.rollResult = function(token, attribute, wpnname, shotsel, numd
         "Unwieldy": false,
         "Vengeful": 10
     };
-
-
+    var ttArray = {
+        "assassinstrike": false,
+        "blademaster": false,
+        "brutalcharge": false,
+        "deathdealer": false,
+        "battlerage": false,
+        "combatmaster": false,
+        "counterattack": false,
+        "crushingblow": false,
+        "deathdealer": false,
+        "devastatingassault": false,
+        "disarm": false,
+        "doudbleteam": false,
+        "eyeofvengeance": false,
+        "frenzy": false,
+        "hammerblow": false,
+        "hatred": false,
+        "hipshooting": false,
+        "independenttargeting": false,
+        "inescapableattack": false,
+        "killingstrike": false,
+        "lightningattack": false,
+        "marksman": false,
+        "mightyshot": false,
+        "nowheretohide": false,
+        "precisionkiller": false,
+        "preturnaturalspeed": false,
+        "swiftattack": false,
+        "takedown": false,
+        "targetselection": false,
+        "thundercharge": false,
+        "weapontech": false,
+        "whirlwindofdeath": false
+    }; 
+    
     // Flags values in the special array to values in the attribute array
     for (i = 0, j = specialArray.length; i < j; i++) {
         specialArray[i] = specialArray[i].replace(/^\s+|\s+$/g, '');    //remove whitespace
@@ -107,13 +142,27 @@ melee40kNamespace.rollResult = function(token, attribute, wpnname, shotsel, numd
     }
 
 
-    if(shotsel == 0){
+    // Flags values in the talent array to values in the tt array
+    for (i = 0, j = talentArray.length; i < j; i++) {
+        talentArray[i] = talentArray[i].replace(/^\s+|\s+$/g, '');    //remove whitespace
+        sub = talentArray[i].match(/\d/);                              //find any numbers in parentheses
+        talentArray[i] = talentArray[i].replace(/\(([^)]+)\)/g, '');  //remove parentheses and anything inside
+        cur = talentArray[i];                                          
+        if(sub != null){                                                //if there was a number in parentheses, set the array location equal to that number, otherwise set it as true
+            ttArray[cur] = sub;
+        } else {
+            ttArray[cur] = true;  
+        }
+    }
+
+
+    if(shotsel==0){
         //If the user selected Standard Attack
-        boundmod = 10;
-    } else if (shotsel == 1){
+        boundmod=10;
+    } else if (shotsel == 1 && ttArray['swiftattack']==true){
         //If the user selected Swift Attack
         boundmod = 0;
-    } else if (shotsel == 2 && attributeArray['Unwieldy'] == false && attributeArray['Unbalanced'] == false){
+    } else if (shotsel == 2 && ttArray['lightningattack']==true && attributeArray['Unwieldy'] == false && attributeArray['Unbalanced'] == false){
         //If the user selected Lightning Attack
         boundmod = -10;
     } else if (shotsel == 3){
@@ -121,7 +170,8 @@ melee40kNamespace.rollResult = function(token, attribute, wpnname, shotsel, numd
         boundmod = 30;
     } else if (shotsel == 4){
         //If the user selected Called Strike
-        boundmod = -20;
+        if(ttArray['precisionkiller']==true){boundmod =0;}
+        if(ttArray['precisionkiller']==false){boundmod =-20;}
     } else if (shotsel == 5){
         //If the user selected Charge
         boundmod = 20;
@@ -130,11 +180,15 @@ melee40kNamespace.rollResult = function(token, attribute, wpnname, shotsel, numd
         boundmod = 0;
     } else if (shotsel == 7){
         //If the user selected Stun
-        boundmod = -20;
+        if(ttArray['takedown']==true){boundmod =0;}
+        if(ttArray['takedown']==false){boundmod =-20;}
     } else if (shotsel == 8 && attributeArray['Unwieldy'] == false){
         //If the user selected Parry
         boundmod = 0;
-    }  else{
+    } else if (shotsel == 9 && ttArray['disarm']==true){
+        //If the user selected Disarm
+        boundmod = 0;
+    }    else{
         error=true;
         errortext="ERROR: Invalid Combat Action Selection"
     }
@@ -209,7 +263,7 @@ melee40kNamespace.rollResult = function(token, attribute, wpnname, shotsel, numd
         numhits=0;     
     }else{
             error=true;
-            errortext="ERROR: INVALID COMBAT MODE (M)";
+            errortext="ERROR: INVALID COMBAT MODE (Numhits)";
             numhits=0;
     }
 
@@ -218,39 +272,53 @@ melee40kNamespace.rollResult = function(token, attribute, wpnname, shotsel, numd
     temp = Math.floor(roll/10); //Store 10s place
     temp2 = roll - temp*10;     //Store 1s place
     temp = temp2*10+temp;       //swap 10s and 1s place
-    if(temp <= 10) {
-        var hitloc = ["Head","Head","Left Arm","Body","Right Arm","Body","Body","Body","Body","Body"];
-    } else if(10 < temp && temp <= 20){
-        var hitloc = ["Right Arm","Right Arm","Body","Head","Body","Left Arm","Left Arm","Left Arm","Left Arm","Left Arm"];
-    } else if(20 < temp && temp <= 30){
-        var hitloc = ["Left Arm","Left Arm","Body","Head","Body","Right Arm","Right Arm","Right Arm","Right Arm","Right Arm"];
-    } else if(30 < temp && temp <= 70){
-        var hitloc = ["Body","Body","Right Arm","Head","Left Arm","Body","Body","Body","Body","Body"];
-    } else if(70 < temp && temp <= 85){
-        var hitloc = ["Right Leg","Right Leg","Body","Right Arm","Head","Body","Body","Body","Body","Body"];
-    } else if(85 < temp && temp <= 100){
-        var hitloc = ["Left Leg","Left Leg","Body","Left Arm","Head","Body","Body","Body","Body","Body"];
-    } else{
+    if(shotsel==4)                   {var hitloc = ["chosen location", "chosen location", "chosen location"];}
+    else if(temp <= 10)              {var hitloc = ["Head","Head","Left Arm","Body","Right Arm","Body","Body","Body","Body","Body"];} 
+    else if(10 < temp && temp <= 20) {var hitloc = ["Right Arm","Right Arm","Body","Head","Body","Left Arm","Left Arm","Left Arm","Left Arm","Left Arm"];} 
+    else if(20 < temp && temp <= 30) {var hitloc = ["Left Arm","Left Arm","Body","Head","Body","Right Arm","Right Arm","Right Arm","Right Arm","Right Arm"];} 
+    else if(30 < temp && temp <= 70) {var hitloc = ["Body","Body","Right Arm","Head","Left Arm","Body","Body","Body","Body","Body"];} 
+    else if(70 < temp && temp <= 85) {var hitloc = ["Right Leg","Right Leg","Body","Right Arm","Head","Body","Body","Body","Body","Body"];} 
+    else if(85 < temp && temp <= 100){var hitloc = ["Left Leg","Left Leg","Body","Left Arm","Head","Body","Body","Body","Body","Body"];} 
+    else{
         error=true;
         errortext="ERROR: BAD HIT LOCATION";
     }
 
 
-    //If Lance or RazorSharp (only one applies):
+    //If Lance or RazorSharp:
     if(attributeArray['Lance'] == true) { pen=parseInt(pen)*degOfSuc;}
-    else if(attributeArray['RazorSharp'] == true && degOfSuc>=3)    {pen =parseInt(pen)*2;}
+    if(attributeArray['RazorSharp'] == true && degOfSuc>=3)    {pen =parseInt(pen)*2;}
     //Increase damage for weapons with the Force quality and a Psy rating
     if(attributeArray['Force']==true&&psy>0){
         dmg=parseInt(dmg)+parseInt(psy);
         pen=parseInt(pen)+parseInt(psy);
     }
+    //If 'Tearing':
+    if(attributeArray['Tearing']==true){numdice=parseInt(numdice)+1;}
     //Increase dmg for best-quality weapons
     if(quality=="best"){dmg=parseInt(dmg)+1;}
     //Add strength to melee damage
     dmg=parseInt(dmg)+parseInt(str);
+    //Add damage for Crushing Blow talent
+    if(ttArray['crushingblow']==true){
+        temp=Math.floor(attribute/10);
+        temp=Math.ceil(temp/2);
+        dmg=parseInt(dmg)+parseInt(temp);
+    }
+    //Hammer Blow talent
+    if(ttArray['hammerblow']==true && shotsel==3){
+        temp=Math.ceil(str/2);
+        dmg=parseInt(dmg)+parseInt(temp);
+        if(attributeArray['Concussive']<2){attributeArray['Concussive']=2;}
+    }
     
     
-    dmgsubstring=parseInt(numdice)+"d"+parseInt(dice)+"cs>"+(parseInt(attributeArray['Vengeful']))+"cf0+"+parseInt(dmg)+" ]] <B> Pen "+parseInt(pen)+" </B>";
+    if(attributeArray['Tearing']==true){dmgsubstring=parseInt(numdice)+"d"+parseInt(dice)+"d1cs>"+(parseInt(attributeArray['Vengeful']))+"cf0+"+parseInt(dmg)+" ]] <B> Pen "+parseInt(pen)+" </B>";}
+    else {dmgsubstring=parseInt(numdice)+"d"+parseInt(dice)+"cs>"+(parseInt(attributeArray['Vengeful']))+"cf0+"+parseInt(dmg)+" ]] <B> Pen "+parseInt(pen)+" </B>";}
+    
+    
+    
+    //dmgsubstring=parseInt(numdice)+"d"+parseInt(dice)+"cs>"+(parseInt(attributeArray['Vengeful']))+"cf0+"+parseInt(dmg)+" ]] <B> Pen "+parseInt(pen)+" </B>";
  
     for(i=1; i <=numhits; i++){
         //do separate calculations for proven/primitive, if necessary
@@ -299,7 +367,7 @@ melee40kNamespace.rollResult = function(token, attribute, wpnname, shotsel, numd
     
     //Apply descriptions for the special combat modes
     if(shotsel==3){
-        qualstring = qualstring  + " --All-Out: | This is a standard attack at +20, after which the user cannot use Evasion reactions until the start of his next turn";
+        qualstring = qualstring  + " --AllOutAtk: | This is a standard attack at +20, after which the user cannot use Evasion reactions until the start of his next turn";
     } else if(shotsel==4){
         qualstring = qualstring  + " --CalledStrike: | Hard (-20) WS test that allows the attacker to select a hit location";
     } else if(shotsel==5){
@@ -308,8 +376,9 @@ melee40kNamespace.rollResult = function(token, attribute, wpnname, shotsel, numd
         qualstring = qualstring  + " --Feint: | The character and his target make an Opposed Weapon Skill test. If the character wins, his next melee Standard Attack action against that same target during this turncannot be Evaded. If the character’s next action is any other action, the advantage of Feinting is lost.";
     } else if(shotsel==7){
         qualstring = qualstring  + " --Stun: | Hard (–20) Weapon Skill test. If successful, [[ [$Stn] 1d10+"+str+"]] is compared to the target’s total of his Toughness bonus +1 per Armour point protecting his head. If the attacker’s roll is equal to or higher than this value, the target is Stunned for a number of rounds equal to the difference between the two values and gains one level of Fatigue.";
+    } else if(shotsel==9){
+        qualstring = qualstring  + " --Disarm: | Opposed Weapon Skill test. If successful, the enemy drops his weapon to the ground. If >2 DoS, the character can take the enemy's weapon.";
     }
-    
  
     //Check for Balanced quality
     if(attributeArray['Balanced'] ==true && shotsel!=8){
@@ -320,7 +389,7 @@ melee40kNamespace.rollResult = function(token, attribute, wpnname, shotsel, numd
     }
     //Check for Concussive quality
     if(attributeArray['Concussive'] != -1 && hit==true){
-        qualstring = qualstring  + " --Concussive: | Target(s) must make "+parseInt(numhits+scathits)+" Toughness test(s) at  -"+(10*attributeArray['Concussive'])+". If failed, the target is Stunned for 1 round per DoF";  
+        qualstring = qualstring  + " --Concussive: | Target(s) must make "+parseInt(numhits)+" Toughness test(s) at  -"+(10*attributeArray['Concussive'])+". If failed, the target is Stunned for 1 round per DoF";  
     }
     //Check for 'Corrosive' quality
     if(attributeArray['Corrosive']== true && hit==true){
@@ -439,6 +508,111 @@ melee40kNamespace.rollResult = function(token, attribute, wpnname, shotsel, numd
     }
 
 
+    //Add talent descriptions
+    talstring = " --Applicable Talents: | ";
+    //Assassin Strike
+    if(ttArray['assassinstrike']==true && hit==true){
+        talstring = talstring  + "AssassinStrike(Acrobatics to move after Atk), ";  
+    }
+    //Battlerage
+    if(ttArray['battlerage']==true && shotsel==8){
+        talstring = talstring  + "BattleRage(parry while frenzied), ";  
+    }
+    //Blademaster
+    if(ttArray['blademaster']==true && hit==false){
+        talstring = talstring  + "Blademaster(reroll miss w/ blades), ";  
+    }
+    //BlindFighting
+    if(ttArray['blindfighting']==true){
+        talstring = talstring  + "BlindFighting(no penalty obscured vision in melee), ";  
+    }
+    //Brutal Charge
+    if(ttArray['brutalcharge']==true && shotsel==5 && hit==true){
+        talstring = talstring  + "BrutalCharge(+dmg charge NOT IMPLEMENTED), ";  
+    }
+    //CounterAttack
+    if(ttArray['counterattack']==true && shotsel==8 && parry==true){
+        talstring = talstring  + "CounterAttack(Std Atk -20 WS after parry), ";  
+    }
+    //Crushing Blow
+    if(ttArray['crushingblow']==true && hit==true){
+        talstring = talstring  + "CrushingBlow(+dmg WS/2), ";  
+    }
+    //Deathdealer
+    if(ttArray['deathdealer']==true && hit==true){
+        talstring = talstring  + "Deathdealer(+PB crit dmg), ";  
+    }
+    //Devastating Assault
+    if(ttArray['devastatingassault']==true && hit==true && shotsel==3){
+        talstring = talstring  + "DevastatingAtk(free second AOA), ";  
+    }
+    //Double Team
+    if(ttArray['doubleteam']==true){
+        talstring = talstring  + "DoubleTeam(+hit for Ganging Up), ";  
+    }
+    //Eye of Vengeance
+    if(ttArray['eyeofvengeance']==true){
+        talstring = talstring  + "EyeofVengeance(FP adds "+degOfSuc+" +dmg/pen), ";  
+    }
+    //Frenzy
+    if(ttArray['frenzy']==true){
+        talstring = talstring  + "Frenzy(can enter frenzy as FuA), ";  
+    }
+    //Hammer Blow   
+    if(ttArray['hammerblow']==true && shotsel==3){
+        talstring = talstring  + "Hammerblow(+SB/2 & Conc(2) on AOA), ";  
+    }
+    //Hatred
+    if(ttArray['hatred']==true){
+        talstring = talstring  + "Hatred(+10WS vs foe), ";  
+    }
+    //Inescapable attack
+    if(ttArray['inescapableattack']==true && (shotsel==0||shotsel==3||shotsel==4||shotsel==5||shotsel==7) && hit==true){
+        talstring = talstring  + "InescapableAtk("+(-10*parseInt(degOfSuc))+" penalty on evasion), ";  
+    }
+    //Killing Strike
+    if(ttArray['killingstrike']==true){
+        talstring = talstring  + "KillingStrike(spend FP before atk to prevent evasion), ";  
+    }
+    //Lightning Attack
+    if(ttArray['lightningattack']==true && attributeArray['Unwieldy']!=true && attributeArray['Unbalanced']!=true){
+        talstring = talstring  + "LightningAtk(Atk option), ";  
+    }
+    //Nowhere to Hide
+    if(ttArray['nowheretohide']==true && hit==true){
+        talstring = talstring  + "NowhereToHide(cover armor reduction), ";  
+    }
+    //Precision Killer
+    if(ttArray['precisionkiller']==true && shotsel==4){
+        talstring = talstring  + "Precision(no penalty Called Shot), ";  
+    }
+    //Preternatural Speed
+    if(ttArray['preternaturalspeed']==true && shotsel==5){
+        talstring = talstring  + "PreternaturalSpeed(2x move on Charge), ";  
+    }
+    //Swift Attack
+    if(ttArray['swiftattack']==true){
+        talstring = talstring  + "SwiftAtk(Atk option), ";  
+    }
+    //Takedown
+    if(ttArray['takedown']==true && (shotsel==0||shotsel==5) ){
+        talstring = talstring  + "Takedown(Std/Chrg Atk variant), ";  
+    }
+    //Thunder Charge
+    if(ttArray['thundercharge']==true && shotsel==5 ){
+        talstring = talstring  + "Thundercharge(push enemies aside on Charge), ";  
+    }
+    //Whirlwind of Death
+    if(ttArray['whirlwindofdeath']==true){
+        talstring = talstring  + "WhirlwindofDeath(Std Atk against all enemies in reach), ";  
+    }
+
+
+
+
+
+
+
     //Set the text output sub-headings
     if(shotsel==0){temp="Standard Attack";}
     else if(shotsel==1){temp="Swift Attack";}
@@ -450,14 +624,6 @@ melee40kNamespace.rollResult = function(token, attribute, wpnname, shotsel, numd
     else if(shotsel==7){temp="Stun";}
     else if(shotsel==8){temp="Parry";}
     else if(shotsel==9){temp="Counterattack";}
-    /*
-    if(range==0){temp2="Melee Range";}
-    else if(range==1){temp2="Point Blank Range";}
-    else if(range==2){temp2="Short Range";}
-    else if(range==3){temp2="Normal Range";}
-    else if(range==4){temp2="Long Range";}
-    else if(range==5){temp2="Extreme Range";}
-    */
     temp2=wpnname;
     cur=" --Roll:| [! "+roll+" !] vs [! "+modTarget+" !] --Result:|"+output;
     
@@ -466,7 +632,7 @@ melee40kNamespace.rollResult = function(token, attribute, wpnname, shotsel, numd
       output = errortext; 
     }
     else {
-        output ="!power {{--format|melee --titlefontshadow|none --name|"+token+" --leftsub| "+temp+"  --rightsub| "+temp2+cur+dmgstring+qualstring+" }}"
+        output ="!power {{--format|melee --titlefontshadow|none --name|"+token+" --leftsub| "+wpnname+"  --rightsub| "+temp+cur+dmgstring+qualstring+talstring+" }}";
         //output="suck it";
         
     }
