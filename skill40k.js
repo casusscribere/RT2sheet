@@ -10,7 +10,7 @@
 
 var skill40kNamespace = skill40kNamespace || {};
 
-skill40kNamespace.rollResult = function(token, attribute, modifier, attributename, format, mode, msgwho) {
+skill40kNamespace.rollResult = function(token, attribute, modifier, attributename, format, mode, msg) {
     if (typeof token            === undefined || typeof token != 'string' )                     token           = 'generic';
     if (typeof attribute        === undefined || Number.isInteger(parseInt(attribute))==false)  attribute       = 0;
     if (typeof modifier         === undefined || Number.isInteger(parseInt(modifier))==false )  modifier        = 0;
@@ -24,6 +24,7 @@ skill40kNamespace.rollResult = function(token, attribute, modifier, attributenam
     var degOfSuc =0;
     var output2 = 'Error';
     var diff='';
+    var player_obj = getObj("player", msg.playerid);
     
     //Determine difficulty of the check
     if(modifier==0)
@@ -69,14 +70,17 @@ skill40kNamespace.rollResult = function(token, attribute, modifier, attributenam
         mode='--whisper|self,gm';
     } else if(mode=='hidden'){
         mode='--whisper|gm';
-        if(msgwho!=''){
-            sendChat(msgwho, '/w ' + msgwho + ' sent a secret '+attributename+' roll to the GM.');  
+        if(msg.who!=''){
+            sendChat(msg.who, '/w ' + msg.who + ' sent a secret '+attributename+' roll to the GM.');  
         }
     } else{
         mode='';
     }
     
     //Return output
-    var output ="!power {{ "+mode+" --format|"+format+" --titlefontshadow|none --name|"+token+" --leftsub|"+attributename+" Check --rightsub| "+diff+" Diff. --Roll:|[! "+roll+" !] vs [! "+modTarget+" !]  --Result:|"+output2+"  }}"
-    return output;
+    msg.content="!power {{ "+mode+" --format|"+format+" --titlefontshadow|none --name|"+token+" --leftsub|"+attributename+" Check --rightsub| "+diff+" Diff. --Roll:|[! "+roll+" !] vs [! "+modTarget+" !]  --Result:|"+output2+"  }}"
+    msg.who = msg.who.replace(" (GM)", "");
+    msg.content = msg.content.replace(/<br\/>\n/g, ' ').replace(/({{(.*?)}})/g, " $2 ");
+    PowerCard.Process(msg, player_obj);
+    return 0;
 }
