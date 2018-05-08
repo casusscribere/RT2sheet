@@ -39,7 +39,7 @@ on("chat:message", function(msg) {
                     mode = listener40kNamespace.trimString(current);
                 }
             });
-            result = skill40kNamespace.rollResult(curToken, attribute, modifier, attributename, format, mode, msgwho);
+            result = skill40kNamespace.rollResult(curToken, attribute, modifier, attributename, format, mode, msg);
         }
     }
     else if (msgTxt.split(" ", 1)[0] === "!ranged40k") {
@@ -89,7 +89,7 @@ on("chat:message", function(msg) {
                     type = listener40kNamespace.trimString(current);
                 }
             });
-            result = ranged40kNamespace.rollResult(curToken, attribute, range, shotsel, single, semi, full, numdice, dice, dmg, pen, modifier, special, quality, talents, wpnname, type );
+            result = ranged40kNamespace.rollResult(curToken, attribute, range, shotsel, single, semi, full, numdice, dice, dmg, pen, modifier, special, quality, talents, wpnname, type, msg );
         }
     }
     else if (msgTxt.split(" ", 1)[0] === "!melee40k") {
@@ -135,7 +135,7 @@ on("chat:message", function(msg) {
                     psy = listener40kNamespace.trimString(current);
                 }
             });
-            result = melee40kNamespace.rollResult(curToken, attribute, shotsel, numdice, dice, dmg, pen, str, modifier, special, quality, talents, wpnname, type, psy);
+            result = melee40kNamespace.rollResult(curToken, attribute, shotsel, numdice, dice, dmg, pen, str, modifier, special, quality, talents, wpnname, type, psy, msg);
         }
     }
     sendChat(msg.who, result);
