@@ -8,8 +8,8 @@
 
 var ranged40kNamespace = ranged40kNamespace || {};
 
-ranged40kNamespace.rollResult = function(token, attribute, range, shotsel, single, semi, full, numdice, dice, dmg, pen, modifier, special, quality, talents, wpnname, type) {
-    if (typeof token === 'undefined')       token       = 'generic';
+ranged40kNamespace.rollResult = function(token, attribute, range, shotsel, single, semi, full, numdice, dice, dmg, pen, modifier, special, quality, talents, wpnname, type, msg) {
+    if (typeof token === 'undefined' || typeof single != 'string' )                         token       = 'generic';
     if (typeof attribute === 'undefined' || Number.isInteger(parseInt(attribute))==false)   attribute   = 0;
     if (typeof range === 'undefined' || Number.isInteger(parseInt(range))==false)           range       = 0;
     if (typeof shotsel === 'undefined' || Number.isInteger(parseInt(shotsel))==false)       shotsel     = 0;
@@ -28,6 +28,7 @@ ranged40kNamespace.rollResult = function(token, attribute, range, shotsel, singl
     if (typeof type === 'undefined' || typeof type != 'string' )                            type        = 'unk';
     
     var roll = randomInteger(100);
+    var player_obj = getObj("player", msg.playerid);
     var i, j, k, cur, sub, temp, temp2; //loop control and temporary variables
     var error=false;
     var errortext="ERROR: GENERIC";
@@ -798,7 +799,7 @@ ranged40kNamespace.rollResult = function(token, attribute, range, shotsel, singl
     } else{
         sub=" --Roll:| [! "+roll+" !] vs [! "+modTarget+" !] --Result:|"+output;
     }
-
+    
     //Return output
     if(error==true){
       output = errortext; 
@@ -806,7 +807,11 @@ ranged40kNamespace.rollResult = function(token, attribute, range, shotsel, singl
     else {
         output ="!power {{--format|ranged --titlefontshadow|none --name|"+token+" --leftsub| "+wpnname+"  --rightsub| "+temp+sub+dmgstring+scatstring+qualstring+talstring+" }}";
         //output="suck it";
-        
     }
-    return output;
+    msg.content=output;
+    msg.who = msg.who.replace(" (GM)", "");
+    msg.content = msg.content.replace(/<br\/>\n/g, ' ').replace(/({{(.*?)}})/g, " $2 ");
+    PowerCard.Process(msg, player_obj);
+
+    return 0;
 }
