@@ -51,7 +51,6 @@ on("chat:message", function(msg) {
         else {
             var paramArray = paramList.split(',');
             var curToken, attribute, range, shotsel, single, semi, full, numdice, dice, dmg, pen, modifier, special, quality, talents, wpnname, type;
-            special = '';
             _.each(paramArray, function(current, i) {
                 if(i==0){
                     curToken  = listener40kNamespace.trimString(current);
@@ -101,7 +100,6 @@ on("chat:message", function(msg) {
         else {
             var paramArray = paramList.split(',');
             var curToken, attribute, shotsel, numdice, dice, dmg, pen, str, modifier, special, quality, talents, wpnname, type, psy ;
-            special = '';
             _.each(paramArray, function(current, i) {
                 if(i==0){
                     curToken  = listener40kNamespace.trimString(current);
@@ -136,6 +134,55 @@ on("chat:message", function(msg) {
                 }
             });
             result = melee40kNamespace.rollResult(curToken, attribute, shotsel, numdice, dice, dmg, pen, str, modifier, special, quality, talents, wpnname, type, psy, msg);
+        }
+    }
+    else if (msgTxt.split(" ", 1)[0] === "!psy40k") {
+        cmdName = '!psy40k ';
+        var paramList = msgTxt.slice(cmdName.length);
+        if(paramList.indexOf(',') == -1) {
+            result=' must specify 13 comma-separated parameters for !melee40k command.';
+        }
+        else {
+            var paramArray = paramList.split(',');
+            var curToken, attribute, psychoice, psymod, psy, psyname, numdice, dmgstat, psydmg, psypen, psypenpr, psydmgtype, atktype, focusmod, atkspecial, effects, talents ;
+            _.each(paramArray, function(current, i) {
+                if(i==0){
+                    curToken  = listener40kNamespace.trimString(current);
+                } else if(i==1){
+                    attribute = listener40kNamespace.trimString(current);
+                } else if(i==2){
+                    psychoice = listener40kNamespace.trimString(current);
+                } else if(i==3){
+                    psymod = listener40kNamespace.trimString(current);
+                } else if(i==4){
+                    psy = listener40kNamespace.trimString(current);
+                } else if(i==5){
+                    psyname = listener40kNamespace.trimString(current);
+                } else if(i==6){
+                    numdice = listener40kNamespace.trimString(current);
+                } else if(i==7){
+                    dmgstat = listener40kNamespace.trimString(current);
+                } else if(i==8){
+                    psydmg = listener40kNamespace.trimString(current);
+                } else if(i==9){
+                    psypen = listener40kNamespace.trimString(current);
+                }  else if(i==10){
+                    psypenpr = listener40kNamespace.trimString(current);
+                }  else if(i==11){
+                    psydmgtype = listener40kNamespace.trimString(current);
+                }  else if(i==12){
+                    atktype = listener40kNamespace.trimString(current);
+                }  else if(i==13){
+                    focusmod = listener40kNamespace.trimString(current);
+                }  else if(i==14){
+                    atkspecial = listener40kNamespace.trimString(current);
+                }  else if(i==15){
+                    effects = listener40kNamespace.trimString(current);
+                }  else if(i==16){
+                    talents = listener40kNamespace.trimString(current);
+                }
+            });
+            result = psy40kNamespace.rollResult(curToken, attribute, psychoice, psymod, psy, psyname, numdice, dmgstat, psydmg, psypen, psypenpr, psydmgtype, atktype, focusmod, atkspecial, effects, talents, msg);
         }
     }
     sendChat(msg.who, result);
