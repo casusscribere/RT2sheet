@@ -244,6 +244,13 @@ melee40kNamespace.rollResult = function(token, attribute, shotsel, numdice, dice
     }
 
 
+    //check "roll 100" edge case
+    if(roll==100){
+        degOfSuc = (Math.floor(roll/10) - Math.floor(modTarget/10)) + 1;
+        output = '<span style="color:red">' + token + ' fails automatically by <B>' + degOfSuc + ' degree(s)</B></span>. ';
+        hit=false;
+    }
+
     //Determine # of damage rolls required
     swiftcalc = Math.floor((degOfSuc -1)/2)+1;
     if( (shotsel == 0 || shotsel==3 || shotsel==4 || shotsel==5)&& hit==true && error==false) {
@@ -926,7 +933,7 @@ melee40kNamespace.rollResult = function(token, attribute, shotsel, numdice, dice
         if(attributeArray['Concussive']<2){attributeArray['Concussive']=2;}
     }
     
-    
+    //Tearing 'drop lowest' effect
     if(attributeArray['Tearing']==true){dmgsubstring=parseInt(numdice)+"d"+parseInt(dice)+"d1cs>"+(parseInt(attributeArray['Vengeful']))+"cf0+"+parseInt(dmg)+" ]] <B> Pen "+parseInt(pen)+" </B>";}
     else {dmgsubstring=parseInt(numdice)+"d"+parseInt(dice)+"cs>"+(parseInt(attributeArray['Vengeful']))+"cf0+"+parseInt(dmg)+" ]] <B> Pen "+parseInt(pen)+" </B>";}
     
