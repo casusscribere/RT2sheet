@@ -293,7 +293,12 @@ ranged40kNamespace.rollResult = function(token, attribute, range, shotsel, singl
         errortext="ERROR: Failed DoS Calculation"
     }
     
-    
+    //adjust for the "roll 100" edge case
+    if(roll==100){
+        degOfSuc = (Math.floor(roll/10) - Math.floor(modTarget/10)) + 1;
+        output = '<span style="color:red">' + token + ' fails automatically by <B>' + degOfSuc + ' degree(s)</B></span>. ';
+        hit=false;
+    }
     
     //Adjust Weapon Dmg/Pen/RoF/Qualities based on qualities and talents
     //If Lance, Melta, or RazorSharp (only one applies):
