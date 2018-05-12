@@ -465,35 +465,56 @@
             </span>
             <span class="sheet-pwrsel1 sheet-bg">
             <div class="sheet-row sheet-pwrsel1">
-                <div class="sheet-item" style="width:42%"><span>Name</span></div>
+                <div class="sheet-item sheet-psyroll" style="width:10%"><button type='roll' value='!psy40k @{charname},@{Willpower},?{Chosen PR|1}, ?{PR Modifiers|0}, @{Psy}, @{disppsyname1},@{disppsydmgflat1},@{disppsydmgstat1},@{disppsydmgpr1},@{disppsypen1},@{disppsypenpr1},@{disppsytype1},@{dispatktype1},@{disppsyfocus1},@{disppsyspecialalt1},@{disppsyeffect1},@{talentstring}' name='roll_Psychic'></button></div>
+                <div class="sheet-item" style="width:22%"><span>Name</span></div>
                 <div class="sheet-item" style="width:15%"><span>Action</span></div>
                 <div class="sheet-item" style="width:15%"><span>Attack</span></div>
                 <div class="sheet-item" style="width:20%"><span>Range(xPR)</span></div>
+                <div class="sheet-item" style="width:10%"><span>Focus</span></div>
             </div>
             <div class="sheet-row sheet-pwrsel1">
-                <div class="sheet-item" style="width:42%"><span name="attr_disppsyname1"></div>
+                <div class="sheet-item sheet-spindisable" style="width:33%"><span name="attr_disppsyname1"></div>
                 <div class="sheet-item sheet-spindisable" style="width:15%"><span name="attr_disppsyaction1"></span></div>
                 <div class="sheet-item sheet-spindisable" style="width:15%"><span name="attr_dispatktype1"></span></div>
                 <div class="sheet-item sheet-spindisable" style="width:20%"><span name="attr_disppsyrange1"></span></div>
+                <div class="sheet-item sheet-spindisable" style="width:10%"><span name="attr_disppsyfocus1"></span></div>
             </div>
             <div class="sheet-row sheet-pwrsel1">
-                <div class="sheet-item" style="width:10%"><span>Focus</span></div>
                 <div class="sheet-item" style="width:15%"><span>Sustain</span></div>
-                <div class="sheet-item" style="width:25%"><span>Subtype</span></div>
-                <div class="sheet-item" style="width:25%"><span>Damage</span></div>
-                <div class="sheet-item" style="width:10%"><span>Pen</span></div>
+                <div class="sheet-item" style="width:15%"><span>Subtype</span></div>
+                <div class="sheet-item" style="width:32%"><span>Damage</span></div>
+                <div class="sheet-item" style="width:21%"><span>Pen</span></div>
+                <div class="sheet-item" style="width:10%"><span>Type</span></div>
             </div>
             <div class="sheet-row sheet-pwrsel1">
-                <div class="sheet-item" style="width:10%"><span name="attr_disppsyfocus1"></span></div>
                 <div class="sheet-item" style="width:15%"><span name="attr_disppsysustain1"></span></div>
-                <div class="sheet-item" style="width:25%"><span name="attr_disppsysubtype1"></span></div>
-                <div class="sheet-item" style="width:8%"><span name="attr_disppsydmgflat1"></span></div>
+                <div class="sheet-item" style="width:15%"><span name="attr_disppsysubtype1"></span></div>
+                <div class="sheet-item" style="width:4%"><span name="attr_disppsydmgflat1"></span></div>
+                <div class="sheet-item sheet-spindisable" style="width:8%"><span>d10+</span></div>
+                <div class="sheet-item" style="width:4%"><span name="attr_disppsydmgstat1"></span></div>
                 <div class="sheet-item sheet-spindisable" style="width:2%"><span>+</span></div>
-                <div class="sheet-item" style="width:8%"><span name="attr_disppsydmgstat1"></span></div>
+                <div class="sheet-item" style="width:6%"><span name="attr_disppsydmgpr1"></span></div>
+                <div class="sheet-item sheet-spindisable" style="width:10%"><span>xPR P</span></div>
+                <div class="sheet-item" style="width:4%"><span name="attr_disppsypen1"></span></div>
                 <div class="sheet-item sheet-spindisable" style="width:2%"><span>+</span></div>
-                <div class="sheet-item" style="width:7%"><span name="attr_disppsydmgpr1"></span></div>
-                <div class="sheet-item sheet-spindisable" style="width:3%"><span>xPR</span></div>
-                <div class="sheet-item" style="width:10%"><span name="attr_disppsypen1"></span></div>
+                <div class="sheet-item" style="width:4%"><span name="attr_disppsypenpr1"></span></div>
+                <div class="sheet-item sheet-spindisable" style="width:6%"><span>xPR</span></div>
+                <div class="sheet-item" style="width:4%"><span name="attr_disppsytype1"></span></div>
+                <div class="sheet-item" style="width:0%">
+                        <select style="display:none;" name="attr_disppsytype1">
+                            <option value="E">Energy</option>
+                            <option value="R">Rending</option>
+                            <option value="I">Impact</option>
+                            <option value="X">Explosive</option>
+                        </select>
+                </div>
+            </div>
+            <div class="sheet-row sheet-pwrsel1">               
+                <div class="sheet-item" style="width:100%"><span>Special</span></div>
+            </div>
+            <div class="sheet-row sheet-pwrsel1">                
+                <div class="sheet-item" style="width:90%"><span name="attr_disppsyspecial1"></span></div>
+                <div class="sheet-item" style="width:0%"><input name="attr_disppsyspecialalt1"  type="text" value="" style="display: none;" ></div>
             </div>
             <div class="sheet-row sheet-pwrsel1">               
                 <div class="sheet-item" style="width:100%"><span>Effect</span></div>
@@ -628,35 +649,62 @@
             </span>
             <span class="sheet-pwrsel2 sheet-bg">
             <div class="sheet-row sheet-pwrsel2">
-                <div class="sheet-item" style="width:47%"><span>Name</span></div>
-                <div class="sheet-item" style="width:25%"><span>Action</span></div>
-                <div class="sheet-item" style="width:20%"><span>Range (xPR)</span></div>
-            </div>
-            <div class="sheet-row sheet-pwrsel2">
-                <div class="sheet-item" style="width:46%"><span name="attr_disppsyname2"></span></div>
-                <div class="sheet-item sheet-spindisable" style="width:30%"><span name="disppsyaction2"></span></div>
-                <div class="sheet-item sheet-spindisable" style="width:15%"><span name="attr_disppsyrange2"></div>
-            </div>
-            <div class="sheet-row sheet-pwrsel2">
+                <div class="sheet-item sheet-psyroll" style="width:10%"><button type='roll' value='!psy40k @{charname},@{Willpower},?{Chosen PR|1}, ?{PR Modifiers|0}, @{Psy}, @{disppsyname2},@{disppsydmgflat2},@{disppsydmgstat2},@{disppsydmgpr2},@{disppsypen2},@{disppsypenpr2},@{disppsytype2},@{dispatktype2},@{disppsyfocus2},@{disppsyspecialalt2},@{disppsyeffect2},@{talentstring}' name='roll_Psychic'></button></div>
+                <div class="sheet-item" style="width:22%"><span>Name</span></div>
+                <div class="sheet-item" style="width:15%"><span>Action</span></div>
+                <div class="sheet-item" style="width:15%"><span>Attack</span></div>
+                <div class="sheet-item" style="width:20%"><span>Range(xPR)</span></div>
                 <div class="sheet-item" style="width:10%"><span>Focus</span></div>
-                <div class="sheet-item" style="width:20%"><span>Sustain</span></div>
-                <div class="sheet-item" style="width:25%"><span>Subtype</span></div>
-                <div class="sheet-item" style="width:25%"><span>Damage / (xPR)</span></div>
-                <div class="sheet-item" style="width:10%"><span>Pen</span></div>
             </div>
             <div class="sheet-row sheet-pwrsel2">
-                <div class="sheet-item" style="width:10%"><span name="attr_disppsyfocus2"></div>
-                <div class="sheet-item" style="width:20%"><span name="attr_disppsysustain2"></span></div>
-                <div class="sheet-item" style="width:30%"><span name="attr_disppsysubtype2"></div>
-                <div class="sheet-item" style="width:10%"><span name="attr_disppsydmgflat2"></div>
-                <div class="sheet-item" style="width:10%"><span name="attr_disppsydmgpr2"></div>
-                <div class="sheet-item" style="width:10%"><span name="attr_disppsypen2"></div>
+                <div class="sheet-item sheet-spindisable" style="width:33%"><span name="attr_disppsyname2"></div>
+                <div class="sheet-item sheet-spindisable" style="width:15%"><span name="attr_disppsyaction2"></span></div>
+                <div class="sheet-item sheet-spindisable" style="width:15%"><span name="attr_dispatktype2"></span></div>
+                <div class="sheet-item sheet-spindisable" style="width:20%"><span name="attr_disppsyrange2"></span></div>
+                <div class="sheet-item sheet-spindisable" style="width:10%"><span name="attr_disppsyfocus2"></span></div>
+            </div>
+            <div class="sheet-row sheet-pwrsel2">
+                <div class="sheet-item" style="width:15%"><span>Sustain</span></div>
+                <div class="sheet-item" style="width:15%"><span>Subtype</span></div>
+                <div class="sheet-item" style="width:32%"><span>Damage</span></div>
+                <div class="sheet-item" style="width:21%"><span>Pen</span></div>
+                <div class="sheet-item" style="width:10%"><span>Type</span></div>
+            </div>
+            <div class="sheet-row sheet-pwrsel2">
+                <div class="sheet-item" style="width:15%"><span name="attr_disppsysustain2"></span></div>
+                <div class="sheet-item" style="width:15%"><span name="attr_disppsysubtype2"></span></div>
+                <div class="sheet-item" style="width:4%"><span name="attr_disppsydmgflat2"></span></div>
+                <div class="sheet-item sheet-spindisable" style="width:8%"><span>d10+</span></div>
+                <div class="sheet-item" style="width:4%"><span name="attr_disppsydmgstat2"></span></div>
+                <div class="sheet-item sheet-spindisable" style="width:2%"><span>+</span></div>
+                <div class="sheet-item" style="width:6%"><span name="attr_disppsydmgpr2"></span></div>
+                <div class="sheet-item sheet-spindisable" style="width:10%"><span>xPR P</span></div>
+                <div class="sheet-item" style="width:4%"><span name="attr_disppsypen2"></span></div>
+                <div class="sheet-item sheet-spindisable" style="width:2%"><span>+</span></div>
+                <div class="sheet-item" style="width:4%"><span name="attr_disppsypenpr2"></span></div>
+                <div class="sheet-item sheet-spindisable" style="width:6%"><span>xPR</span></div>
+                <div class="sheet-item" style="width:4%"><span name="attr_disppsytype2"></span></div>
+                <div class="sheet-item" style="width:0%">
+                        <select style="display:none;" name="attr_disppsytype2">
+                            <option value="E">Energy</option>
+                            <option value="R">Rending</option>
+                            <option value="I">Impact</option>
+                            <option value="X">Explosive</option>
+                        </select>
+                </div>
+            </div>
+            <div class="sheet-row sheet-pwrsel2">               
+                <div class="sheet-item" style="width:100%"><span>Special</span></div>
+            </div>
+            <div class="sheet-row sheet-pwrsel2">                
+                <div class="sheet-item" style="width:90%"><span name="attr_disppsyspecial2"></span></div>
+                <div class="sheet-item" style="width:0%"><input name="attr_disppsyspecialalt2"  type="text" value="" style="display: none;" ></div>
             </div>
             <div class="sheet-row sheet-pwrsel2">               
                 <div class="sheet-item" style="width:100%"><span>Effect</span></div>
             </div>
             <div class="sheet-row sheet-pwrsel2">                
-                <div class="sheet-item" style="width:100%"><span name="attr_disppsyeffect2"></div>
+                <div class="sheet-item" style="width:100%"><span name="attr_disppsyeffect2"></span></div>
             </div>
             </span>
         </div>
@@ -1174,6 +1222,7 @@
                 <div class="sheet-item sheet-spindisable" style="width:15%"><input name="attr_wpnranges" type="number" value="N/A" style="width:100%"></div>
                 <div class="sheet-item" style="width:15%">
                     <select style="width:100%" name="attr_wpnrlds">
+                        <option value="na">N/A</option>
                         <option value="half">Half</option>
                         <option value="full">Full</option>
                         <option value="2full">2 Full</option>
@@ -1232,13 +1281,14 @@
             </div>
             <fieldset class="repeating_powers">
             <div class="sheet-row">
-                <div class="sheet-item" style="width:42%"><span>Name</span></div>
+                <div class="sheet-item" style="width:32%"><span>Name</span></div>
                 <div class="sheet-item" style="width:15%"><span>Action</span></div>
                 <div class="sheet-item" style="width:15%"><span>Atk Type</span></div>
-                <div class="sheet-item" style="width:20%"><span>Range (xPR)</span></div>
+                <div class="sheet-item" style="width:15%"><span>Range (xPR)</span></div>
+                <div class="sheet-item" style="width:10%"><span>Focus</span></div>
             </div>
             <div class="sheet-row">
-                <div class="sheet-item" style="width:42%"><input name="attr_psynames" type="text" value="N/A" style="width:100%"></div>
+                <div class="sheet-item" style="width:32%"><input name="attr_psynames" type="text" value="N/A" style="width:100%"></div>
                 <div class="sheet-item sheet-spindisable" style="width:15%">
                     <select style="width:100%" name="attr_psyactions">
                         <option value="free">Free</option>
@@ -1250,23 +1300,24 @@
                 <div class="sheet-item sheet-spindisable" style="width:15%">
                     <select style="width:100%" name="attr_psyatktypes">
                         <option value="na">N/A</option>
+                        <option value="bolt">Bolt</option>
                         <option value="barrage">Barrage</option>
                         <option value="storm">Storm</option>
                         <option value="blast">Blast</option>
                     </select>                
                 </div>
                 <div class="sheet-item sheet-spindisable" style="width:15%"><input name="attr_psyranges" type="number" value="N/A" style="width:100%"></div>
+                <div class="sheet-item" style="width:10%"><input name="attr_psyfocuss" type="number" value="0" style="width:100%"></div>
                 <div class="sheet-item sheet-spindisable" style="width:5%"><input type="checkbox" name="attr_psyselects" value="1" style="width: 100%"></div>
             </div>
             <div class="sheet-row">
-                <div class="sheet-item" style="width:10%"><span>Focus</span></div>
                 <div class="sheet-item" style="width:15%"><span>Sustain</span></div>
                 <div class="sheet-item" style="width:28%"><span>Subtype</span></div>
-                <div class="sheet-item" style="width:30%"><span>Damage/+Y/+ZxPR</span></div>
-                <div class="sheet-item" style="width:10%"><span>Pen</span></div>
+                <div class="sheet-item" style="width:30%"><span>Damage(Xd10+Y+ZxPR)</span></div>
+                <div class="sheet-item" style="width:20%"><span>Pen(X+YxPR)</span></div>
             </div>
             <div class="sheet-row">
-                <div class="sheet-item" style="width:10%"><input name="attr_psyfocuss" type="number" value="0" style="width:100%"></div>
+                
                 <div class="sheet-item" style="width:15%">
                     <select style="width:100%" name="attr_psysustains">
                         <option value="N/A">N/A</option>
@@ -1281,12 +1332,22 @@
                 <div class="sheet-item" style="width:10%"><input name="attr_psydmgstats" type="number" value="0" style="width:100%"></div>
                 <div class="sheet-item" style="width:10%"><input name="attr_psydmgprs" type="number" value="0" style="width:100%"></div>
                 <div class="sheet-item" style="width:10%"><input name="attr_psypens" type="number" value="0" style="width:100%"></div>
+                <div class="sheet-item" style="width:10%"><input name="attr_psypenprs" type="number" value="0" style="width:100%"></div>
             </div>
-            <div class="sheet-row">               
-                <div class="sheet-item" style="width:100%"><span>Attributes</span></div>
+            <div class="sheet-row"> 
+                <div class="sheet-item" style="width:15%"><span>Type</span></div>
+                <div class="sheet-item" style="width:78%"><span>Attributes</span></div>
             </div>
-            <div class="sheet-row">                
-                <div class="sheet-item" style="width:100%"><input name="attr_psyattr" type="text" value="N/A" style="width:100%"></div>
+            <div class="sheet-row">
+                <div class="sheet-item sheet-spindisable" style="width:15%">
+                    <select style="width:100%" name="attr_psydmgtypes">
+                        <option value="E">Energy</option>
+                        <option value="I">Impact</option>
+                        <option value="X">Explosive</option>
+                        <option value="R">Rending</option>
+                    </select>                
+                </div>                
+                <div class="sheet-item" style="width:78%"><input name="attr_psyattrs" type="text" value="N/A" style="width:100%"></div>
             </div>
             <div class="sheet-row">               
                 <div class="sheet-item" style="width:100%"><span>Effects</span></div>
@@ -2342,7 +2403,25 @@ on("change:dispwpnsingleshot2", function() {
     });
 });
 
-
+//Psychic power special strings
+on("change:disppsyspecial1 ", function() {
+    getAttrs(["disppsyspecial1"], function(values) {
+        
+        var tempch = values.disppsyspecial1.replace(/,/g , ".");
+        tempch = tempch.replace(/^\s+|\s+$/g, '');
+        setAttrs({disppsyspecialalt1: tempch});
+        
+    });
+});
+on("change:disppsyspecial2 ", function() {
+    getAttrs(["disppsyspecial2"], function(values) {
+        
+        var tempch = values.disppsyspecial2.replace(/,/g , ".");
+        tempch = tempch.replace(/^\s+|\s+$/g, '');
+        setAttrs({disppsyspecialalt2: tempch});
+        
+    });
+});
 
 ///////////////////
 //
@@ -2501,6 +2580,9 @@ on("change:repeating_powers:psyselects", function() {
                                 "repeating_powers_" + currentID + "_psydmgstats",
                                 "repeating_powers_" + currentID + "_psydmgprs",
                                 "repeating_powers_" + currentID + "_psypens",
+                                "repeating_powers_" + currentID + "_psypenprs",
+                                "repeating_powers_" + currentID + "_psydmgtypes",
+                                "repeating_powers_" + currentID + "_psyattrs",
                                 "repeating_powers_" + currentID + "_psyeffects"
                                 ], function(y) {
                                 setAttrs({
@@ -2513,8 +2595,11 @@ on("change:repeating_powers:psyselects", function() {
                                     disppsysubtype1: y["repeating_powers_" + currentID + "_psysubtypes"],
                                     disppsydmgflat1: y["repeating_powers_" + currentID + "_psydmgflats"],
                                     disppsydmgstat1: y["repeating_powers_" + currentID + "_psydmgstats"],
-                                    disppsydmgprs1: y["repeating_powers_" + currentID + "_psydmgprs"],
+                                    disppsydmgpr1: y["repeating_powers_" + currentID + "_psydmgprs"],
                                     disppsypen1: y["repeating_powers_" + currentID + "_psypens"],
+                                    disppsypenpr1: y["repeating_powers_" + currentID + "_psypenprs"],
+                                    disppsytype1: y["repeating_powers_" + currentID + "_psydmgtypes"],
+                                    disppsyspecial1: y["repeating_powers_" + currentID + "_psyattrs"],
                                     disppsyeffect1: y["repeating_powers_" + currentID + "_psyeffects"]
                                 });
                             });
@@ -2533,6 +2618,9 @@ on("change:repeating_powers:psyselects", function() {
                                 "repeating_powers_" + currentID + "_psydmgstats",
                                 "repeating_powers_" + currentID + "_psydmgprs",
                                 "repeating_powers_" + currentID + "_psypens",
+                                "repeating_powers_" + currentID + "_psypenprs",
+                                "repeating_powers_" + currentID + "_psydmgtypes",
+                                "repeating_powers_" + currentID + "_psyattrs",
                                 "repeating_powers_" + currentID + "_psyeffects"
                                 ], function(y) {
                                 setAttrs({
@@ -2545,8 +2633,11 @@ on("change:repeating_powers:psyselects", function() {
                                     disppsysubtype2: y["repeating_powers_" + currentID + "_psysubtypes"],
                                     disppsydmgflat2: y["repeating_powers_" + currentID + "_psydmgflats"],
                                     disppsydmgstat2: y["repeating_powers_" + currentID + "_psydmgstats"],
-                                    disppsydmgprs2: y["repeating_powers_" + currentID + "_psydmgprs"],
+                                    disppsydmgpr2: y["repeating_powers_" + currentID + "_psydmgprs"],
                                     disppsypen2: y["repeating_powers_" + currentID + "_psypens"],
+                                    disppsypenpr2: y["repeating_powers_" + currentID + "_psypenprs"],
+                                    disppsytype2: y["repeating_powers_" + currentID + "_psydmgtypes"],
+                                    disppsyspecial2: y["repeating_powers_" + currentID + "_psyattrs"],
                                     disppsyeffect2: y["repeating_powers_" + currentID + "_psyeffects"]
                                 });
                             });
