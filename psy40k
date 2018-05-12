@@ -1,0 +1,514 @@
+/**
+ * This script rolls a d100 and computes and outputs the success results based
+ * on Dark Heresy Second Edition RPG criteria.
+ * 
+ * The following commands is used:
+ * !psy40k   
+**/
+
+//Rolls a d100 and calculates the success or fail results to the chat window.
+var psy40kNamespace = psy40kNamespace || {};
+
+psy40kNamespace.rollResult = function(token, attribute, psychoice, psymod, psy, psyname, numdice, dmgstat, psydmg, psypen, psypenpr, psydmgtype, atktype, focusmod, atkspecial, effects, talents, msg) {
+    if (typeof token === 'undefined' || typeof token != 'string' )                          token       = 'generic';
+    if (typeof attribute === 'undefined' || Number.isInteger(parseInt(attribute))==false)   attribute   = 0;
+    if (typeof psyname === 'undefined' || typeof psyname != 'string' )                      psyname     = 'generic';
+    if (typeof psychoice === 'undefined' || Number.isInteger(parseInt(psychoice))==false)   psychoice   = 0;
+    if (typeof psymod === 'undefined' || Number.isInteger(parseInt(psymod))==false)         psymod      = 0;
+    if (typeof psy === 'undefined' || Number.isInteger(parseInt(psy))==false)               psy         = 0;
+    if (typeof numdice === 'undefined' || Number.isInteger(parseInt(numdice))==false)       numdice     = 0;
+    if (typeof dmgstat === 'undefined' || Number.isInteger(parseInt(dmgstat))==false)       dmgstat     = 0;
+    if (typeof psydmg === 'undefined' || Number.isInteger(parseInt(psydmg))==false)         psydmg      = 0;
+    if (typeof atktype === 'undefined' || typeof atktype != 'string' )                      atktype     = '';
+    if (typeof psypen === 'undefined' || Number.isInteger(parseInt(psypen))==false)            psypen         = 0;
+    if (typeof focusmod === 'undefined' || Number.isInteger(parseInt(focusmod))==false)     focusmod    = 0;
+    if (typeof effects === 'undefined' || typeof effects != 'string' )                      effects     = '';
+    if (typeof atkspecial === 'undefined' || typeof atkspecial != 'string' )                atkspecial  = '';
+    if (typeof talents === 'undefined' || typeof talents != 'string' )                      talents     = '';
+    
+    var player_obj = getObj("player", msg.playerid);
+    var roll = randomInteger(100);
+    var i, j; //loop control and temporary variables
+    var error=false;
+    var errortext="ERROR: GENERIC";
+    var specialArray = atkspecial.split('.');
+    var talentArray = talents.split('.');
+    var psydif;
+    var modTarget;
+    var dmgstring='';
+    var talstring='';
+    var qualstring='';
+    var effstring='';
+    var temp;
+    var cur;
+    var spray;
+    var numhits;
+    var scathits;
+    var dmg;
+    var pen;
+    var prvrf;
+    var attributeArray = {
+        "Accurate": false,
+        "Balanced": false,
+        "Blast": -1,
+        "Concussive": -1,
+        "Corrosive": false,
+        "Crippling": -1,
+        "Defensive": false,
+        "Felling": -1,
+        "Flame": false,
+        "Flexible": false,
+        "Force": false,
+        "Graviton": false,
+        "Hallucinogenic": -1,
+        "Haywire": -1,
+        "HaywireMod": 0,
+        "Inaccurate": false,
+        "Indirect": -1,
+        "Lance": false,
+        "Maximal": false,
+        "Melta": false,
+        "Overheats": false,
+        "PowerField": false,
+        "Primitive": -1,
+        "Proven": -1,
+        "RazorSharp": false,
+        "Recharge": false,
+        "Reliable": false,
+        "Sanctified": false,
+        "Scatter": false,
+        "Shocking": false,
+        "Smoke": -1,
+        "Snare": -1,
+        "Spray": false,
+        "Storm": false,
+        "Tearing": false,
+        "Toxic": -1,
+        "Twin-Linked": false,
+        "Unbalanced": false,
+        "Unreliable": false,
+        "Unwieldy": false,
+        "Vengeful": 10
+    };
+    var ttArray = {
+        "assassinstrike": false,
+        "blademaster": false,
+        "brutalcharge": false,
+        "deathdealer": false,
+        "battlerage": false,
+        "combatmaster": false,
+        "counterattack": false,
+        "crushingblow": false,
+        "deathdealer": false,
+        "devastatingassault": false,
+        "disarm": false,
+        "doudbleteam": false,
+        "eyeofvengeance": false,
+        "frenzy": false,
+        "hammerblow": false,
+        "hatred": false,
+        "hipshooting": false,
+        "independenttargeting": false,
+        "inescapableattack": false,
+        "killingstrike": false,
+        "lightningattack": false,
+        "marksman": false,
+        "mightyshot": false,
+        "nowheretohide": false,
+        "precisionkiller": false,
+        "preturnaturalspeed": false,
+        "swiftattack": false,
+        "takedown": false,
+        "targetselection": false,
+        "thundercharge": false,
+        "weapontech": false,
+        "whirlwindofdeath": false
+    }; 
+    
+    // Flags values in the special array to values in the attribute array
+    for (i = 0, j = specialArray.length; i < j; i++) {
+        specialArray[i] = specialArray[i].replace(/^\s+|\s+$/g, '');    //remove whitespace
+        sub = specialArray[i].match(/\d/);                              //find any numbers in parentheses
+        sub2= specialArray[i].match(/\(([^)]+)\)/);                      //find any letters in parentheses
+        specialArray[i] = specialArray[i].replace(/\(([^)]+)\)/g, '');  //remove parentheses and anything inside
+        cur = specialArray[i];
+        if(sub2=="(PR),PR"){
+            attributeArray[cur] = psychoice;
+        }
+        else if(sub != null){                                                //if there was a number in parentheses, set the array location equal to that number, otherwise set it as true
+            attributeArray[cur] = sub;
+        } else {
+            attributeArray[cur] = true;  
+        }
+    }
+
+
+    // Flags values in the talent array to values in the tt array
+    for (i = 0, j = talentArray.length; i < j; i++) {
+        talentArray[i] = talentArray[i].replace(/^\s+|\s+$/g, '');    //remove whitespace
+        sub = talentArray[i].match(/\d/);                              //find any numbers in parentheses
+        talentArray[i] = talentArray[i].replace(/\(([^)]+)\)/g, '');  //remove parentheses and anything inside
+        cur = talentArray[i];                                          
+        if(sub != null){                                                //if there was a number in parentheses, set the array location equal to that number, otherwise set it as true
+            ttArray[cur] = sub;
+        } else {
+            ttArray[cur] = true;  
+        }
+    }
+
+
+
+    //Prepare Focus Power Test
+    psydif=parseInt(psy)+parseInt(psymod)-parseInt(psychoice);
+    modTarget=parseInt(attribute)+10*parseInt(psydif)+parseInt(focusmod);
+    
+    //Calculate Focus Power Success/Failure & DoS/DoF
+    if(roll==100){
+        degOfSuc = (Math.floor(roll/10) - Math.floor(modTarget/10)) + 1;
+        output = '<span style="color:red">' + token + ' fails automatically by <B>' + degOfSuc + ' degree(s)</B></span>. ';
+        focussuccess=false;
+    }
+    if(roll <= modTarget) {
+        degOfSuc = (Math.floor(modTarget/10) - Math.floor(roll/10)) + 1;
+        output = '<span style="color:green">' + token + ' succeeds with <B>' + degOfSuc + ' degree(s)</B>.</span> ';
+        focussuccess=true;
+    } else if(roll > modTarget){
+        degOfSuc = (Math.floor(roll/10) - Math.floor(modTarget/10)) + 1;
+        output = '<span style="color:red">' + token + ' fails by <B>' + degOfSuc + ' degree(s)</B></span>. ';
+        focussuccess=false;
+    }else{
+        error=true;
+        errortext="ERROR: Failed Focus Power Calculation"
+    }
+
+    if(focussuccess==true){effstring=effstring+" --Effects| "+effects;}
+    if(focussuccess==true && (atktype=='bolt' || atktype=='barrage' || atktype=='storm' || atktype=='blast') ){
+        
+        if(attributeArray['Spray']==true){spray=true;}
+        
+        //determine #hits
+        scathits=0;
+        if(atktype=='bolt' || atktype=='blast'){
+            numhits=1;
+        } else if(atktype=='storm'){
+            if(degOfSuc>psychoice){numhits=psychoice;}
+            else if(psychoice>=degOfSuc){numhits=degOfSuc;}
+        } else if(atktype=='barrage'){
+            numhits = Math.floor((degOfSuc -1)/2)+1;
+            if(numhits>psychoice){numhits=psychoice;}
+        }else{
+            error=true;
+            errortext="ERROR: failed atktype numhit resolution";
+        }
+        
+        
+        //calculate added dmg
+        dmg=parseInt(dmgstat)+parseInt(psydmg*psychoice);
+        //calculate penetration
+        pen=parseInt(psypen)+parseInt(psypenpr*psychoice);
+        
+        //Determine Initial Hit Location
+        temp = Math.floor(roll/10); //Store 10s place
+        temp2 = roll - temp*10;     //Store 1s place
+        temp = temp2*10+temp;       //swap 10s and 1s place
+        if( (attributeArray['Blast']!=-1 && scathits!=0)||(attributeArray['Blast']==-1)||spray==true||attributeArray['Smoke']!=-1 ){var hitloc = ["Body","Body","Body","Body","Body","Body","Body","Body","Body","Body"];} 
+        else if(temp <= 10) {var hitloc = ["Head","Head","Left Arm","Body","Right Arm","Body","Body","Body","Body","Body"];} 
+        else if(10 < temp && temp <= 20){var hitloc = ["Right Arm","Right Arm","Body","Head","Body","Left Arm","Left Arm","Left Arm","Left Arm","Left Arm"];} 
+        else if(20 < temp && temp <= 30){var hitloc = ["Left Arm","Left Arm","Body","Head","Body","Right Arm","Right Arm","Right Arm","Right Arm","Right Arm"];}
+        else if(30 < temp && temp <= 70){var hitloc = ["Body","Body","Right Arm","Head","Left Arm","Body","Body","Body","Body","Body"];} 
+        else if(70 < temp && temp <= 85){var hitloc = ["Right Leg","Right Leg","Body","Right Arm","Head","Body","Body","Body","Body","Body"];} 
+        else if(85 < temp && temp <= 100){var hitloc = ["Left Leg","Left Leg","Body","Left Arm","Head","Body","Body","Body","Body","Body"];} 
+        else{
+            error=true;
+            errortext="ERROR: BAD HIT LOCATION";
+        }
+        
+        //format damage rolls
+        cur=parseInt(numhits)+parseInt(scathits);
+        if(attributeArray['Tearing']==true){dmgsubstring=parseInt(numdice)+"d10d1cs>"+(parseInt(attributeArray['Vengeful']))+"cf0+"+parseInt(dmg)+" ]] <B> Pen "+parseInt(pen)+" </B> "+psydmgtype+" ";}
+        else if (attributeArray['Spray']==true){dmgsubstring=parseInt(numdice)+"d10cs>"+(parseInt(attributeArray['Vengeful']))+"cf9+"+parseInt(dmg)+" ]] <B> Pen "+parseInt(pen)+" </B>"+psydmgtype+" ";}
+        else {dmgsubstring=parseInt(numdice)+"d10cs>"+(parseInt(attributeArray['Vengeful']))+"cf0+"+parseInt(dmg)+" ]] <B> Pen "+parseInt(pen)+" </B>"+psydmgtype+" ";}
+    
+        //Compute Damage string
+        for(i=1; i <=cur; i++){
+        
+            //do separate calculations for proven/primitive, if necessary
+            if(attributeArray['Proven']!=-1 || attributeArray['Primitive']!=-1){
+                lowest=100;
+                prvdmg='';
+                prvrf=false;
+                for(j=1; j <= numdice; j++){
+                    temp = randomInteger(parseInt(dice));
+                    if(temp>=attributeArray['Vengeful']){prvrf=true;}
+                    if(temp==9 && attributeArray['Spray']==true){prvjam=true;}
+                    if(attributeArray['Proven']!=-1 && temp<attributeArray['Proven']){temp=attributeArray['Proven'];}
+                    if(attributeArray['Primitive']!=-1 && temp>attributeArray['Primitive']){temp=attributeArray['Primitive'];}
+                    if(temp<lowest){lowest=temp;}
+                    prvdmg=prvdmg+temp+"+";
+                }
+                prvdmg=prvdmg+dmg;
+                if(attributeArray['Tearing']==true){prvdmg=prvdmg+"-"+lowest;}
+                dmgsubstring="[NH] 1d0+"+prvdmg+" ]] <B> Pen "+parseInt(psypen)+" </B>";
+            }
+        
+            //Add scatter/drift strings if necessary
+            if(attributeArray['Indirect']!=-1){
+                scatdir=randomInteger(8);
+                if(scatdir==1){temp="NW";}
+                else if(scatdir==2){temp="N";}
+                else if(scatdir==3){temp="N";}
+                else if(scatdir==4){temp="NE";}
+                else if(scatdir==5){temp="W";}
+                else if(scatdir==6){temp="E";}
+                else if(scatdir==7){temp="SW";}
+                else if(scatdir==8){temp="SE";}
+                if(i<=numhits){dmgendstring="[[ [NH] 1d10-"+parseInt(sub)+"]] meter(s) "+temp;}
+                else{dmgendstring="[[ [NH] "+attributeArray['Indirect']+"d10]] meter(s) "+temp;}
+            } else if(i>numhits){
+                scatdir=randomInteger(8);
+                if(scatdir==1){temp="NW";}
+                else if(scatdir==2){temp="N";}
+                else if(scatdir==3){temp="N";}
+                else if(scatdir==4){temp="NE";}
+                else if(scatdir==5){temp="W";}
+                else if(scatdir==6){temp="E";}
+                else if(scatdir==7){temp="SW";}
+                else if(scatdir==8){temp="SE";}
+                dmgendstring="[[ [NH] 1d5]] meter(s) "+temp;
+            } else{
+                dmgendstring="to the "+hitloc[i];
+            }
+            if(attributeArray['Smoke']!=-1){dmgstring = dmgstring+ " --Smoke: *"+i+"|"+dmgsubstring;}
+            else{dmgstring = dmgstring+ " --Damage: *"+i+"|[[ [$Dmg"+i+"] "+dmgsubstring+dmgendstring;}
+            //Compute and add RF
+            rfstring = " $Dmg"+i+".tens > 0";
+            if(attributeArray['Vengeful']<=9){rfstring =  rfstring + " OR $Dmg"+i+".nines > 0";}
+            if(attributeArray['Vengeful']<=8){rfstring =  rfstring + " OR $Dmg"+i+".eights > 0";}
+            if(attributeArray['Vengeful']<=7){rfstring =  rfstring + " OR $Dmg"+i+".sevens > 0";}
+            if(attributeArray['Vengeful']<=6){rfstring =  rfstring + " OR $Dmg"+i+".sixes > 0";}
+            if(attributeArray['Vengeful']<=5){rfstring =  rfstring + " OR $Dmg"+i+".fives > 0";}
+            if(attributeArray['Vengeful']<=4){rfstring =  rfstring + " OR $Dmg"+i+".fours > 0";}
+            if(attributeArray['Vengeful']<=3){rfstring =  rfstring + " OR $Dmg"+i+".threes > 0";}
+            if(attributeArray['Vengeful']<=2){rfstring =  rfstring + " OR $Dmg"+i+".twos > 0";}
+            if(attributeArray['Vengeful']<=1){rfstring =  rfstring + " OR $Dmg"+i+".ones > 0";}
+            if(prvrf==true){dmgstring = dmgstring + " --!^1Righteous Fury: *"+i+"| [[ [NH] 1d5 ]] critical damage to the "+hitloc[i]+" ";}
+            else{dmgstring = dmgstring + " --?? "+rfstring+" ?? !^1Righteous Fury: *"+i+"| [[ [NH] 1d5 ]] critical damage to the "+hitloc[i]+" ";}
+            //Check for 'Accurate' quality
+            if(attributeArray['Accurate']==true){
+                if(degOfSuc == 3 || degOfSuc == 4){
+                    qualstring = qualstring + " --^1Accurate: *"+i+"| If benefitting from the Aim action on single shot, add [[ [$Acc"+i+"] [NH] 1d10 ]] damage";      
+                } else if (degOfSuc >= 5){
+                    qualstring = qualstring  + " --^1Accurate: *"+i+"| If benefitting from the Aim action on single shot, add [[ [$Acc"+i+"] [NH] 2d10 ]] damage"; 
+                }
+            }
+            //check for 'Corrosive' Quality
+            if(attributeArray['Corrosive']==true){
+                dmgstring = dmgstring  + " --!^1Corrosive: *"+i+"| [[ [$Cor"+i+"] [NH] 1d10 ]] dmg to "+hitloc[i]+" Armor ";
+            }
+        }
+    }
+    
+    //format the roll output string
+    cur=" --Roll:| [! "+roll+" !] vs [! "+modTarget+" !] --Result:|"+output;
+    
+    //check for qualities
+    if(focussuccess==true && (atktype=='bolt' || atktype=='barrage' || atktype=='storm' || atktype=='blast') ){
+        //Check for 'Blast' quality
+        if(attributeArray['Blast'] != -1){
+            qualstring = qualstring  + " --Blast: | Does damage to all targets within "+attributeArray['Blast']+" meters of the point hit; Scatters on miss";  
+        } 
+        //Check for Concussive quality
+        if(attributeArray['Concussive'] != -1){
+            qualstring = qualstring  + " --Concussive: | Target(s) must make "+parseInt(numhits+scathits)+" Toughness test(s) at  -"+(10*attributeArray['Concussive'])+". If failed, the target is Stunned for 1 round per DoF";  
+        }
+        //Check for 'Corrosive' quality
+        if(attributeArray['Corrosive']== true){
+            qualstring = qualstring  + " --Corrosive: *0| Armor damage is cumulative and permanent. Any damage done to Armor that reduces it below 0 AP (or if the target has no armor at that location) is dealt to the target directly, bypassing Toughness";  
+        }
+        //Check for Crippling quality
+        if(attributeArray['Crippling'] != -1){
+            qualstring = qualstring  + " --Crippled: |[+Crippled] If Target takes at least 1 wound from this wpn he is considered Crippled until end of the encounter or healed fully. If a Crippled character takes more than a half action on his turn, he suffers "+attributeArray['Crippling']+" Rending damage, not reduced by A or T.";  
+        }
+        //Check for Daemonbane quality
+        if(attributeArray['Daemonbane'] == true){
+            qualstring = qualstring  + " --Daemonbane: | This weapon gains Vengeful(8) and ignores Toughness vs creatures with the Daemonic trait [NOT INCLUDED]";
+        }
+        //Check for Felling quality
+        if(attributeArray['Felling'] != -1){
+            qualstring = qualstring  + " --Felling: | Target reduces their Unnatural Toughness by "+attributeArray['Felling']+" ";
+        }
+        //Check for Flame quality
+        if(attributeArray['Flame'] == true){
+            qualstring = qualstring  + " --Flame: | [+Fire] Target(s) hit must make an Agility test or be set on Fire ";
+        }
+        //Check for Graviton quality
+        if(attributeArray['Graviton'] == true){
+            qualstring = qualstring  + " --Graviton: | Target takes additional damage on every hit equal to his Armor Bonus ";
+        }
+        //check for 'Hallucinogenic' Quality
+        if(attributeArray['Hallucinogenic'] !=-1){
+            qualstring = qualstring  + " --Hallucinogenic: | [+Hallucinating] Target(s) hit must make Toughness tests at "+parseInt(-10*attributeArray['Hallucinogenic'])+" or else suffer this temporary delusion: ^^[[ [TXT] [$Tbl] 1t[hallucinogenic] ]] The effects last for 1 round, +1 per DoF.";
+        }
+        //check for 'Haywire' Quality
+        if(attributeArray['Haywire']!=-1){
+            temp2=randomInteger(10);
+            temp2=parseInt(temp2)+parseInt(attributeArray['HaywireMod']);
+            if(temp2==1||temp2==2){temp="<b>Insignificant:</b> No noticible effect";}
+            else if(temp2==3||temp2==4){temp="<b>Minor Disruption:</b> All actions using tech take -10, PwrArm Mov-1";}
+            else if(temp2==5||temp2==6){temp="<b>Major Disruption:</b> All actions using tech take -20, PwrArm Mov-3, Melee wpns function as Primitive";}
+            else if(temp2==7||temp2==8){temp="<b>Dead Zone:</b> Tech ceases to function, PwrArm Mov=1, cybernetics inflict 1 fatigue/round, Melee wpn function as Primitive";}
+            else if(temp2>=9){temp="<b>Prolonged Dead Zone:</b> Tech ceases to function, PwrArm Mov=1, cybernetics inflict 1 fatigue/round, Melee wpn function as Primitive. Lasts for [[ [NH] 1d5 ]] rounds before lessening to Major Disruption";}
+    
+            qualstring = qualstring  + " --Haywire: | [+Haywire] Everything within "+attributeArray['Haywire']+"m of the point(s) hit is affected with the following effect: ^^"+temp+"^^ The field lessens 1 step in severity each round and does not stack (highest effect persists).";
+        }
+        //Check for Inaccurate quality
+        if(attributeArray['Inaccurate'] == true){
+            qualstring = qualstring  + " --Inaccurate: | Cannot benefit from the Aim action using this weapon";
+        }
+        //Check for Indirect quality
+        if(attributeArray['Indirect'] != -1){
+            qualstring = qualstring  + " --Indirect: | This weapon can be fired as a FuA in Indirect Mode; in this mode, attacks do not require LoS, but the attacker must still be aware of the target. Attacks Scatter on hit and on miss.";
+        }
+        if(attributeArray['Indirect'] != -1){
+            qualstring = qualstring  + " --Indirect: | This weapon is being fired as a FuA in Indirect Mode; attacks do not require LoS, but the attacker must still be aware of the target. Attacks Scatter on hit and on miss.";
+        }
+        //Check for Lance quality
+        if(attributeArray['Lance'] == true){
+            qualstring = qualstring  + " --Lance: | Penetration is increased for every DoS";
+        }
+        //Check for'Maximal' quality
+        if(attributeArray['Maximal']==true){
+            qualstring = qualstring  + " --Maximal: | This weapon is firing on Maximal; it adds +10 Range, +1d10 damage, +2 Pen, Blast(+2), Recharge. Weapon also consumes 3x ammo";
+        }
+        if(attributeArray['Maximal']==true){
+            qualstring = qualstring  + " --Maximal: | This weapon can be fired on Maximal; in this mode, it adds +10 Range, +1d10 damage, +2 Pen, Blast(+2), Recharge. Weapon also consumes 3x ammo";
+        }
+        //Check for 'Melta' quality
+        if(attributeArray['Melta'] == true){
+            qualstring = qualstring  + " --Melta: | Penetration is doubled at Short Range or closer";
+        }
+        //Check for 'Overheats' quality
+        if( attributeArray['Overheats'] == true){
+            dmgstring = dmgstring  + " --Overheats: | This weapon Overheats and you take [[ [$Ovh] "+parseInt(numdice)+"d"+parseInt(dice)+"+"+parseInt(dmg)+"]] Pen 0 Energy damage to the Arm. User can drop the weapon as a FrA to avoid damage. The weapon must spend the next round cooling down.";
+        }
+        if( attributeArray['Overheats'] == true){
+            qualstring = qualstring  + " --Overheats: | This weapon can overheat on a roll of 91 or higher; it never jams--any effect that would cause it to jam instead causes it to Overheat";
+        }
+        //Check for 'Primitive' quality
+        if(attributeArray['Primitive'] != -1){
+            qualstring = qualstring  + " --Primitive: | Any die result greater than"+attributeArray['Primitive']+" is counted as "+attributeArray['Primitive']+". Righteous Fury may still trigger as usual.";
+        }
+        //Check for 'Proven' quality
+        if(attributeArray['Proven'] != -1){
+            qualstring = qualstring  + " --Proven: | Any die result less than"+attributeArray['Proven']+" is counted as "+attributeArray['Proven'];
+        }
+        //Check for 'RazorSharp' quality
+        if(attributeArray['RazorSharp'] == true){
+            qualstring = qualstring  + " --Razor Sharp: | Penetration is doubled for 3+ DoS";
+        }
+        //Check for 'Recharge' quality
+        if(attributeArray['Recharge'] == true){
+            qualstring = qualstring  + " --Recharge: | When used to attack, this weapon cannot fire again until the end of the next round";
+        }
+        //Check for 'Reliable' quality
+        if(attributeArray['Reliable'] == true){
+            qualstring = qualstring  + " --Reliable: | This weapon only jams on a 100; spray weapons never jam";
+        }
+        //Check for 'Sanctified' quality
+        if(attributeArray['Sanctified'] == true){
+            qualstring = qualstring  + " --Sanctified: | Any damage inflicted by this weapon counts as Holy, which can have unique effects against Daemons";
+        }
+        //Check for 'Scatter' quality
+        if(attributeArray['Scatter'] == true){
+            qualstring = qualstring  + " --Scattering: | Increases dmg and hit at PBR, +hit at SR, -dmg at higher ranges (not to be confused with weapon scattering/drift)";
+        }
+        //Check for Shocking quality
+        if(attributeArray['Shocking']==true){
+            qualstring = qualstring  + " --Shocking: | A target that takes at least 1 point of damage from this weapon (after A/T) must make a Challenging Toughness Test. If failed, the target gains 1 Fatigue and is Stunned for 1 round per 2 DoF (rounding up)";  
+        }
+        //Check for Smoke quality
+        if(attributeArray['Smoke'] != -1){
+            qualstring = qualstring  + " --Smoke: *0| Creates "+parseInt(numhits+scathits)+" Smokescreen(s) at the point(s) of impact with a radius of "+attributeArray['Smoke']+". The screen(s) last for [[ [$Smk] 1d10+10 ]] rounds";  
+        }
+        //Check for Snare quality
+        if(attributeArray['Snare'] != -1){
+            qualstring = qualstring  + " --Snare: | [+Helpless] Target(s) hit must make an Agility test at "+parseInt(-10*attributeArray['Snare'])+" or be Immobilized. An Immobilized target can attempt no actions other than escape; as a FuA he can make a Challenging Str test at "+parseInt(-10*attributeArray['Snare'])+". If he succeeds, he bursts free. The target is considered Helpless until he escapes.";  
+        }
+        //Check for Spray quality
+        if(attributeArray['Spray']==true){
+            qualstring = qualstring  + " --Spray: | Affects targets in a 30 degree cone. Targets must make a Challenging Agility test or suffer one hit from the weapon. If user lacks training, targets gain+20. If user is firing a heavy weapon and isn't braced, targets gain+30. Cover does protect vs Spray unless the target is completely covered. They jam if the firer rolls 9s on any damage dice.";  
+        }
+        if(attributeArray['Spray']==true){
+            qualstring = qualstring  + " --TL Spray: | Affects targets in a 30 degree cone. Targets must make a Challenging Agility test or suffer one hit from the weapon, rerolling any successfull saves once. If user lacks training, targets gain+20. If user is firing a heavy weapon and isn't braced, targets gain+30. Cover does protect vs Spray unless the target is completely covered. They jam if the firer rolls 9s on any damage dice. Consumes 2x ammo and doubles Reload time.";  
+        }
+        //Check for Storm quality
+        if(attributeArray['Storm']==true){
+            qualstring = qualstring  + " --Storm: | Doubles the number of hits this weapon deals (up to the firing rate)";  
+        }
+        //Check for Tainted quality
+        if(attributeArray['Tainted']==true){
+            qualstring = qualstring  + " --Tainted: | This weapon deals additional damage equal to the bearer's Corruption Bonus [NOT INCLUDED]";
+        }
+        //Check for Tearing quality
+        if(attributeArray['Tearing']==true){
+            qualstring = qualstring  + " --Tearing: | This weapon rolls one extra die for damage, and the lowest roll is discarded"; 
+        }
+        //Check for Toxic quality
+        if(attributeArray['Toxic'] != -1){
+            qualstring = qualstring  + " --Toxic: | Target(s) who take damage (after A/T) must make a Toughness test at "+parseInt(-10*attributeArray['Toxic'])+" or suffer [[ [$Tox] 1d10 ]] additional damage, ignoring A/T. Some Toxins have additional effects.";  
+        }
+        //Check for Twin-Linked quality
+        if(attributeArray['Twin-Linked']== true){
+            qualstring = qualstring  + " --TwinLinked: | Weapon adds +20 to hit and uses 2x ammunition; weapon also scores one additional hit if > 2 DoS. Doubles Reload Time.";  
+        }
+        //Check for 'Unreliable' quality
+        if(attributeArray['Unreliable'] == true){
+            qualstring = qualstring  + " --Unreliable: | This weapon  jams on a 91+";
+        }
+        //Check for 'Vengeful' quality
+        if(attributeArray['Vengeful'] != 10){
+            qualstring = qualstring  + " --Vengeful: | Any die result greater than"+attributeArray['Vengeful']+" triggers Righteous Fury";
+        }
+    }
+    
+
+    //Add talent descriptions
+    talstring = " --Applicable Talents: |";
+    if(ttArray['warpconduit']==true){
+        talstring = talstring  + "Warp Conduit(spend FP when pushing to increase PR by 1d5)";  
+    }
+    if(ttArray['favoredbythewarp']==true){
+        talstring = talstring  + "Favored by the Warp(roll twice for Psy Phenom and choose)";  
+    }
+    if(ttArray['warplock']==true){
+        talstring = talstring  + "Warp Lock(ignore Psy Phenom 1/session)";  
+    }
+    
+    
+/*    
+    if(psydif<0){
+        psydif = parseInt(psychoice)-parseInt(psy)-parseInt(psymod);
+        temp="Psy Rating " + psychoice + ": Push(+"+psydif+")"
+    }else{
+        temp="Psy Rating " + psychoice;
+    }
+*/
+    temp2=parseInt(psy)+parseInt(psymod);
+    temp="Psy Rating " + psychoice +"("+temp2+")";
+    
+    
+    //Return output
+    if(error==true){
+      output = errortext; 
+    }
+    else {
+        output ="!power {{--format|psy --titlefontshadow|none --name|"+token+" --leftsub| "+psyname+"  --rightsub| "+temp+cur+dmgstring+effstring+qualstring+talstring+" }}";
+        //output ="!power {{--format|psy --titlefontshadow|none --name|"+sub2+" --leftsub| "+psyname+"  --rightsub| "+temp+cur+dmgstring+effstring+qualstring+talstring+" }}";
+        
+    }
+    msg.content=output;
+    msg.who = msg.who.replace(" (GM)", "");
+    msg.content = msg.content.replace(/<br\/>\n/g, ' ').replace(/({{(.*?)}})/g, " $2 ");
+    PowerCard.Process(msg, player_obj);
+    return 0;
+}
