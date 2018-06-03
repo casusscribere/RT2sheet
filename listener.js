@@ -18,7 +18,7 @@ on("chat:message", function(msg) {
         cmdName = '!skill40k ';
         paramList = msgTxt.slice(cmdName.length);
         if(paramList.indexOf(',') == -1) {
-            result=' must specify 13 comma-separated parameters for !melee40k command.';
+            result=' must specify 13 comma-separated parameters for !skill40k command.';
         }
         else {
             var paramArray    = paramList.split(',');
@@ -46,11 +46,11 @@ on("chat:message", function(msg) {
         cmdName = '!ranged40k ';
         var paramList = msgTxt.slice(cmdName.length);
         if(paramList.indexOf(',') == -1) {
-            result=' must specify 13 comma-separated parameters for !melee40k command.';
+            result=' must specify 13 comma-separated parameters for !ranged40k command.';
         }
         else {
             var paramArray = paramList.split(',');
-            var curToken, attribute, range, shotsel, single, semi, full, numdice, dice, dmg, pen, modifier, special, quality, talents, wpnname, type;
+            var curToken, attribute, range, shotsel, single, semi, full, numdice, dice, dmg, pen, modifier, special, quality, talents, wpnname, type, ammo, mod1, mod2, mod3, effects, wpncat;
             _.each(paramArray, function(current, i) {
                 if(i==0){
                     curToken  = listener40kNamespace.trimString(current);
@@ -86,9 +86,21 @@ on("chat:message", function(msg) {
                     wpnname = listener40kNamespace.trimString(current);
                 } else if(i==16){
                     type = listener40kNamespace.trimString(current);
+                } else if(i==17){
+                    ammo = listener40kNamespace.trimString(current);
+                } else if(i==18){
+                    mod1 = listener40kNamespace.trimString(current);
+                } else if(i==19){
+                    mod2 = listener40kNamespace.trimString(current);
+                } else if(i==20){
+                    mod3 = listener40kNamespace.trimString(current);
+                } else if(i==21){
+                    effects = listener40kNamespace.trimString(current);
+                } else if(i==22){
+                    wpncat = listener40kNamespace.trimString(current);
                 }
             });
-            result = ranged40kNamespace.rollResult(curToken, attribute, range, shotsel, single, semi, full, numdice, dice, dmg, pen, modifier, special, quality, talents, wpnname, type, msg );
+            result = ranged40kNamespace.rollResult(curToken, attribute, range, shotsel, single, semi, full, numdice, dice, dmg, pen, modifier, special, quality, talents, wpnname, type, ammo, mod1, mod2, mod3, effects, wpncat, msg );
         }
     }
     else if (msgTxt.split(" ", 1)[0] === "!melee40k") {
@@ -99,7 +111,7 @@ on("chat:message", function(msg) {
         }
         else {
             var paramArray = paramList.split(',');
-            var curToken, attribute, shotsel, numdice, dice, dmg, pen, str, modifier, special, quality, talents, wpnname, type, psy ;
+            var curToken, attribute, shotsel, numdice, dice, dmg, pen, str, modifier, special, quality, talents, wpnname, type, psy, mod1, mod2, mod3, effects, wpncat;
             _.each(paramArray, function(current, i) {
                 if(i==0){
                     curToken  = listener40kNamespace.trimString(current);
@@ -129,18 +141,28 @@ on("chat:message", function(msg) {
                     wpnname = listener40kNamespace.trimString(current);
                 }  else if(i==13){
                     type = listener40kNamespace.trimString(current);
-                } else if(i==14){
+                }  else if(i==14){
                     psy = listener40kNamespace.trimString(current);
+                }  else if(i==15){
+                    mod1 = listener40kNamespace.trimString(current);
+                }  else if(i==16){
+                    mod2 = listener40kNamespace.trimString(current);
+                }  else if(i==17){
+                    mod3 = listener40kNamespace.trimString(current);
+                } else if(i==18){
+                    effects = listener40kNamespace.trimString(current);
+                } else if(i==19){
+                    wpncat = listener40kNamespace.trimString(current);
                 }
             });
-            result = melee40kNamespace.rollResult(curToken, attribute, shotsel, numdice, dice, dmg, pen, str, modifier, special, quality, talents, wpnname, type, psy, msg);
+            result = melee40kNamespace.rollResult(curToken, attribute, shotsel, numdice, dice, dmg, pen, str, modifier, special, quality, talents, wpnname, type, psy, mod1, mod2, mod3, effects, wpncat, msg);
         }
     }
     else if (msgTxt.split(" ", 1)[0] === "!psy40k") {
         cmdName = '!psy40k ';
         var paramList = msgTxt.slice(cmdName.length);
         if(paramList.indexOf(',') == -1) {
-            result=' must specify 13 comma-separated parameters for !melee40k command.';
+            result=' must specify 13 comma-separated parameters for !psy40k command.';
         }
         else {
             var paramArray = paramList.split(',');
