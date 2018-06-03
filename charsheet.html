@@ -135,36 +135,46 @@
             <div class="sheet-2colrow" style="padding-top: 5px">
 				<div class='sheet-col'>
                     <div class="sheet-row">
-                        <div class="sheet-item" style="width:40%"><span>Acrobatics (Ag)</span></div>
-                        <div class="sheet-item" style="width:15%"><span name="attr_AcrobaticsScore"></span></div>
-                        <!--<div class="sheet-item" style="width:15%; position:relative"><button class='skillchal' type='roll' value='!skill40k @{charname},@{AcrobaticsScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Acrobatics, skill' name='roll_AcrobaticsCheck'></button><span class="skillchal"></span></div>
-                        --><div class="sheet-item" style="width:10%;"><button type='roll' value='!skill40k @{charname},@{AcrobaticsScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Acrobatics, skill' name='roll_AcrobaticsCheck'></button></div>
-                   
+                        <div class="sheet-item" style="width:52%"><span>Acrobatics (Ag)</span></div>
+                        <div class="sheet-item" style="width:10%"><span name="attr_AcrobaticsScore"></span></div>
+                        <div class="sheet-item" style="width:10%;"><button type='roll' value='!skill40k @{charname},@{AcrobaticsScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Acrobatics, @{talentstring}, normal' name='roll_AcrobaticsCheck'></button></div>
+                        <div class="sheet-item" style="width:10%;"><button type='roll' value='!skill40k @{charname},@{AcrobaticsScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Acrobatics, @{talentstring}, secret' name='roll_AcrobaticsCheck'></button></div>
+                        <div class="sheet-item" style="width:10%;"><button type='roll' value='!skill40k @{charname},@{AcrobaticsScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Acrobatics, @{talentstring}, hidden' name='roll_AcrobaticsCheck'></button></div>
                     </div>
                     <div class="sheet-row">
-                        <div class="sheet-item" style="width:70%"><span>Athletics (S)</span></div>
-                        <div class="sheet-item" style="width:15%"><span name="attr_AthleticsScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{AthleticsScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Athletics, skill' name='roll_AthleticsCheck'></button></div>
+                        <div class="sheet-item" style="width:52%"><span>Athletics (S)</span></div>
+                        <div class="sheet-item" style="width:10%"><span name="attr_AthleticsScore"></span></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{AthleticsScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Athletics, @{talentstring}, normal' name='roll_AthleticsCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{AthleticsScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Athletics, @{talentstring}, secret' name='roll_AthleticsCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{AthleticsScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Athletics, @{talentstring}, hidden' name='roll_AthleticsCheck'></button></div>
                     </div>
                     <div class="sheet-row">
-                        <div class="sheet-item" style="width:70%"><span>Awareness (Per)</span></div>
-                        <div class="sheet-item" style="width:15%"><span name="attr_AwarenessScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{AwarenessScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Awareness, skill' name='roll_AwarenessCheck'></button></div>
+                        <div class="sheet-item" style="width:52%"><span>Awareness (Per)</span></div>
+                        <div class="sheet-item" style="width:10%"><span name="attr_AwarenessScore"></span></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{AwarenessScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Awareness, @{talentstring}, normal' name='roll_AwarenessCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{AwarenessScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Awareness, @{talentstring}, secret' name='roll_AwarenessCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{AwarenessScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Awareness, @{talentstring}, hidden' name='roll_AwarenessCheck'></button></div>
                     </div>
                     <div class="sheet-row">
-                        <div class="sheet-item" style="width:70%"><span>Charm (Fel)</span></div>
-                        <div class="sheet-item" style="width:15%"><span name="attr_CharmScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{CharmScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Charm, skill' name='roll_CharmCheck'></button></div>
+                        <div class="sheet-item" style="width:52%"><span>Charm (Fel)</span></div>
+                        <div class="sheet-item" style="width:10%"><span name="attr_CharmScore"></span></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{CharmScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Charm, @{talentstring}, normal' name='roll_CharmCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{CharmScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Charm, @{talentstring}, secret' name='roll_CharmCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{CharmScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Charm, @{talentstring}, hidden' name='roll_CharmCheck'></button></div>
                     </div>
                     <div class="sheet-row">
-                        <div class="sheet-item" style="width:70%"><span>Command (Fel)</span></div>
-                        <div class="sheet-item" style="width:15%"><span name="attr_CommandScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{CommandScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Command, skill' name='roll_CommandCheck'></button></div>
+                        <div class="sheet-item" style="width:52%"><span>Command (Fel)</span></div>
+                        <div class="sheet-item" style="width:10%"><span name="attr_CommandScore"></span></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{CommandScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Command, @{talentstring}, normal' name='roll_CommandCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{CommandScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Command, @{talentstring}, secret' name='roll_CommandCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{CommandScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Command, @{talentstring}, hidden' name='roll_CommandCheck'></button></div>
                     </div>
                     <div class="sheet-row">
-                        <div class="sheet-item" style="width:70%"><span>Commerce (Int)</span></div>
-                        <div class="sheet-item" style="width:15%"><span name="attr_CommerceScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{CommerceScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Commerce, skill' name='roll_CommerceCheck'></button></div>
+                        <div class="sheet-item" style="width:52%"><span>Commerce (Int)</span></div>
+                        <div class="sheet-item" style="width:10%"><span name="attr_CommerceScore"></span></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{CommerceScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Commerce, @{talentstring}, normal' name='roll_CommerceCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{CommerceScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Commerce, @{talentstring}, secret' name='roll_CommerceCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{CommerceScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Commerce, @{talentstring}, hidden' name='roll_CommerceCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Common Lore (Int)</span></div>
@@ -172,21 +182,27 @@
                     <fieldset class="repeating_cldisps">
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:0%"><input name="attr_dispcommonlorenames" type="text" value="" class='sheet-cell' style="display: none;"></div>
-                        <div class="sheet-item" style="width:60%"><input name="attr_vdispcommonlorenames" type="text" value="@{dispcommonlorenames}" disabled="true" class='sheet-cell'></div>
-                        <div class="sheet-item" style="width:14%"><input name="attr_vdispcommonlorescores" type="number" value="@{dispcommonlorescores}" disabled="true" class='sheet-cell'></div>
+                        <div class="sheet-item" style="width:49%"><input name="attr_vdispcommonlorenames" type="text" value="@{dispcommonlorenames}" disabled="true" class='sheet-cell'></div>
+                        <div class="sheet-item" style="width:10%"><input name="attr_vdispcommonlorescores" type="number" value="@{dispcommonlorescores}" disabled="true" class='sheet-cell'></div>
                         <div class="sheet-item" style="width:0%"><input name="attr_dispcommonlorescores" type="number" value="" class='sheet-cell' style="display: none;"></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{dispcommonlorescores},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Common Lore: @{dispcommonlorenames}, skill' name='roll_CommonLoreCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{dispcommonlorescores},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Common Lore: @{dispcommonlorenames}, @{talentstring}, normal' name='roll_CommonLoreCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{dispcommonlorescores},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Common Lore: @{dispcommonlorenames}, @{talentstring}, secret' name='roll_CommonLoreCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{dispcommonlorescores},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Common Lore: @{dispcommonlorenames}, @{talentstring}, hidden' name='roll_CommonLoreCheck'></button></div>
                     </div>
                     </fieldset>
                     <div class="sheet-row">
-                        <div class="sheet-item" style="width:70%"><span>Deceive (Fel)</span></div>
-                        <div class="sheet-item" style="width:15%"><span name="attr_DeceiveScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{DeceiveScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Deceive, skill' name='roll_DeceiveCheck'></button></div>
+                        <div class="sheet-item" style="width:52%"><span>Deceive (Fel)</span></div>
+                        <div class="sheet-item" style="width:10%"><span name="attr_DeceiveScore"></span></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{DeceiveScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Deceive, @{talentstring}, normal' name='roll_DeceiveCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{DeceiveScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Deceive, @{talentstring}, secret' name='roll_DeceiveCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{DeceiveScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Deceive, @{talentstring}, hidden' name='roll_DeceiveCheck'></button></div>
                     </div>
                     <div class="sheet-row">
-                        <div class="sheet-item" style="width:70%"><span>Dodge (Ag)</span></div>
-                        <div class="sheet-item" style="width:15%"><span name="attr_DodgeScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{DodgeScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Dodge, skill' name='roll_DodgeCheck'></button></div>
+                        <div class="sheet-item" style="width:52%"><span>Dodge (Ag)</span></div>
+                        <div class="sheet-item" style="width:10%"><span name="attr_DodgeScore"></span></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{DodgeScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Dodge, @{talentstring}, normal' name='roll_DodgeCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{DodgeScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Dodge, @{talentstring}, secret' name='roll_DodgeCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{DodgeScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Dodge, @{talentstring}, hidden' name='roll_DodgeCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Forbidden Lore (Int)</span></div>
@@ -194,26 +210,34 @@
                     <fieldset class="repeating_fldisps">
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:0%"><input name="attr_dispforbiddenlorenames" type="text" value="" class='sheet-cell' style="display: none;"></div>
-                        <div class="sheet-item" style="width:60%"><input name="attr_vdispforbiddenlorenames" type="text" value="@{dispforbiddenlorenames}" disabled="true" class='sheet-cell'></div>
-                        <div class="sheet-item" style="width:14%"><input name="attr_vdispforbiddenlorescores" type="number" value="@{dispforbiddenlorescores}" disabled="true" class='sheet-cell'></div>
+                        <div class="sheet-item" style="width:49%"><input name="attr_vdispforbiddenlorenames" type="text" value="@{dispforbiddenlorenames}" disabled="true" class='sheet-cell'></div>
+                        <div class="sheet-item" style="width:10%"><input name="attr_vdispforbiddenlorescores" type="number" value="@{dispforbiddenlorescores}" disabled="true" class='sheet-cell'></div>
                         <div class="sheet-item" style="width:0%"><input name="attr_dispforbiddenlorescores" type="number" value="" class='sheet-cell' style="display: none;"></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{dispforbiddenlorescores},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Forbidden Lore: @{dispforbiddenlorenames}, skill' name='roll_ForbiddenLoreCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{dispforbiddenlorescores},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Forbidden Lore: @{dispforbiddenlorenames}, @{talentstring}, normal' name='roll_ForbiddenLoreCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{dispforbiddenlorescores},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Forbidden Lore: @{dispforbiddenlorenames}, @{talentstring}, secret' name='roll_ForbiddenLoreCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{dispforbiddenlorescores},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Forbidden Lore: @{dispforbiddenlorenames}, @{talentstring}, hidden' name='roll_ForbiddenLoreCheck'></button></div>
                     </div>
                     </fieldset>
                     <div class="sheet-row">
-                        <div class="sheet-item" style="width:70%"><span>Inquiry (Fel)</span></div>
-                        <div class="sheet-item" style="width:15%"><span name="attr_InquiryScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{InquiryScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Inquiry, skill' name='roll_InquiryCheck'></button></div>
+                        <div class="sheet-item" style="width:52%"><span>Inquiry (Fel)</span></div>
+                        <div class="sheet-item" style="width:10%"><span name="attr_InquiryScore"></span></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{InquiryScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Inquiry, @{talentstring}, normal' name='roll_InquiryCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{InquiryScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Inquiry, @{talentstring}, secret' name='roll_InquiryCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{InquiryScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Inquiry, @{talentstring}, hidden' name='roll_InquiryCheck'></button></div>
                     </div>
                     <div class="sheet-row">
-                        <div class="sheet-item" style="width:70%"><span>Interrogation (WP)</span></div>
-                        <div class="sheet-item" style="width:15%"><span name="attr_InterrogationScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{InterrogationScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Interrogation, skill' name='roll_InterrogationCheck'></button></div>
+                        <div class="sheet-item" style="width:52%"><span>Interrogation (WP)</span></div>
+                        <div class="sheet-item" style="width:10%"><span name="attr_InterrogationScore"></span></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{InterrogationScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Interrogation, @{talentstring}, normal' name='roll_InterrogationCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{InterrogationScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Interrogation, @{talentstring}, secret' name='roll_InterrogationCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{InterrogationScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Interrogation, @{talentstring}, hidden' name='roll_InterrogationCheck'></button></div>
                     </div>
                     <div class="sheet-row">
-                        <div class="sheet-item" style="width:70%"><span>Intimidate (S)</span></div>
-                        <div class="sheet-item" style="width:15%"><span name="attr_IntimidateScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{IntimidateScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Intimidate, skill' name='roll_IntimidateCheck'></button></div>
+                        <div class="sheet-item" style="width:52%"><span>Intimidate (S)</span></div>
+                        <div class="sheet-item" style="width:10%"><span name="attr_IntimidateScore"></span></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{IntimidateScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Intimidate, @{talentstring}, normal' name='roll_IntimidateCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{IntimidateScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Intimidate, @{talentstring}, secret' name='roll_IntimidateCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{IntimidateScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Intimidate, @{talentstring}, hidden' name='roll_IntimidateCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Linguistics (Int)</span></div>
@@ -221,63 +245,85 @@
                     <fieldset class="repeating_lndisps">
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:0%"><input name="attr_displinguisticsnames" type="text" value="" class='sheet-cell' style="display: none;"></div>
-                        <div class="sheet-item" style="width:60%"><input name="attr_vdisplinguisticsnames" type="text" value="@{displinguisticsnames}" disabled="true" class='sheet-cell'></div>
-                        <div class="sheet-item" style="width:14%"><input name="attr_vdisplinguisticsscores" type="number" value="@{displinguisticsscores}" disabled="true" class='sheet-cell'></div>
+                        <div class="sheet-item" style="width:49%"><input name="attr_vdisplinguisticsnames" type="text" value="@{displinguisticsnames}" disabled="true" class='sheet-cell'></div>
+                        <div class="sheet-item" style="width:10%"><input name="attr_vdisplinguisticsscores" type="number" value="@{displinguisticsscores}" disabled="true" class='sheet-cell'></div>
                         <div class="sheet-item" style="width:0%"><input name="attr_displinguisticsscores" type="number" value="" class='sheet-cell' style="display: none;"></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{displinguisticsscores},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Linguistics: @{displinguisticsnames}, skill' name='roll_LinguisticsCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{displinguisticsscores},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Linguistics: @{displinguisticsnames}, @{talentstring}, normal' name='roll_LinguisticsCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{displinguisticsscores},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Linguistics: @{displinguisticsnames}, @{talentstring}, secret' name='roll_LinguisticsCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{displinguisticsscores},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Linguistics: @{displinguisticsnames}, @{talentstring}, hidden' name='roll_LinguisticsCheck'></button></div>
                     </div>
                     </fieldset>
                 </div>
                 <div class='sheet-col'>
                     <div class="sheet-row">
-                        <div class="sheet-item" style="width:70%"><span>Logic (Int)</span></div>
-                        <div class="sheet-item" style="width:15%"><span name="attr_LogicScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{LogicScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Logic, skill' name='roll_LogicCheck'></button></div>
+                        <div class="sheet-item" style="width:52%"><span>Logic (Int)</span></div>
+                        <div class="sheet-item" style="width:10%"><span name="attr_LogicScore"></span></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{LogicScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Logic, @{talentstring}, normal' name='roll_LogicCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{LogicScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Logic, @{talentstring}, secret' name='roll_LogicCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{LogicScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Logic, @{talentstring}, hidden' name='roll_LogicCheck'></button></div>
                     </div>  
                     <div class="sheet-row">
-                        <div class="sheet-item" style="width:70%"><span>Medicae (Int)</span></div>
-                        <div class="sheet-item" style="width:15%"><span name="attr_MedicaeScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{MedicaeScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Medicae, skill' name='roll_MedicaeCheck'></button></div>
+                        <div class="sheet-item" style="width:52%"><span>Medicae (Int)</span></div>
+                        <div class="sheet-item" style="width:10%"><span name="attr_MedicaeScore"></span></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{MedicaeScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Medicae, @{talentstring}, normal' name='roll_MedicaeCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{MedicaeScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Medicae, @{talentstring}, secret' name='roll_MedicaeCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{MedicaeScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Medicae, @{talentstring}, hidden' name='roll_MedicaeCheck'></button></div>
                     </div>
                     <div class="sheet-row">
-                        <div class="sheet-item" style="width:70%"><span>Navigate(Surface) (Int)</span></div>
-                        <div class="sheet-item" style="width:15%"><span name="attr_NvSurfaceScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{NvSurfaceScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Navigate(Surface), skill' name='roll_NvSurfaceCheck'></button></div>
+                        <div class="sheet-item" style="width:52%"><span>Navigate(Surface) (Int)</span></div>
+                        <div class="sheet-item" style="width:10%"><span name="attr_NvSurfaceScore"></span></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{NvSurfaceScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Navigate(Surface), @{talentstring}, normal' name='roll_NvSurfaceCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{NvSurfaceScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Navigate(Surface), @{talentstring}, secret' name='roll_NvSurfaceCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{NvSurfaceScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Navigate(Surface), @{talentstring}, hidden' name='roll_NvSurfaceCheck'></button></div>
                     </div>
                     <div class="sheet-row">
-                        <div class="sheet-item" style="width:70%"><span>Navigate(Stellar) (Int)</span></div>
-                        <div class="sheet-item" style="width:15%"><span name="attr_NvStellarScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{NvStellarScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Navigate(Stellar), skill' name='roll_NvStellarCheck'></button></div>
+                        <div class="sheet-item" style="width:52%"><span>Navigate(Stellar) (Int)</span></div>
+                        <div class="sheet-item" style="width:10%"><span name="attr_NvStellarScore"></span></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{NvStellarScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Navigate(Stellar), @{talentstring}, normal' name='roll_NvStellarCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{NvStellarScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Navigate(Stellar), @{talentstring}, secret' name='roll_NvStellarCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{NvStellarScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Navigate(Stellar), @{talentstring}, hidden' name='roll_NvStellarCheck'></button></div>
                     </div>
                     <div class="sheet-row">
-                        <div class="sheet-item" style="width:70%"><span>Navigate(Warp) (Int)</span></div>
-                        <div class="sheet-item" style="width:15%"><span name="attr_NvWarpScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{NvWarpScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Navigate(Warp), skill' name='roll_NvWarpCheck'></button></div>
+                        <div class="sheet-item" style="width:52%"><span>Navigate(Warp) (Int)</span></div>
+                        <div class="sheet-item" style="width:10%"><span name="attr_NvWarpScore"></span></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{NvWarpScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Navigate(Warp), @{talentstring}, normal' name='roll_NvWarpCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{NvWarpScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Navigate(Warp), @{talentstring}, secret' name='roll_NvWarpCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{NvWarpScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Navigate(Warp), @{talentstring}, hidden' name='roll_NvWarpCheck'></button></div>
                     </div>
                     <div class="sheet-row">
-                        <div class="sheet-item" style="width:70%"><span>Operate(Aeronautica) (Int)</span></div>
-                        <div class="sheet-item" style="width:15%"><span name="attr_OpAeronauticaScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{OpAeronauticaScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Operate(Aeronautica), skill' name='roll_OpAeronauticaCheck'></button></div>
+                        <div class="sheet-item" style="width:52%"><span>Operate(Aero) (Int)</span></div>
+                        <div class="sheet-item" style="width:10%"><span name="attr_OpAeronauticaScore"></span></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{OpAeronauticaScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Operate(Aeronautica), @{talentstring}, normal' name='roll_OpAeronauticaCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{OpAeronauticaScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Operate(Aeronautica), @{talentstring}, secret' name='roll_OpAeronauticaCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{OpAeronauticaScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Operate(Aeronautica), @{talentstring}, hidden' name='roll_OpAeronauticaCheck'></button></div>
                     </div>
                     <div class="sheet-row">
-                        <div class="sheet-item" style="width:70%"><span>Operate(Surface) (Int)</span></div>
-                        <div class="sheet-item" style="width:15%"><span name="attr_OpSurfaceScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{OpSurfaceScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Operate(Surface), skill' name='roll_OpSurfaceCheck'></button></div>
+                        <div class="sheet-item" style="width:52%"><span>Operate(Surface) (Int)</span></div>
+                        <div class="sheet-item" style="width:10%"><span name="attr_OpSurfaceScore"></span></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{OpSurfaceScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Operate(Surface), @{talentstring}, normal' name='roll_OpSurfaceCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{OpSurfaceScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Operate(Surface), @{talentstring}, secret' name='roll_OpSurfaceCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{OpSurfaceScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Operate(Surface), @{talentstring}, hidden' name='roll_OpSurfaceCheck'></button></div>
                     </div>
                     <div class="sheet-row">
-                        <div class="sheet-item" style="width:70%"><span>Operate(Voidship) (Int)</span></div>
-                       <div class="sheet-item" style="width:15%"><span name="attr_OpVoidshipScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{OpVoidshipScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Operate(Voidship), skill' name='roll_OpVoidshipCheck'></button></div>
+                        <div class="sheet-item" style="width:52%"><span>Operate(Voidship) (Int)</span></div>
+                        <div class="sheet-item" style="width:10%"><span name="attr_OpVoidshipScore"></span></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{OpVoidshipScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Operate(Voidship), @{talentstring}, normal' name='roll_OpVoidshipCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{OpVoidshipScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Operate(Voidship), @{talentstring}, secret' name='roll_OpVoidshipCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{OpVoidshipScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Operate(Voidship), @{talentstring}, hidden' name='roll_OpVoidshipCheck'></button></div>
                     </div>
                     <div class="sheet-row">
-                        <div class="sheet-item" style="width:70%"><span>Parry (WS)</span></div>
-                        <div class="sheet-item" style="width:15%"><span name="attr_ParryScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{ParryScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Parry, skill' name='roll_ParryCheck'></button></div>
+                        <div class="sheet-item" style="width:52%"><span>Parry (WS)</span></div>
+                        <div class="sheet-item" style="width:10%"><span name="attr_ParryScore"></span></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{ParryScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Parry, @{talentstring}, normal' name='roll_ParryCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{ParryScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Parry, @{talentstring}, secret' name='roll_ParryCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{ParryScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Parry, @{talentstring}, hidden' name='roll_ParryCheck'></button></div>
                     </div>
                     <div class="sheet-row">
-                        <div class="sheet-item" style="width:70%"><span>Psyniscience (Per)</span></div>
-                        <div class="sheet-item" style="width:15%"><span name="attr_PsyniscienceScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{PsyniscienceScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Psyniscience, skill' name='roll_PsyniscienceCheck'></button></div>
+                        <div class="sheet-item" style="width:52%"><span>Psyniscience (Per)</span></div>
+                        <div class="sheet-item" style="width:10%"><span name="attr_PsyniscienceScore"></span></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{PsyniscienceScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Psyniscience, @{talentstring}, normal' name='roll_PsyniscienceCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{PsyniscienceScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Psyniscience, @{talentstring}, secret' name='roll_PsyniscienceCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{PsyniscienceScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Psyniscience, @{talentstring}, hidden' name='roll_PsyniscienceCheck'></button></div>
                     </div>
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:70%"><span>Scholastic Lore (Int)</span></div>
@@ -285,46 +331,62 @@
                     <fieldset class="repeating_sldisps">
                     <div class="sheet-row">
                         <div class="sheet-item" style="width:0%"><input name="attr_dispscholasticlorenames" type="text" value="" class='sheet-cell' style="display: none;"></div>
-                        <div class="sheet-item" style="width:60%"><input name="attr_vdispscholasticlorenames" type="text" value="@{dispscholasticlorenames}" disabled="true" class='sheet-cell'></div>
-                        <div class="sheet-item" style="width:14%"><input name="attr_vdispscholasticlorescores" type="number" value="@{dispscholasticlorescores}" disabled="true" class='sheet-cell'></div>
+                        <div class="sheet-item" style="width:49%"><input name="attr_vdispscholasticlorenames" type="text" value="@{dispscholasticlorenames}" disabled="true" class='sheet-cell'></div>
+                        <div class="sheet-item" style="width:10%"><input name="attr_vdispscholasticlorescores" type="number" value="@{dispscholasticlorescores}" disabled="true" class='sheet-cell'></div>
                         <div class="sheet-item" style="width:0%"><input name="attr_dispscholasticlorescores" type="number" value="" class='sheet-cell' style="display: none;"></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{dispscholasticlorescores},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Scholastic Lore: @{dispscholasticlorenames}, skill' name='roll_ScholasticLoreCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{dispscholasticlorescores},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Scholastic Lore: @{dispscholasticlorenames}, @{talentstring}, normal' name='roll_ScholasticLoreCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{dispscholasticlorescores},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Scholastic Lore: @{dispscholasticlorenames}, @{talentstring}, secret' name='roll_ScholasticLoreCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{dispscholasticlorescores},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Scholastic Lore: @{dispscholasticlorenames}, @{talentstring}, hidden' name='roll_ScholasticLoreCheck'></button></div>
                     </div>
                     </fieldset>
                     <div class="sheet-row">
-                        <div class="sheet-item" style="width:70%"><span>Scrutiny (Per)</span></div>
-                        <div class="sheet-item" style="width:15%"><span name="attr_ScrutinyScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{ScrutinyScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Scrutiny, skill' name='roll_ScrutinyCheck'></button></div>
+                        <div class="sheet-item" style="width:52%"><span>Scrutiny (Per)</span></div>
+                        <div class="sheet-item" style="width:10%"><span name="attr_ScrutinyScore"></span></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{ScrutinyScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Scrutiny, @{talentstring}, normal' name='roll_ScrutinyCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{ScrutinyScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Scrutiny, @{talentstring}, secret' name='roll_ScrutinyCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{ScrutinyScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Scrutiny, @{talentstring}, hidden' name='roll_ScrutinyCheck'></button></div>
                     </div>
                     <div class="sheet-row">
-                        <div class="sheet-item" style="width:70%"><span>Security (Int)</span></div>
-                        <div class="sheet-item" style="width:15%"><span name="attr_SecurityScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{SecurityScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Security, skill' name='roll_SecurityCheck'></button></div>
+                        <div class="sheet-item" style="width:52%"><span>Security (Int)</span></div>
+                        <div class="sheet-item" style="width:10%"><span name="attr_SecurityScore"></span></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{SecurityScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Security, @{talentstring}, normal' name='roll_SecurityCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{SecurityScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Security, @{talentstring}, secret' name='roll_SecurityCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{SecurityScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Security, @{talentstring}, hidden' name='roll_SecurityCheck'></button></div>
                     </div>
                     <div class="sheet-row">
-                        <div class="sheet-item" style="width:70%"><span>Sleight of Hand (Ag)</span></div>
-                        <div class="sheet-item" style="width:15%"><span name="attr_SleightOfHandScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{SleightOfHandScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Sleight Of Hand, skill' name='roll_SleightOfHandCheck'></button></div>
+                        <div class="sheet-item" style="width:52%"><span>Sleight of Hand (Ag)</span></div>
+                        <div class="sheet-item" style="width:10%"><span name="attr_SleightOfHandScore"></span></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{SleightOfHandScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Sleight Of Hand, @{talentstring}, normal' name='roll_SleightOfHandCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{SleightOfHandScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Sleight Of Hand, @{talentstring}, secret' name='roll_SleightOfHandCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{SleightOfHandScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Sleight Of Hand, @{talentstring}, hidden' name='roll_SleightOfHandCheck'></button></div>
                     </div>
                     <div class="sheet-row">
-                        <div class="sheet-item" style="width:70%"><span>Stealth (ag)</span></div>
-                        <div class="sheet-item" style="width:15%"><span name="attr_StealthScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{StealthScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Stealth, skill' name='roll_StealthCheck'></button></div>
+                        <div class="sheet-item" style="width:52%"><span>Stealth (ag)</span></div>
+                        <div class="sheet-item" style="width:10%"><span name="attr_StealthScore"></span></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{StealthScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Stealth, @{talentstring}, normal' name='roll_StealthCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{StealthScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Stealth, @{talentstring}, secret' name='roll_StealthCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{StealthScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Stealth, @{talentstring}, hidden' name='roll_StealthCheck'></button></div>
                     </div>
                     <div class="sheet-row">
-                        <div class="sheet-item" style="width:70%"><span>Survival (Per)</span></div>
-                        <div class="sheet-item" style="width:15%"><span name="attr_SurvivalScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{SurvivalScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Survival, skill' name='roll_SurvivalCheck'></button></div>
+                        <div class="sheet-item" style="width:52%"><span>Survival (Per)</span></div>
+                        <div class="sheet-item" style="width:10%"><span name="attr_SurvivalScore"></span></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{SurvivalScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Survival, @{talentstring}, normal' name='roll_SurvivalCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{SurvivalScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Survival, @{talentstring}, secret' name='roll_SurvivalCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{SurvivalScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Survival, @{talentstring}, hidden' name='roll_SurvivalCheck'></button></div>
                     </div>
                     <div class="sheet-row">
-                        <div class="sheet-item" style="width:70%"><span>Tech-Use (Int)</span></div>
-                        <div class="sheet-item" style="width:15%"><span name="attr_TechUseScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{TechUseScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Tech-Use, skill' name='roll_TechUseCheck'></button></div>
+                        <div class="sheet-item" style="width:52%"><span>Tech-Use (Int)</span></div>
+                        <div class="sheet-item" style="width:10%"><span name="attr_TechUseScore"></span></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{TechUseScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Tech-Use, @{talentstring}, normal' name='roll_TechUseCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{TechUseScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Tech-Use, @{talentstring}, secret' name='roll_TechUseCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{TechUseScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Tech-Use, @{talentstring}, hidden' name='roll_TechUseCheck'></button></div>
                     </div>
                     <div class="sheet-row">
-                        <div class="sheet-item" style="width:70%"><span>Trade (Int)</span></div>
-                        <div class="sheet-item" style="width:15%"><span name="attr_TradeScore"></span></div>
-                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{TradeScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Trade, skill' name='roll_TradeCheck'></button></div>
+                        <div class="sheet-item" style="width:52%"><span>Trade (Int)</span></div>
+                        <div class="sheet-item" style="width:10%"><span name="attr_TradeScore"></span></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{TradeScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Trade, @{talentstring}, normal' name='roll_TradeCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{TradeScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Trade, @{talentstring}, secret' name='roll_TradeCheck'></button></div>
+                        <div class="sheet-item" style="width:10%"><button type='roll' value='!skill40k @{charname},@{TradeScore},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60},Trade, @{talentstring}, hidden' name='roll_TradeCheck'></button></div>
                     </div>
                 </div>
             </div>
@@ -351,6 +413,7 @@
                     <input type="checkbox" name="attr_wpnselsw1" value="1" style="display:none;" class="wpnselsw">
                     <input type="checkbox" name="attr_wpnsella1" value="1" style="display:none;" class="wpnsella">
                     <input type="checkbox" name="attr_wpnselrg1" value="1" style="display:none;" class="wpnselrg">
+                    <input type="checkbox" name="attr_wpnselpa1" value="1" style="display:none;" class="wpnselpa">
                     <div class="sheet-item sheet-rangedrop1" style="width:20%">
                         <select name="attr_dispwpncurrng1" style="width:100%;">
                             <option value="0">Melee </option>
@@ -363,23 +426,20 @@
                     </div>
                     <div class="sheet-item" style="width:0%"><input name="attr_dispwpnmxstr1" type="text" value="?{Fire Selection(Maximal)|Standard, 6|Semi-Auto, 7|Full-Auto, 8}" style="display: none;"></div>
                     <div class="sheet-item" style="width:0%"><input name="attr_dispwpnidstr1" type="text" value="?{Fire Selection(Indirect)|Standard, 3|Semi-Auto, 4|Full-Auto, 5}" style="display: none;"></div>
-                    <div class="sheet-item sheet-sfroll1 sheet-sf" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng1}, 0, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}' name='roll_StdRanged'></button></div>
-                    <div class="sheet-item sheet-saroll1 sheet-sa" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng1}, 1, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}' name='roll_SemiRanged'></button></div>
-                    <div class="sheet-item sheet-faroll1 sheet-fa" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng1}, 2, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}' name='roll_FullRanged'></button></div>
-                    <div class="sheet-item sheet-idroll1 sheet-id" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng1}, @{dispwpnidstr1}, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}' name='roll_IndirectRanged'></button></div>
-                    <div class="sheet-item sheet-mxroll1 sheet-mx" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng1}, @{dispwpnmxstr1}, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}' name='roll_MaximalRanged'></button></div>
-                    <div class="sheet-item sheet-sfroll1 sheet-cs" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng1}, 9, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}' name='roll_CalledRanged'></button></div>
-                    <div class="sheet-item sheet-saroll1 sheet-su" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng1}, 10, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}' name='roll_SemiSupRanged'></button></div>
-                    <div class="sheet-item sheet-faroll1 sheet-su" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng1}, 11, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}' name='roll_FullSupRanged'></button></div>
-                    <div class="sheet-item sheet-stroll1 sheet-st" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 0, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}, @{Psy}' name='roll_StdMelee'></button></div>
-                    <div class="sheet-item sheet-swroll1 sheet-sw" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 1, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}, @{Psy}' name='roll_StdMelee'></button></div>
-                    <div class="sheet-item sheet-laroll1 sheet-la" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 2, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}, @{Psy}' name='roll_StdMelee'></button></div>
-                    <div class="sheet-item sheet-stroll1 sheet-ao" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 3, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}, @{Psy}' name='roll_AllMelee'></button></div>
-                    <div class="sheet-item sheet-stroll1 sheet-me" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, ?{Select an Action|Charge, 5|Called Strike, 4|Feint, 6|Stun, 7|Disarm, 9}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}, @{Psy}' name='roll_CalMelee'></button></div>
-                    <!--<div class="sheet-item sheet-stroll1" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 5, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}, @{Psy}' name='roll_ChaMelee'></button></div>
-                    <div class="sheet-item sheet-stroll1" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 6, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}, @{Psy}' name='roll_FeiMelee'></button></div>
-                    <div class="sheet-item sheet-stroll1" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 7, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}, @{Psy}' name='roll_StuMelee'></button></div>
-                   --> <div class="sheet-item sheet-stroll1 sheet-pr" style="width:10%"><button type='roll' value='!melee40k @{charname},@{ParryScore}, 8, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}, @{Psy}' name='roll_ParMelee'></button></div>
+                    <div class="sheet-item sheet-sfroll1 sheet-sf" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng1}, 0, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1},@{dispwpnammo1},@{dispwpnmod11},@{dispwpnmod21},@{dispwpnmod31},@{dispwpneffect1},@{dispwpncat1}' name='roll_StdRanged'></button></div>
+                    <div class="sheet-item sheet-saroll1 sheet-sa" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng1}, 1, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1},@{dispwpnammo1},@{dispwpnmod11},@{dispwpnmod21},@{dispwpnmod31},@{dispwpneffect1},@{dispwpncat1}' name='roll_SemiRanged'></button></div>
+                    <div class="sheet-item sheet-faroll1 sheet-fa" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng1}, 2, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1},@{dispwpnammo1},@{dispwpnmod11},@{dispwpnmod21},@{dispwpnmod31},@{dispwpneffect1},@{dispwpncat1}' name='roll_FullRanged'></button></div>
+                    <div class="sheet-item sheet-idroll1 sheet-id" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng1}, @{dispwpnidstr1}, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1},@{dispwpnammo1},@{dispwpnmod11},@{dispwpnmod21},@{dispwpnmod31},@{dispwpneffect1},@{dispwpncat1}' name='roll_IndirectRanged'></button></div>
+                    <div class="sheet-item sheet-mxroll1 sheet-mx" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng1}, @{dispwpnmxstr1}, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1},@{dispwpnammo1},@{dispwpnmod11},@{dispwpnmod21},@{dispwpnmod31},@{dispwpneffect1},@{dispwpncat1}' name='roll_MaximalRanged'></button></div>
+                    <div class="sheet-item sheet-sfroll1 sheet-cs" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng1}, 9, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1},@{dispwpnammo1},@{dispwpnmod11},@{dispwpnmod21},@{dispwpnmod31},@{dispwpneffect1},@{dispwpncat1}' name='roll_CalledRanged'></button></div>
+                    <div class="sheet-item sheet-saroll1 sheet-su" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng1}, 10, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1},@{dispwpnammo1},@{dispwpnmod11},@{dispwpnmod21},@{dispwpnmod31},@{dispwpneffect1},@{dispwpncat1}' name='roll_SemiSupRanged'></button></div>
+                    <div class="sheet-item sheet-faroll1 sheet-su" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng1}, 11, @{dispwpnsingleshot1}, @{dispwpnsemishot1}, @{dispwpnautoshot1}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1},@{dispwpnammo1},@{dispwpnmod11},@{dispwpnmod21},@{dispwpnmod31},@{dispwpneffect1},@{dispwpncat1}' name='roll_FullSupRanged'></button></div>
+                    <div class="sheet-item sheet-stroll1 sheet-st" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 0, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}, @{Psy},@{dispwpnmod11},@{dispwpnmod21},@{dispwpnmod31},@{dispwpneffect1},@{dispwpncat1}' name='roll_StdMelee'></button></div>
+                    <div class="sheet-item sheet-swroll1 sheet-sw" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 1, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}, @{Psy},@{dispwpnmod11},@{dispwpnmod21},@{dispwpnmod31},@{dispwpneffect1},@{dispwpncat1}' name='roll_StdMelee'></button></div>
+                    <div class="sheet-item sheet-laroll1 sheet-la" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 2, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}, @{Psy},@{dispwpnmod11},@{dispwpnmod21},@{dispwpnmod31},@{dispwpneffect1},@{dispwpncat1}' name='roll_StdMelee'></button></div>
+                    <div class="sheet-item sheet-stroll1 sheet-ao" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 3, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}, @{Psy},@{dispwpnmod11},@{dispwpnmod21},@{dispwpnmod31},@{dispwpneffect1},@{dispwpncat1}' name='roll_AllMelee'></button></div>
+                    <div class="sheet-item sheet-stroll1 sheet-me" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, ?{Select an Action|Charge, 5|Called Strike, 4|Feint, 6|Stun, 7|Disarm, 9}, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}, @{Psy},@{dispwpnmod11},@{dispwpnmod21},@{dispwpnmod31},@{dispwpneffect1},@{dispwpncat1}' name='roll_CalMelee'></button></div>
+                    <div class="sheet-item sheet-prroll1 sheet-pr" style="width:10%"><button type='roll' value='!melee40k @{charname},@{ParryScore}, 8, @{dispwpndmgnumdice1}, @{dispwpndmgdice1}, @{dispwpndmgstatic1},  @{dispwpnpen1},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt1}, @{dispwpnquality1}, @{talentstring}, @{dispwpnname1}, @{dispwpndmgtype1}, @{Psy},@{dispwpnmod11},@{dispwpnmod21},@{dispwpnmod31},@{dispwpneffect1},@{dispwpncat1}' name='roll_ParMelee'></button></div>
                 </div>
                 <div class="sheet-row">
                     <div class="sheet-item" style="width:34%"><span>Name</span></div>
@@ -462,6 +522,209 @@
                         </select>
                     </div>
                 </div>
+                <div class="sheet-row sheet-wpnsel1">
+                    <div class="sheet-item" style="width:79%"><span>Effects</span></div>
+                    <div class="sheet-item" style="width:10%"><span>WpnCat</span></div>
+                </div>
+                <div class="sheet-row sheet-wpnsel1">                
+                    <div class="sheet-item" style="width:79%"><span name="attr_dispwpneffect1"></span></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpneffect1"     type="text" value="" style="display: none;"></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpneffectalt1"  type="text" value="" style="display: none;" ></div>
+                    <div class="sheet-item" style="width:10%"><span name="attr_dispwpncat1"></span></div>
+                    <div class="sheet-item" style="width:0%">
+                        <select style="display:none;" name="attr_dispwpncat1">
+                            <option value="melee">Melee</option>
+                            <option value="pistol">Pistol</option>
+                            <option value="basic">Basic</option>
+                            <option value="heavy">Heavy</option>
+                            <option value="heavy">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="sheet-row sheet-wpnsel1">
+                    <div class="sheet-item" style="width:22%"><span>Ammo</span></div>
+                    <div class="sheet-item" style="width:70%"><span>Mods</span></div>
+                </div>
+                <div class="sheet-row sheet-wpnsel1">                
+                    <div class="sheet-item" style="width:22%"><span name="attr_dispwpnammo1"></span></div>
+                    <div class="sheet-item" style="width:0%">
+                        <select style="display:none;" name="attr_dispwpnammo1">
+                            <option value="default">Default</option>
+                            <option value="abyssal">Abyssal Bolts</option>
+                            <option value="amputator">Amputator Shells</option>
+                            <option value="bleeder">Bleeder Rounds</option>
+                            <option value="concussion">Concussion Bolts</option>
+                            <option value="dumdum">Dumdum Bullets</option>
+                            <option value="expander">Expander Rounds</option>
+                            <option value="explosive">Explosive Quarrels</option>
+                            <option value="hotshot">Hot-Shot Packs</option>
+                            <option value="incindiary">Incindiary Rounds</option>
+                            <option value="inferno">Inferno Shells</option>
+                            <option value="manstopper">Man-Stopper Bullets</option>
+                            <option value="nitidus">Nitidus Rounds</option>
+                            <option value="purgatus">Purgatus Stakes</option>
+                            <option value="purity">Pourity Bolts</option>
+                            <option value="psybolts">Psybolts</option>
+                            <option value="psyflame">Psyflame</option>
+                            <option value="sanctified">Sanctified Ammo</option>
+                            <option value="scrambler">Scrambler Rounds</option>
+                            <option value="shard">Shard Bolts</option>
+                            <option value="shock">Shock Bolts</option>
+                            <option value="silver">Silver Stakes</option>
+                            <option value="tempest">Tempest Bolt Shells</option>
+                            <option value="thermal">Thermal Bolts</option>
+                            <option value="tox">Tox Rounds</option>
+                            <option value="inferno">Inferno Ammo</option>
+                            <option value="overload">Overload Ammo</option>
+                            <option value="cryo">Cryo Ammo</option>
+                            <option value="chemical">Chemical Ammo</option>
+                            <option value="shredder">Shredder Ammo</option>
+                            <option value="tungsten">Tungsten</option>
+                            <option value="hammerhead">Hammerhead</option>
+                            <option value="phasic">Phasic</option>
+                            <option value="polonium">Polonium</option>
+                            <option value="flux">Flux</option>
+                        </select>
+                    </div>
+                    <div class="sheet-item" style="width:22%"><span name="attr_dispwpnmod11"></span></div>
+                    <div class="sheet-item" style="width:0%">
+                        <select style="display:none;" name="attr_dispwpnmod11">
+                            <option value="na">N/A</option>
+                            <option value="auxilliary">AAux Grenade Launcher</option>
+                            <option value="backpack">Backpack Ammo Suppky</option>
+                            <option value="compact">Compact</option>
+                            <option value="grip">Custom Grip</option>
+                            <option value="deactivated">Deactivated Safety</option>
+                            <option value="expanded">Expanded Magazine</option>
+                            <option value="exterminator">Expterminator</option>
+                            <option value="selector">Fire Selector</option>
+                            <option value="fluid">Fluid Action</option>
+                            <option value="forearm">Forearm Wpn Mount</option>
+                            <option value="melee">Melee Attachment</option>
+                            <option value="stock">Modified Stock</option>
+                            <option value="mono">Mono</option>
+                            <option value="motion">Motion Predictor</option>
+                            <option value="omni">Omni-Scope</option>
+                            <option value="photo">Photo Sight</option>
+                            <option value="pistol">Pistol Grip</option>
+                            <option value="preysense">Preysense Sight</option>
+                            <option value="quick">Quick-Release</option>
+                            <option value="reddot">Red-Dot Sight</option>
+                            <option value="reinforced">Reinforced</option>
+                            <option value="sacred">Sacred Inscriptions</option>
+                            <option value="silencer">Silencer</option>
+                            <option value="suspensors">Suspensors</option>
+                            <option value="targeter">Targeter</option>
+                            <option value="telescopic">Telescopic Sight</option>
+                            <option value="tox">Tox Dispenser</option>
+                            <option value="tripod">Tripod/Bipod</option>
+                            <option value="truesilver">Truesilver Gilding</option>
+                            <option value="weaving">Truesilver Weaving</option>
+                            <option value="warpleech">Warpleech Canister</option>
+                            <option value="vox">Vox-Operated</option>
+                            <option value="stabilitydampener">Stability Dampener</option>
+                            <option value="extendedbarrel">Extended Barrel</option>
+                            <option value="driverscope">Driver Scope</option>
+                            <option value="ultralightmaterials">Ultralight Materials</option>
+                            <option value="extendeddrivermagazine">Extended Driver Magazine</option>
+                            <option value="impeller">Imepller</option>
+                            <option value="drivergrip">Driver Grip</option>
+                            <option value="bulkbuild">Bulk Build</option>
+                        </select>
+                    </div>
+                    <div class="sheet-item" style="width:22%"><span name="attr_dispwpnmod21"></span></div>
+                    <div class="sheet-item" style="width:0%">
+                        <select style="display:none;" name="attr_dispwpnmod21">
+                            <option value="na">N/A</option>
+                            <option value="auxilliary">AAux Grenade Launcher</option>
+                            <option value="backpack">Backpack Ammo Suppky</option>
+                            <option value="compact">Compact</option>
+                            <option value="grip">Custom Grip</option>
+                            <option value="deactivated">Deactivated Safety</option>
+                            <option value="expanded">Expanded Magazine</option>
+                            <option value="exterminator">Expterminator</option>
+                            <option value="selector">Fire Selector</option>
+                            <option value="fluid">Fluid Action</option>
+                            <option value="forearm">Forearm Wpn Mount</option>
+                            <option value="melee">Melee Attachment</option>
+                            <option value="stock">Modified Stock</option>
+                            <option value="mono">Mono</option>
+                            <option value="motion">Motion Predictor</option>
+                            <option value="omni">Omni-Scope</option>
+                            <option value="photo">Photo Sight</option>
+                            <option value="pistol">Pistol Grip</option>
+                            <option value="preysense">Preysense Sight</option>
+                            <option value="quick">Quick-Release</option>
+                            <option value="reddot">Red-Dot Sight</option>
+                            <option value="reinforced">Reinforced</option>
+                            <option value="sacred">Sacred Inscriptions</option>
+                            <option value="silencer">Silencer</option>
+                            <option value="suspensors">Suspensors</option>
+                            <option value="targeter">Targeter</option>
+                            <option value="telescopic">Telescopic Sight</option>
+                            <option value="tox">Tox Dispenser</option>
+                            <option value="tripod">Tripod/Bipod</option>
+                            <option value="truesilver">Truesilver Gilding</option>
+                            <option value="weaving">Truesilver Weaving</option>
+                            <option value="warpleech">Warpleech Canister</option>
+                            <option value="vox">Vox-Operated</option>
+                            <option value="stabilitydampener">Stability Dampener</option>
+                            <option value="extendedbarrel">Extended Barrel</option>
+                            <option value="driverscope">Driver Scope</option>
+                            <option value="ultralightmaterials">Ultralight Materials</option>
+                            <option value="extendeddrivermagazine">Extended Driver Magazine</option>
+                            <option value="impeller">Imepller</option>
+                            <option value="drivergrip">Driver Grip</option>
+                            <option value="bulkbuild">Bulk Build</option>
+                        </select>
+                    </div>
+                    <div class="sheet-item" style="width:22%"><span name="attr_dispwpnmod31"></span></div>
+                    <div class="sheet-item" style="width:0%">
+                        <select style="display:none;" name="attr_dispwpnmod31">
+                            <option value="na">N/A</option>
+                            <option value="auxilliary">AAux Grenade Launcher</option>
+                            <option value="backpack">Backpack Ammo Suppky</option>
+                            <option value="compact">Compact</option>
+                            <option value="grip">Custom Grip</option>
+                            <option value="deactivated">Deactivated Safety</option>
+                            <option value="expanded">Expanded Magazine</option>
+                            <option value="exterminator">Expterminator</option>
+                            <option value="selector">Fire Selector</option>
+                            <option value="fluid">Fluid Action</option>
+                            <option value="forearm">Forearm Wpn Mount</option>
+                            <option value="melee">Melee Attachment</option>
+                            <option value="stock">Modified Stock</option>
+                            <option value="mono">Mono</option>
+                            <option value="motion">Motion Predictor</option>
+                            <option value="omni">Omni-Scope</option>
+                            <option value="photo">Photo Sight</option>
+                            <option value="pistol">Pistol Grip</option>
+                            <option value="preysense">Preysense Sight</option>
+                            <option value="quick">Quick-Release</option>
+                            <option value="reddot">Red-Dot Sight</option>
+                            <option value="reinforced">Reinforced</option>
+                            <option value="sacred">Sacred Inscriptions</option>
+                            <option value="silencer">Silencer</option>
+                            <option value="suspensors">Suspensors</option>
+                            <option value="targeter">Targeter</option>
+                            <option value="telescopic">Telescopic Sight</option>
+                            <option value="tox">Tox Dispenser</option>
+                            <option value="tripod">Tripod/Bipod</option>
+                            <option value="truesilver">Truesilver Gilding</option>
+                            <option value="weaving">Truesilver Weaving</option>
+                            <option value="warpleech">Warpleech Canister</option>
+                            <option value="vox">Vox-Operated</option>
+                            <option value="stabilitydampener">Stability Dampener</option>
+                            <option value="extendedbarrel">Extended Barrel</option>
+                            <option value="driverscope">Driver Scope</option>
+                            <option value="ultralightmaterials">Ultralight Materials</option>
+                            <option value="extendeddrivermagazine">Extended Driver Magazine</option>
+                            <option value="impeller">Imepller</option>
+                            <option value="drivergrip">Driver Grip</option>
+                            <option value="bulkbuild">Bulk Build</option>
+                        </select>
+                    </div>
+                </div>
             </span>
             <span class="sheet-pwrsel1 sheet-bg">
             <div class="sheet-row sheet-pwrsel1">
@@ -534,6 +797,7 @@
                     <input type="checkbox" name="attr_wpnselsw2" value="1" style="display:none;" class="wpnselsw">
                     <input type="checkbox" name="attr_wpnsella2" value="1" style="display:none;" class="wpnsella">
                     <input type="checkbox" name="attr_wpnselrg2" value="1" style="display:none;" class="wpnselrg">
+                    <input type="checkbox" name="attr_wpnselpa2" value="1" style="display:none;" class="wpnselpa">
                     <div class="sheet-item sheet-rangedrop2" style="width:20%">
                         <select name="attr_dispwpncurrng2" style="width:100%;">
                             <option value="0">Melee </option>
@@ -546,24 +810,20 @@
                     </div>
                     <div class="sheet-item" style="width:0%"><input name="attr_dispwpnmxstr2" type="text" value="?{Fire Selection(Maximal)|Standard, 6|Semi-Auto, 7|Full-Auto, 8}" style="display: none;"></div>
                     <div class="sheet-item" style="width:0%"><input name="attr_dispwpnidstr2" type="text" value="?{Fire Selection(Indirect)|Standard, 3|Semi-Auto, 4|Full-Auto, 5}" style="display: none;"></div>
-                    <div class="sheet-item sheet-sfroll2 sheet-sf" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng2}, 0, @{dispwpnsingleshot2}, @{dispwpnsemishot2}, @{dispwpnautoshot2}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}' name='roll_StdAttack'></button></div>
-                    <div class="sheet-item sheet-saroll2 sheet-sa" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng2}, 1, @{dispwpnsingleshot2}, @{dispwpnsemishot2}, @{dispwpnautoshot2}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}' name='roll_SemiAttack'></button></div>
-                    <div class="sheet-item sheet-faroll2 sheet-fa" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng2}, 2, @{dispwpnsingleshot2}, @{dispwpnsemishot2}, @{dispwpnautoshot2}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}' name='roll_FullAttack'></button></div>
-                    <div class="sheet-item sheet-idroll2 sheet-id" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng2}, @{dispwpnidstr2}, @{dispwpnsingleshot2}, @{dispwpnsemishot2}, @{dispwpnautoshot2}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}' name='roll_IndirectAttack'></button></div>
-                    <div class="sheet-item sheet-mxroll2 sheet-mx" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng2}, @{dispwpnmxstr2}, @{dispwpnsingleshot2}, @{dispwpnsemishot2}, @{dispwpnautoshot2}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}' name='roll_MaximalAttack'></button></div>
-                    <div class="sheet-item sheet-sfroll2 sheet-cs" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng2}, 9, @{dispwpnsingleshot2}, @{dispwpnsemishot2}, @{dispwpnautoshot2}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}' name='roll_StdAttack'></button></div>
-                    <div class="sheet-item sheet-saroll2 sheet-su" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng2}, 10, @{dispwpnsingleshot2}, @{dispwpnsemishot2}, @{dispwpnautoshot2}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}' name='roll_StdAttack'></button></div>
-                    <div class="sheet-item sheet-faroll2 sheet-su" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng2}, 11, @{dispwpnsingleshot2}, @{dispwpnsemishot2}, @{dispwpnautoshot2}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}' name='roll_StdAttack'></button></div>
-                    
-                    <div class="sheet-item sheet-stroll2 sheet-st" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 0, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}, @{Psy}' name='roll_StdMelee'></button></div>
-                    <div class="sheet-item sheet-swroll2 sheet-sw" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 1, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}, @{Psy}' name='roll_StdMelee'></button></div>
-                    <div class="sheet-item sheet-laroll2 sheet-la" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 2, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}, @{Psy}' name='roll_StdMelee'></button></div>
-                    <div class="sheet-item sheet-stroll2 sheet-ao" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 3, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}, @{Psy}' name='roll_AllMelee'></button></div>
-                    <div class="sheet-item sheet-stroll2 sheet-me" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, ?{Select an Action|Charge, 5|Called Strike, 4|Feint, 6|Stun, 7|Disarm, 9}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}, @{Psy}' name='roll_CalMelee'></button></div>
-                    <!--<div class="sheet-item sheet-stroll2" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 5, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}, @{Psy}' name='roll_ChaMelee'></button></div>
-                    <div class="sheet-item sheet-stroll2" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 6, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}, @{Psy}' name='roll_FeiMelee'></button></div>
-                    <div class="sheet-item sheet-stroll2" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 7, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}, @{Psy}' name='roll_StuMelee'></button></div>
-                    --><div class="sheet-item sheet-stroll2 sheet-pr" style="width:10%"><button type='roll' value='!melee40k @{charname},@{ParryScore}, 8, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}, @{Psy}' name='roll_ParMelee'></button></div>
+                    <div class="sheet-item sheet-sfroll2 sheet-sf" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng2}, 0, @{dispwpnsingleshot2}, @{dispwpnsemishot2}, @{dispwpnautoshot2}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2},@{dispwpnammo2},@{dispwpnmod12},@{dispwpnmod22},@{dispwpnmod32},@{dispwpneffect2},@{dispwpncat2}' name='roll_StdAttack'></button></div>
+                    <div class="sheet-item sheet-saroll2 sheet-sa" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng2}, 1, @{dispwpnsingleshot2}, @{dispwpnsemishot2}, @{dispwpnautoshot2}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2},@{dispwpnammo2},@{dispwpnmod12},@{dispwpnmod22},@{dispwpnmod32},@{dispwpneffect2},@{dispwpncat2}' name='roll_SemiAttack'></button></div>
+                    <div class="sheet-item sheet-faroll2 sheet-fa" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng2}, 2, @{dispwpnsingleshot2}, @{dispwpnsemishot2}, @{dispwpnautoshot2}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2},@{dispwpnammo2},@{dispwpnmod12},@{dispwpnmod22},@{dispwpnmod32},@{dispwpneffect2},@{dispwpncat2}' name='roll_FullAttack'></button></div>
+                    <div class="sheet-item sheet-idroll2 sheet-id" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng2}, @{dispwpnidstr2}, @{dispwpnsingleshot2}, @{dispwpnsemishot2}, @{dispwpnautoshot2}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2},@{dispwpnammo2},@{dispwpnmod12},@{dispwpnmod22},@{dispwpnmod32},@{dispwpneffect2},@{dispwpncat2}' name='roll_IndirectAttack'></button></div>
+                    <div class="sheet-item sheet-mxroll2 sheet-mx" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng2}, @{dispwpnmxstr2}, @{dispwpnsingleshot2}, @{dispwpnsemishot2}, @{dispwpnautoshot2}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2},@{dispwpnammo2},@{dispwpnmod12},@{dispwpnmod22},@{dispwpnmod32},@{dispwpneffect2},@{dispwpncat2}' name='roll_MaximalAttack'></button></div>
+                    <div class="sheet-item sheet-sfroll2 sheet-cs" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng2}, 9, @{dispwpnsingleshot2}, @{dispwpnsemishot2}, @{dispwpnautoshot2}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2},@{dispwpnammo2},@{dispwpnmod12},@{dispwpnmod22},@{dispwpnmod32},@{dispwpneffect2},@{dispwpncat2}' name='roll_StdAttack'></button></div>
+                    <div class="sheet-item sheet-saroll2 sheet-su" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng2}, 10, @{dispwpnsingleshot2}, @{dispwpnsemishot2}, @{dispwpnautoshot2}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2},@{dispwpnammo2},@{dispwpnmod12},@{dispwpnmod22},@{dispwpnmod32},@{dispwpneffect2},@{dispwpncat2}' name='roll_StdAttack'></button></div>
+                    <div class="sheet-item sheet-faroll2 sheet-su" style="width:10%"><button type='roll' value='!ranged40k @{charname},@{BallisticSkill}, @{dispwpncurrng2}, 11, @{dispwpnsingleshot2}, @{dispwpnsemishot2}, @{dispwpnautoshot2}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2}, ?{Modifers (except Range & RoF)|0}, @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2},@{dispwpnammo2},@{dispwpnmod12},@{dispwpnmod22},@{dispwpnmod32},@{dispwpneffect2},@{dispwpncat2}' name='roll_StdAttack'></button></div>
+                    <div class="sheet-item sheet-stroll2 sheet-st" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 0, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}, @{Psy},@{dispwpnmod12},@{dispwpnmod22},@{dispwpnmod32},@{dispwpneffect2},@{dispwpncat2}' name='roll_StdMelee'></button></div>
+                    <div class="sheet-item sheet-swroll2 sheet-sw" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 1, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}, @{Psy},@{dispwpnmod12},@{dispwpnmod22},@{dispwpnmod32},@{dispwpneffect2},@{dispwpncat2}' name='roll_StdMelee'></button></div>
+                    <div class="sheet-item sheet-laroll2 sheet-la" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 2, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}, @{Psy},@{dispwpnmod12},@{dispwpnmod22},@{dispwpnmod32},@{dispwpneffect2},@{dispwpncat2}' name='roll_StdMelee'></button></div>
+                    <div class="sheet-item sheet-stroll2 sheet-ao" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, 3, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}, @{Psy},@{dispwpnmod12},@{dispwpnmod22},@{dispwpnmod32},@{dispwpneffect2},@{dispwpncat2}' name='roll_AllMelee'></button></div>
+                    <div class="sheet-item sheet-stroll2 sheet-me" style="width:10%"><button type='roll' value='!melee40k @{charname},@{WeaponSkill}, ?{Select an Action|Charge, 5|Called Strike, 4|Feint, 6|Stun, 7|Disarm, 9}, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}, @{Psy},@{dispwpnmod12},@{dispwpnmod22},@{dispwpnmod32},@{dispwpneffect2},@{dispwpncat2}' name='roll_CalMelee'></button></div>
+                    <div class="sheet-item sheet-prroll2 sheet-pr" style="width:10%"><button type='roll' value='!melee40k @{charname},@{ParryScore}, 8, @{dispwpndmgnumdice2}, @{dispwpndmgdice2}, @{dispwpndmgstatic2},  @{dispwpnpen2},  @{StrengthMod}, ?{Modifers (except Quality/Attributes/Attack Mode)|0},  @{dispwpnspecialalt2}, @{dispwpnquality2}, @{talentstring}, @{dispwpnname2}, @{dispwpndmgtype2}, @{Psy},@{dispwpnmod12},@{dispwpnmod22},@{dispwpnmod32},@{dispwpneffect2},@{dispwpncat2}' name='roll_ParMelee'></button></div>
                 </div>
                 <div class="sheet-row">
                     <div class="sheet-item" style="width:34%"><span>Name</span></div>
@@ -600,7 +860,7 @@
                     <div class="sheet-item" style="width:20%"><span>Clip</span></div>
                     <div class="sheet-item" style="width:20%"><span>Weight</span></div>
                 </div>
-                <div class="sheet-row sheet-wpnsel1">
+                <div class="sheet-row sheet-wpnsel2">
                     <div class="sheet-item" style="width:3%"><span  name="attr_dispwpndmgnumdice2"></span></div>
                     <div class="sheet-item" style="width:0%"><input name="attr_dispwpndmgnumdice2" type="number" value="" style="display: none;"></div>
                     <div class="sheet-item sheet-spindisable" style="width:2%"><span>d</span></div>
@@ -628,11 +888,11 @@
                     <div class="sheet-item" style="width:10%"><span name="attr_dispwpnweight2"></span></div>
                     <div class="sheet-item" style="width:0%"><input name="attr_dispwpnweight2" type="number" value="" style="display: none;"></div>
                 </div>
-                <div class="sheet-row sheet-wpnsel1">
+                <div class="sheet-row sheet-wpnsel2">
                     <div class="sheet-item" style="width:79%"><span>Special</span></div>
                     <div class="sheet-item" style="width:10%"><span>Quality</span></div>
                 </div>
-                <div class="sheet-row sheet-wpnsel1">                
+                <div class="sheet-row sheet-wpnsel2">                
                     <div class="sheet-item" style="width:79%"><span name="attr_dispwpnspecial2"></span></div>
                     <div class="sheet-item" style="width:0%"><input name="attr_dispwpnspecial2" type="text"     value="" style="display: none;"></div>
                     <div class="sheet-item" style="width:0%"><input name="attr_dispwpnspecialalt2" type="text"  value="" style="display: none;"></div>
@@ -643,6 +903,209 @@
                             <option value="common">Common</option>
                             <option value="good">Good</option>
                             <option value="best">Best</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="sheet-row sheet-wpnsel2">
+                    <div class="sheet-item" style="width:79%"><span>Effects</span></div>
+                    <div class="sheet-item" style="width:10%"><span>WpnCat</span></div>
+                </div>
+                <div class="sheet-row sheet-wpnsel2">                
+                    <div class="sheet-item" style="width:79%"><span name="attr_dispwpneffect2"></span></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpneffect2"     type="text" value="" style="display: none;"></div>
+                    <div class="sheet-item" style="width:0%"><input name="attr_dispwpneffectalt2"  type="text" value="" style="display: none;" ></div>
+                    <div class="sheet-item" style="width:10%"><span name="attr_dispwpncat2"></span></div>
+                    <div class="sheet-item" style="width:0%">
+                        <select style="display:none;" name="attr_dispwpncat2">
+                            <option value="melee">Melee</option>
+                            <option value="pistol">Pistol</option>
+                            <option value="basic">Basic</option>
+                            <option value="heavy">Heavy</option>
+                            <option value="heavy">Other</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="sheet-row sheet-wpnsel2">
+                    <div class="sheet-item" style="width:22%"><span>Ammo</span></div>
+                    <div class="sheet-item" style="width:70%"><span>Mods</span></div>
+                </div>
+                <div class="sheet-row sheet-wpnsel2">                
+                    <div class="sheet-item" style="width:22%"><span name="attr_dispwpnammo2"></span></div>
+                    <div class="sheet-item" style="width:0%">
+                        <select style="display:none;" name="attr_dispwpnammo2">
+                            <option value="default">Default</option>
+                            <option value="abyssal">Abyssal Bolts</option>
+                            <option value="amputator">Amputator Shells</option>
+                            <option value="bleeder">Bleeder Rounds</option>
+                            <option value="concussion">Concussion Bolts</option>
+                            <option value="dumdum">Dumdum Bullets</option>
+                            <option value="expander">Expander Rounds</option>
+                            <option value="explosive">Explosive Quarrels</option>
+                            <option value="hotshot">Hot-Shot Packs</option>
+                            <option value="incindiary">Incindiary Rounds</option>
+                            <option value="inferno">Inferno Shells</option>
+                            <option value="manstopper">Man-Stopper Bullets</option>
+                            <option value="nitidus">Nitidus Rounds</option>
+                            <option value="purgatus">Purgatus Stakes</option>
+                            <option value="purity">Pourity Bolts</option>
+                            <option value="psybolts">Psybolts</option>
+                            <option value="psyflame">Psyflame</option>
+                            <option value="sanctified">Sanctified Ammo</option>
+                            <option value="scrambler">Scrambler Rounds</option>
+                            <option value="shard">Shard Bolts</option>
+                            <option value="shock">Shock Bolts</option>
+                            <option value="silver">Silver Stakes</option>
+                            <option value="tempest">Tempest Bolt Shells</option>
+                            <option value="thermal">Thermal Bolts</option>
+                            <option value="tox">Tox Rounds</option>
+                            <option value="inferno">Inferno Ammo</option>
+                            <option value="overload">Overload Ammo</option>
+                            <option value="cryo">Cryo Ammo</option>
+                            <option value="chemical">Chemical Ammo</option>
+                            <option value="shredder">Shredder Ammo</option>
+                            <option value="tungsten">Tungsten</option>
+                            <option value="hammerhead">Hammerhead</option>
+                            <option value="phasic">Phasic</option>
+                            <option value="polonium">Polonium</option>
+                            <option value="flux">Flux</option>
+                        </select>
+                    </div>
+                    <div class="sheet-item" style="width:22%"><span name="attr_dispwpnmod12"></span></div>
+                    <div class="sheet-item" style="width:0%">
+                        <select style="display:none;" name="attr_dispwpnmod12">
+                            <option value="na">N/A</option>
+                            <option value="auxilliary">Aux Grenade Launcher</option>
+                            <option value="backpack">Backpack Ammo Suppky</option>
+                            <option value="compact">Compact</option>
+                            <option value="grip">Custom Grip</option>
+                            <option value="deactivated">Deactivated Safety</option>
+                            <option value="expanded">Expanded Magazine</option>
+                            <option value="exterminator">Expterminator</option>
+                            <option value="selector">Fire Selector</option>
+                            <option value="fluid">Fluid Action</option>
+                            <option value="forearm">Forearm Wpn Mount</option>
+                            <option value="melee">Melee Attachment</option>
+                            <option value="stock">Modified Stock</option>
+                            <option value="mono">Mono</option>
+                            <option value="motion">Motion Predictor</option>
+                            <option value="omni">Omni-Scope</option>
+                            <option value="photo">Photo Sight</option>
+                            <option value="pistol">Pistol Grip</option>
+                            <option value="preysense">Preysense Sight</option>
+                            <option value="quick">Quick-Release</option>
+                            <option value="reddot">Red-Dot Sight</option>
+                            <option value="reinforced">Reinforced</option>
+                            <option value="sacred">Sacred Inscriptions</option>
+                            <option value="silencer">Silencer</option>
+                            <option value="suspensors">Suspensors</option>
+                            <option value="targeter">Targeter</option>
+                            <option value="telescopic">Telescopic Sight</option>
+                            <option value="tox">Tox Dispenser</option>
+                            <option value="tripod">Tripod/Bipod</option>
+                            <option value="truesilver">Truesilver Gilding</option>
+                            <option value="weaving">Truesilver Weaving</option>
+                            <option value="warpleech">Warpleech Canister</option>
+                            <option value="vox">Vox-Operated</option>
+                            <option value="stabilitydampener">Stability Dampener</option>
+                            <option value="extendedbarrel">Extended Barrel</option>
+                            <option value="driverscope">Driver Scope</option>
+                            <option value="ultralightmaterials">Ultralight Materials</option>
+                            <option value="extendeddrivermagazine">Extended Driver Magazine</option>
+                            <option value="impeller">Imepller</option>
+                            <option value="drivergrip">Driver Grip</option>
+                            <option value="bulkbuild">Bulk Build</option>
+                        </select>
+                    </div>
+                    <div class="sheet-item" style="width:22%"><span name="attr_dispwpnmod22"></span></div>
+                    <div class="sheet-item" style="width:0%">
+                        <select style="display:none;" name="attr_dispwpnmod22">
+                            <option value="na">N/A</option>
+                            <option value="auxilliary">Aux Grenade Launcher</option>
+                            <option value="backpack">Backpack Ammo Suppky</option>
+                            <option value="compact">Compact</option>
+                            <option value="grip">Custom Grip</option>
+                            <option value="deactivated">Deactivated Safety</option>
+                            <option value="expanded">Expanded Magazine</option>
+                            <option value="exterminator">Expterminator</option>
+                            <option value="selector">Fire Selector</option>
+                            <option value="fluid">Fluid Action</option>
+                            <option value="forearm">Forearm Wpn Mount</option>
+                            <option value="melee">Melee Attachment</option>
+                            <option value="stock">Modified Stock</option>
+                            <option value="mono">Mono</option>
+                            <option value="motion">Motion Predictor</option>
+                            <option value="omni">Omni-Scope</option>
+                            <option value="photo">Photo Sight</option>
+                            <option value="pistol">Pistol Grip</option>
+                            <option value="preysense">Preysense Sight</option>
+                            <option value="quick">Quick-Release</option>
+                            <option value="reddot">Red-Dot Sight</option>
+                            <option value="reinforced">Reinforced</option>
+                            <option value="sacred">Sacred Inscriptions</option>
+                            <option value="silencer">Silencer</option>
+                            <option value="suspensors">Suspensors</option>
+                            <option value="targeter">Targeter</option>
+                            <option value="telescopic">Telescopic Sight</option>
+                            <option value="tox">Tox Dispenser</option>
+                            <option value="tripod">Tripod/Bipod</option>
+                            <option value="truesilver">Truesilver Gilding</option>
+                            <option value="weaving">Truesilver Weaving</option>
+                            <option value="warpleech">Warpleech Canister</option>
+                            <option value="vox">Vox-Operated</option>
+                            <option value="stabilitydampener">Stability Dampener</option>
+                            <option value="extendedbarrel">Extended Barrel</option>
+                            <option value="driverscope">Driver Scope</option>
+                            <option value="ultralightmaterials">Ultralight Materials</option>
+                            <option value="extendeddrivermagazine">Extended Driver Magazine</option>
+                            <option value="impeller">Imepller</option>
+                            <option value="drivergrip">Driver Grip</option>
+                            <option value="bulkbuild">Bulk Build</option>
+                        </select>
+                    </div>
+                    <div class="sheet-item" style="width:22%"><span name="attr_dispwpnmod32"></span></div>
+                    <div class="sheet-item" style="width:0%">
+                        <select style="display:none;" name="attr_dispwpnmod32">
+                            <option value="na">N/A</option>
+                            <option value="auxilliary">Aux Grenade Launcher</option>
+                            <option value="backpack">Backpack Ammo Suppky</option>
+                            <option value="compact">Compact</option>
+                            <option value="grip">Custom Grip</option>
+                            <option value="deactivated">Deactivated Safety</option>
+                            <option value="expanded">Expanded Magazine</option>
+                            <option value="exterminator">Expterminator</option>
+                            <option value="selector">Fire Selector</option>
+                            <option value="fluid">Fluid Action</option>
+                            <option value="forearm">Forearm Wpn Mount</option>
+                            <option value="melee">Melee Attachment</option>
+                            <option value="stock">Modified Stock</option>
+                            <option value="mono">Mono</option>
+                            <option value="motion">Motion Predictor</option>
+                            <option value="omni">Omni-Scope</option>
+                            <option value="photo">Photo Sight</option>
+                            <option value="pistol">Pistol Grip</option>
+                            <option value="preysense">Preysense Sight</option>
+                            <option value="quick">Quick-Release</option>
+                            <option value="reddot">Red-Dot Sight</option>
+                            <option value="reinforced">Reinforced</option>
+                            <option value="sacred">Sacred Inscriptions</option>
+                            <option value="silencer">Silencer</option>
+                            <option value="suspensors">Suspensors</option>
+                            <option value="targeter">Targeter</option>
+                            <option value="telescopic">Telescopic Sight</option>
+                            <option value="tox">Tox Dispenser</option>
+                            <option value="tripod">Tripod/Bipod</option>
+                            <option value="truesilver">Truesilver Gilding</option>
+                            <option value="weaving">Truesilver Weaving</option>
+                            <option value="warpleech">Warpleech Canister</option>
+                            <option value="vox">Vox-Operated</option>
+                            <option value="stabilitydampener">Stability Dampener</option>
+                            <option value="extendedbarrel">Extended Barrel</option>
+                            <option value="driverscope">Driver Scope</option>
+                            <option value="ultralightmaterials">Ultralight Materials</option>
+                            <option value="extendeddrivermagazine">Extended Driver Magazine</option>
+                            <option value="impeller">Imepller</option>
+                            <option value="drivergrip">Driver Grip</option>
+                            <option value="bulkbuild">Bulk Build</option>
                         </select>
                     </div>
                 </div>
@@ -1223,6 +1686,7 @@
                 <div class="sheet-item" style="width:15%">
                     <select style="width:100%" name="attr_wpnrlds">
                         <option value="na">N/A</option>
+                        <option value="free">Free</option>
                         <option value="half">Half</option>
                         <option value="full">Full</option>
                         <option value="2full">2 Full</option>
@@ -1269,6 +1733,202 @@
                         <option value="common">Common</option>
                         <option value="good">Good</option>
                         <option value="best">Best</option>
+                    </select>
+                </div>
+            </div>
+            <div class="sheet-row">               
+                <div class="sheet-item" style="width:80%"><span>Effects</span></div>
+                <div class="sheet-item" style="width:10%"><span>WeaponCat</span></div>
+            </div>
+            <div class="sheet-row">                
+                <div class="sheet-item" style="width:80%"><input name="attr_wpneffects" type="text" value="N/A" style="width:100%"></div>
+                <div class="sheet-item" style="width:14%">
+                    <select style="width:100%" name="attr_wpncats">
+                        <option value="melee">Melee</option>
+                        <option value="pistol">Pistol</option>
+                        <option value="basic">Basic</option>
+                        <option value="heavy">Heavy</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+            </div>
+            <div class="sheet-row">               
+                <div class="sheet-item" style="width:22%"><span>Ammo</span></div>
+                <div class="sheet-item" style="width:70%"><span>Mods</span></div>
+            </div>
+            <div class="sheet-row">                
+                <div class="sheet-item" style="width:22%">
+                    <select style="width:100%" name="attr_wpnammos">
+                        <option value="default">Default</option>
+                        <option value="abyssal">Abyssal Bolts</option>
+                        <option value="amputator">Amputator Shells</option>
+                        <option value="bleeder">Bleeder Rounds</option>
+                        <option value="concussion">Concussion Bolts</option>
+                        <option value="dumdum">Dumdum Bullets</option>
+                        <option value="expander">Expander Rounds</option>
+                        <option value="explosive">Explosive Quarrels</option>
+                        <option value="hotshot">Hot-Shot Packs</option>
+                        <option value="incindiary">Incindiary Rounds</option>
+                        <option value="inferno">Inferno Shells</option>
+                        <option value="manstopper">Man-Stopper Bullets</option>
+                        <option value="nitidus">Nitidus Rounds</option>
+                        <option value="purgatus">Purgatus Stakes</option>
+                        <option value="purity">Pourity Bolts</option>
+                        <option value="psybolts">Psybolts</option>
+                        <option value="psyflame">Psyflame</option>
+                        <option value="sanctified">Sanctified Ammo</option>
+                        <option value="scrambler">Scrambler Rounds</option>
+                        <option value="shard">Shard Bolts</option>
+                        <option value="shock">Shock Bolts</option>
+                        <option value="silver">Silver Stakes</option>
+                        <option value="tempest">Tempest Bolt Shells</option>
+                        <option value="thermal">Thermal Bolts</option>
+                        <option value="tox">Tox Rounds</option>
+                        <option value="inferno">Inferno Ammo</option>
+                        <option value="overload">Overload Ammo</option>
+                        <option value="cryo">Cryo Ammo</option>
+                        <option value="chemical">Chemical Ammo</option>
+                        <option value="shredder">Shredder Ammo</option>
+                        <option value="tungsten">Tungsten</option>
+                        <option value="hammerhead">Hammerhead</option>
+                        <option value="phasic">Phasic</option>
+                        <option value="polonium">Polonium</option>
+                        <option value="flux">Flux</option>
+                    </select>
+                </div>
+                <div class="sheet-item" style="width:22%">
+                    <select style="width:100%" name="attr_wpnmod1s">
+                        <option value="na">N/A</option>
+                        <option value="auxilliary">AAux Grenade Launcher</option>
+                        <option value="backpack">Backpack Ammo Suppky</option>
+                        <option value="compact">Compact</option>
+                        <option value="grip">Custom Grip</option>
+                        <option value="deactivated">Deactivated Safety</option>
+                        <option value="expanded">Expanded Magazine</option>
+                        <option value="exterminator">Expterminator</option>
+                        <option value="selector">Fire Selector</option>
+                        <option value="fluid">Fluid Action</option>
+                        <option value="forearm">Forearm Wpn Mount</option>
+                        <option value="melee">Melee Attachment</option>
+                        <option value="stock">Modified Stock</option>
+                        <option value="mono">Mono</option>
+                        <option value="motion">Motion Predictor</option>
+                        <option value="omni">Omni-Scope</option>
+                        <option value="photo">Photo Sight</option>
+                        <option value="pistol">Pistol Grip</option>
+                        <option value="preysense">Preysense Sight</option>
+                        <option value="quick">Quick-Release</option>
+                        <option value="reddot">Red-Dot Sight</option>
+                        <option value="reinforced">Reinforced</option>
+                        <option value="sacred">Sacred Inscriptions</option>
+                        <option value="silencer">Silencer</option>
+                        <option value="suspensors">Suspensors</option>
+                        <option value="targeter">Targeter</option>
+                        <option value="telescopic">Telescopic Sight</option>
+                        <option value="tox">Tox Dispenser</option>
+                        <option value="tripod">Tripod/Bipod</option>
+                        <option value="truesilver">Truesilver Gilding</option>
+                        <option value="weaving">Truesilver Weaving</option>
+                        <option value="warpleech">Warpleech Canister</option>
+                        <option value="vox">Vox-Operated</option>
+                        <option value="stabilitydampener">Stability Dampener</option>
+                        <option value="extendedbarrel">Extended Barrel</option>
+                        <option value="driverscope">Driver Scope</option>
+                        <option value="ultralightmaterials">Ultralight Materials</option>
+                        <option value="extendeddrivermagazine">Extended Driver Magazine</option>
+                        <option value="impeller">Imepller</option>
+                        <option value="drivergrip">Driver Grip</option>
+                        <option value="bulkbuild">Bulk Build</option>
+                    </select>
+                </div>
+                <div class="sheet-item" style="width:22%">
+                    <select style="width:100%" name="attr_wpnmod2s">
+                        <option value="na">N/A</option>
+                        <option value="auxilliary">Aux Grenade Launcher</option>
+                        <option value="backpack">Backpack Ammo Suppky</option>
+                        <option value="compact">Compact</option>
+                        <option value="grip">Custom Grip</option>
+                        <option value="deactivated">Deactivated Safety</option>
+                        <option value="expanded">Expanded Magazine</option>
+                        <option value="exterminator">Expterminator</option>
+                        <option value="selector">Fire Selector</option>
+                        <option value="fluid">Fluid Action</option>
+                        <option value="forearm">Forearm Wpn Mount</option>
+                        <option value="melee">Melee Attachment</option>
+                        <option value="stock">Modified Stock</option>
+                        <option value="mono">Mono</option>
+                        <option value="motion">Motion Predictor</option>
+                        <option value="omni">Omni-Scope</option>
+                        <option value="photo">Photo Sight</option>
+                        <option value="pistol">Pistol Grip</option>
+                        <option value="preysense">Preysense Sight</option>
+                        <option value="quick">Quick-Release</option>
+                        <option value="reddot">Red-Dot Sight</option>
+                        <option value="reinforced">Reinforced</option>
+                        <option value="sacred">Sacred Inscriptions</option>
+                        <option value="silencer">Silencer</option>
+                        <option value="suspensors">Suspensors</option>
+                        <option value="targeter">Targeter</option>
+                        <option value="telescopic">Telescopic Sight</option>
+                        <option value="tox">Tox Dispenser</option>
+                        <option value="tripod">Tripod/Bipod</option>
+                        <option value="truesilver">Truesilver Gilding</option>
+                        <option value="weaving">Truesilver Weaving</option>
+                        <option value="warpleech">Warpleech Canister</option>
+                        <option value="vox">Vox-Operated</option>
+                        <option value="stabilitydampener">Stability Dampener</option>
+                        <option value="extendedbarrel">Extended Barrel</option>
+                        <option value="driverscope">Driver Scope</option>
+                        <option value="ultralightmaterials">Ultralight Materials</option>
+                        <option value="extendeddrivermagazine">Extended Driver Magazine</option>
+                        <option value="impeller">Imepller</option>
+                        <option value="drivergrip">Driver Grip</option>
+                        <option value="bulkbuild">Bulk Build</option>
+                    </select>
+                </div>
+                <div class="sheet-item" style="width:22%">
+                    <select style="width:100%" name="attr_wpnmod3s">
+                        <option value="na">N/A</option>
+                        <option value="auxilliary">Aux Grenade Launcher</option>
+                        <option value="backpack">Backpack Ammo Suppky</option>
+                        <option value="compact">Compact</option>
+                        <option value="grip">Custom Grip</option>
+                        <option value="deactivated">Deactivated Safety</option>
+                        <option value="expanded">Expanded Magazine</option>
+                        <option value="exterminator">Exterminator</option>
+                        <option value="selector">Fire Selector</option>
+                        <option value="fluid">Fluid Action</option>
+                        <option value="forearm">Forearm Wpn Mount</option>
+                        <option value="melee">Melee Attachment</option>
+                        <option value="stock">Modified Stock</option>
+                        <option value="mono">Mono</option>
+                        <option value="motion">Motion Predictor</option>
+                        <option value="omni">Omni-Scope</option>
+                        <option value="photo">Photo Sight</option>
+                        <option value="pistol">Pistol Grip</option>
+                        <option value="preysense">Preysense Sight</option>
+                        <option value="quick">Quick-Release</option>
+                        <option value="reddot">Red-Dot Sight</option>
+                        <option value="reinforced">Reinforced</option>
+                        <option value="sacred">Sacred Inscriptions</option>
+                        <option value="silencer">Silencer</option>
+                        <option value="suspensors">Suspensors</option>
+                        <option value="targeter">Targeter</option>
+                        <option value="telescopic">Telescopic Sight</option>
+                        <option value="tox">Tox Dispenser</option>
+                        <option value="tripod">Tripod/Bipod</option>
+                        <option value="truesilver">Truesilver Gilding</option>
+                        <option value="weaving">Truesilver Weaving</option>
+                        <option value="warpleech">Warpleech Canister</option>
+                        <option value="vox">Vox-Operated</option>
+                        <option value="stabilitydampener">Stability Dampener</option>
+                        <option value="extendedbarrel">Extended Barrel</option>
+                        <option value="driverscope">Driver Scope</option>
+                        <option value="ultralightmaterials">Ultralight Materials</option>
+                        <option value="extendeddrivermagazine">Extended Driver Magazine</option>
+                        <option value="impeller">Imepller</option>
+                        <option value="drivergrip">Driver Grip</option>
+                        <option value="bulkbuild">Bulk Build</option>
                     </select>
                 </div>
             </div>
@@ -1391,100 +2051,338 @@
             <div class="sheet-row">
                 <div class="sheet-item" style="width:30%">
                     <select style="width:100%" name="attr_talentnames">
-                        <optgroup label="tier1talents">
+                        <optgroup label="coretalents">
+                            <option value="adamantiumfaith">Adamantium Faith</option>
+                            <option value="aegisofcontempt">Aegis of Contempt</option>
+                            <option value="ambassadorimp">Ambassador Imperialis</option>
                             <option value="ambidexterous">Ambidexterous</option>
+                            <option value="archivator">Archivator</option>
+                            <option value="armormonger">Armor Monger</option>
+                            <option value="assassinstrike">Assassin Strike</option>
+                            <option value="bastionofironwill">Bastion of Iron Will</option>
+                            <option value="battlerage">Battle Rage</option>
+                            <option value="blademaster">Blademaster</option>
                             <option value="blindfighting">Blind Fighting</option>
+                            <option value="bodyguard">Bodyguard</option>
+                            <option value="bulgingbiceps">Bulging Biceps</option>
+                            <option value="bulwarkoffaith">Bulwark of Faith</option>
                             <option value="catfall">Catfall</option>
                             <option value="cluesfromcrowds">Clues from the Crowds</option>
-                            <option value="diehard">Die Hard</option>
-                            <option value="disarm">Disarm</option>
-                            <option value="doubleteam">Double Team</option>
-                            <option value="enemy">Enemy</option>
-                            <option value="ferricsummons">Ferric Summons</option>
-                            <option value="frenzy">Frenzy</option>
-                            <option value="ironjaw">Iron Jaw</option>
-                            <option value="jaded">Jaded</option>
-                            <option value="keenintuition">Keen Intuition</option>
-                            <option value="leapup">Leap Up</option>
-                            <option value="nowheretohide">Nowhere to Hide</option>
-                            <option value="peer">Peer</option>
-                            <option value="quickdraw">Quick Draw</option>
-                            <option value="rapidreload">Rapid Reload</option>
-                            <option value="resistance">Resistance</option>
-                            <option value="soundconstitution">Sound Constitution</option>
-                            <option value="takedown">Takedown</option>
-                            <option value="technicalknock">Technical Knock</option>
-                            <option value="warpsense">Warp Sense</option>
-                            <option value="weapontech">Weapon Tech</option>
-                            <option value="weapontraining">Weapon Training</option>
-                            <option value="customtier1">CUSTOM TIER 1</option>
-                        </optgroup>
-                        <optgroup label="tier2talents">
-                            <option value="armormonger">Armor Monger</option>
-                            <option value="battlerage">Battle Rage</option>
-                            <option value="bulgingbiceps">Bulging Biceps</option>
                             <option value="combatmaster">Combat Master</option>
                             <option value="constantvigilance">Constant Vigilance</option>
                             <option value="contactnetwork">Contact Network</option>
                             <option value="coordinatedinterrogation">Coordinated Interrogation</option>
                             <option value="counterattack">Counter Attack</option>
                             <option value="coverup">Cover Up</option>
+                            <option value="crushingblow">Crushing Blow</option>
+                            <option value="daemonhunter">Daemonhunter</option>
+                            <option value="daemoninicdisrupt">Daemonic Disruption</option>
+                            <option value="daemonologist">Daemonologist</option>
+                            <option value="darksoul">Dark Soul</option>
+                            <option value="deathdealer">Deathdealer</option>
+                            <option value="delicateinterrogation">Delicate Interrogation</option>
                             <option value="denythewitch">Deny the Witch</option>
                             <option value="devastatingassault">Devastating Assault</option>
+                            <option value="diehard">Die Hard</option>
+                            <option value="disarm">Disarm</option>
+                            <option value="divineprotection">Divine Protection</option>
                             <option value="doubletap">Double Tap</option>
+                            <option value="doubleteam">Double Team</option>
+                            <option value="enemy">Enemy</option>
                             <option value="exoticweapontraining">Exotic Weapon Training</option>
+                            <option value="eyeofvengeance">Eye of Vengeance</option>
                             <option value="faceinacrowd">Face in a Crowd</option>
+                            <option value="favouredbythewarp">Favoured by the Warp</option>
+                            <option value="ferricsummons">Ferric Summons</option>
+                            <option value="fieldvivi">Field Vivisection</option>
+                            <option value="flagellant">Flagellant</option>
+                            <option value="flashofinsight">Flash of Insight</option>
+                            <option value="frenzy">Frenzy</option>
+                            <option value="grenadier">Grenadier</option>
+                            <option value="haloofcommand">Halo of Command</option>
+                            <option value="hammerblow">Hammer Blow</option>
+                            <option value="hardenedsoul">Hardened Soul</option>
                             <option value="hardtarget">Hard Target</option>
                             <option value="hardy">Hardy</option>
                             <option value="hatred">Hatred</option>
                             <option value="hipshooting">Hip Shooting</option>
+                            <option value="hotshotpilot">Hot Shot Pilot</option>
+                            <option value="hulldown">Hull Down</option>
                             <option value="independenttargeting">Independent Targeting</option>
                             <option value="inescapableattack">Inescapable Attack</option>
+                            <option value="infusedknowledge">Infused Knowledge</option>
+                            <option value="inspiringaura">Inspiring Aura</option>
+                            <option value="instrumentofhiswill">Instrument of His Will</option>
+                            <option value="ironfaith">Iron Faith</option>
+                            <option value="ironjaw">Iron Jaw</option>
+                            <option value="ironresolve">Iron Resolve</option>
+                            <option value="jaded">Jaded</option>
+                            <option value="keenintuition">Keen Intuition</option>
                             <option value="killingstrike">Killing Strike</option>
+                            <option value="leapingdodge">Leaping Dodge</option>
+                            <option value="leapup">Leap Up</option>
+                            <option value="lexographer">Lexographer</option>
+                            <option value="lightningattack">Lightning Attack</option>
+                            <option value="luminenblast">Luminen Blast</option>
                             <option value="luminenshock">Luminen Shock</option>
                             <option value="maglevtranscendence">Maglev Transcendence</option>
                             <option value="marksman">Marksman</option>
-                            <option value="mechadendriteuse">Mechadendrite Use</option>
-                            <option value="precisionkiller">Precision Killer</option>
-                            <option value="prosanguine">Prosanguine</option>
-                            <option value="strongminded">Strong Minded</option>
-                            <option value="swiftattack">Swift Attack</option>
-                            <option value="twoweaponwielder">Two Weapon Wielder</option>
-                            <option value="unarmedspecialist">Unarmed Specialist</option>
-                            <option value="warpconduit">Warp Conduit</option>
-                            <option value="whirlwindofdeath">Whirlwind of Death</option>
-                            <option value="customtier2">CUSTOM TIER 2</option>
-                        </optgroup>
-                        <optgroup label="tier3talents">
-                            <option value="adamantiumfaith">Adamantium Faith</option>
-                            <option value="assassinstrike">Assassin Strike</option>
-                            <option value="bastionofironwill">Bastion of Iron Will</option>
-                            <option value="blademaster">Blademaster</option>
-                            <option value="crushingblow">Crushing Blow</option>
-                            <option value="deathdealer">Deathdealer</option>
-                            <option value="delicateinterrogation">Delicate Interrogation</option>
-                            <option value="eyeofvengeance">Eye of Vengeance</option>
-                            <option value="favouredbythewarp">Favoured by the Warp</option>
-                            <option value="flashofinsight">Flash of Insight</option>
-                            <option value="haloofcommand">Halo of Command</option>
-                            <option value="hammerblow">Hammer Blow</option>
-                            <option value="infusedknowledge">Infused Knowledge</option>
-                            <option value="lightningattack">Lightning Attack</option>
-                            <option value="luminenblast">Luminen Blast</option>
                             <option value="mastery">Mastery</option>
+                            <option value="mechadendriteuse">Mechadendrite Use</option>
                             <option value="mightyshot">Mighty Shot</option>
+                            <option value="mountedwarrior">Mounted Warrior</option>
                             <option value="neverdie">Never Die</option>
+                            <option value="nowheretohide">Nowhere to Hide</option>
+                            <option value="oneonone">One on One</option>
+                            <option value="peer">Peer</option>
+                            <option value="penitentpsy">Penitent Psyker</option>
+                            <option value="precisionkiller">Precision Killer</option>
                             <option value="preternaturalspeed">Preternatural Speed</option>
+                            <option value="prosanguine">Prosanguine</option>
+                            <option value="purityofhatred">Purity of Hatred</option>
+                            <option value="pushthelimit">Push the Limit</option>
+                            <option value="quickdraw">Quick Draw</option>
+                            <option value="rapidreload">Rapid Reload</option>
+                            <option value="resistance">Resistance</option>
+                            <option value="ritesofbanish">Rites of Banishment</option>
+                            <option value="sancticpurity">Sanctic Purity</option>
+                            <option value="shieldwall">Shield Wall</option>
+                            <option value="skilledrider">Skilled Rider</option>
+                            <option value="soundconstitution">Sound Constitution</option>
                             <option value="sprint">Sprint</option>
                             <option value="stepaside">Step Aside</option>
+                            <option value="strongminded">Strong Minded</option>
                             <option value="superiorchirurgeon">Superior Chirurgeon</option>
+                            <option value="swiftattack">Swift Attack</option>
+                            <option value="taintedpsy">Tainted Psyker</option>
+                            <option value="takedown">Takedown</option>
                             <option value="targetselection">Target Selection</option>
+                            <option value="technicalknock">Technical Knock</option>
                             <option value="thundercharge">Thunder Charge</option>
                             <option value="truegrit">True Grit</option>
                             <option value="twoweaponmaster">Two Weapon Master</option>
+                            <option value="twoweaponwielder">Two Weapon Wielder</option>
+                            <option value="unarmedspecialist">Unarmed Specialist</option>
+                            <option value="warpconduit">Warp Conduit</option>
                             <option value="warplock">Warp Lock</option>
-                            <option value="customtier3">CUSTOM TIER 3</option>
+                            <option value="warpsense">Warp Sense</option>
+                            <option value="weaponintuition">Weapon Intuition</option>
+                            <option value="weapontech">Weapon Tech</option>
+                            <option value="weapontraining">Weapon Training</option>
+                            <option value="whirlwindofdeath">Whirlwind of Death</option>
+                            <option value="witchfinder">Witchfinder</option>
+                            <option value="xenosavant">Xenosavant</option>
                         </optgroup>
+                        <optgroup label="coretraits">
+                            <option value="amorphous">Amorphous</option>
+                            <option value="amphibious">Amphibious</option>
+                            <option value="autostabilized">Autostabilized</option>
+                            <option value="banefulpres">Baneful Presence</option>
+                            <option value="bestial">Bestial</option>
+                            <option value="blind">Blind</option>
+                            <option value="brutalcharge">Brutal Charge</option>
+                            <option value="burrower">Burrower</option>
+                            <option value="cranialcircuitry">Cranial Circuitry</option>
+                            <option value="crawler">Crawler</option>
+                            <option value="cybermantle">Cybermantle</option>
+                            <option value="daemonic">Daemonic</option>
+                            <option value="darksight">Dark Sight</option>
+                            <option value="deadlynatural">Deadly Natural Weapons</option>
+                            <option value="electrograft">Electrograft</option>
+                            <option value="electooinductors">Electoo Inductors</option>
+                            <option value="fear">Fear</option>
+                            <option value="flyer">Flyer</option>
+                            <option value="frombeyond">From Beyond</option>
+                            <option value="hoverer">Hoverer</option>
+                            <option value="incorporeal">Incorporeal</option>
+                            <option value="machine">Machine</option>
+                            <option value="mindlock">Mindlock</option>
+                            <option value="multiplearms">Multiplearms</option>
+                            <option value="naturalarmor">Natural Armor</option>
+                            <option value="naturalweapons">Natural Weapons</option>
+                            <option value="phase">Phase</option>
+                            <option value="potentiacoil">Potentia Coil</option>
+                            <option value="psyker">Psyker</option>
+                            <option value="quadruped">Quadruped</option>
+                            <option value="regeneration">Regeneration</option>
+                            <option value="sanctioned">Sanctioned</option>
+                            <option value="size">Size</option>
+                            <option value="sonarsense">Sonarsense</option>
+                            <option value="soulbound">Soulbound</option>
+                            <option value="stampede">Stampede</option>
+                            <option value="stuffofnightmares">Stuff of Nightmares</option>
+                            <option value="sturdy">Sturdy</option>
+                            <option value="touchedbythefates">Touched by the Fates</option>
+                            <option value="toxic">Toxic</option>
+                            <option value="undying">Undying</option>
+                            <option value="unnaturalsenses">Unnaturalsenses</option>
+                            <option value="warpinstability">Warp Instability</option>
+                            <option value="warpweapons">Warp Weapons</option>
+                        </optgroup>
+                        <optgroup label="coreEAtalents">
+                            <option value="baneofthedaemon">Bane of the Daemon</option>
+                            <option value="blessedmartyrdom">Blessed Martyrdom</option>
+                            <option value="boundtothehighest">Bound to the Highest</option>
+                            <option value="ceaselesscrusader">Ceaseless Crusader</option>
+                            <option value="cleansewithfire">Cleanse with Fire</option>
+                            <option value="completecontrol">Complete Control</option>
+                            <option value="daemonicanathema">Daemonic Anathema</option>
+                            <option value="divinevengeance">Divine Vengeance</option>
+                            <option value="emperorsguidance">Emperor's Guidance</option>
+                            <option value="fated">Fated</option>
+                            <option value="furiouszeal">Furious Zeal</option>
+                            <option value="indomitableconviction">Indomitable Convinction</option>
+                            <option value="inspiredintuition">Inspired Intuition</option>
+                            <option value="intothejawsofhell">Into the Jaws of Hell</option>
+                            <option value="jackofalltrades">Jack of All Trades</option>
+                            <option value="masterofalltrades">Master of All Trades</option>
+                            <option value="nullfield">Null Field</option>
+                            <option value="psychicnull">Psychic Null</option>
+                            <option value="secondsight">Second Sight</option>
+                            <option value="sharedestiny">Shared Destiny</option>
+                            <option value="shieldofcontempt">Shield of Contempt</option>
+                            <option value="shieldingfaith">Shielding Faith</option>
+                            <option value="spiritofthemartyr">Spirit of the Martyr</option>
+                            <option value="soullessaura">Soulless Aura</option>
+                            <option value="soulward">Soul Ward</option>
+                            <option value="strengththroughconviction">Strength Through Conviction</option>
+                            <option value="supremetelepath">Supreme Telepath</option>
+                            <option value="warpbane">Warp Bane</option>
+                            <option value="warpdisruption">Warp Disruption</option>
+                            <option value="warpawareness">Warp Awareness</option>
+                            <option value="willoftheinquisitor">Will of the Inquisitor</option>
+                            <option value="zealotspassion">Zealot's Passion</option>
+                        </optgroup>
+                        <optgroup label="AddedTalents">
+                            <option value="blessingoftheethereals">Blessing of the Ethereals</option>
+                            <option value="bondingritual">Bonding Ritual</option>
+                            <option value="discipleofkauyon">Disciple of Kauyon</option>
+                            <option value="discipleofmontka">Disciple of Mont'ka</option>
+                            <option value="envoyofthegreatergood">Envoy of the Greater Good</option>
+                    		<option value="exemplaroftheselflesscause">Exemplar of the Selfless Cause</option>
+                            <option value="favoreditem">Favored Item</option>
+                            <option value="firesupport">Fire Support</option>
+                            <option value="furiousfusillade">Furious Fusillade</option>
+                            <option value="greaterthanthesun">Greater than the Sun</option>
+                            <option value="legendaryarmament">Legendary Armament</option>
+                            <option value="luminenbarrier">Luminen Barrier</option>
+                            <option value="luminenflare">Luminen Flare</option>
+                    		<option value="luminenshield">Luminen Shield</option>
+                    		<option value="luminensurge">Luminen Surge</option>
+                    		<option value="masteroftechnology">Master of Technology</option>
+                    		<option value="newallies">New Allies</option>
+                            <option value="personalequipment">Personal Equipment</option>
+                            <option value="strengththroughunity">Strength Through Unity</option>
+                            <option value="superiorsupplychain">Superior Supply Chain</option>
+                            <option value="supportingfire">Supporting Fire</option>
+                            <option value="tacticalflexibility">Tactical Flexibility</option>
+                        </optgroup>
+                        <optgroup label="AddedEATalents">
+                            <option value="abyssalterror">Abyssal Terror</option> 
+                    		<option value="adrenalrecovery">Adrenal Recovery</option>
+                    		<option value="advancedbattlesuittraining">Advanced Battlesuit Training</option>
+                    		<option value="allyofthexenos">Ally of the Xenos</option>
+                    		<option value="apotheosisdelayed">Apotheosis Delayed</option>
+                    		<option value="attackmytarget">Attack My Target!</option>
+                    		<option value="battlefieldtechnician">Battlefield Technician</option>
+                    		<option value="bestofthebest">Best of the Best</option>
+                    		<option value="braceforimpact">Brace for Impact</option>
+                    		<option value="burytheknife">Bury the Knife</option>
+                    		<option value="cleanseandpurify">Cleanse and Purify</option>
+                    		<option value="cogswithincogs">Cogs within Cogs</option>
+                    		<option value="coldreading">Cold Reading</option>
+                    		<option value="coldtrader">Cold Trader</option>
+                    		<option value="combatflair">Combat Flair</option>
+                    		<option value="corruptedcharge">Corrupted Charge</option>
+                    		<option value="coverandadvance">Cover and Advance</option>
+                    		<option value="daemonicaffinity">Daemonic Affinity</option>
+                    		<option value="daemonicdomination">Daemonic Domination</option>
+                    		<option value="daemonicemergence">Daemonic Emergence</option>
+                    		<option value="damagecontrol">Damage Control</option>
+                    		<option value="despoiler">Despoiler</option>
+                    		<option value="dispassionatedispatch">Dispassionate Dispatch</option>
+                    		<option value="divineministration">Divine Ministration</option>
+                    		<option value="divinesymbol">Divine Symbol</option>
+                    		<option value="feelnopain">Feel No Pain</option>
+                    		<option value="firebrandscall">Firebrand's Call</option>
+                    		<option value="flamesoffaith">Flames of Faith</option>
+                    		<option value="fleshwarp">Fleshwarp</option>
+                    		<option value="holdfast">Hold Fast!</option>
+                    		<option value="honorguard">Honor Guard</option>
+                    		<option value="hunkerdown">Hunker Down!</option>
+                    		<option value="killerseye">Killer's Eye</option>
+                    		<option value="legendary">Legendary</option>
+                    		<option value="lostokenhancement">Lostok Enhancement</option>
+                    		<option value="luminendesecration">Luminen Desecration</option>
+                    		<option value="marauder">Marauder</option>
+                    		<option value="martyrsgift">Martyr's Gift</option>
+                    		<option value="metalfatigue">Metal Fatigue</option>
+                    		<option value="mightoftheemperor">Might of the Emperor</option>
+                    		<option value="mindsight">Mind Sight</option>
+                    		<option value="mindtrap">Mind Trap</option>
+                    		<option value="mortalglamour">Mortal Glamour</option>
+                    		<option value="operativeconditioning">Operative Conditioning</option>
+                    		<option value="panxenoist">Pan-Xenoist</option>
+                    		<option value="priorityfire">Priority Fire</option>
+                    		<option value="purgetheunclean">Purge the Unclean</option>
+                    		<option value="renownedwarrant">Renowned Warrant</option>
+                    		<option value="resurrection">Resurrection</option>
+                    		<option value="riteofawe">Rite of Awe</option>
+                    		<option value="riteoffear">Rite of Fear</option>
+                    		<option value="riteofpurethought">Rite of Pure Thought</option>
+                    		<option value="shipmaster">Shipmaster</option>
+                    		<option value="snapshot">Snapshot</option>
+                    		<option value="soulstorm">Soulstorm</option>
+                    		<option value="squadmode">Squad Mode</option>
+                    		<option value="subversiveprogramming">Subversive Programming</option>
+                    		<option value="suffertheflesh">Suffer the Flesh</option>
+                    		<option value="swarmprotocols">Swarm Protocols</option>
+                    		<option value="tacticalwithdrawal">Tactical Withdrawal</option>
+                    		<option value="takethemalive">Take Them Alive</option>
+                    		<option value="technologicalinsight">Technological Insight</option>
+                    		<option value="technologytriumphant">Technology Triumphant</option>
+                    		<option value="tempestofmonkua">Tempest of Mon'kua</option>
+                    		<option value="theemperorprotects">The Emperor Protects</option>
+                    		<option value="thepowerbeyond">The Power Beyond</option>
+                    		<option value="thepowerwithin">The Power Within</option>
+                    		<option value="throughunitydevastation">Through Unity, Devastation</option>
+                    		<option value="undyingwarrior">Undying Warrior</option>
+                    		<option value="unfalteringredemption">Unfaltering Redemption</option>
+                    		<option value="unhalloweddiscovery">Unhallowed Discovery</option>
+                    		<option value="unholyinsight">Unholy Insight</option>
+                    		<option value="unorthodoxrites">Unorthodox Rites</option>
+                    		<option value="veteran's reflexes">Veteran's Reflexes</option>
+                    		<option value="voidsavant">Void Savant</option>
+                    		<option value="warpanathema">Warp Anathema</option>
+                    		<option value="warpforge">Warp Forge</option>
+                    		<option value="watchfulforbetrayal">Watchful for Betrayal</option>
+                    		<option value="whispersfrombeyond">Whispers from Beyond</option>
+                    		<option value="whispersofsamadhi">Whispers of Samadhi</option>
+                    		<option value="wrathoftherighteous">Wrath of the Righteous</option>
+                    		<option value="xenoarcheologist">Xenoarcheologist</option>
+                    		<option value="xenosaugmentation">Xenos Augmentation</option>
+                    		<option value="xenosfamiliarity">Xenos Familiarity</option>
+                    		<option value="xenoshybridization">Xenos Hybridization</option>
+                		</optgroup>
+                		<optgroup label="AddedTraits">
+                		    <option value="coldsoul">Cold Soul</option>                
+                    		<option value="lostokaugmentation">Lostok Augmentation</option>
+                    		<option value="masteryofaugurs">Mastery of Augurs</option>
+                    		<option value="masteryofgunnery">Mastery of Gunnery</option>
+                    		<option value="masteryofsmallcraft">Mastery of Small Craft</option>
+                    		<option value="masteryofspace">Mastery of Space</option>
+                    		<option value="possessed">Possessed</option>
+                    		<option value="purefaith">Pure Faith</option>
+                    		<option value="rigormentis">Rigor Mentis</option>
+                    		<option value="temperament">Temperament</option>
+                    		<option value="untouchable">Untouchable</option>
+                    		<option value="xenophilia">Xenophilia</option>
+                	    </optgroup>
+                	    <optgroup label="ETC">
+                	        <option value="customtier1">CUSTOM TIER 1</option> 
+                	        <option value="customtier2">CUSTOM TIER 2</option> 
+                	        <option value="customtier3">CUSTOM TIER 3</option> 
+                	    </optgroup>
                     </select>                     
                 </div>
                 <div class="sheet-item" style="width:60%"><input name="attr_talentdescs" type="text" style="width:100%"></div>
@@ -2220,6 +3118,7 @@ on("change:dispwpnspecial1 ", function() {
         var swift=0;
         var lightning=0;
         var unwieldy=0;
+        var noparry=false;
         var maximal = 0;
         var indirect = 0;
         var semi=false;
@@ -2231,6 +3130,8 @@ on("change:dispwpnspecial1 ", function() {
             specialArray[i] = specialArray[i].replace(/\(([^)]+)\)/g, '');  //remove parentheses and anything inside
             if(specialArray[i]=="Maximal"){maximal=1;}
             if(specialArray[i]=="Indirect"){indirect=1;}
+            if(specialArray[i]=="Unwieldy"){unwieldy=1; noparry=true;}
+            if(specialArray[i]=="Unbalanced"){unwieldy=1;}
         });
         
         _.each(ttArray, function(current, i) {
@@ -2238,10 +3139,9 @@ on("change:dispwpnspecial1 ", function() {
             ttArray[i] = ttArray[i].replace(/\(([^)]+)\)/g, '');  //remove parentheses and anything inside
             if(ttArray[i]=="swiftattack"){swift=1;}
             if(ttArray[i]=="lightningattack"){lightning=1;}
-            if(specialArray[i]=="Unwieldy"){unwieldy=1;}
-            if(specialArray[i]=="Unbalanced"){unwieldy=1;}
         });
         
+        //Set the Maximal fire status
         if(maximal==1){
             setAttrs({wpnselmx1: 1});
             getAttrs(["dispwpnsingleshot1","dispwpnsemishot1","dispwpnautoshot1"], function(a) {
@@ -2263,6 +3163,7 @@ on("change:dispwpnspecial1 ", function() {
         }
         else{setAttrs({wpnselmx1: 0});}
         
+        //Set the Indirect fire status
         if(indirect==1){
             setAttrs({wpnselid1: 1});
             getAttrs(["dispwpnsingleshot1","dispwpnsemishot1","dispwpnautoshot1"], function(a) {
@@ -2284,10 +3185,15 @@ on("change:dispwpnspecial1 ", function() {
         }
         else{setAttrs({wpnselid1: 0});}
         
+        //Set the parry status
+        if(noparry==false && values.dispwpnsingleshot1=='M'){setAttrs({wpnselpa1: 1});}
+        else{setAttrs({wpnselpa1: 0});}
         
+        //set the swift attack status
         if(swift==1 && values.dispwpnsingleshot1=='M'){setAttrs({wpnselsw1: 1});}
         else{setAttrs({wpnselsw1: 0});}
         
+        //set the lightning attack status
         if(lightning==1 && unwieldy==0 && values.dispwpnsingleshot1=='M'){setAttrs({wpnsella1: 1});}
         else{setAttrs({wpnsella1: 0});}
         
@@ -2307,6 +3213,7 @@ on("change:dispwpnspecial2 ", function() {
         var swift=0;
         var lightning=0;
         var unwieldy=0;
+        var noparry=false;
         var semi=false;
         var auto=false;
         var i;
@@ -2374,6 +3281,11 @@ on("change:dispwpnspecial2 ", function() {
         
         if(lightning==1 && unwieldy==0 && values.dispwpnsingleshot2=='M'){setAttrs({wpnsella2: 1});}
         else{setAttrs({wpnsella2: 0});}
+        
+                
+        //Set the parry status
+        if(noparry==false && values.dispwpnsingleshot2=='M'){setAttrs({wpnselpa2: 1});}
+        else{setAttrs({wpnselpa2: 0});}
         
         
         var tempch = values.dispwpnspecial2.replace(/,/g , ".");
@@ -2486,7 +3398,13 @@ on("change:repeating_weapons:wpnselects", function() {
                                 "repeating_weapons_" + currentID + "_wpnweights",
                                 "repeating_weapons_" + currentID + "_wpnqualitys",
                                 "repeating_weapons_" + currentID + "_wpnrlds",
-                                "repeating_weapons_" + currentID + "_wpnspecials"
+                                "repeating_weapons_" + currentID + "_wpnspecials",
+                                "repeating_weapons_" + currentID + "_wpnammos",
+                                "repeating_weapons_" + currentID + "_wpnmod1s",
+                                "repeating_weapons_" + currentID + "_wpnmod2s",
+                                "repeating_weapons_" + currentID + "_wpnmod3s",
+                                "repeating_weapons_" + currentID + "_wpneffects",
+                                "repeating_weapons_" + currentID + "_wpncats"
                                 ], function(y) {
                                 setAttrs({
                                     dispwpnname1: y["repeating_weapons_" + currentID + "_wpnnames"],
@@ -2505,7 +3423,13 @@ on("change:repeating_weapons:wpnselects", function() {
                                     dispwpnweight1: y["repeating_weapons_" + currentID + "_wpnweights"],
                                     dispwpnquality1: y["repeating_weapons_" + currentID + "_wpnqualitys"],
                                     dispwpnrld1: y["repeating_weapons_" + currentID + "_wpnrlds"],
-                                    dispwpnspecial1: y["repeating_weapons_" + currentID + "_wpnspecials"]
+                                    dispwpnspecial1: y["repeating_weapons_" + currentID + "_wpnspecials"],
+                                    dispwpnammo1: y["repeating_weapons_" + currentID + "_wpnammos"],
+                                    dispwpnmod11: y["repeating_weapons_" + currentID + "_wpnmod1s"],
+                                    dispwpnmod21: y["repeating_weapons_" + currentID + "_wpnmod2s"],
+                                    dispwpnmod31: y["repeating_weapons_" + currentID + "_wpnmod3s"],
+                                    dispwpneffect1: y["repeating_weapons_" + currentID + "_wpneffects"],
+                                    dispwpncat1: y["repeating_weapons_" + currentID + "_wpncats"]
                                 });
                             });
                         }
@@ -2528,7 +3452,13 @@ on("change:repeating_weapons:wpnselects", function() {
                                 "repeating_weapons_" + currentID + "_wpnweights",
                                 "repeating_weapons_" + currentID + "_wpnqualitys",
                                 "repeating_weapons_" + currentID + "_wpnrlds",
-                                "repeating_weapons_" + currentID + "_wpnspecials"
+                                "repeating_weapons_" + currentID + "_wpnspecials",
+                                "repeating_weapons_" + currentID + "_wpnammos",
+                                "repeating_weapons_" + currentID + "_wpnmod1s",
+                                "repeating_weapons_" + currentID + "_wpnmod2s",
+                                "repeating_weapons_" + currentID + "_wpnmod3s",
+                                "repeating_weapons_" + currentID + "_wpneffects",
+                                "repeating_weapons_" + currentID + "_wpncats"
                                 ], function(y) {
                                 setAttrs({
                                     dispwpnname2: y["repeating_weapons_" + currentID + "_wpnnames"],
@@ -2547,7 +3477,13 @@ on("change:repeating_weapons:wpnselects", function() {
                                     dispwpnweight2: y["repeating_weapons_" + currentID + "_wpnweights"],
                                     dispwpnquality2: y["repeating_weapons_" + currentID + "_wpnqualitys"],
                                     dispwpnrld2: y["repeating_weapons_" + currentID + "_wpnrlds"],
-                                    dispwpnspecial2: y["repeating_weapons_" + currentID + "_wpnspecials"]
+                                    dispwpnspecial2: y["repeating_weapons_" + currentID + "_wpnspecials"],
+                                    dispwpnammo2: y["repeating_weapons_" + currentID + "_wpnammos"],
+                                    dispwpnmod12: y["repeating_weapons_" + currentID + "_wpnmod1s"],
+                                    dispwpnmod22: y["repeating_weapons_" + currentID + "_wpnmod2s"],
+                                    dispwpnmod32: y["repeating_weapons_" + currentID + "_wpnmod3s"],
+                                    dispwpneffect2: y["repeating_weapons_" + currentID + "_wpneffects"],
+                                    dispwpncat2: y["repeating_weapons_" + currentID + "_wpncats"]
                                 });
                             });
                         }
