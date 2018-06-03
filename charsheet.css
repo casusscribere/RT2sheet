@@ -325,7 +325,7 @@ margin: 5px 0 5px 0;
     display: inline-block;
 }
 
-.sheet-viewwrapper .sheet-wpnselsw:not(:checked) ~ .sheet-swroll1{
+.sheet-viewwrapper .sheet-wpnselme:not(:checked) ~ .sheet-stroll1{
     display: none;
 }
 
@@ -333,7 +333,7 @@ margin: 5px 0 5px 0;
     display: inline-block;
 }
 
-.sheet-viewwrapper .sheet-wpnsella:not(:checked) ~ .sheet-laroll1{
+.sheet-viewwrapper .sheet-wpnselsw:not(:checked) ~ .sheet-swroll1{
     display: none;
 }
 
@@ -341,14 +341,23 @@ margin: 5px 0 5px 0;
     display: inline-block;
 }
 
-.sheet-viewwrapper .sheet-wpnselme:not(:checked) ~ .sheet-stroll1{
+.sheet-viewwrapper .sheet-wpnsella:not(:checked) ~ .sheet-laroll1{
     display: none;
 }
+
 .sheet-viewwrapper .sheet-wpnselrg:checked ~ .sheet-rangedrop1{
     display: inline-block;
 }
 
 .sheet-viewwrapper .sheet-wpnselrg:not(:checked) ~ .sheet-rangedrop1{
+    display: none;
+}
+
+.sheet-viewwrapper .sheet-wpnselpa:checked ~ .sheet-prroll1{
+    display: inline-block;
+}
+
+.sheet-viewwrapper .sheet-wpnselpa:not(:checked) ~ .sheet-prroll1{
     display: none;
 }
 
@@ -426,6 +435,13 @@ margin: 5px 0 5px 0;
     display: none;
 }
 
+.sheet-viewwrapper .sheet-wpnselpa:checked ~ .sheet-prroll2{
+    display: inline-block;
+}
+
+.sheet-viewwrapper .sheet-wpnselpa:not(:checked) ~ .sheet-prroll2{
+    display: none;
+}
 
 
 /*replaces skill roll buttons with custom icons */
