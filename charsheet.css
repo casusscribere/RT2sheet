@@ -215,6 +215,22 @@ margin: 5px 0 5px 0;
 }
 */
 
+.sheet-viewwrapper .sheet-armor {
+    background-image: url(http://kirklundblade.com/RogueTrader/ArmorDiagram.png);
+    background-repeat: no-repeat;
+    background-position: left; 
+}
+
+.sheet-viewwrapper .sheet-armordisp {
+    background-color: inherit;
+}
+
+.sheet-viewwrapper .sheet-reductiondisp {
+    font-size: 30px;
+}
+
+
+
 .sheet-sf button[type=roll]::before  {
     font:10px/normal sans-serif;
     content: "Si"!important; 
