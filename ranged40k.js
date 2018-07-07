@@ -1962,7 +1962,7 @@ ranged40kNamespace.rollResult = function(token, attribute, range, shotsel, singl
       output = errortext; 
     }
     else {
-        //output ="!power {{--format|ranged --titlefontshadow|none --name|"+ammo+" --leftsub| "+mod1+"  --rightsub| "+temp+sub+dmgstring+scatstring+qualstring+talstring+ammomodstring+" }}";
+        //output ="!power {{--format|ranged --titlefontshadow|none --name|"+token+" --leftsub| "+attributeArray['Crippling']+"  --rightsub| "+temp+sub+dmgstring+scatstring+qualstring+talstring+ammomodstring+" }}";
         output ="!power {{--format|"+format+" --titlefontshadow|none --name|"+token+" --leftsub| "+wpnname+"  --rightsub| "+temp+sub+dmgstring+scatstring+qualstring+talstring+ammomodstring+effects+" }}";
     }
     msg.content=output;
