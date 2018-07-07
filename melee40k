@@ -1389,7 +1389,7 @@ melee40kNamespace.rollResult = function(token, attribute, shotsel, numdice, dice
     }
     else {
         output ="!power {{--format|melee --titlefontshadow|none --name|"+token+" --leftsub| "+wpnname+"  --rightsub| "+temp+cur+dmgstring+qualstring+talstring+ammomodstring+effects+" }}";
-        //output ="!power {{--format|melee --titlefontshadow|none --name|"+mod1+" --leftsub| "+mod2+"  --rightsub| "+mod3+cur+dmgstring+qualstring+talstring+ammomodstring+" }}";
+        //output ="!power {{--format|melee --titlefontshadow|none --name|"+attributeArray['Crippling']+" --leftsub| "+mod2+"  --rightsub| "+mod3+cur+dmgstring+qualstring+talstring+ammomodstring+" }}";
     }
     msg.content=output;
     msg.who = msg.who.replace(" (GM)", "");
