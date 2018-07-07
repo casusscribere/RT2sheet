@@ -127,6 +127,28 @@
                 <button type='roll' value='!skill40k @{charname},@{dispInfluence},?{Check Difficulty|Challenging(+0), 0|Easy(+30), 30|Routine(+20), 20|Ordinary(+10), 10|Difficult(-10), -10|Hard(-20), -20|Very Hard(-30), -30|Arduous(-40), -40|Punishing(-50), -50|Hellish(-60), -60}, Influence, stat' name='roll_Influence' class="righthiddenroll"></button>
                 <div class="sheet-item" style="width:35%"><span style="float:left">Influence (IFL)</span></div>
             </div>
+            <div class="sheet-row sheet-characteristics">
+                <div class="sheet-item sheet-armor" style="width:100%; height: 300px;">
+                    <div class="sheet-item" style="position: relative; left: 145px; top: 20px;"><span style="float:left">Head</span></div>
+                    <div class="sheet-item sheet-reductiondisp" style="width:5%; position: relative; left: 100px; top: 40px;"><span name="attr_headArmor"></span></div>
+                    <div class="sheet-item sheet-reductiondisp" style="width:5%; position: relative; left: 100px; top: 40px;"><span name="attr_headReduction"></span></div>
+                    <div class="sheet-item" style="position: relative; left: 75px; top: 160px;"><span style="float:left">Body</span></div>
+                    <div class="sheet-item sheet-reductiondisp" style="position: relative; left: 30px; top: 185px;"><span name="attr_bodyArmor"></span></div>
+                    <div class="sheet-item sheet-reductiondisp" style="position: relative; left: 30px; top: 185px;"><span name="attr_bodyReduction"></span></div>
+                    <div class="sheet-item" style="position: relative; left: -120px; top: 90px;"><span style="float:left">Left Arm</span></div>
+                    <div class="sheet-item sheet-reductiondisp" style="position: relative; left: -180px; top: 115px;"><span name="attr_leftarmArmor"></span></div>
+                    <div class="sheet-item sheet-reductiondisp" style="position: relative; left: -180px; top: 115px;"><span name="attr_leftarmReduction"></span></div>
+                    <div class="sheet-item" style="position: relative; left: -60px; top: 90px;"><span style="float:left">Right Arm</span></div>
+                    <div class="sheet-item sheet-reductiondisp" style="position: relative; left: -120px; top: 115px;"><span name="attr_rightarmArmor"></span></div>
+                    <div class="sheet-item sheet-reductiondisp" style="position: relative; left: -245px; top: 90px;"><span name="attr_rightarmReduction"></span></div>
+                    <div class="sheet-item" style="position: relative; left: 15px; top: 205px;"><span style="float:left">Left Leg</span></div>
+                    <div class="sheet-item sheet-reductiondisp" style="position: relative; left: -45px; top: 230px;"><span name="attr_leftlegArmor"></span></div>
+                    <div class="sheet-item sheet-reductiondisp" style="position: relative; left: -45px; top: 230px;"><span name="attr_leftlegReduction"></span></div>
+                    <div class="sheet-item" style="position: relative; left: 65px; top: 205px;"><span style="float:left">Right Leg</span></div>
+                    <div class="sheet-item sheet-reductiondisp" style="position: relative; left: 0px; top: 230px;"><span name="attr_rightlegArmor"></span></div>
+                    <div class="sheet-item sheet-reductiondisp" style="position: relative; left: 0px; top: 230px;"><span name="attr_rightlegReduction"></span></div>
+                </div>
+            </div>
         </div>
         <div class='sheet-col sheet-skills'>
             <div class="sheet-row">
@@ -2540,6 +2562,87 @@ on('sheet:opened',function(){
     self.kirk.Intelligenceadj = values.Intelligenceadj;
   });
 });
+
+
+
+///////////////////
+//
+//Armor Display Workers
+//
+///////////////////
+on("change:headarmor change:toughnessmod", function() {
+    getAttrs(["headArmor", "ToughnessMod", "headReduction"], function(values) {
+        var tempmod=parseInt(values.headArmor)+parseInt(values.ToughnessMod);
+        setAttrs({
+            headReduction: ("("+tempmod+")")
+        });
+    });
+});
+
+on("change:bodyarmor change:toughnessmod", function() {
+    getAttrs(["bodyArmor", "ToughnessMod", "bodyReduction"], function(values) {
+        var tempmod=parseInt(values.bodyArmor)+parseInt(values.ToughnessMod);
+        setAttrs({
+            bodyReduction: ("("+tempmod+")")
+        });
+    });
+});
+
+on("change:leftarmarmor change:toughnessmod", function() {
+    getAttrs(["leftarmArmor", "ToughnessMod", "leftarmReduction"], function(values) {
+        var tempmod=parseInt(values.leftarmArmor)+parseInt(values.ToughnessMod);
+        setAttrs({
+            leftarmReduction: ("("+tempmod+")")
+        });
+    });
+});
+
+on("change:rightarmarmor change:toughnessmod", function() {
+    getAttrs(["rightarmArmor", "ToughnessMod", "bodyReduction"], function(values) {
+        var tempmod=parseInt(values.rightarmArmor)+parseInt(values.ToughnessMod);
+        setAttrs({
+            rightarmReduction: ("("+tempmod+")")
+        });
+    });
+});
+
+on("change:leftlegarmor change:toughnessmod", function() {
+    getAttrs(["leftlegArmor", "ToughnessMod", "leftlegReduction"], function(values) {
+        var tempmod=parseInt(values.leftlegArmor)+parseInt(values.ToughnessMod);
+        setAttrs({
+            leftlegReduction: ("("+tempmod+")")
+        });
+    });
+});
+
+on("change:rightlegarmor change:toughnessmod", function() {
+    getAttrs(["rightlegArmor", "ToughnessMod", "rightlegReduction"], function(values) {
+        var tempmod=parseInt(values.rightlegArmor)+parseInt(values.ToughnessMod);
+        setAttrs({
+            rightlegReduction: ("("+tempmod+")")
+        });
+    });
+});
+/*
+on("change:repeating_cls:commonloreranks change:repeating_cls:commonloremiscs", function() {
+    getAttrs(["repeating_cls_commonloreranks", "repeating_cls_commonloremiscs", "repeating_cls_commonlorescores"], function(values) {
+        var tempmod = 10;
+        tempmod = parseInt(values.repeating_cls_commonloreranks);
+        if (tempmod == 0) {tempmod = -20;} 
+        else if (tempmod == 1 || tempmod == 2 || tempmod == 3 || tempmod == 4) {tempmod = (tempmod - 1) * 10;} 
+        else {tempmod = -900;}
+        var Intelligence = self.kirk.Intelligence;
+        var Intelligenceadj = self.kirk.Intelligenceadj;
+        setAttrs({
+            repeating_cls_commonlorescores: (parseInt(Intelligence) + parseInt(Intelligenceadj) + parseInt(values.repeating_cls_commonloremiscs) + tempmod)
+        });
+    });
+});
+*/
+
+
+
+
 
 
 
