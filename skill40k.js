@@ -388,7 +388,7 @@ skill40kNamespace.rollResult = function(token, attribute, modifier, skillname, t
     else{
         diff='Other';
     }
-    boundmod += modifier;
+    boundmod = parseInt(boundmod)+parseInt(modifier);
     
     
     //Add bonuses for talents
