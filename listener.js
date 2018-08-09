@@ -266,7 +266,6 @@ var Wrapper40k = Wrapper40k || (function () {
     class Check {
         constructor(name, attrval, modifier, talentStr) {
             this.name = name;
-            this.talentStrToArray=talentStr;
             this.attrval=attrval;
             this.modifier=modifier;
             this.degOfSuc=0;
@@ -275,129 +274,7 @@ var Wrapper40k = Wrapper40k || (function () {
             this.diff=0;
             this.talStr='';
             this.hitStr='';
-        }
-
-        //PUBLIC: Bound the modifier to +/-60 and create the target value
-        setCheckThreshold(){
-            if (this.modifier > 60) {
-                this.modifier = 60;
-            } else if (this.modifier < -60) {
-                this.modifier = -60;
-            }
-            this.checkTarget = parseInt(this.attrval) + parseInt(this.modifier);
-        }
-
-        //PUBLIC: Calculate DoS and Hit/Miss
-        detDoS(){
-            if (this.roll <= this.checkTarget) {
-                this.degOfSuc = (Math.floor(this.checkTarget / 10) - Math.floor(this.roll / 10)) + 1;
-            } else {
-                this.degOfSuc = (Math.floor(this.roll / 10) - Math.floor(this.checkTarget / 10)) + 1;
-            }
-        }
-
-        //PUBLIC: perform the basic calculations required for a check
-        Calc(){
-            this.roll=randomInteger(100);
-            this.setCheckThreshold(); 
-            this.detDoS();
-        }
-
-        //PUBLIC: Prepare parts of the output message based on the calc results
-        buildStr(){
-            if (this.roll <= this.checkTarget) {
-                this.hitStr = '<span style="color:green">' + this.name + ' succeeds by <B>' + this.degOfSuc + ' degree(s)</B>.</span> ';
-            } else {
-                this.hitStr = '<span style="color:red">' + this.name + ' fails by <B>' + this.degOfSuc + ' degree(s)</B></span>. ';
-            }
-        }
-
-        //PRIVATE: use a period-separated string to set a given data array
-        setArray(inputString, dataArray){
-            var tempvar, current, i, j;
-            var tempArray = inputString.split('.');
-            for (i = 0, j = tempArray.length; i < j; i++) {
-                tempArray[i] = tempArray[i].replace(/^\s+|\s+$/g, ''); //remove whitespace
-                tempvar = tempArray[i].match(/\d/); //find any numbers in parentheses
-                tempArray[i] = tempArray[i].replace(/\(([^)]+)\)/g, ''); //remove parentheses and anything inside
-                current = tempArray[i];
-                if (tempvar != null) { //if there was a number in parentheses, set the array location equal to that number, otherwise set it as true
-                    dataArray[cur] = tempvar;
-                } else {
-                    dataArray[cur] = true;
-                }
-            }
-            return dataArray;
-        }
-
-        get attrval() {
-            return this._attrval;
-        }
-        get modifier() {
-            return this._modifier;
-        }
-        get diff() {
-            return this._diff;
-        }
-        get name() {
-            return this._name;
-        }
-        get talentStrToArray() {
-            return this._talents;
-        }
-
-        set attrval(value) {
-            if(value >= 0 && value <= 100){
-                this._attrval=value;
-            } else if (value > 100){
-                this._attrval=100;
-            } else{
-                this._attrval=0;
-            } 
-        }
-        set modifier(value) {
-            if(value >= -200 && value <= 200){
-                this._modifier=value;
-            } else if (value > 200){
-                this._modifier=200;
-            } else if (value < -200){
-                this._modifier=-200;
-            }
-        }
-        set diff(value){     
-            if (value == 0) {
-                this._diff = "Challenging"
-            } else if (value == 30) {
-                this._diff = "Easy"
-            } else if (value == 20) {
-                this._diff = "Routine"
-            } else if (value == 10) {
-                this._diff = "Ordinary"
-            } else if (value == -10) {
-                this._diff = "Difficult"
-            } else if (value == -20) {
-                this._diff = "Hard"
-            } else if (value == -30) {
-                this._diff = "Very Hard"
-            } else if (value == -40) {
-                this._diff = "Arduous"
-            } else if (value == -50) {
-                this._diff = "Punishing"
-            } else if (value == -60) {
-                this._diff = "Hellish"
-            } else {
-                this._diff = 'Other';
-            }
-        }
-        set name(value) {
-            if (typeof value === 'string' || value instanceof String){
-                this._name=value;
-            } else{
-                this._name="Unknown Name";
-            }
-        }
-        set talentStrToArray(value) {
-            var talentArray = {
+            this.talentArray = {
                 "adamantiumfaith": false,
                 "aegisofcontempt": false,
                 "ambassadorimp": false,
@@ -711,60 +588,192 @@ var Wrapper40k = Wrapper40k || (function () {
                 "untouchable": false,
                 "xenophilia": false
             };
-            this._talentStrToArray=this.setArray(value,talentArray);
+            this.configArray(talentStr,this.talentArray);
+            this._err=false;
+            this._errStr='';
+        }
+
+        //PUBLIC: Bound the modifier to +/-60 and create the target value
+        setCheckThreshold(){
+            if (this.modifier > 60) {
+                this.modifier = 60;
+            } else if (this.modifier < -60) {
+                this.modifier = -60;
+            }
+            this.checkTarget = parseInt(this.attrval) + parseInt(this.modifier);
+        }
+
+        //PUBLIC: Calculate DoS and Hit/Miss
+        detDoS(){
+            if (this.roll <= this.checkTarget) {
+                this.degOfSuc = (Math.floor(this.checkTarget / 10) - Math.floor(this.roll / 10)) + 1;
+            } else {
+                this.degOfSuc = (Math.floor(this.roll / 10) - Math.floor(this.checkTarget / 10)) + 1;
+            }
+        }
+
+        //PUBLIC: perform the basic calculations required for a check
+        Calc(){
+            this.roll=randomInteger(100);
+            this.setCheckThreshold(); 
+            this.detDoS();
+        }
+
+        //PUBLIC: Prepare parts of the output message based on the calc results
+        buildStr(){
+            if (this.roll <= this.checkTarget) {
+                this.hitStr = '<span style="color:green">' + this.name + ' succeeds by <B>' + this.degOfSuc + ' degree(s)</B>.</span> ';
+            } else {
+                this.hitStr = '<span style="color:red">' + this.name + ' fails by <B>' + this.degOfSuc + ' degree(s)</B></span>. ';
+            }
+        }
+
+        //PRIVATE: use a period-separated string to set a given data array
+        configArray(inputString, dataArray){
+            var tempvar, current, i, j;
+            var tempArray = inputString.split('.');
+            for (i = 0, j = tempArray.length; i < j; i++) {
+                tempArray[i] = tempArray[i].replace(/^\s+|\s+$/g, ''); //remove whitespace
+                tempvar = tempArray[i].match(/\d/); //find any numbers in parentheses
+                tempArray[i] = tempArray[i].replace(/\(([^)]+)\)/g, ''); //remove parentheses and anything inside
+                current = tempArray[i];
+                if (tempvar != null) { //if there was a number in parentheses, set the array location equal to that number, otherwise set it as true
+                    dataArray[current] = tempvar;
+                } else {
+                    dataArray[current] = true;
+                }
+            }
+        }
+
+        get attrval() {
+            return this._attrval;
+        }
+        get modifier() {
+            return this._modifier;
+        }
+        get diff() {
+            return this._diff;
+        }
+        get name() {
+            return this._name;
+        }
+        get talentArray() {
+            return this._talentArray;
+        }
+
+        set attrval(value) {
+            if(value >= 0 && value <= 100){
+                this._attrval=value;
+            } else if (value > 100){
+                this._attrval=100;
+                this._err=true;
+                this._errStr += "Attr out of range |";
+            } else{
+                this._attrval=0;
+                this._err=true;
+                this._errStr += "Attr out of range |";
+            } 
+        }
+        set modifier(value) {
+            if(value >= -200 && value <= 200){
+                this._modifier=value;
+            } else if (value > 200){
+                this._modifier=200;
+                this._err=true;
+                this._errStr += "Modifier out of range |";
+            } else if (value < -200){
+                this._modifier=-200;
+                this._err=true;
+                this._errStr += "Modifier out of range |";
+            }
+        }
+        set diff(value){     
+            if (value == 0) {
+                this._diff = "Challenging"
+            } else if (value == 30) {
+                this._diff = "Easy"
+            } else if (value == 20) {
+                this._diff = "Routine"
+            } else if (value == 10) {
+                this._diff = "Ordinary"
+            } else if (value == -10) {
+                this._diff = "Difficult"
+            } else if (value == -20) {
+                this._diff = "Hard"
+            } else if (value == -30) {
+                this._diff = "Very Hard"
+            } else if (value == -40) {
+                this._diff = "Arduous"
+            } else if (value == -50) {
+                this._diff = "Punishing"
+            } else if (value == -60) {
+                this._diff = "Hellish"
+            } else {
+                this._diff = 'Other';
+            }
+        }
+        set name(value) {
+            if (typeof value === 'string' || value instanceof String){
+                this._name=value;
+            } else{
+                this._name="Unknown Name";
+            }
+        }
+        set talentArray(value) {
+            this._talentArray=value;
         } 
   
 
     }
 
     class SkillCheck extends Check {
-        constructor(name, attrval, modifier, skillname, talents) {
-            super(name, attrval, modifier, talents);
+        constructor(name, attrval, modifier, skillname, talentStr) {
+            super(name, attrval, modifier, talentStr);
             this.skillname=skillname;
         }
 
         Calc(){
             //Add bonuses for specific talents
             
-            if (this.talents['CoordinatedInterrogation'] == true && skillname == "Interrogation") {
-                checkTarget = parseInt(this.checkTarget) + 10;
+            if (this.talentArray['coordinatedinterrogation'] == true && this.skillname == "Interrogation") {
+                this.modifier = parseInt(this.modifier) + 10;
             }
-            if (this.talents['SuperiorChirurgeon'] == true && this.skillname == "Medicae") {
-                this.checkTarget = parseInt(this.checkTarget) + 10;
+            if (this.talentArray['superiorchirurgeon'] == true && this.skillname == "Medicae") {
+                this.modifier = parseInt(this.modifier) + 20;
             }
             //perform the standard check calculations
             super.Calc();
         }
 
         buildStr(){
-            //prepare the basic skill check info
+            //prepare the basic check info
             super.buildStr();
             //prepare the skill-specific addendi
-            if (this.talents['bulgingbiceps'] == true && this.skillname == "Athletics") {
+            if (this.talentArray['bulgingbiceps'] == true && this.skillname == "Athletics") {
                 this.talStr = this.talStr + " --BulgingBiceps | Grants +20 to the Heft use of the Athletics skill";
             }
-            if (this.talents['catfall'] == true && this.skillname == "Acrobatics") {
+            if (this.talentArray['catfall'] == true && this.skillname == "Acrobatics") {
                 this.talStr = this.talStr + " --Catfall | Grants +20 to the Jump use of Acrobatics";
             }
-            if (this.talents['coordinatedinterrogation'] == true && this.skillname == "Interrogation") {
+            if (this.talentArray['coordinatedinterrogation'] == true && this.skillname == "Interrogation") {
                 this.talStr = this.talStr + " --CoordinatedInterrogation | Grants +10 to all interrogation tests (inc) and +5 for each additional ally with this talent";
             }
-            if (this.talents['delicateinterrogation'] == true && this.skillname == "Interrogation") {
+            if (this.talentArray['delicateinterrogation'] == true && this.skillname == "Interrogation") {
                 this.talStr = this.talStr + " --DelicateInterrogation | Subtlety loss from Interrogation reduced by 1d5 (min 1)";
             }
-            if (this.talents['enemy'] == true && (this.skillname == "Charm" || this.skillname == "Deceive" || this.skillname == "Command" || this.skillname == "Inquiry")) {
+            if (this.talentArray['enemy'] == true && (this.skillname == "Charm" || this.skillname == "Deceive" || this.skillname == "Command" || this.skillname == "Inquiry")) {
                 this.talStr = this.talStr + " --Enemy | -10 to interaction tests with the selected group(not included)";
             }
-            if (this.talents['faceinacrowd'] == true && this.skillname == "Stealth") {
+            if (this.talentArray['faceinacrowd'] == true && this.skillname == "Stealth") {
                 this.talStr = this.talStr + " --FaceinaCrowd | Can use Fellowship instead of Agility when using the Shadowing ability of the Stealth skill";
             }
-            if (this.talents['haloofcommand'] == true && (this.skillname == "Charm" || this.skillname == "Deceive" || this.skillname == "Command" || this.skillname == "Inquiry" || this.skillname == "Intimidate")) {
+            if (this.talentArray['haloofcommand'] == true && (this.skillname == "Charm" || this.skillname == "Deceive" || this.skillname == "Command" || this.skillname == "Inquiry" || this.skillname == "Intimidate")) {
                 this.talStr = this.talStr + " --HaloofCommand | Can affect targets within 100 x FB meters rather than 10";
             }
-            if (this.roll <= this.modifier && this.skillname == "Awareness" && this.talents['keenintuition'] == true) {
+            if (this.roll <= this.modifier && this.skillname == "Awareness" && this.talentArray['keenintuition'] == true) {
                 this.talStr = this.talStr + " --KeenIntuition | After failing an awareness check the this can reroll with a -10";
             }
-            if (this.roll > this.modifier && this.skillname == "Awareness" && this.talents['keenintuition'] == true) {
+            if (this.roll > this.modifier && this.skillname == "Awareness" && this.talentArray['keenintuition'] == true) {
                 var reroll = randomInteger(100);
                 var checkTarget2 = parseInt(this.checkTarget) - 10;
                 var degOfSuc2=0;
@@ -779,17 +788,17 @@ var Wrapper40k = Wrapper40k || (function () {
                 }
                 this.talStr = this.talStr + " --Reroll:|[! " + reroll + " !] vs [! " + checkTarget2 + " !] --FinalOutput:|" + tempStr;
             }
-            if (this.talents['mastery'] == true) {
+            if (this.talentArray['mastery'] == true) {
                 this.talStr = this.talStr + " --Mastery | Can spend a FP to auto-pass a test with your chosen skill when final modifier is challenging or easier. Counts as DoS equal to ability modifier.";
             }
-            if (this.talents['peer'] == true && (this.skillname == "Charm" || this.skillname == "Deceive" || this.skillname == "Command" || this.skillname == "Inquiry")) {
+            if (this.talentArray['peer'] == true && (this.skillname == "Charm" || this.skillname == "Deceive" || this.skillname == "Command" || this.skillname == "Inquiry")) {
                 this.talStr = this.talStr + " --Peer | +10 to interaction tests with the selected group (not included)";
             }
-            if (this.talents['superiorchirurgeon'] == true && this.skillname == "Medicae") {
+            if (this.talentArray['superiorchirurgeon'] == true && this.skillname == "Medicae") {
                 this.talStr = this.talStr + " --SuperiorChir | +20 to Medicae and ignores Heavily Damaged penalty and suffers only a -10 for Critical Damage";
             }
             //NOT WORKING
-            if (this.talents['infusedknowledge'] == true && (this.skillname == "Common Lore" || this.skillname == "Scholastic Lore")) {
+            if (this.talentArray['infusedknowledge'] == true && (this.skillname == "Common Lore" || this.skillname == "Scholastic Lore")) {
                 this.talStr = this.talStr + " --InfusedKnowledge | +1 DoS on successful CL and SL tests";
             }
         }
@@ -807,8 +816,8 @@ var Wrapper40k = Wrapper40k || (function () {
     }
 
     class RangedAtkCheck extends Check {
-        constructor(name, attrval, range, shotsel, single, semi, full, numdice, dice, dmg, pen, modifier, special, quality, talents, wpnname, type, ammo, mod1, mod2, mod3, effects, wpncat) {
-            super(name, attrval, modifier, talents);
+        constructor(name, attrval, range, shotsel, single, semi, full, numdice, dice, dmg, pen, modifier, attributeStr, quality, talentStr, wpnname, type, ammo, mod1, mod2, mod3, effects, wpncat) {
+            super(name, attrval, modifier, talentStr);
             this.range=range;
             this.shotsel=shotsel;
             this.single=single;
@@ -818,60 +827,205 @@ var Wrapper40k = Wrapper40k || (function () {
             this.dice=dice;
             this.dmg=dmg;
             this.pen=pen;
-            this.special=special;
+            this.attributeArray = {
+                "Accurate": false,
+                "Balanced": false,
+                "Blast": -1,
+                "Concussive": -1,
+                "Corrosive": false,
+                "Crippling": -1,
+                "Daemonbane": false,
+                "Defensive": false,
+                "Felling": -1,
+                "Flame": false,
+                "Flexible": false,
+                "Force": false,
+                "Graviton": false,
+                "Hallucinogenic": -1,
+                "Haywire": -1,
+                "HaywireMod": 0,
+                "Inaccurate": false,
+                "Indirect": -1,
+                "Lance": false,
+                "Maximal": false,
+                "Melta": false,
+                "Overheats": false,
+                "PowerField": false,
+                "Primitive": -1,
+                "Proven": -1,
+                "RazorSharp": false,
+                "Recharge": false,
+                "Reliable": false,
+                "Sanctified": false,
+                "Scatter": false,
+                "Shocking": false,
+                "Smoke": -1,
+                "Snare": -1,
+                "Spray": false,
+                "Storm": false,
+                "Tainted": false,
+                "Tearing": false,
+                "Toxic": -1,
+                "Twin-Linked": false,
+                "Unbalanced": false,
+                "Unreliable": false,
+                "Unwieldy": false,
+                "Vengeful": 10,         //Daemon wpn attributes
+                "Voidchill": false,
+                "Howling": false,
+                "Wounding": -1,
+                "Vicious": false,
+                "Accursed": false,
+                "Bloodlust": false,
+                "Thirsting": false,
+                "Null": false,
+                "Fury": false,
+                "Skulltaker": false,
+                "Illusory": false,
+                "MindEater": false,
+                "Spellbound": false,
+                "WarpFlame": false,
+                "SorcerousForce": -1,
+                "Bile-Quenched": false,
+                "Enfeebling": false,
+                "PlagueCarrier": false,
+                "StreamofCorruption": -1,
+                "PestilentStench": -1,
+                "Envenomed": -1,
+                "Lashing": -1,
+                "Swiftness": -1,
+                "Sophorific Musk": false,
+                "Enticing": false,
+                "Vulgar": false,
+                "Jealous": false,
+                "Prideful": false,
+                "Vindictive": false,
+                "Overbearing": false,
+                "Thrown": false,        //Wpn can be thrown as ranged atk
+                "Multiplier": -1,    //Multiplier to attribute damage
+                "Precision": -1,        //+X damage per DoS
+                "Weighty": -1,          //requires SB(X) to fire
+                "Intangible": false,    //doesn't add attribute to melee damage
+                "Imposing": false,
+                "Compact": false,
+                "Steady": false,
+                "Potent": false,
+                "SwirlingEnergy": false,
+                "IncalculablePrecision": false,
+                "Indestructible": false,
+                "Ramshackle": false,
+                "PeerlessElegance": false,
+                "InnovativeDesign": false,
+                "RemnantoftheEndless": false,
+                "DeathsDreamFragment": false,
+                "Surly": false,
+                "Cruel": false,
+                "Patient": false,
+                "Unpredictable": false,
+                "Respendent": false,
+                "Vanishing": false,
+                "Trusty": false,
+                "Zealous": false,
+                "Dogged": false,
+                "Lucky": false
+            };
+            this.configArray(attributeStr,this.attributeArray);
             this.quality=quality;
             this.wpnname=wpnname;
             this.type=type;
             this.ammo=ammo;
-            this.mod1=mod1;
-            this.mod2=mod2;
-            this.mod3=mod3;
+            this.modStr=mod1; //+ "."+ mod2 + ".";
+            this.modArray = {
+                "na": false,
+                "auxilliary": false,
+                "backpack": false,
+                "compact": false,
+                "grip": false,
+                "deactivated": false,
+                "expanded": false,
+                "exterminator": false,
+                "selector": false,
+                "fluid": false,
+                "melee": false,
+                "stock": false,
+                "mono": false,
+                "motion": false,
+                "omni": false,
+                "photo": false,
+                "pistol": false,
+                "preysense": false,
+                "quick": false,
+                "reddot": false,
+                "reinforced": false,
+                "sacred": false,
+                "silencer": false,
+                "suspensors": false,
+                "targeter": false,
+                "telescopic": false,
+                "tox": false,
+                "tripod": false,
+                "truesilver": false,
+                "weaving": false,
+                "warpleech": false,
+                "vox": false,
+                "stabilitydampener": false,         //custom mods
+                "extendedbarrel": false,
+                "driverscope": false,
+                "ultralight": false,
+                "extendeddrivermagazine": false,
+                "impeller": false,
+                "drivergrip": false,
+                "bulkbuild": false,
+            };
+            this.configArray(modStr,this.modArray);
             this.effects=effects;
             this.wpncat=wpncat;
-        }
+            this.jamThreshold=100;
+        }//TODO: build this into a single string in the character sheet
 
+        //PUBLIC: Prepares the attributes and calculates the check
         Calc(){
             //Add bonuses for specific talents
-            
-            if (this.talents['CoordinatedInterrogation'] == true && skillname == "Interrogation") {
-                checkTarget = parseInt(this.checkTarget) + 10;
-            }
-            if (this.talents['SuperiorChirurgeon'] == true && this.skillname == "Medicae") {
-                this.checkTarget = parseInt(this.checkTarget) + 10;
-            }
+            configJam();
+            configAmmo();
+            configMods();
+            configGenAttr();
+            configRangeCalc();
+
             //perform the standard check calculations
             super.Calc();
         }
 
+        //PUBLIC: Build the powerCards string
         buildStr(){
             //prepare the basic skill check info
             super.buildStr();
             //prepare the skill-specific addendi
-            if (this.talents['bulgingbiceps'] == true && this.skillname == "Athletics") {
+            if (this.talentArray['bulgingbiceps'] == true && this.skillname == "Athletics") {
                 this.talStr = this.talStr + " --BulgingBiceps | Grants +20 to the Heft use of the Athletics skill";
             }
-            if (this.talents['catfall'] == true && this.skillname == "Acrobatics") {
+            if (this.talentArray['catfall'] == true && this.skillname == "Acrobatics") {
                 this.talStr = this.talStr + " --Catfall | Grants +20 to the Jump use of Acrobatics";
             }
-            if (this.talents['coordinatedinterrogation'] == true && this.skillname == "Interrogation") {
+            if (this.talentArray['coordinatedinterrogation'] == true && this.skillname == "Interrogation") {
                 this.talStr = this.talStr + " --CoordinatedInterrogation | Grants +10 to all interrogation tests (inc) and +5 for each additional ally with this talent";
             }
-            if (this.talents['delicateinterrogation'] == true && this.skillname == "Interrogation") {
+            if (this.talentArray['delicateinterrogation'] == true && this.skillname == "Interrogation") {
                 this.talStr = this.talStr + " --DelicateInterrogation | Subtlety loss from Interrogation reduced by 1d5 (min 1)";
             }
-            if (this.talents['enemy'] == true && (this.skillname == "Charm" || this.skillname == "Deceive" || this.skillname == "Command" || this.skillname == "Inquiry")) {
+            if (this.talentArray['enemy'] == true && (this.skillname == "Charm" || this.skillname == "Deceive" || this.skillname == "Command" || this.skillname == "Inquiry")) {
                 this.talStr = this.talStr + " --Enemy | -10 to interaction tests with the selected group(not included)";
             }
-            if (this.talents['faceinacrowd'] == true && this.skillname == "Stealth") {
+            if (this.talentArray['faceinacrowd'] == true && this.skillname == "Stealth") {
                 this.talStr = this.talStr + " --FaceinaCrowd | Can use Fellowship instead of Agility when using the Shadowing ability of the Stealth skill";
             }
-            if (this.talents['haloofcommand'] == true && (this.skillname == "Charm" || this.skillname == "Deceive" || this.skillname == "Command" || this.skillname == "Inquiry" || this.skillname == "Intimidate")) {
+            if (this.talentArray['haloofcommand'] == true && (this.skillname == "Charm" || this.skillname == "Deceive" || this.skillname == "Command" || this.skillname == "Inquiry" || this.skillname == "Intimidate")) {
                 this.talStr = this.talStr + " --HaloofCommand | Can affect targets within 100 x FB meters rather than 10";
             }
-            if (this.roll <= this.modifier && this.skillname == "Awareness" && this.talents['keenintuition'] == true) {
+            if (this.roll <= this.modifier && this.skillname == "Awareness" && this.talentArray['keenintuition'] == true) {
                 this.talStr = this.talStr + " --KeenIntuition | After failing an awareness check the this can reroll with a -10";
             }
-            if (this.roll > this.modifier && this.skillname == "Awareness" && this.talents['keenintuition'] == true) {
+            if (this.roll > this.modifier && this.skillname == "Awareness" && this.talentArray['keenintuition'] == true) {
                 var reroll = randomInteger(100);
                 var checkTarget2 = parseInt(this.checkTarget) - 10;
                 var degOfSuc2=0;
@@ -886,20 +1040,40 @@ var Wrapper40k = Wrapper40k || (function () {
                 }
                 this.talStr = this.talStr + " --Reroll:|[! " + reroll + " !] vs [! " + checkTarget2 + " !] --FinalOutput:|" + tempStr;
             }
-            if (this.talents['mastery'] == true) {
+            if (this.talentArray['mastery'] == true) {
                 this.talStr = this.talStr + " --Mastery | Can spend a FP to auto-pass a test with your chosen skill when final modifier is challenging or easier. Counts as DoS equal to ability modifier.";
             }
-            if (this.talents['peer'] == true && (this.skillname == "Charm" || this.skillname == "Deceive" || this.skillname == "Command" || this.skillname == "Inquiry")) {
+            if (this.talentArray['peer'] == true && (this.skillname == "Charm" || this.skillname == "Deceive" || this.skillname == "Command" || this.skillname == "Inquiry")) {
                 this.talStr = this.talStr + " --Peer | +10 to interaction tests with the selected group (not included)";
             }
-            if (this.talents['superiorchirurgeon'] == true && this.skillname == "Medicae") {
+            if (this.talentArray['superiorchirurgeon'] == true && this.skillname == "Medicae") {
                 this.talStr = this.talStr + " --SuperiorChir | +20 to Medicae and ignores Heavily Damaged penalty and suffers only a -10 for Critical Damage";
             }
             //NOT WORKING
-            if (this.talents['infusedknowledge'] == true && (this.skillname == "Common Lore" || this.skillname == "Scholastic Lore")) {
+            if (this.talentArray['infusedknowledge'] == true && (this.skillname == "Common Lore" || this.skillname == "Scholastic Lore")) {
                 this.talStr = this.talStr + " --InfusedKnowledge | +1 DoS on successful CL and SL tests";
             }
         }
+
+        configJam(){
+            if(shotsel==0){
+                this.jamThreshold=96;
+            }else if (this.shotsel==1 || this.shotsel==2){
+                this.jamThreshold=94;
+            }
+        }
+
+        configModifiers(){
+            //adjust for shot selection
+            if(shotsel==0){
+                this.modifier=parseInt(this.modifier)+10;
+            }else if(shotsel==2){
+                this.modifier=parseInt(this.modifier)-10;
+            }else if(shotsel==5){
+                //this.modifier=parseInt(this.modifier)-20;
+            }
+        }
+
 
         get range() {
             return this._range;
