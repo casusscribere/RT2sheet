@@ -589,8 +589,9 @@ var Wrapper40k = Wrapper40k || (function () {
                 "xenophilia": false
             };
             this.configArray(talentStr,this.talentArray);
-            this._err=false;
-            this._errStr='';
+            this.hit=false;
+            this.err=false;
+            this.errStr='';
         }
 
         //PUBLIC: Bound the modifier to +/-60 and create the target value
@@ -606,8 +607,10 @@ var Wrapper40k = Wrapper40k || (function () {
         //PUBLIC: Calculate DoS and Hit/Miss
         detDoS(){
             if (this.roll <= this.checkTarget) {
+                this.hit=true;
                 this.degOfSuc = (Math.floor(this.checkTarget / 10) - Math.floor(this.roll / 10)) + 1;
             } else {
+                this.hit=false;
                 this.degOfSuc = (Math.floor(this.roll / 10) - Math.floor(this.checkTarget / 10)) + 1;
             }
         }
@@ -621,7 +624,7 @@ var Wrapper40k = Wrapper40k || (function () {
 
         //PUBLIC: Prepare parts of the output message based on the calc results
         buildStr(){
-            if (this.roll <= this.checkTarget) {
+            if (this.hit=true) {
                 this.hitStr = '<span style="color:green">' + this.name + ' succeeds by <B>' + this.degOfSuc + ' degree(s)</B>.</span> ';
             } else {
                 this.hitStr = '<span style="color:red">' + this.name + ' fails by <B>' + this.degOfSuc + ' degree(s)</B></span>. ';
@@ -660,18 +663,24 @@ var Wrapper40k = Wrapper40k || (function () {
         get talentArray() {
             return this._talentArray;
         }
+        get err(){
+            return this._err;
+        }
+        get errStr(){
+            return this._errStr;
+        }
 
         set attrval(value) {
             if(value >= 0 && value <= 100){
                 this._attrval=value;
             } else if (value > 100){
                 this._attrval=100;
-                this._err=true;
-                this._errStr += "Attr out of range |";
+                this.err=true;
+                this.errStr += "Attr out of range |";
             } else{
                 this._attrval=0;
-                this._err=true;
-                this._errStr += "Attr out of range |";
+                this.err=true;
+                this.errStr += "Attr out of range |";
             } 
         }
         set modifier(value) {
@@ -679,12 +688,12 @@ var Wrapper40k = Wrapper40k || (function () {
                 this._modifier=value;
             } else if (value > 200){
                 this._modifier=200;
-                this._err=true;
-                this._errStr += "Modifier out of range |";
+                this.err=true;
+                this.errStr += "Modifier out of range |";
             } else if (value < -200){
                 this._modifier=-200;
-                this._err=true;
-                this._errStr += "Modifier out of range |";
+                this.err=true;
+                this.errStr += "Modifier out of range |";
             }
         }
         set diff(value){     
@@ -717,11 +726,19 @@ var Wrapper40k = Wrapper40k || (function () {
                 this._name=value;
             } else{
                 this._name="Unknown Name";
+                this.err=true;
+                this.errStr += "Invalid Name |"
             }
         }
         set talentArray(value) {
             this._talentArray=value;
-        } 
+        }
+        set err(value){
+            this._err=value;
+        }
+        set errStr(value){
+            this._errStr=value;
+        }
   
 
     }
@@ -811,6 +828,8 @@ var Wrapper40k = Wrapper40k || (function () {
                 this._skillname=value;
             }else{
                 this._skillname='Unknown Skill';
+                this.err=true;
+                this.errStr +="Invalid Skillname |";
             }
         }
     }
@@ -934,7 +953,7 @@ var Wrapper40k = Wrapper40k || (function () {
             this.wpnname=wpnname;
             this.type=type;
             this.ammo=ammo;
-            this.modStr=mod1; //+ "."+ mod2 + ".";
+            this.modStr=mod1 + "."+ mod2 + "." + mod3; //TODO: build this into a single string in the character sheet
             this.modArray = {
                 "na": false,
                 "auxilliary": false,
@@ -981,97 +1000,410 @@ var Wrapper40k = Wrapper40k || (function () {
             this.effects=effects;
             this.wpncat=wpncat;
             this.jamThreshold=100;
-        }//TODO: build this into a single string in the character sheet
+            this.jam=false;
+            this.scatter=false;
+            this.spray=false;
+        }
 
         //PUBLIC: Prepares the attributes and calculates the check
         Calc(){
             //Add bonuses for specific talents
-            configJam();
-            configAmmo();
-            configMods();
-            configGenAttr();
-            configRangeCalc();
 
-            //perform the standard check calculations
-            super.Calc();
+            applyModifiers();
+            calcAtkHit();
+            calcDmgRolls();
+
+
+
+
         }
 
         //PUBLIC: Build the powerCards string
         buildStr(){
-            //prepare the basic skill check info
-            super.buildStr();
+            //prepare the basic attack info
+            if(this.hit==true && this.jam==false) {
+                this.hitStr = '<span style="color:green">' + this.name + ' hits with <B>' + this.degOfSuc + ' degree(s)</B>.</span> ';
+            } else if(this.hit==false && this.jam==false){
+                this.hitStr = '<span style="color:red">' + this.name + ' misses by <B>' + this.degOfSuc + ' degree(s)</B></span>. ';
+            }else if (this.jam==true){
+                this.hitStr = '<span style="color:red">' + this.name + ' gets <B>' + this.degOfSuc + ' Degree(s) of Failure </B> and jams his weapon! </span>. ';
+            }
             //prepare the skill-specific addendi
-            if (this.talentArray['bulgingbiceps'] == true && this.skillname == "Athletics") {
-                this.talStr = this.talStr + " --BulgingBiceps | Grants +20 to the Heft use of the Athletics skill";
-            }
-            if (this.talentArray['catfall'] == true && this.skillname == "Acrobatics") {
-                this.talStr = this.talStr + " --Catfall | Grants +20 to the Jump use of Acrobatics";
-            }
-            if (this.talentArray['coordinatedinterrogation'] == true && this.skillname == "Interrogation") {
-                this.talStr = this.talStr + " --CoordinatedInterrogation | Grants +10 to all interrogation tests (inc) and +5 for each additional ally with this talent";
-            }
-            if (this.talentArray['delicateinterrogation'] == true && this.skillname == "Interrogation") {
-                this.talStr = this.talStr + " --DelicateInterrogation | Subtlety loss from Interrogation reduced by 1d5 (min 1)";
-            }
-            if (this.talentArray['enemy'] == true && (this.skillname == "Charm" || this.skillname == "Deceive" || this.skillname == "Command" || this.skillname == "Inquiry")) {
-                this.talStr = this.talStr + " --Enemy | -10 to interaction tests with the selected group(not included)";
-            }
-            if (this.talentArray['faceinacrowd'] == true && this.skillname == "Stealth") {
-                this.talStr = this.talStr + " --FaceinaCrowd | Can use Fellowship instead of Agility when using the Shadowing ability of the Stealth skill";
-            }
-            if (this.talentArray['haloofcommand'] == true && (this.skillname == "Charm" || this.skillname == "Deceive" || this.skillname == "Command" || this.skillname == "Inquiry" || this.skillname == "Intimidate")) {
-                this.talStr = this.talStr + " --HaloofCommand | Can affect targets within 100 x FB meters rather than 10";
-            }
-            if (this.roll <= this.modifier && this.skillname == "Awareness" && this.talentArray['keenintuition'] == true) {
-                this.talStr = this.talStr + " --KeenIntuition | After failing an awareness check the this can reroll with a -10";
-            }
-            if (this.roll > this.modifier && this.skillname == "Awareness" && this.talentArray['keenintuition'] == true) {
-                var reroll = randomInteger(100);
-                var checkTarget2 = parseInt(this.checkTarget) - 10;
-                var degOfSuc2=0;
-                var tempStr='';
-                this.talStr = this.talStr + " --KeenIntuition | After failing an awareness check the this can reroll with a -10";
-                if (reroll <= checkTarget2) {
-                    degOfSuc2 = (Math.floor(checkTarget2 / 10) - Math.floor(reroll / 10)) + 1;
-                    tempStr = '<span style="color:green">' + this.name + ' succeeds by <B>' + degOfSuc2 + ' degree(s)</B>.</span> ';
-                } else {
-                    degOfSuc2 = (Math.floor(reroll / 10) - Math.floor(checkTarget2 / 10)) + 1;
-                    tempStr = '<span style="color:red">' + this.name + ' fails by <B>' + degOfSuc2 + ' degree(s)</B></span>. ';
-                }
-                this.talStr = this.talStr + " --Reroll:|[! " + reroll + " !] vs [! " + checkTarget2 + " !] --FinalOutput:|" + tempStr;
-            }
-            if (this.talentArray['mastery'] == true) {
-                this.talStr = this.talStr + " --Mastery | Can spend a FP to auto-pass a test with your chosen skill when final modifier is challenging or easier. Counts as DoS equal to ability modifier.";
-            }
-            if (this.talentArray['peer'] == true && (this.skillname == "Charm" || this.skillname == "Deceive" || this.skillname == "Command" || this.skillname == "Inquiry")) {
-                this.talStr = this.talStr + " --Peer | +10 to interaction tests with the selected group (not included)";
-            }
-            if (this.talentArray['superiorchirurgeon'] == true && this.skillname == "Medicae") {
-                this.talStr = this.talStr + " --SuperiorChir | +20 to Medicae and ignores Heavily Damaged penalty and suffers only a -10 for Critical Damage";
-            }
-            //NOT WORKING
-            if (this.talentArray['infusedknowledge'] == true && (this.skillname == "Common Lore" || this.skillname == "Scholastic Lore")) {
-                this.talStr = this.talStr + " --InfusedKnowledge | +1 DoS on successful CL and SL tests";
-            }
         }
 
-        configJam(){
-            if(shotsel==0){
+        configJamThresh(){
+            //adjust for shot selection
+            if(this.shotsel==0||this.shotsel==3||this.shotsel==6||this.shotsel==9){
                 this.jamThreshold=96;
-            }else if (this.shotsel==1 || this.shotsel==2){
+            }else if (this.shotsel==1 || this.shotsel==2||this.shotsel==4||this.shotsel==5||this.shotsel==7||this.shotsel==8||this.shotsel==10||this.shotsel==11){
                 this.jamThreshold=94;
             }
+
+            //Adjust Weapon Jamming based on qualities and talents
+            if(this.attributeArray['Unreliable']==true && this.attributeArray['Reliable']==true){this.attributeArray['Unreliable']=false;}
+            
+            if(this.quality=='poor' && this.attributeArray['Unreliable']==true){this.superUnreliable=true;}
+            else if(this.quality=='poor' && this.attributeArray['Unreliable']==false && this.attributeArray['Reliable']==false){this.attributeArray['Unreliable']=true;}
+            else if(this.quality=='poor' && this.attributeArray['Unreliable']==false && this.attributeArray['Reliable']==true){this.attributeArray['Reliable']=false;}
+            else if(this.quality=='good' && this.attributeArray['Unreliable']==true){this.attributeArray['Unreliable']=false;}
+            else if(this.quality=='good' && this.attributeArray['Unreliable']==false){this.attributeArray['Reliable']=true;}
+            else if(this.quality=="best"){this.attributeArray['Reliable']=true;}
+            
+            if(this.superUnreliable==true && this.attributeArray['Overheats']==false){this.jamThreshold=this.modifier;} //BE CAREFUL: this value setting depends on the modifier not changing after the jam threshold is set
+            else if(this.attributeArray['Overheats']==true||quality=="best"){this.jamThreshold=999;}
+            else if(this.attributeArray['Reliable']==true){this.jamThreshold=100;}
+            else if(this.attributeArray['Unreliable']==true && this.quality!='poor'){this.jamThreshold=91;}
         }
 
         configModifiers(){
             //adjust for shot selection
-            if(shotsel==0){
+            if(this.shotsel==0||this.shotsel==6){
                 this.modifier=parseInt(this.modifier)+10;
-            }else if(shotsel==2){
+            }else if(this.shotsel==2||this.shotsel==4||this.shotsel==8){
                 this.modifier=parseInt(this.modifier)-10;
-            }else if(shotsel==5){
-                //this.modifier=parseInt(this.modifier)-20;
+            }else if((this.shotsel==5)||(this.shotsel==9 && this.talentArray['precisionkiller']==false)||(this.shotsel==10||this.shotsel==11)){
+                this.modifier=parseInt(this.modifier)-20;
             }
+
+            //adjust for range calculation
+            if(this.range==0){this.modifier = parseInt(this.modifier)+0;}
+            else if (this.range==1){this.modifier = parseInt(this.modifier)+parseInt(30);}
+            else if (this.range==2){this.modifier = parseInt(this.modifier)+parseInt(10);}
+            else if (this.range==3){this.modifier = parseInt(this.modifier)+parseInt(0);}
+            else if (this.range==4 && this.talentArray['marksman']==false){this.modifier = parseInt(this.modifier)+parseInt(-10);}
+            else if (this.range==4 && this.talentArray['marksman']==true){this.modifier = parseInt(this.modifier)+0;} 
+            else if (this.range==5 && this.talentArray['marksman']==false){this.modifier = parseInt(this.modifier)+parseInt(-30);}
+            else if (this.range==5 && this.talentArray['marksman']==true){this.modifier = parseInt(this.modifier)+0;}
+
+            //Adjust +hit if using a 'Scatter' weapon at Short or PB Range (not to be confused with the drift/scatter of area weapons)
+            if(this.attributeArray['Scatter']==true && (this.range==1||this.range==2) ){this.modifier = parseInt(this.modifier)+parseInt(10);}
+            //Adjust +hit if using a 'Twin-Linked' weapon
+            if(this.attributeArray['Twin-Linked']==true){this.modifier = parseInt(this.modifier)+parseInt(20);}
+        }
+
+        configMods(){
+            //increment the weapon category counter (adjusts mass driver mod values)
+            if(this.modArray['impeller']==true && this.range==1){
+                this.wpncat=parseInt(this.wpncat)+2;
+            } else if(this.modArray['impeller']==true && this.range==2){
+                this.wpncat=parseInt(this.wpncat)+1;
+            }
+
+            //Add adjustments for weapon modifications
+            if(this.modArray['auxilliary']==true){/* ADD GRENADE LAUNCHER BUTTON SUPPORT HERE?*/}
+            if(this.modArray['compact']==true){this.dmg=parseInt(this.dmg)-1;}
+            if(this.modArray['grip']==true){this.modifier = parseInt(this.modifier)+5;}
+            if(this.modArray['exterminator']==true){/* ADD EXTERMINATOR OPTION HERE?*/}
+            if(this.modArray['melee']==true){/* ADD SPEAR BUTTON SUPPORT*/}
+            if(this.modArray['motion']==true && (this.shotsel == 1 || this.shotsel==4 || this.shotsel==7 || this.shotsel==10 || this.shotsel == 2 || this.shotsel==5 || this.shotsel==8 || this.shotsel==11)){this.modifier=parseInt(this.modifier)+10;}
+            if(this.modArray['omni']==true && (this.shotsel == 0 || this.shotsel==3 || this.shotsel==6 || this.shotsel==9)){this.modifier=parseInt(this.modifier)+10;}
+            if(this.modArray['reddot']==true && (this.shotsel == 0 || this.shotsel==3 || this.shotsel==6 || this.shotsel==9)){this.modifier=parseInt(this.modifier)+10;}
+            if(this.modArray['suspensors']==true){this.talentArray['autostabilized']=true;}
+            if(this.modArray['warpleech']==true && this.attributeArray['Crippling']<2){this.attributeArray['Crippling']=2;}
+            if(this.modArray['extendedbarrel']==true && (this.shotsel == 0 || this.shotsel==3 || this.shotsel==6 || this.shotsel==9)){this.modifier=parseInt(this.modifier)+10;}
+            if(this.modArray['stabilitydampener']==true && (this.shotsel == 1 || this.shotsel==4 || this.shotsel==7 || this.shotsel==10)){this.modifier=parseInt(this.modifier)+10;}
+            if(this.modArray['stabilitydampener']==true && (this.shotsel == 2 || this.shotsel==5 || this.shotsel==8 || this.shotsel==11)){this.modifier=parseInt(this.modifier)+20;}
+            if(this.modArray['driverscope']==true){this.attributeArray['Accurate']=true;}
+            if(this.modArray['targeter']==true && this.modifier < 0){this.modifier=parseInt(this.modifier)+10;}
+        }
+
+        configAmmo(){
+            if(this.ammo=='abyssal'){
+                this.attributeArray['Crippling']=2; 
+                this.attributeArray['Tainted']=true; 
+                this.attributeArray['Reliable']=false; 
+                this.attributeArray['Sanctified']=false;
+            }
+            else if(this.ammo=='amputator'){this.dmg=parseInt(this.dmg)+2;}
+            else if(this.ammo=='concussion'){
+                if(this.attributeArray['Blast']<5){this.attributeArray['Blast']=5;}
+                if(this.attributeArray['Concussive']<5){this.attributeArray['Concussive']=5;}
+            } else if(this.ammo=='dumdum'){this.dmg=parseInt(this.dmg)+2;}
+            else if(this.ammo=='expander'){
+                this.dmg=parseInt(this.dmg)+1;
+                this.pen=parseInt(this.pen)+1;
+            }
+            else if(this.ammo=='explosive'){
+                this.attributeArray['Primitive']=-1;
+                this.modifier = parseInt(this.modifier)-10;
+                if(this.attributeArray['Blast']<1){this.attributeArray['Blast']=1;}
+            } else if(this.ammo=='hotshot'){
+                this.dmg=parseInt(this.dmg)+1; 
+                this.pen=4; 
+                this.attributeArray['Tearing']=true;
+            }
+            else if(this.ammo=='incindiary'){
+                this.attributeArray['Flame']=true; 
+                this.attributeArray['Unreliable']=true; 
+                this.attributeArray['Reliable']=false; 
+                this.attributeArray['Blast']=-1;
+            }
+            else if(this.ammo=='inferno'){this.attributeArray['Flame']=true;}
+            else if(this.ammo=='manstopper'){this.pen=parseInt(this.pen)+3;}
+            else if(ammo=='psybolts'){
+                this.attributeArray['Daemonbane']=true; 
+                this.attributeArray['Sanctified']=true;
+            }
+            else if(this.ammo=='psyflame'){this.attributeArray['Sanctified']=true;}
+            else if(this.ammo=='purgatus'){this.attributeArray['Sanctified']=true;}
+            else if(this.ammo=='purity'){
+                if(this.attributeArray['Haywire']<2){this.attributeArray['Haywire']=2;}
+            } else if(this.ammo=='sanctified'){this.attributeArray['Sanctified']=true;}
+            else if(this.ammo=='scrambler'){
+                if(this.attributeArray['Hallucinogenic']<2){this.attributeArray['Hallucinogenic']=2;}
+                this.attributeArray['Recharge']=true;
+            }
+            else if(this.ammo=='shard'){
+                if(this.attributeArray['Crippling']<2){this.attributeArray['Crippling']=2;}
+            }
+            else if(this.ammo=='shock'){this.attributeArray['Shocking']=true;}
+            else if(this.ammo=='silver'){this.attributeArray['Sanctified']=true;}
+            else if(this.ammo=='tempest'){this.attributeArray['Shocking']=true;}
+            else if(this.ammo=='thermal'){
+                this.attributeArray['Primitive']=-1; 
+                this.attributeArray['Accurate']=false; 
+                this.numdice=parseInt(this.numdice)+1; 
+                this.pen=6; 
+                this.attributeArray['Melta']=true; 
+                this.attributeArray['Inaccurate']=true;
+            }
+            else if(this.ammo=='tox'){
+                if(this.attributeArray['Toxic']<1){this.attributeArray['Toxic']=1;}
+                this.dmg=parseInt(this.dmg)-2;
+            } else if(this.ammo=='inferno'){this.attributeArray['Flame']=true;}
+            else if(this.ammo=='overload'){
+                this.attributeArray['Shocking']=true;
+                if(this.wpncat>0 && this.wpncat > this.attributeArray['Haywire']){this.attributeArray['Haywire']=this.wpncat;}
+            } else if(this.ammo=='cryo' && this.wpncat > this.attributeArray['Snare']){this.attributeArray['Snare']=this.wpncat;}
+            else if(this.ammo=='chemical' && this.wpncat > this.attributeArray['Toxic']){this.attributeArray['Toxic']=this.wpncat;}
+            else if(this.ammo=='shredder'){
+                if(this.wpncat > this.attributeArray['Crippling'] && this.attributeArray['Crippling'] > 0){this.attributeArray['Crippling']=this.wpncat;}
+                this.attributeArray['Tearing']=true;
+            } else if(this.ammo=='tungsten'){this.pen=parseInt(this.pen)+2;}
+            else if(this.ammo=='hammerhead' && this.attributeArray['Concussive']>this.wpncat){this.attributeArray['Concussive']=this.wpncat;}
+            else if(this.ammo=='polonium' && this.attributeArray['Felling']>this.wpncat){this.attributeArray['Felling']=this.wpncat;}
+            else if(this.ammo=='flux'){this.attributeArray['Graviton']=true;}
+        }
+
+        configGenAttr(){
+            //Account for attributes that add other attributes (typically SoI and Daemon wpn traits)
+            if(this.attributeArray['Wounding'] > -1 ){
+                if(this.attributeArray['Crippling'] < this.attributeArray['Wounding']) {this.attributeArray['Crippling']=this.attributeArray['Wounding'];}
+            }
+            if(this.attributeArray['Vicious']==true){
+                if(this.attributeArray['Tearing']==true){this.attributeArray['RazorSharp']=true;}
+                else{this.attributeArray['Tearing']=true;}
+            }
+            if(this.attributeArray['Accursed']==true){
+                this.numdice=parseInt(this.numdice)+1;
+                if(this.attributeArray['Felling']< 4){this.attributeArray['Felling']=4;}
+            }
+            if(this.attributeArray['Fury']==true){this.modifier=parseInt(this.modifier)+10;}
+            if(this.attributeArray['Skulltaker'] != false && this.shotsel == 9){
+                if(this.attributeArray['Vengeful']>8){this.attributeArray['Vengeful']=8;}
+            }
+            if(this.attributeArray['WarpFlame']==true){this.attributeArray['Flame']=true; this.talentArray['WarpWeapons']=true;}
+            if(this.attributeArray['Envenomed'] > -1){
+                if(this.attributeArray['Toxic']<(parseInt(this.attributeArray['Envenomed'])/2)){this.attributeArray['Toxic']=(parseInt(this.attributeArray['Envenomed'])/2);}
+            }
+            if(this.attributeArray['Lashing'] > -1){
+                if(this.attributeArray['Snare']<(parseInt(this.attributeArray['Lashing'])/2)){this.attributeArray['Snare']=(parseInt(this.attributeArray['Lashing'])/2);}
+            }
+            if(this.attributeArray['Steady']==true){
+                if(this.attributeArray['Accurate'] != false && this.attributeArray['Flame'] != false && this.attributeArray['Scatter'] != false){this.attributeArray['Reliable']=true; this.pen=parseInt(this.pen)+2;}
+                else {this.attributeArray['Accurate']=true;}
+            }
+            if(this.attributeArray['Potent']==true){
+                this.dmg=parseInt(this.dmg)+4;
+                if(this.attributeArray['Vengeful']>9){this.attributeArray['Vengeful']=9;}
+            }
+            if(this.attributeArray['SwirlingEnergy']==true){
+                this.dmg=parseInt(this.dmg)+2;
+                this.pen=parseInt(this.pen)+2;
+                this.attributeArray['Shocking']=true;
+                //dmg type becomes energy
+            }
+            if(this.attributeArray['Indestructible']==true){
+                this.dmg=parseInt(this.dmg)+2;
+                this.pen=parseInt(this.pen)+2;
+            }    
+            if(attributeArray['Ramshackle']==true){
+                this.dmg=parseInt(this.dmg)+2;
+                //Impact to Explosive
+                if(this.attributeArray['Accurate']==true){this.attributeArray['Accurate']=false;}
+                else{
+                    this.attributeArray['Inaccurate']=true; 
+                    this.attributeArray['Unreliable']=true;
+                }
+            }
+            if(this.attributeArray['PeerlessElegance']==true){
+                this.dmg=parseInt(this.dmg)+2;
+                //Impact to Rending; clip size x4
+                this.attributeArray['Reliable']=true;
+            }
+            if(this.attributeArray['InnovativeDesign']==true){
+                this.dmg=parseInt(this.dmg)+3;
+                this.pen=parseInt(this.pen)+3;
+                //Dmg type becomes E. Includes Omni-scope
+            }
+        }
+
+        applyModifiers(){
+            configModifiers();
+            configMods();
+            configAmmo();
+            configGenAttr();
+            configJamThresh();
+        }
+
+        calcAtkHit(){
+            super.Calc();
+            //adjust check calculations to match jam thresholds and such
+            if(this.attributeArray['Spray']==true){
+                this.hit=true;
+                this.jam=false;
+            }
+            else if(this.roll <= this.checkTarget && this.roll <= this.jamthreshold) {
+                this.hit=true;
+                this.jam=false;
+            } else if(this.roll > this.checkTarget && this.roll <= this.jamThreshold ){
+                this.hit=false;
+                this.jam=false;
+            }else if (this.roll >= this.jamThreshold){
+                this.hit=false;
+                this.jam=true;
+            }
+            //account for the roll 100 corner case on non auto-hitting weapons
+            if(this.roll==100 && this.attributeArray['Spray']==false){
+                this.hit=false;
+            }
+
+            //Adding DoS from weapon attributes/qualities/whatever
+            if(this.attributeArray['IncalculablePrecision'] ==true && this.hit==true){
+                this.degOfSuc=parseInt(this.degOfSuc)+2;
+            }
+            if(this.attributeArray['Patient'] ==true && this.hit==true){
+                this.degOfSuc=parseInt(this.degOfSuc)+1;
+            }
+            if(this.attributeArray['Unpredictible'] ==true && this.hit==true){
+                this.degOfSuc=parseInt(this.degOfSuc)+1;
+            } 
+            if(this.attributeArray['Unpredictible'] ==true && this.hit==false){
+                this.degOfSuc=parseInt(this.degOfSuc)-2;
+            }     
+            
+            //Adjust Weapon Dmg/Pen/RoF/Qualities based on qualities and talents
+            //If Lance, Melta, or RazorSharp (multipliers calculated and summed):
+            var temp=1;
+            if(this.attributeArray['Lance'] == true)                         {temp=this.degOfSuc;}
+            if(this.attributeArray['Melta']==true && this.range<3)                {temp++;}
+            if(this.attributeArray['RazorSharp'] == true && this.degOfSuc>=3)     {temp++;}
+            this.pen =parseInt(this.pen)*parseInt(temp);
+            
+            //If firing on Maximal:
+            if(this.shotsel==6||this.shotsel==7||this.shotsel==8){
+                this.attributeArray['Recharge']=true;
+                this.pen=parseInt(this.pen)+2;
+                this.numdice=parseInt(this.numdice)+1;
+                if(this.attributeArray['Blast']>-1)  {this.attributeArray['Blast']=parseInt(this.attributeArray['Blast'])+2;}
+            }
+            //If 'Scatter':
+            if(this.attributeArray['Scatter']==true && this.range==1 )    {this.dmg=parseInt(this.dmg)+3;}
+            else if(this.attributeArray['Scatter']==true && this.range>=3 )    {this.dmg=parseInt(this.dmg)-3;}
+            //If 'Tearing':
+            if(this.attributeArray['Tearing']==true){this.numdice=parseInt(this.numdice)+1;}
+            //If 'Mighty Shot'
+            if(this.talentArray['mightyshot']==true){
+                var sub=Math.floor(this.attrval/10);
+                sub=Math.ceil(sub/2);
+                this.dmg=parseInt(this.dmg)+parseInt(sub);
+            }
+
+            //Determine if weapon scatters/drifts (Indirect Fire, Blast, and Smoke)
+            if(this.shotsel == 3||this.shotsel == 4||this.shotsel == 5||this.attributeArray['Blast'] > -1||this.attributeArray['Smoke'] > -1 ){this.scatter=true;}
+            else{this.scatter=false;}
+        }
+
+        calcDmgRolls(){
+            var semicalc=0;
+            var fullcalc=0;
+
+            //Determine # of damage rolls required (check for fluid action mod for semi-auto fire)
+            if(this.modArray['fluid']==true) {semicalc = Math.floor((this.degOfSuc)/2)+1;}
+            else                        {semicalc = Math.floor((this.degOfSuc-1)/2)+1;}
+            fullcalc= this.degOfSuc;
+            if(this.attributeArray['Storm']==true){
+                this.semicalc=semicalc*2;
+                this.fullcalc=fullcalc*2;
+            }
+            
+            if(this.attributeArray['Spray']==true){
+                this.spray=true;
+                if(this.shotsel==0){
+                    this.numhits=parseInt(this.single);            
+                } else if (this.shotsel==1){
+                    this.numhits=this.semi;
+                } else if (this.shotsel==2){
+                    this.numhits=this.full;
+                } else{
+                    this.err=true;
+                    errortext="ERROR: INVALID FIRING MODE (spray)";
+                    numhits=0;
+                }
+            }
+            else if( (shotsel == 0 || shotsel==3 || shotsel==6 || shotsel==9)&& hit==true && error==false ) {
+                //If the user selected Standard Attack and hit
+                if(single ==='S'){
+                    numhits = 1;     
+                } else{
+                    error=true;
+                    errortext="ERROR: INVALID FIRING MODE (S)";
+                    numhits=0;
+                }
+            } else if ( (shotsel == 1 || shotsel==4 || shotsel==7 || shotsel==10) && hit==true && error==false ) {
+                //If the user selected Semi-Auto and hit
+                if(semi!=1 && semi!=2 && semi!=3 && semi!=4 && semi!=5 && semi!=6 && semi!=7 && semi!=8 && semi!=9&& semi!=10){
+                    numhits = 0;
+                    error=true;
+                    errortext="ERROR: INVALID FIRING MODE (semi)";
+                }
+                else if(semicalc < semi)
+                {
+                    numhits = semicalc;
+                }
+                else {
+                    numhits = parseInt(semi);
+                }
+            } else if ( (shotsel == 2 || shotsel==5 || shotsel==8 || shotsel==11) && hit==true && error==false ){
+                //If the user selected Full-Auto and hit
+                if(full!=1 && full!=2 && full!=3 && full!=4 && full!=5 && full!=6 && full!=7 && full!=8 && full!=9&& full!=10){
+                    numhits = 0;
+                    error=true;
+                    errortext="ERROR: INVALID FIRING MODE (full)";
+                }
+                else if(fullcalc < full)
+                {
+                    numhits = fullcalc;
+                }
+                else {
+                    numhits = parseInt(full);
+                }
+            } else if ( shotsel==11 && hit==true && error==false ){
+                //If the user selected Full-Auto Suppressive Fire and hit
+                if(full!=1 && full!=2 && full!=3 && full!=4 && full!=5 && full!=6 && full!=7 && full!=8 && full!=9&& full!=10){
+                    numhits = 0;
+                    error=true;
+                    errortext="ERROR: INVALID FIRING MODE (full)";
+                }
+                else if(semicalc < full)
+                {
+                    numhits = semicalc;
+                }
+                else {
+                    numhits = parseInt(full);
+                }
+            }
+
         }
 
 
@@ -1117,35 +1449,40 @@ var Wrapper40k = Wrapper40k || (function () {
         get ammo(){
             return this._ammo;
         }
-        get mod1(){
-            return this._mod1;
-        }
-        get mod2(){
-            return this._mod2;
-        }
-        get mod3(){
-            return this._mod3;
-        }
         get effects(){
             return this._effects;
         }
         get wpncat(){
             return this._wpncat;
         }
-
+        get attributeArray(){
+            return this._attributeArray;
+        }
 
         set range(value) {
             if (value >= 0 && value <= 5){
                 this._range=value;
             }else{
                 this._range=3;
+                this._err=true;
+                this._errStr+="Invalid Weapon Range Bracket |";
             }
         }
         set shotsel(value){
-           if (value >= 0 && value <= 11){
-               this._shotsel=value;
-           }else{
-               this._shotsel=0;
+           if ((value >= 0 && value <= 2)||(value >=3 && value <=5 && this.attributeArray['Indirect']==true)||(value >= 6 && value <=8 && this.attributeArray['Maximal']==true)||(value>=9 && value <=11)){
+                this._shotsel=value;
+           }else if (value >=3 && value <=5 && this.attributeArray['Indirect']==false){
+                this._shotsel=value-3;
+                this._err=true;
+                this._errStr+="Incorrect Wpn Attr for Shot Selection(Id)|";
+           }else if (value >=6 && value <=8 && this.attributeArray['Maximal']==false){
+                this._shotsel=value-6;
+                this._err=true;
+                this._errStr+="Incorrect Wpn Attr for Shot Selection(Mx)|";
+            }else{
+                this._shotsel=0;
+                this._err=true;
+                this._errStr+="Shot Selection Out of Range|";
            }
         }
         set single(value){
@@ -1153,6 +1490,9 @@ var Wrapper40k = Wrapper40k || (function () {
                 this._single=1;
             }else{
                 this._single=0;
+                this._err=true;
+                this._errStr+="Invalid Single Shot Val|";
+                }
             }
         }
         set semi(value){
@@ -1162,6 +1502,8 @@ var Wrapper40k = Wrapper40k || (function () {
                 this._semi=value;
             }else{
                 this._semi=0;
+                this._err=true;
+                this._errStr+="Semi Shot Val Out of Range|";
             }
         }
         set full(value){
@@ -1171,6 +1513,8 @@ var Wrapper40k = Wrapper40k || (function () {
                 this._full=value;
             }else{
                 this._full=0;
+                this._err=true;
+                this._errStr+="Auto Shot Val Out of Range|";
             }
         }
         set numdice(value){
@@ -1178,6 +1522,8 @@ var Wrapper40k = Wrapper40k || (function () {
                 this._numdice=value;
             } else {
                 this._numdice=0;
+                this._err=true;
+                this._errStr+="Num Dice Out of Range|";
             }
         }
         set dice(value){
@@ -1185,6 +1531,8 @@ var Wrapper40k = Wrapper40k || (function () {
                 this._dice=value;
             } else {
                 this._dice=10;
+                this._err=true;
+                this._errStr+="Dice Out of Range|";
             }
         }
         set dmg(value){
@@ -1192,6 +1540,8 @@ var Wrapper40k = Wrapper40k || (function () {
                 this._dmg=value;
             } else{
                 this._dmg=0;
+                this._err=true;
+                this._errStr+="Dmg Out of Range|";
             }
         }
         set pen(value){
@@ -1199,127 +1549,9 @@ var Wrapper40k = Wrapper40k || (function () {
                 this._pen=value;
             } else{
                 this._pen=0;
+                this._err=true;
+                this._errStr+="Pen Out of Range|";
             }
-        }
-        set special(value){
-            var sub, cur, i, j;
-            var specialArray = value.split('.');
-            var attributeArray = {
-                "Accurate": false,
-                "Balanced": false,
-                "Blast": -1,
-                "Concussive": -1,
-                "Corrosive": false,
-                "Crippling": -1,
-                "Daemonbane": false,
-                "Defensive": false,
-                "Felling": -1,
-                "Flame": false,
-                "Flexible": false,
-                "Force": false,
-                "Graviton": false,
-                "Hallucinogenic": -1,
-                "Haywire": -1,
-                "HaywireMod": 0,
-                "Inaccurate": false,
-                "Indirect": -1,
-                "Lance": false,
-                "Maximal": false,
-                "Melta": false,
-                "Overheats": false,
-                "PowerField": false,
-                "Primitive": -1,
-                "Proven": -1,
-                "RazorSharp": false,
-                "Recharge": false,
-                "Reliable": false,
-                "Sanctified": false,
-                "Scatter": false,
-                "Shocking": false,
-                "Smoke": -1,
-                "Snare": -1,
-                "Spray": false,
-                "Storm": false,
-                "Tainted": false,
-                "Tearing": false,
-                "Toxic": -1,
-                "Twin-Linked": false,
-                "Unbalanced": false,
-                "Unreliable": false,
-                "Unwieldy": false,
-                "Vengeful": 10,         //Daemon wpn attributes
-                "Voidchill": false,
-                "Howling": false,
-                "Wounding": -1,
-                "Vicious": false,
-                "Accursed": false,
-                "Bloodlust": false,
-                "Thirsting": false,
-                "Null": false,
-                "Fury": false,
-                "Skulltaker": false,
-                "Illusory": false,
-                "MindEater": false,
-                "Spellbound": false,
-                "WarpFlame": false,
-                "SorcerousForce": -1,
-                "Bile-Quenched": false,
-                "Enfeebling": false,
-                "PlagueCarrier": false,
-                "StreamofCorruption": -1,
-                "PestilentStench": -1,
-                "Envenomed": -1,
-                "Lashing": -1,
-                "Swiftness": -1,
-                "Sophorific Musk": false,
-                "Enticing": false,
-                "Vulgar": false,
-                "Jealous": false,
-                "Prideful": false,
-                "Vindictive": false,
-                "Overbearing": false,
-                "Thrown": false,        //Wpn can be thrown as ranged atk
-                "Multiplier": -1,    //Multiplier to attribute damage
-                "Precision": -1,        //+X damage per DoS
-                "Weighty": -1,          //requires SB(X) to fire
-                "Intangible": false,    //doesn't add attribute to melee damage
-                "Imposing": false,
-                "Compact": false,
-                "Steady": false,
-                "Potent": false,
-                "SwirlingEnergy": false,
-                "IncalculablePrecision": false,
-                "Indestructible": false,
-                "Ramshackle": false,
-                "PeerlessElegance": false,
-                "InnovativeDesign": false,
-                "RemnantoftheEndless": false,
-                "DeathsDreamFragment": false,
-                "Surly": false,
-                "Cruel": false,
-                "Patient": false,
-                "Unpredictable": false,
-                "Respendent": false,
-                "Vanishing": false,
-                "Trusty": false,
-                "Zealous": false,
-                "Dogged": false,
-                "Lucky": false
-            };
-
-            // Flags values in the special array to values in the tt array
-            for (i = 0, j = specialArray.length; i < j; i++) {
-                specialArray[i] = specialArray[i].replace(/^\s+|\s+$/g, ''); //remove whitespace
-                sub = specialArray[i].match(/\d/); //find any numbers in parentheses
-                specialArray[i] = specialArray[i].replace(/\(([^)]+)\)/g, ''); //remove parentheses and anything inside
-                cur = specialArray[i];
-                if (sub != null) { //if there was a number in parentheses, set the array location equal to that number, otherwise set it as true
-                    attributeArray[cur] = sub;
-                } else {
-                    attributeArray[cur] = true;
-                }
-            }
-            this._special=attributeArray;
         }
         set quality(value){
             if (typeof value === 'string' || value instanceof String){
@@ -1327,9 +1559,13 @@ var Wrapper40k = Wrapper40k || (function () {
                     this._quality=value;
                 }else{
                     this._quality='common';
+                    this._err=true;
+                    this._errStr+="Invalid Quality Val|";
                 }
             }else{
                 this._quality='common';
+                this._err=true;
+                this._errStr+="Invalid Quality|";
             }
         }
         set wpnname(value){
@@ -1337,6 +1573,8 @@ var Wrapper40k = Wrapper40k || (function () {
                 this._wpnname=value;
             }else{
                 this._wpnname='Unknown Weapon';
+                this._err=true;
+                this._errStr+="Invalid Wpn Name|";
             }
         }
         set type(value){
@@ -1344,67 +1582,22 @@ var Wrapper40k = Wrapper40k || (function () {
                 this._wpnname=value;
             }else{
                 this._wpnname='UnkType';
+                this._err=true;
+                this._errStr+="Invalid Type|";
             }
         }
         set ammo(value){
-            var sub, cur, i, j;
-            var ammoString = value.split('.');
-            var ammoArray = {
-                "default": true,
-                "abyssal": false,
-                "amputator": false,
-                "bleeder": false,
-                "concussion": false,
-                "dumdum": false,
-                "expander": false,
-                "explosive": false,
-                "hotshot": false,
-                "incindiary": false,
-                "inferno": false,
-                "manstopper": false,
-                "nitidus": false,
-                "purgatus": false,
-                "purity": false,
-                "psybolts": false,
-                "psyflame": false,
-                "sanctified": false,
-                "scrambler": false,
-                "shard": false,
-                "shock": false,
-                "silver": false,
-                "tempest": false,
-                "thermal": false,
-                "tox": false,
-                "inferno": false,           //custom ammo
-                "overload": -1,
-                "cryo": -1,
-                "chemical": -1,
-                "shredder": -1,
-                "tungsten": false,
-                "hammerhead": -1,
-                "phasic": false,
-                "polonium": -1,
-                "flux": false
-            };
-
-            // Flags values in the special array to values in the tt array
-            for (i = 0, j = inputArray.length; i < j; i++) {
-                inputArray[i] = inputArray[i].replace(/^\s+|\s+$/g, ''); //remove whitespace
-                sub = inputArray[i].match(/\d/); //find any numbers in parentheses
-                inputArray[i] = inputArray[i].replace(/\(([^)]+)\)/g, ''); //remove parentheses and anything inside
-                cur = inputArray[i];
-                if (sub != null) { //if there was a number in parentheses, set the array location equal to that number, otherwise set it as true
-                    outputArray[cur] = sub;
-                } else {
-                    outputArray[cur] = true;
-                }
-            }
-            this._ammo=outputArray; 
+            this._ammo=value;
         }
-
-
-
-
+        set effects(value){
+            this._effects=value;
+        }
+        set wpncat(value){
+            this._wpncat=value;
+        }
+        set attributeArray(value){
+            this._attributeArray=value;
+        }
 
     }
 
