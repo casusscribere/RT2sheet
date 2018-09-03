@@ -582,7 +582,7 @@ margin: 5px 0 5px 0;
     width:20px;
     height:20px;
     display: inline-block;
-    position: absolute
+    position: absolute;
     top:1px;
     left:1px;
     z-index:0;
@@ -787,7 +787,7 @@ div.userscript-showtip.userscript-tipsy {
 .sheet-rolltemplate-check div {
     border: 1px solid black;
     border-radius: 10px;
-    -moz-border-radius: 10px
+    -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     overflow: hidden; /*notice*/
     background-color: #394b5f;
