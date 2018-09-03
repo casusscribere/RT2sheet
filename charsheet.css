@@ -89,11 +89,142 @@
 }
 
 
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none !important;
+    margin: 0 !important; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+
+.sheet-viewwrapper input[type="checkbox"].sheet-columnclicker{
+    opacity: 0;;
+    left: 0;
+    right:0;
+    top: 0;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    cursor: pointer;
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    height: 28px !important;
+}
+
+.sheet-columnclicker:not(:checked) + span {
+    display: none;
+}
+
+.sheet-columnclicker:checked + span {
+    display: block;
+}
+
 /* View Stylings */
 
 .sheet-viewwrapper {
    /* background-color: #DDDDDD;*/
     color: #394b5f;
+    font-family: trajan_reg;
+}
+
+.sheet-viewwrapper div.repcontrol{
+    display: none;
+}
+
+
+
+.sheet-viewwrapper .sheet-item {
+    display: inline-block;
+}
+
+.sheet-viewwrapper input {
+    background-color: inherit;
+    box-shadow: none;
+    border-style: solid;
+    border-width: 0px 0px 0px 0px;
+    height: inherit !important;
+}
+
+.sheet-viewwrapper .sheet-header {
+    text-align: center;
+    padding: 5px;
+    background-color: #394b5f;
+    color: #FFFFFF;
+    margin: 5px 0 5px 0;
+    position: relative;
+}
+
+.sheet-viewwrapper .sheet-header h4 {
+    color: #FFFFFF;
+}
+
+.sheet-viewwrapper button[type=roll] {
+    width: 100%;
+    height: 100%;
+    margin:0;
+    padding: 0;
+}
+
+.sheet-viewwrapper .sheet-title {
+    font-weight: bold;
+}
+
+.sheet-viewwrapper .sheet-centered, .sheet-viewwrapper .sheet-centered span{
+    text-align: center;
+    vertical-align: middle;
+}
+
+.sheet-viewwrapper .sheet-setfont {
+    font-size: 13px;
+    font-family: "Trajan Reg";
+}
+
+.sheet-viewwrapper .sheet-setsmallfont {
+    font-size: 9px;
+    font-family: "Trajan Reg";
+}
+
+
+/* Top-row CSS */
+.sheet-viewwrapper .sheet-topbox .sheet-row {
+    padding: 4px 0 4px 0;
+}
+
+
+.sheet-viewwrapper .sheet-topbox .sheet-centered, .sheet-viewwrapper .sheet-topbox .sheet-centered span{
+    color: rgb(85, 85, 85);
+    font-style: normal;
+}
+
+.sheet-viewwrapper .sheet-topbox input, .sheet-viewwrapper .sheet-playerfill input {
+    font-family: "Trajan Reg";
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+    width: 100% !important;
+}
+
+.sheet-viewwrapper .sheet-playerfill input {
+    border-width: 0px 0px 2px 0px;
+    border-color: #394b5f;
+    text-align: left !important;
+}
+
+/* 2nd-row CSS */
+.sheet-viewwrapper .sheet-charnum {
+    font-size: 200%;
+    background-color: #90a9c6;
+    /*border-color: #ffa64d;
+    border: 4px solid #ffa64d;*/
+}
+
+.sheet-viewwrapper .sheet-characteristics{
+    background-color: rgba(102,102,102,.3);
+    margin: 5px;
+    /*border: 1px solid #394b5f;*/
+    border-radius: 0.5em;
 }
 
 .sheet-viewwrapper button[type="roll"].sheet-lefthiddenroll{
@@ -128,64 +259,10 @@
     z-index: 1;
 }
 
-.sheet-viewwrapper div.repcontrol{
-    display: none;
-}
-
-
-
-.sheet-viewwrapper .sheet-item {
-    display: inline-block;
-}
-
-.sheet-viewwrapper input {
-    background-color: inherit;
-    box-shadow: none;
-    border-style: solid;
-    border-width: 0px 0px 0px 0px;
-    height: inherit;
-}
-
-.sheet-viewwrapper h4 {
-    text-align: center;
-    padding: 5px;
-    background-color: #394b5f;
-    color: #FFFFFF;
-}
-
-.sheet-viewwrapper button {
-    width: 20px;
-    height: 20px;
-    margin:0px;
-    padding:0px;
-}
-
-.sheet-viewwrapper span {
-    font-weight: bold;
-    font-family: trajan_reg;
-}
-
-.sheet-viewwrapper .sheet-playerfill input {
-    border-width: 0px 0px 2px 0px;
-    border-color: #394b5f;
-}
-
-.sheet-viewwrapper .sheet-charnum {
-    font-size: 200%;
-    background-color: #90a9c6;
-    /*border-color: #ffa64d;
-    border: 4px solid #ffa64d;*/
-}
-
-.sheet-viewwrapper .sheet-characteristics{
-    background-color: rgba(102,102,102,.3);
-    margin: 5px;
-    border: 1px solid #394b5f;
-    border-radius: 0.5em;
-}
-
 .sheet-viewwrapper .sheet-characteristics .sheet-adj {
     padding-top: 0px;
+    vertical-align: middle;
+    font-weight: bold;
 }
 
 .sheet-viewwrapper .sheet-characteristics .sheet-cell {
@@ -195,25 +272,27 @@
 .sheet-viewwrapper .sheet-bg {
 /*background: rgba(102,102,102,.3);*/
 background-color: rgba(102,102,102,.3);
-border: 1px solid #394b5f;
+/*border: 1px solid #394b5f;*/
 border-radius: 0.5em;
 margin: 5px 0 5px 0;
 }
 
 .sheet-viewwrapper .sheet-skills {
     font-size: 9px;
+    font-weight: bold;
 }
 
 .sheet-viewwrapper .sheet-skills input {
     color: #394b5f;
-    font-family: trajan_reg;
+    font-family: "trajan_reg";
+    font-weight: bold;
+    padding: 0;
 }
-/*
-.sheet-viewwrapper .sheet-row.sheet-header {
-    background-color: #434343;
-    color: #FFFFFF;
+
+.sheet-viewwrapper .sheet-skills .sheet-title, .sheet-viewwrapper .sheet-skills .sheet-title input{
+    vertical-align: middle;
+    font-size: 9px;
 }
-*/
 
 .sheet-viewwrapper .sheet-armor {
     background-image: url(http://kirklundblade.com/RogueTrader/ArmorDiagram.png);
@@ -230,7 +309,24 @@ margin: 5px 0 5px 0;
 }
 
 
+.sheet-viewwrapper .sheet-skillbox {
+    margin-top: 15px;
+}
 
+
+.sheet-viewwrapper .sheet-armorbox{
+    position: absolute; 
+    width: 97px; 
+    height: 58px;
+}
+
+.sheet-viewwrapper .sheet-armorbox > div {
+    display: block;
+    text-align: center;
+}
+
+
+/*Third row content */
 .sheet-sf button[type=roll]::before  {
     font:10px/normal sans-serif;
     content: "Si"!important; 
@@ -486,7 +582,7 @@ margin: 5px 0 5px 0;
     width:20px;
     height:20px;
     display: inline-block;
-    position: absolute;
+    position: absolute
     top:1px;
     left:1px;
     z-index:0;
@@ -585,7 +681,7 @@ margin: 5px 0 5px 0;
 .sheet-inputwrapper .sheet-bg {
 /*background: rgba(102,102,102,.3);*/
 background-color: rgba(102,102,102,.3);
-border: 1px solid #394b5f;
+/*border: 1px solid #394b5f;*/
 border-radius: 0.5em;
 margin: 5px -2px 5px -2px;
 }
@@ -611,7 +707,7 @@ margin: 5px -2px 5px -2px;
 .sheet-shipwrapper .sheet-bg {
 /*background: rgba(102,102,102,.3);*/
 background-color: rgba(102,102,102,.3);
-border: 1px solid #394b5f;
+/*border: 1px solid #394b5f;*/
 border-radius: 0.5em;
 margin: 5px -2px 5px -2px;
 }
@@ -639,13 +735,13 @@ div.userscript-showtip.userscript-tipsy {
 	font-family: "Helvetica Neue", Helvetica, sans-serif;
 }
 
-/*
 .sheet-rolltemplate-check tbody {
+    /*border-radius: 25px;*/
 }
 
 .sheet-rolltemplate-check tr {
+    /*border-radius: 25px;*/
 }
-*/
 
 .sheet-rolltemplate-check th {
 	background-color: #394b5f;
@@ -691,7 +787,7 @@ div.userscript-showtip.userscript-tipsy {
 .sheet-rolltemplate-check div {
     border: 1px solid black;
     border-radius: 10px;
-    -moz-border-radius: 10px;
+    -moz-border-radius: 10px
     -webkit-border-radius: 10px;
     overflow: hidden; /*notice*/
     background-color: #394b5f;
